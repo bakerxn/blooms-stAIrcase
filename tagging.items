@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>AI Activities Index</title></head><body><h1>AI Activities Tagging System</h1><div id="output"></div><script>// Define activities and their associated verbsconst activities = [
+            {                name: "Build a personal AI learning roadmap.",
+                verbs: ["Create", "Reflect"]
+            },            {                name: "Students build a functioning low-code AI prototype.",
+                verbs: ["Create", "Analyze"]
+            },            {                name: "Design a simple concept for an AI system.",
+                verbs: ["Create", "Design"]
+            },            {                name: "Debate the use of deep learning in medicine.",
+                verbs: ["Reflect", "Analyze", "Summarize"]
+            },            {                name: "Given AI data outputs, identify discrepancies.",
+                verbs: ["Analyze"]
+            },            {                name: "Use multiple AI summarizers and critique.",
+                verbs: ["Summarize"]
+            }            // Add more activities as needed        ];
+        // Define verbs and associate activities with themconst verbsIndex = {};
+        activities.forEach(activity => {
+            activity.verbs.forEach(verb => {
+                if (!verbsIndex[verb]) {
+                    verbsIndex[verb] = [];                }                verbsIndex[verb].push(activity.name);
+            });        });
+        // Display the indexconst outputDiv = document.getElementById("output");
+        for (const [verb, acts] of Object.entries(verbsIndex)) {
+            const verbSection = document.createElement("div");
+            const verbTitle = document.createElement("h2");
+            verbTitle.textContent = verb;
+            verbSection.appendChild(verbTitle);
+            const activityList = document.createElement("ul");
+            acts.forEach(act => {
+                const listItem = document.createElement("li");
+                listItem.textContent = act;
+                activityList.appendChild(listItem);
+            });
+            verbSection.appendChild(activityList);
+            outputDiv.appendChild(verbSection);
+        }
+    </script></body></html>
