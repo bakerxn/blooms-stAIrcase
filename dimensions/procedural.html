@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procedural Knowledge - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    body {
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+    }
+    
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #003366;
+    }
+    
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 2em;
+    }.content-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }.page-header {
+      background: linear-gradient(135deg, #c7e2df 0%, #b3d1ee 100%);
+      padding: 40px;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 3px solid #003366;
+      border-bottom: none;
+    }.page-header h2 {
+      color: #003366;
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+    }.dimension-label {
+      color: #666;
+      font-size: 1.1em;
+      font-style: italic;
+      margin: 0;
+    }.spectrum-container {
+      background: #ffffff;
+      padding: 30px;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }.spectrum-title {
+      text-align: center;
+      color: #003366;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }.spectrum-visual {
+      position: relative;
+      height: 80px;
+      background: linear-gradient(to right, #dee5ee 0%, #bccad6 40%, #b3d1ee 70%, #abbdcc 100%);
+      border-radius: 40px;
+      border: 2px solid #003366;
+      margin: 20px 0;
+    }.spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #003366;
+    }.spectrum-marker {
+      position: absolute;
+      top: 50%;
+      left: 65%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: #AC3931;
+      border: 4px solid #003366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.75em;
+      line-height: 1.2;
+      padding: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }.spectrum-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #AC3931;
+    }.tab-container {
+      background: #ffffff;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+    }.tab-navigation {
+      display: flex;
+      border-bottom: 3px solid #003366;
+      background: #f8f9fa;
+      overflow-x: auto;
+    }.tab-button {
+      flex: 1;
+      padding: 15px 20px;
+      background: #e8f0f7;
+      border: none;
+      border-right: 2px solid #003366;
+      cursor: pointer;
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      font-size: 1em;
+      color: #003366;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }.tab-button:last-child {
+      border-right: none;
+    }.tab-button:hover {
+      background: #CCE5FF;
+    }.tab-button:focus {
+      outline: 3px solid #AC3931;
+      outline-offset: -3px;
+      z-index: 10;
+    }.tab-button.active {
+      background: #ffffff;
+      color: #AC3931;
+      font-weight: bold;
+      border-bottom: 3px solid #AC3931;
+      margin-bottom: -3px;
+    }.tab-content {
+      display: none;
+      padding: 40px;
+      background: #ffffff;
+      line-height: 1.8;
+      color: #333;
+    }.tab-content.active {
+      display: block;
+    }.tab-content h3 {
+      color: #003366;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #AC3931;
+      padding-bottom: 10px;
+    }.tab-content h4 {
+      color: #AC3931;
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }.tab-content p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+    }.tab-content ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }.tab-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }.example-box {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.example-box h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.1em;
+    }.tip-box {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.tip-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.tip-box h5::before {
+      content: "💡";
+      font-size: 1.5em;
+    }.ai-box {
+      background: #e8f4f8;
+      border: 2px solid #4a90e2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.ai-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.ai-box h5::before {
+      content: "🤖";
+      font-size: 1.5em;
+    }.bottom-navigation {
+      background: #ffffff;
+      padding: 30px 40px;
+      border: 3px solid #003366;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }.nav-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #AC3931;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    }.nav-button:hover {
+      background: #8d2e27;
+    }.nav-button:focus {
+      outline: 3px solid #003366;
+      outline-offset: 2px;
+    }.nav-button.secondary {
+      background: #003366;
+    }.nav-button.secondary:hover {
+      background: #004080;
+    }
+    
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+    }.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }.skip-link:focus {
+      top: 0;
+    }
+    
+    @media screen and (max-width: 768px) {.page-header {
+        padding: 25px;
+      }.page-header h2 {
+        font-size: 1.8em;
+      }.tab-button {
+        font-size: 0.9em;
+        padding: 12px 15px;
+        min-width: 120px;
+      }.tab-content {
+        padding: 25px 20px;
+      }.tab-content h3 {
+        font-size: 1.5em;
+      }.spectrum-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7em;
+      }.bottom-navigation {
+        padding: 20px;
+        flex-direction: column;
+      }.nav-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <main id="main-content" class="content-wrapper">
+    <div class="page-header">
+      <p class="dimension-label">Knowledge Dimension</p>
+      <h2>Procedural Knowledge</h2>
+    </div>
+    
+    <div class="spectrum-container">
+      <p class="spectrum-title">Position on the Knowledge Dimension Spectrum</p>
+      <div class="spectrum-visual" role="img" aria-label="Procedural knowledge is positioned toward the abstract end of the knowledge spectrum">
+        <div class="spectrum-marker" aria-hidden="true">
+          YOU ARE HERE
+        </div>
+      </div>
+      <div class="spectrum-labels">
+        <span>Concrete Knowledge</span>
+        <span>Abstract Knowledge</span>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <nav class="tab-navigation" role="tablist" aria-label="Procedural knowledge information tabs">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="subtypes-panel" id="subtypes-tab" onclick="openTab(event, 'subtypes')">Subtypes</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
+      </nav>
+      
+      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>What is Procedural Knowledge?</h3>
+        <p>
+          Procedural knowledge is knowledge of how to do something. It encompasses the methods, techniques, algorithms, and criteria for using skills and procedures within a discipline. This type of knowledge is about action—knowing the steps to follow, the methods to employ, and when to use specific approaches to accomplish tasks or solve problems.
+        </p>
+        <p>
+          Unlike factual knowledge (knowing "what") or conceptual knowledge (knowing "why"), procedural knowledge is about knowing "how." It includes both the step-by-step processes for completing tasks and the judgment needed to determine which procedures to use in different situations. Procedural knowledge is essential for applying learning in practical contexts and for developing expertise in any field.
+        </p>
+        <p>
+          In the Knowledge Dimension spectrum, procedural knowledge is more abstract than factual or conceptual knowledge. While facts are concrete pieces of information and concepts are organizing frameworks, procedures involve sequences of actions that must be adapted to different contexts. Mastering procedural knowledge requires practice, feedback, and the development of fluency through repeated application.
+        </p>
+        
+        <div class="tip-box">
+          <h5>Common Misconception</h5>
+          <p>
+            <strong>Myth:</strong> Procedural knowledge is just following steps mechanically without understanding.
+          </p>
+          <p>
+            <strong>Reality:</strong> True procedural knowledge includes understanding when and why to use specific procedures, not just memorizing steps. Expert procedural knowledge involves flexibility, adaptation, and strategic decision-making about which methods to employ. Students need both the "how" (the steps) and the "when/why" (the criteria for use) to develop genuine procedural competence.
+          </p>
+        </div>
+      </div>
+      
+      <div id="subtypes" class="tab-content" role="tabpanel" aria-labelledby="subtypes-tab">
+        <h3>Types of Procedural Knowledge</h3>
+        
+        <h4>1. Knowledge of Subject-Specific Skills and Algorithms</h4>
+        <p>
+          This includes the specific techniques and step-by-step procedures used within a discipline. Skills are the practiced abilities to perform tasks, while algorithms are fixed sequences of steps that always produce the same result when followed correctly. This is the most concrete form of procedural knowledge.
+        </p>
+        <ul>
+          <li>Mathematical algorithms (e.g., long division, solving equations)</li>
+          <li>Scientific procedures (e.g., conducting experiments, using equipment)</li>
+          <li>Technical skills (e.g., using software, operating instruments)</li>
+          <li>Performance skills (e.g., playing an instrument, athletic techniques)</li>
+          <li>Step-by-step processes with fixed sequences</li>
+        </ul>
+        
+        <h4>2. Knowledge of Subject-Specific Techniques and Methods</h4>
+        <p>
+          This encompasses the broader approaches and strategies used within a discipline. Unlike algorithms, techniques and methods are more flexible and may vary based on context. They represent the "ways of working" that characterize different fields and require judgment in their application.
+        </p>
+        <ul>
+          <li>Research methods and methodologies</li>
+          <li>Problem-solving strategies</li>
+          <li>Analytical techniques</li>
+          <li>Creative processes and approaches</li>
+          <li>Communication strategies</li>
+          <li>Methods of inquiry specific to disciplines</li>
+        </ul>
+        
+        <h4>3. Knowledge of Criteria for Determining When to Use Appropriate Procedures</h4>
+        <p>
+          This is the most sophisticated form of procedural knowledge. It involves understanding the conditions under which different procedures should be used, recognizing when a procedure is appropriate, and knowing how to select among alternative methods. This metacognitive aspect of procedural knowledge distinguishes experts from novices.
+        </p>
+        <ul>
+          <li>Criteria for selecting appropriate methods</li>
+          <li>Understanding the conditions for procedure application</li>
+          <li>Knowing the strengths and limitations of different approaches</li>
+          <li>Recognizing when to modify or adapt procedures</li>
+          <li>Strategic knowledge about procedure selection</li>
+        </ul>
+        
+        <div class="example-box">
+          <h5>Distinguishing the Subtypes</h5>
+          <p><strong>Skills/Algorithms:</strong> Knowing the steps to solve a quadratic equation using the quadratic formula.</p>
+          <p><strong>Techniques/Methods:</strong> Understanding various approaches to solving quadratic equations (factoring, completing the square, graphing, using the formula).</p>
+          <p><strong>Criteria:</strong> Knowing when to use each method based on the form of the equation and the context of the problem.</p>
+        </div>
+      </div>
+      
+      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
+        <h3>Procedural Knowledge Across Disciplines</h3>
+        
+        <div class="example-box">
+          <h5>Science</h5>
+          <p><strong>Skills/Algorithms:</strong> Steps for titration; procedure for using a microscope; algorithm for balancing chemical equations; steps in the scientific method</p>
+          <p><strong>Techniques/Methods:</strong> Experimental design methods; data collection techniques; various approaches to hypothesis testing; qualitative vs. quantitative research methods</p>
+          <p><strong>Criteria:</strong> When to use controlled experiments vs. observational studies; selecting appropriate measurement tools; determining sample size requirements</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Mathematics</h5>
+          <p><strong>Skills/Algorithms:</strong> Long division algorithm; steps to factor polynomials; procedure for finding derivatives; algorithm for matrix multiplication</p>
+          <p><strong>Techniques/Methods:</strong> Problem-solving strategies (working backwards, drawing diagrams); proof techniques; estimation methods; various approaches to integration</p>
+          <p><strong>Criteria:</strong> When to use substitution vs. elimination in systems of equations; selecting appropriate problem-solving strategies; knowing when exact vs. approximate answers are needed</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>History</h5>
+          <p><strong>Skills/Algorithms:</strong> Steps for citing sources; procedure for creating a timeline; process for analyzing primary sources; steps in historical inquiry</p>
+          <p><strong>Techniques/Methods:</strong> Methods of historical analysis; techniques for evaluating source credibility; comparative analysis approaches; contextual analysis methods</p>
+          <p><strong>Criteria:</strong> When to use primary vs. secondary sources; selecting appropriate analytical frameworks; determining which historical perspectives to consider</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Literature & Language Arts</h5>
+          <p><strong>Skills/Algorithms:</strong> Steps in the writing process; procedure for close reading; algorithm for grammar checking; steps to construct a thesis statement</p>
+          <p><strong>Techniques/Methods:</strong> Literary analysis methods; rhetorical strategies; revision techniques; various approaches to textual interpretation</p>
+          <p><strong>Criteria:</strong> When to use different rhetorical appeals; selecting appropriate literary criticism frameworks; determining which revision strategies to employ</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Arts</h5>
+          <p><strong>Skills/Algorithms:</strong> Technique for mixing colors; steps for throwing pottery; procedure for tuning an instrument; algorithm for creating perspective in drawing</p>
+          <p><strong>Techniques/Methods:</strong> Various painting techniques; compositional methods; performance interpretation approaches; design processes</p>
+          <p><strong>Criteria:</strong> When to use different brush techniques; selecting appropriate media for artistic goals; determining which compositional principles to emphasize</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Computer Science</h5>
+          <p><strong>Skills/Algorithms:</strong> Sorting algorithms; procedure for debugging code; steps to create a function; algorithm for searching data structures</p>
+          <p><strong>Techniques/Methods:</strong> Programming paradigms (object-oriented, functional); software design patterns; testing methodologies; optimization techniques</p>
+          <p><strong>Criteria:</strong> When to use different data structures; selecting appropriate algorithms based on efficiency needs; determining which programming paradigm fits the problem</p>
+        </div>
+      </div>
+      
+      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
+        <h3>How Students Demonstrate Procedural Knowledge</h3>
+        
+        <p>
+          Students demonstrate procedural knowledge by successfully performing procedures, explaining the steps involved, and showing they know when and why to use specific methods. True procedural competence goes beyond rote execution to include understanding and strategic application.
+        </p>
+        
+        <h4>Performing Procedures Correctly</h4>
+        <p>Students with procedural knowledge can:</p>
+        <ul>
+          <li>Execute procedures accurately and efficiently</li>
+          <li>Follow multi-step processes in the correct sequence</li>
+          <li>Use tools and techniques appropriately</li>
+          <li>Complete tasks using learned methods</li>
+          <li>Demonstrate fluency through repeated successful application</li>
+        </ul>
+        
+        <h4>Explaining Procedures</h4>
+        <p>Students show understanding of procedures by:</p>
+        <ul>
+          <li>Describing the steps in a process clearly</li>
+          <li>Explaining why each step is necessary</li>
+          <li>Identifying potential errors and how to avoid them</li>
+          <li>Teaching procedures to others</li>
+          <li>Documenting processes clearly</li>
+        </ul>
+        
+        <h4>Adapting and Selecting Procedures</h4>
+        <p>Advanced procedural knowledge is shown when students:</p>
+        <ul>
+          <li>Choose appropriate methods for different situations</li>
+          <li>Modify procedures when contexts change</li>
+          <li>Recognize when a procedure isn't working and adjust</li>
+          <li>Explain why one method is better than another for a specific task</li>
+          <li>Combine multiple procedures strategically</li>
+        </ul>
+        
+        <h4>Observable Behaviors</h4>
+        <p>Students with strong procedural knowledge:</p>
+        <ul>
+          <li>Work efficiently and systematically through tasks</li>
+          <li>Catch and correct their own procedural errors</li>
+          <li>Can explain their process while working</li>
+          <li>Transfer procedures to similar but new situations</li>
+          <li>Show increasing speed and accuracy with practice</li>
+          <li>Ask strategic questions about when to use different approaches</li>
+          <li>Demonstrate flexibility in problem-solving</li>
+        </ul>
+        
+        <div class="tip-box">
+          <h5>Assessment Tip</h5>
+          <p>
+            Assess procedural knowledge through performance tasks, not just written tests. Have students demonstrate procedures, explain their process, and justify their method selection. Include problems that require students to choose among procedures or adapt methods to new situations. Look for both accuracy in execution and understanding of when and why to use specific approaches.
+          </p>
+        </div>
+      </div>
+      
+      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
+        <h3>Tips for Educators</h3>
+        
+        <h4>Building Strong Procedural Knowledge</h4>
+        <ul>
+          <li><strong>Model procedures explicitly:</strong> Demonstrate procedures step-by-step while thinking aloud about your process and decision-making.</li>
+          <li><strong>Provide guided practice:</strong> Support students as they practice procedures, gradually releasing responsibility as they gain competence.</li>
+          <li><strong>Emphasize the "why":</strong> Don't just teach steps; explain why procedures work and when to use them.</li>
+          <li><strong>Build fluency through practice:</strong> Provide multiple opportunities for practice with feedback to develop automaticity.</li>
+          <li><strong>Teach strategic knowledge:</strong> Explicitly teach criteria for selecting among procedures and when to adapt methods.</li>
+          <li><strong>Use worked examples:</strong> Show complete examples of procedures before asking students to perform them independently.</li>
+          <li><strong>Scaffold complexity:</strong> Start with simpler versions of procedures and gradually increase complexity.</li>
+        </ul>
+        
+        <h4>Common Pitfalls to Avoid</h4>
+        <ul>
+          <li><strong>Teaching procedures without understanding:</strong> Students who only memorize steps can't adapt when situations change.</li>
+          <li><strong>Insufficient practice:</strong> Procedural knowledge requires repeated practice to develop fluency and automaticity.</li>
+          <li><strong>Skipping the modeling phase:</strong> Students need to see procedures demonstrated before attempting them.</li>
+          <li><strong>Neglecting error analysis:</strong> Help students understand common errors and how to avoid or correct them.</li>
+          <li><strong>Not teaching when to use procedures:</strong> Knowing how to do something is incomplete without knowing when to do it.</li>
+          <li><strong>Moving too quickly:</strong> Allow time for students to develop competence before adding complexity.</li>
+        </ul>
+        
+        <div class="ai-box">
+          <h5>AI Literacy Connection</h5>
+          <p>
+            <strong>How AI Relates to Procedural Knowledge:</strong> AI can automate many procedures, generate step-by-step instructions, and even perform complex procedures that previously required human expertise. This fundamentally changes which procedural knowledge students need to develop.
+          </p>
+          <p>
+            <strong>Teaching Implications:</strong>
+          </p>
+          <ul>
+            <li>Focus on procedures that require human judgment, creativity, or adaptation rather than rote execution</li>
+            <li>Teach students to evaluate AI-generated procedures for accuracy and appropriateness</li>
+            <li>Emphasize understanding why procedures work, not just how to execute them</li>
+            <li>Develop students' ability to select and adapt procedures strategically</li>
+            <li>Use AI to provide additional practice opportunities and immediate feedback</li>
+            <li>Teach students when to use AI assistance vs. when to perform procedures independently</li>
+            <li>Help students understand that procedural knowledge enables them to verify AI outputs</li>
+          </ul>
+          <p>
+            <strong>Key Message:</strong> In the age of AI, procedural knowledge shifts from memorizing and executing fixed steps to understanding procedures deeply enough to select, adapt, evaluate, and verify them. Students need procedural knowledge to work effectively with AI tools and to recognize when AI-suggested procedures are appropriate or flawed.
+          </p>
+        </div>
+        
+        <div class="tip-box">
+          <h5>Practical Strategy</h5>
+          <p>
+            <strong>The "Explain While You Work" Technique:</strong> Have students verbalize their process as they perform procedures. This helps them develop metacognitive awareness of their procedural knowledge, catch errors, and solidify their understanding of both the steps and the reasoning behind them. It also helps you identify where students' procedural knowledge breaks down.
+          </p>
+        </div>
+        
+        <h4>Connecting Procedural to Other Knowledge Types</h4>
+        <p>Procedural knowledge works best when integrated with other knowledge types:</p>
+        <ul>
+          <li><strong>Factual + Procedural:</strong> Students need to know relevant facts to execute procedures correctly</li>
+          <li><strong>Conceptual + Procedural:</strong> Understanding concepts helps students know why procedures work and when to use them</li>
+          <li><strong>Metacognitive + Procedural:</strong> Self-awareness helps students monitor their procedure execution and select appropriate methods</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="bottom-navigation">
+      <a href="../index.html" class="nav-button">← Back to Main Page</a>
+      <a href="../dimensions/knowledge.html" class="nav-button secondary">View Knowledge Dimension Table</a>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    function openTab(evt, tabName) {
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      var tabButtons = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+        tabButtons[i].setAttribute("aria-selected", "false");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+      evt.currentTarget.setAttribute("aria-selected", "true");
+      document.getElementById(tabName).focus();
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabPanels = document.querySelectorAll('.tab-content');
+      tabPanels.forEach(function(panel) {
+        panel.setAttribute('tabindex', '0');
+      });
+    });
+  </script>
+</body>
+</html>
