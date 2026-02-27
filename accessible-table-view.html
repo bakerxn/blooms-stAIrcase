@@ -1,0 +1,148 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessible Bloom's stAIrcase</title>
+<style>
+body {font-family:system-ui;margin:0;background:#fff;color:#111}
+main {max-width:1100px;margin:auto;padding:1rem}
+h1 {margin-bottom:0.5rem}
+table {border-collapse:collapse;width:100%}
+th,td {border:1px solid #ccc;padding:.6rem;text-align:center}
+th {background:#f3f4f6;font-weight:600}
+th[scope="row"]{text-align:left;background:#f9fafb}
+button {
+    width:100%;
+    padding:.4rem;
+    border:none;
+    background:none;
+    cursor:pointer;
+    font:inherit;
+}
+button:hover {background:#eef2ff}
+button:focus {outline:3px solid #2563eb}
+.selected {background:#e0e7ff}
+aside {
+    margin-top:1rem;
+    border:1px solid #ccc;
+    padding:1rem;
+    border-radius:12px;
+    min-height:60px;
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Accessible Bloom's stAIrcase</h1>
+<p>This is a fully keyboard-accessible alternative to the SVG version.</p>
+<table id="tbl" aria-label="Bloom's stAIrcase interactive table"></table>
+<aside id="info" aria-live="polite">Select a cell to generate a prompt.</aside>
+</main>
+
+<script>
+const data = {"topLeftHeader": "The Knowledge Dimension", "topHeader": "The Cognitive Process Dimension", "colHeaders": ["Create", "Evaluate", "Analyze", "Apply", "Understand", "Remember"], "rowHeaders": ["Metacognative", "Procedural", "Conceptual", "Factual"], "cells": [["create", "reflect", "deconstruct", "use", "predict", "identify"], ["design", "judge", "integrate", "carry out", "clarify", "recall"], ["assemble", "determine", "differentiate", "provide", "classify", "recognize"], ["generate", "check", "select", "respond", "summarize", "list"]]};
+
+let table = document.getElementById("tbl");
+
+// Build header
+let thead = document.createElement("thead");
+let r1 = document.createElement("tr");
+
+let thCorner = document.createElement("th");
+thCorner.rowSpan = 2;
+thCorner.textContent = data.topLeftHeader;
+r1.appendChild(thCorner);
+
+let thTop = document.createElement("th");
+thTop.colSpan = data.colHeaders.length;
+thTop.textContent = data.topHeader;
+r1.appendChild(thTop);
+thead.appendChild(r1);
+
+let r2 = document.createElement("tr");
+data.colHeaders.forEach(h=>{
+    let th=document.createElement("th");
+    th.scope="col";
+    th.textContent=h;
+    r2.appendChild(th);
+});
+thead.appendChild(r2);
+table.appendChild(thead);
+
+// Build body
+let tbody=document.createElement("tbody");
+data.rowHeaders.forEach((row,ri)=>{
+    let tr=document.createElement("tr");
+    let th=document.createElement("th");
+    th.scope="row";
+    th.textContent=row;
+    tr.appendChild(th);
+
+    data.colHeaders.forEach((col,ci)=>{
+        let td=document.createElement("td");
+        let btn=document.createElement("button");
+        let val=data.cells[ri][ci]||"";
+        btn.textContent=val||"—";
+        btn.setAttribute("aria-label", row + ", " + col + ": " + val);
+        btn.onclick=()=>{
+            document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
+            td.classList.add("selected");
+            document.getElementById("info").textContent =
+                "Knowledge: " + row +
+                " | Cognitive Process: " + col +
+                " | Verb: " + val +
+                "\n\nStarter Prompt: Create an activity where students " +
+                val + " using " + row.toLowerCase() + " knowledge.";
+        };
+        td.appendChild(btn);
+        tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+});
+
+table.appendChild(tbody);
+</script>
+
+<script>
+const info = document.getElementById("info");
+function select(el,msg){
+ document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
+ el.classList.add("selected");
+ info.textContent = msg;
+}
+
+document.querySelectorAll('tbody th[scope="row"]').forEach(th=>{
+ let label=th.textContent.trim();
+ let btn=document.createElement("button");
+ btn.textContent=label;
+ btn.setAttribute("aria-label","Knowledge type: "+label);
+ btn.onclick=()=>select(th,"Knowledge Type: "+label);
+ th.textContent="";
+ th.appendChild(btn);
+});
+
+document.querySelectorAll("thead tr:last-child th").forEach(th=>{
+ let label=th.textContent.trim();
+ let btn=document.createElement("button");
+ btn.textContent=label;
+ btn.setAttribute("aria-label","Cognitive process: "+label);
+ btn.onclick=()=>select(th,"Cognitive Process: "+label);
+ th.textContent="";
+ th.appendChild(btn);
+});
+
+let topHeader=document.querySelector("thead tr:first-child th:last-child");
+if(topHeader){
+ let label=topHeader.textContent.trim();
+ let btn=document.createElement("button");
+ btn.textContent=label;
+ btn.onclick=()=>select(topHeader,"Dimension: "+label);
+ topHeader.textContent="";
+ topHeader.appendChild(btn);
+}
+</script>
+
+</body>
+</html>
