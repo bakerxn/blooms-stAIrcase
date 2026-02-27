@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    body {
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+    }
+    
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #003366;
+    }
+    
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 2em;
+    }.content-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }.page-header {
+      background: linear-gradient(135deg, #fffee0 0%, #fffacd 100%);
+      padding: 40px;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 3px solid #003366;
+      border-bottom: none;
+    }.page-header h2 {
+      color: #003366;
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+    }.dimension-label {
+      color: #666;
+      font-size: 1.1em;
+      font-style: italic;
+      margin: 0;
+    }.spectrum-container {
+      background: #ffffff;
+      padding: 30px;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }.spectrum-title {
+      text-align: center;
+      color: #003366;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }.spectrum-visual {
+      position: relative;
+      height: 80px;
+      background: linear-gradient(to right, 
+        #d4e9f7 0%, 
+        #d4f0d4 20%, 
+        #fffacd 40%, 
+        #fff4b3 60%, 
+        #ffd9b3 80%, 
+        #ffc9d9 100%);
+      border-radius: 40px;
+      border: 2px solid #003366;
+      margin: 20px 0;
+    }.spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #003366;
+    }.spectrum-marker {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: #AC3931;
+      border: 4px solid #003366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.75em;
+      line-height: 1.2;
+      padding: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }.spectrum-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #AC3931;
+    }.tab-container {
+      background: #ffffff;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+    }.tab-navigation {
+      display: flex;
+      border-bottom: 3px solid #003366;
+      background: #f8f9fa;
+      overflow-x: auto;
+    }.tab-button {
+      flex: 1;
+      padding: 15px 20px;
+      background: #fffef0;
+      border: none;
+      border-right: 2px solid #003366;
+      cursor: pointer;
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      font-size: 1em;
+      color: #003366;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }.tab-button:last-child {
+      border-right: none;
+    }.tab-button:hover {
+      background: #fffacd;
+    }.tab-button:focus {
+      outline: 3px solid #AC3931;
+      outline-offset: -3px;
+      z-index: 10;
+    }.tab-button.active {
+      background: #ffffff;
+      color: #AC3931;
+      font-weight: bold;
+      border-bottom: 3px solid #AC3931;
+      margin-bottom: -3px;
+    }.tab-content {
+      display: none;
+      padding: 40px;
+      background: #ffffff;
+      line-height: 1.8;
+      color: #333;
+    }.tab-content.active {
+      display: block;
+    }.tab-content h3 {
+      color: #003366;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #AC3931;
+      padding-bottom: 10px;
+    }.tab-content h4 {
+      color: #AC3931;
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }.tab-content p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+    }.tab-content ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }.tab-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }.process-card {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.process-card h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.2em;
+    }.process-card.alternative-names {
+      font-style: italic;
+      color: #666;
+      margin-top: 5px;
+    }.example-box {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.example-box h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.1em;
+    }.tip-box {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.tip-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.tip-box h5::before {
+      content: "💡";
+      font-size: 1.5em;
+    }.ai-box {
+      background: #e8f4f8;
+      border: 2px solid #4a90e2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.ai-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.ai-box h5::before {
+      content: "🤖";
+      font-size: 1.5em;
+    }.bottom-navigation {
+      background: #ffffff;
+      padding: 30px 40px;
+      border: 3px solid #003366;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }.nav-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #AC3931;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    }.nav-button:hover {
+      background: #8d2e27;
+    }.nav-button:focus {
+      outline: 3px solid #003366;
+      outline-offset: 2px;
+    }.nav-button.secondary {
+      background: #003366;
+    }.nav-button.secondary:hover {
+      background: #004080;
+    }
+    
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+    }.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }.skip-link:focus {
+      top: 0;
+    }
+    
+    @media screen and (max-width: 768px) {.page-header {
+        padding: 25px;
+      }.page-header h2 {
+        font-size: 1.8em;
+      }.tab-button {
+        font-size: 0.9em;
+        padding: 12px 15px;
+        min-width: 120px;
+      }.tab-content {
+        padding: 25px 20px;
+      }.tab-content h3 {
+        font-size: 1.5em;
+      }.spectrum-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7em;
+      }.bottom-navigation {
+        padding: 20px;
+        flex-direction: column;
+      }.nav-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <main id="main-content" class="content-wrapper">
+    <div class="page-header">
+      <p class="dimension-label">Cognitive Process Dimension</p>
+      <h2>Apply</h2>
+    </div>
+    
+    <div class="spectrum-container">
+      <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
+      <div class="spectrum-visual" role="img" aria-label="Apply is positioned at the transition between lower and higher order thinking skills">
+        <div class="spectrum-marker" aria-hidden="true">
+          YOU ARE HERE
+        </div>
+      </div>
+      <div class="spectrum-labels">
+        <span>Lower Order Thinking Skills</span>
+        <span>Higher Order Thinking Skills</span>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <nav class="tab-navigation" role="tablist" aria-label="Apply cognitive process information tabs">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="processes-panel" id="processes-tab" onclick="openTab(event, 'processes')">Cognitive Processes</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
+      </nav>
+      
+      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>What is Apply?</h3>
+        <p>
+          Apply involves carrying out or using a procedure in a given situation. When students apply, they use their knowledge to solve problems, complete tasks, or address situations they haven't encountered in exactly the same form before. Application requires both understanding the procedure and recognizing when and how to use it appropriately.
+        </p>
+        <p>
+          In the revised Bloom's Taxonomy, Apply represents a crucial bridge between lower-order and higher-order thinking. While Remember and Understand focus on acquiring and making sense of knowledge, Apply requires students to actually use that knowledge in practical contexts. This is where learning becomes functional—students demonstrate they can do something with what they know, not just recall or explain it.
+        </p>
+        <p>
+          Apply sits at a pivotal position in the cognitive process spectrum. It requires more than understanding (you must actually execute procedures), but it's less complex than analyzing, evaluating, or creating (which require breaking down, judging, or generating new ideas). Successful application demonstrates that students have moved beyond passive knowledge to active competence. It's the foundation for problem-solving and real-world use of learning.
+        </p>
+        
+        <div class="tip-box">
+          <h5>Common Misconception</h5>
+          <p>
+            <strong>Myth:</strong> If students can solve practice problems that are similar to examples, they can apply their knowledge.
+          </p>
+          <p>
+            <strong>Reality:</strong> True application involves using procedures in new situations, not just repeating practiced examples. Students who can only solve problems identical to those they've practiced are still at the Remember level (recalling procedures). Application requires recognizing which procedure to use and adapting it to novel contexts. The key indicator of application is transfer to situations that differ from instruction.
+          </p>
+        </div>
+      </div>
+      
+      <div id="processes" class="tab-content" role="tabpanel" aria-labelledby="processes-tab">
+        <h3>Cognitive Processes Within Apply</h3>
+        <p>
+          The Apply category includes two specific cognitive processes that represent different aspects of using procedures.
+        </p>
+        
+        <div class="process-card">
+          <h5>Executing</h5>
+          <p class="alternative-names">Alternative name: Carrying out</p>
+          <p>
+            <strong>Definition:</strong> Applying a procedure to a familiar task. Executing occurs when students carry out a procedure in a situation where they've been trained to use that specific procedure. The task is familiar, and students know which procedure to use—they just need to carry it out correctly.
+          </p>
+          <p>
+            <strong>Key characteristics:</strong>
+          </p>
+          <ul>
+            <li>The procedure to use is clear or specified</li>
+            <li>The task type is familiar from instruction</li>
+            <li>Focus is on accurate execution of known procedures</li>
+            <li>Requires procedural knowledge and careful attention to steps</li>
+          </ul>
+          <p>
+            <strong>Example prompts:</strong> "Solve this equation...", "Calculate the area...", "Conduct the experiment using...", "Follow the procedure to..."
+          </p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Implementing</h5>
+          <p class="alternative-names">Alternative name: Using</p>
+          <p>
+            <strong>Definition:</strong> Applying a procedure to an unfamiliar task. Implementing occurs when students must select and use a procedure in a new situation. The task is unfamiliar, and students must recognize which procedure applies and how to adapt it to the new context. This is true application.
+          </p>
+          <p>
+            <strong>Key characteristics:</strong>
+          </p>
+          <ul>
+            <li>The task is new or unfamiliar</li>
+            <li>Students must select the appropriate procedure</li>
+            <li>May require modifying or adapting procedures</li>
+            <li>Requires both procedural and conceptual knowledge</li>
+            <li>Involves transfer of learning to new contexts</li>
+          </ul>
+          <p>
+            <strong>Example prompts:</strong> "Use what you know to solve...", "Apply the concept to...", "How would you approach...", "Determine the best method for..."
+          </p>
+        </div>
+        
+        <h4>Relationship Between Executing and Implementing</h4>
+        <p>
+          Both processes involve using procedures, but they differ in the level of novelty and decision-making required. Executing is more routine—students know what to do and just need to do it correctly. Implementing requires judgment—students must figure out what to do and how to adapt their knowledge to new situations. In educational practice, students typically learn to execute procedures first, then progress to implementing them in novel contexts.
+        </p>
+        
+        <p>
+          <strong>Progression example:</strong>
+        </p>
+        <ul>
+          <li><strong>Executing:</strong> Solve 10 quadratic equations using the quadratic formula (all clearly require the formula)</li>
+          <li><strong>Implementing:</strong> Solve various equations and word problems, determining which method is most appropriate for each</li>
+        </ul>
+      </div>
+      
+      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
+        <h3>Apply Across Disciplines</h3>
+        
+        <div class="example-box">
+          <h5>Science</h5>
+          <p><strong>Executing:</strong></p>
+          <ul>
+            <li>Follow the steps of a lab procedure you've been taught</li>
+            <li>Use the formula F=ma to calculate force in standard problems</li>
+            <li>Conduct a titration using the demonstrated technique</li>
+          </ul>
+          <p><strong>Implementing:</strong></p>
+          <ul>
+            <li>Design an experiment to test a new hypothesis using scientific method principles</li>
+            <li>Determine which formula to use to solve an unfamiliar physics problem</li>
+            <li>Apply knowledge of chemical reactions to predict products in a new scenario</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Mathematics</h5>
+          <p><strong>Executing:</strong></p>
+          <ul>
+            <li>Solve equations using the taught algorithm</li>
+            <li>Calculate area using the formula A = πr²</li>
+            <li>Graph linear equations following the demonstrated steps</li>
+          </ul>
+          <p><strong>Implementing:</strong></p>
+          <ul>
+            <li>Solve word problems requiring selection of appropriate operations</li>
+            <li>Determine which geometric formula applies to a real-world measurement problem</li>
+            <li>Apply mathematical concepts to model a real-world situation</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>History</h5>
+          <p><strong>Executing:</strong></p>
+          <ul>
+            <li>Use the taught method to analyze a primary source</li>
+            <li>Follow the demonstrated process to create a timeline</li>
+            <li>Apply the citation format you've been taught</li>
+          </ul>
+          <p><strong>Implementing:</strong></p>
+          <ul>
+            <li>Apply historical analysis methods to interpret a new document</li>
+            <li>Use understanding of historical patterns to analyze a current event</li>
+            <li>Apply concepts of causation to explain an unfamiliar historical development</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Literature & Language Arts</h5>
+          <p><strong>Executing:</strong></p>
+          <ul>
+            <li>Use the writing process steps you've been taught</li>
+            <li>Apply grammar rules to correct sentences</li>
+            <li>Follow the demonstrated format for literary analysis</li>
+          </ul>
+          <p><strong>Implementing:</strong></p>
+          <ul>
+            <li>Apply rhetorical strategies to write for a new audience and purpose</li>
+            <li>Use literary analysis techniques on an unfamiliar text</li>
+            <li>Apply understanding of narrative structure to craft an original story</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Computer Science</h5>
+          <p><strong>Executing:</strong></p>
+          <ul>
+            <li>Write code following the syntax you've been taught</li>
+            <li>Use a specific algorithm to sort data</li>
+            <li>Debug code using the demonstrated process</li>
+          </ul>
+          <p><strong>Implementing:</strong></p>
+          <ul>
+            <li>Select and apply appropriate data structures for a new problem</li>
+            <li>Use programming concepts to solve an unfamiliar computational challenge</li>
+            <li>Apply debugging strategies to identify and fix errors in novel code</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
+        <h3>How Students Demonstrate Apply</h3>
+        
+        <p>
+          Students demonstrate application by successfully using procedures to complete tasks and solve problems. The key indicator is whether students can transfer their learning to situations that differ from instruction—not just repeat practiced examples.
+        </p>
+        
+        <h4>Executing Procedures Correctly</h4>
+        <p>Students demonstrate executing when they:</p>
+        <ul>
+          <li>Carry out procedures accurately and efficiently</li>
+          <li>Follow steps in the correct sequence</li>
+          <li>Use tools and techniques appropriately</li>
+          <li>Complete familiar tasks successfully</li>
+          <li>Show fluency with practiced procedures</li>
+        </ul>
+        
+        <h4>Implementing in New Contexts</h4>
+        <p>Students demonstrate implementing when they:</p>
+        <ul>
+          <li>Recognize which procedure applies to a new situation</li>
+          <li>Adapt procedures to fit novel contexts</li>
+          <li>Solve problems that differ from practiced examples</li>
+          <li>Transfer learning across contexts</li>
+          <li>Select appropriate methods from multiple options</li>
+        </ul>
+        
+        <h4>Problem-Solving Behaviors</h4>
+        <p>Students showing strong application skills:</p>
+        <ul>
+          <li>Approach problems systematically</li>
+          <li>Select appropriate strategies based on problem characteristics</li>
+          <li>Modify approaches when initial attempts don't work</li>
+          <li>Explain why they chose particular procedures</li>
+          <li>Check their work and verify solutions</li>
+          <li>Apply learning in practical, real-world contexts</li>
+        </ul>
+        
+        <h4>Observable Behaviors</h4>
+        <p>Students with strong application abilities:</p>
+        <ul>
+          <li>Work independently on tasks requiring procedure use</li>
+          <li>Ask strategic questions about when to use different methods</li>
+          <li>Recognize similarities between new problems and familiar ones</li>
+          <li>Adjust procedures appropriately for different contexts</li>
+          <li>Persist when facing unfamiliar applications</li>
+          <li>Explain their problem-solving process clearly</li>
+        </ul>
+        
+        <div class="tip-box">
+          <h5>Assessment Tip</h5>
+          <p>
+            To assess application, present students with problems or tasks that are similar to, but not identical to, those practiced during instruction. True application is demonstrated when students can transfer learning to new contexts. Include problems that require selecting among procedures, adapting methods, or applying learning in practical situations. Avoid assessment that only requires students to repeat practiced examples—that assesses recall, not application.
+          </p>
+        </div>
+      </div>
+      
+      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
+        <h3>Tips for Educators</h3>
+        
+        <h4>Developing Application Skills</h4>
+        <ul>
+          <li><strong>Start with executing, progress to implementing:</strong> Students need to master procedures before they can apply them flexibly in new contexts.</li>
+          <li><strong>Provide varied practice:</strong> Give students opportunities to use procedures in diverse situations, not just repeated similar problems.</li>
+          <li><strong>Make connections explicit:</strong> Help students see how procedures connect to concepts and when to use them.</li>
+          <li><strong>Use authentic tasks:</strong> Provide real-world applications that show why procedures matter.</li>
+          <li><strong>Teach strategic knowledge:</strong> Explicitly teach when and why to use different procedures.</li>
+          <li><strong>Scaffold transfer:</strong> Gradually increase the novelty of application tasks as students gain competence.</li>
+          <li><strong>Emphasize understanding, not just execution:</strong> Students who understand why procedures work can apply them more flexibly.</li>
+        </ul>
+        
+        <h4>Common Pitfalls to Avoid</h4>
+        <ul>
+          <li><strong>Only practicing identical problems:</strong> If all practice problems are the same, students aren't truly applying—they're just repeating.</li>
+          <li><strong>Assuming understanding equals application:</strong> Students can understand concepts without being able to apply them effectively.</li>
+          <li><strong>Not teaching when to use procedures:</strong> Knowing how to do something is incomplete without knowing when to do it.</li>
+          <li><strong>Moving to application too quickly:</strong> Students need solid understanding before they can apply successfully.</li>
+          <li><strong>Neglecting metacognition:</strong> Help students think about their problem-solving process, not just get answers.</li>
+          <li><strong>Providing too much scaffolding:</strong> Students need opportunities to struggle productively with application.</li>
+        </ul>
+        
+        <div class="ai-box">
+          <h5>AI Literacy Connection</h5>
+          <p>
+            <strong>How AI Relates to Application:</strong> AI can execute procedures automatically and sometimes implement solutions to novel problems. This changes what application skills students need—the focus shifts from routine execution to strategic selection, adaptation, and verification of procedures.
+          </p>
+          <p>
+            <strong>Teaching Implications:</strong>
+          </p>
+          <ul>
+            <li>Focus on teaching when and why to use procedures, not just how (AI can handle the "how")</li>
+            <li>Emphasize application tasks that require judgment, creativity, and adaptation</li>
+            <li>Teach students to verify AI-generated solutions and procedures</li>
+            <li>Help students recognize when AI application is appropriate vs. when human judgment is needed</li>
+            <li>Use AI to provide additional practice opportunities with immediate feedback</li>
+            <li>Teach students to evaluate whether AI-suggested approaches are appropriate for specific contexts</li>
+            <li>Emphasize that understanding enables students to apply knowledge more effectively than AI in novel situations</li>
+          </ul>
+          <p>
+            <strong>Key Message:</strong> While AI can execute many procedures automatically, human application involves strategic thinking, contextual judgment, and creative adaptation that AI cannot replicate. Students need application skills to use AI tools effectively, verify AI outputs, and solve problems that require human insight and judgment. Strong application abilities enable students to be AI users, not just AI consumers.
+          </p>
+        </div>
+        
+        <div class="tip-box">
+          <h5>Practical Strategy</h5>
+          <p>
+            <strong>The "Three-Problem Progression" Technique:</strong> For any procedure, provide three types of problems: (1) A worked example showing the procedure, (2) Similar problems for executing practice, and (3) Novel problems requiring implementing. This progression helps students move from understanding procedures to applying them flexibly. Always include the third type—that's where true application happens.
+          </p>
+        </div>
+        
+        <h4>Building from Application to Higher-Order Thinking</h4>
+        <p>Application serves as the foundation for more complex cognitive processes:</p>
+        <ul>
+          <li><strong>Apply → Analyze:</strong> Students must apply procedures to generate information they can then analyze</li>
+          <li><strong>Apply → Evaluate:</strong> Application provides the basis for judging effectiveness and making improvements</li>
+          <li><strong>Apply → Create:</strong> Students combine and adapt applied procedures to generate new solutions</li>
+        </ul>
+        <p>
+          Ensure students can apply their knowledge effectively before expecting them to analyze, evaluate, or create. At the same time, use application as a stepping stone to higher-order thinking, not an endpoint. The goal is students who can not only use procedures but also think critically about them and innovate beyond them.
+        </p>
+      </div>
+    </div>
+    
+    <div class="bottom-navigation">
+      <a href="../index.html" class="nav-button">← Back to Main Page</a>
+      <a href="../dimensions/cognitive-process.html" class="nav-button secondary">View Cognitive Process Table</a>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    function openTab(evt, tabName) {
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      var tabButtons = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+        tabButtons[i].setAttribute("aria-selected", "false");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+      evt.currentTarget.setAttribute("aria-selected", "true");
+      document.getElementById(tabName).focus();
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabPanels = document.querySelectorAll('.tab-content');
+      tabPanels.forEach(function(panel) {
+        panel.setAttribute('tabindex', '0');
+      });
+    });
+  </script>
+</body>
+</html>
