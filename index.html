@@ -2,202 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bloom's stAIrcase: An interactive visualization of Bloom's Taxonomy integrated with AI literacy. Explore cognitive processes, knowledge dimensions, and AI-enhanced learning activities across disciplines.">
-  <meta name="keywords" content="Bloom's Taxonomy, AI literacy, educational framework, cognitive processes, learning activities, artificial intelligence, pedagogy, teaching resources">
-  <meta name="author" content="Brigette Meskell and Nicole Baker">
-  <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://bakerxn.github.io/blooms-stAIrcase/">
-  <meta property="og:title" content="Bloom's stAIrcase - Interactive AI Literacy Framework">
-  <meta property="og:description" content="An interactive visualization of Bloom's Taxonomy integrated with AI literacy. Explore cognitive processes and AI-enhanced learning activities.">
-  <meta property="og:image" content="preview-image.png">
-  
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://bakerxn.github.io/blooms-stAIrcase/">
-  <meta property="twitter:title" content="Bloom's stAIrcase - Interactive AI Literacy Framework">
-  <meta property="twitter:description" content="An interactive visualization of Bloom's Taxonomy integrated with AI literacy. Explore cognitive processes and AI-enhanced learning activities.">
-  <meta property="twitter:image" content="preview-image.png">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://bakerxn.github.io/blooms-stAIrcase/">
-  
-  <title>Bloom's stAIrcase - Interactive AI Literacy Framework</title>
+  <title>Bloom's stAIrcase</title>
   <link rel="stylesheet" href="theme.css">
-  
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-13637085796"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-13637085796', {
-      'page_title': 'Bloom\'s stAIrcase Home',
-      'page_path': '/'
-    });
-  </script>
-  
-  <!-- Structured Data (Schema.org) for SEO -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Bloom's stAIrcase",
-    "description": "An interactive visualization of Bloom's Taxonomy integrated with AI literacy, providing educational resources and activities across disciplines.",
-    "url": "https://bakerxn.github.io/blooms-stAIrcase/",
-    "author": [
-      {
-        "@type": "Person",
-        "name": "Brigette Meskell",
-        "jobTitle": "MLIS",
-        "url": "https://www.linkedin.com/in/brigette-meskell-b572882b6/"
-      },
-      {
-        "@type": "Person",
-        "name": "Nicole Baker",
-        "jobTitle": "MSED, MSLIS",
-        "url": "https://www.linkedin.com/in/nicole-baker/"
-      }
-    ],
-    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "educationalUse": "Teaching and Learning",
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "teacher"
-    },
-    "inLanguage": "en-US",
-    "datePublished": "2024",
-    "keywords": "Bloom's Taxonomy, AI literacy, educational framework, cognitive processes, learning activities"
-  }
-  </script>
-  
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ImageObject",
-    "name": "Bloom's stAIrcase Interactive Diagram",
-    "description": "Interactive SVG visualization showing the Knowledge Dimension and Cognitive Process Dimension of Bloom's Taxonomy integrated with AI literacy",
-    "contentUrl": "staircase.svg",
-    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
-    "creator": [
-      {
-        "@type": "Person",
-        "name": "Brigette Meskell"
-      },
-      {
-        "@type": "Person",
-        "name": "Nicole Baker"
-      }
-    ]
-  }
-  </script>
-  
   <style>
-    /* Base styles */
-    * {
-      box-sizing: border-box;
-    }
-    
     body {
-      font-family: "Arial-BoldMT", Arial, sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
-      line-height: 1.5;
     }
-    
-    /* Skip to content link for keyboard users */.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #AC3931;
-      color: white;
-      padding: 8px 16px;
-      text-decoration: none;
-      font-weight: bold;
-      z-index: 10000;
-      border-radius: 0 0 4px 0;
-    }.skip-link:focus {
-      top: 0;
-      outline: 3px solid #ffffff;
-      outline-offset: 2px;
-    }
-    
-    /* Header */
     header {
       padding: 20px;
       text-align: center;
       background-color: #003366;
     }
-    
     header h1 {
-      color: #ffffff;
+      color: white;
       margin: 0;
       font-size: 2em;
-      font-family: "Arial-BoldMT", Arial, sans-serif;
+      font-family: 'Orbitron', sans-serif;
     }
-    
-    /* Navigation */.nav-buttons {
+    .nav-buttons {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 20px;
-      background-color: #CCE5FF;
-      padding: 15px 10px;
+      background-color: #cce5ff;
+      padding: 10px 0;
       z-index: 10;
       position: relative;
-    }.nav-buttons a {
-      padding: 12px 24px;
-      background: #AC3931;
-      color: #ffffff;
+    }
+    .nav-buttons a {
+      padding: 10px 20px;
+      background: white;
+      color: #e76f51;
       text-decoration: none;
       border-radius: 5px;
       font-weight: bold;
       font-size: 16px;
       display: flex;
       align-items: center;
-      transition: all 0.3s ease;
+      transition: background 0.3s ease;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-      /* Minimum touch target size (WCAG 2.5.5) */
-      min-width: 44px;
-      min-height: 44px;
-      justify-content: center;
     }
-    
-    /* Keyboard focus styles */.nav-buttons a:focus {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-      background-color: #004080;
-    }
-    
-    /* Remove focus outline on mouse click only */.nav-buttons a:focus:not(:focus-visible) {
-      outline: none;
-    }.nav-buttons a:focus-visible {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-      background-color: #004080;
-    }.nav-buttons a:hover {
-      background-color: #004080;
-      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+    .nav-buttons a:hover {
+      background: #f3f3f3;
       cursor: pointer;
-      transform: translateY(-2px);
-    }.nav-buttons a:active {
-      transform: translateY(0);
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    }.nav-buttons a span {
+    }
+    .nav-buttons a span {
       margin-right: 8px;
       font-size: 20px;
     }
-    
-    /* Main content */.main-content {
+    .main-content {
       text-align: center;
       background-color: #ffffff;
-      padding: 20px;
+      padding: 20px 0;
     }
-    
     object {
       width: 90%;
       height: auto;
@@ -205,338 +64,48 @@
       display: block;
       margin: 0 auto;
       pointer-events: auto;
-      border: 2px solid transparent;
-      border-radius: 4px;
-      transition: border-color 0.3s ease;
     }
-    
-    /* Focus indicator for embedded SVG */
-    object:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: 4px;
-      border-color: #AC3931;
-    }
-    
-    object:focus:not(:focus-visible) {
-      outline: none;
-      border-color: transparent;
-    }
-    
-    /* Alternative Link Styles */.alternative-link {
-      text-align: center;
-      margin: 30px auto;
-      padding: 10px;
-      width: 100%;
-      display: block;
-      background-color: #ffffff;
-    }.table-view-link {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #AC3931;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-      /* Minimum touch target size */
-      min-width: 44px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }.table-view-link:hover {
-      background-color: #004080;
-      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
-      transform: translateY(-2px);
-    }.table-view-link:active {
-      transform: translateY(0);
-      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-    }.table-view-link:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: 3px;
-      background-color: #004080;
-    }.table-view-link:focus:not(:focus-visible) {
-      outline: none;
-    }.table-view-link:focus-visible {
-      outline: 3px solid #AC3931;
-      outline-offset: 3px;
-      background-color: #004080;
-    }.table-view-link span {
-      margin-right: 8px;
-      font-size: 18px;
-    }
-    
-    /* Footer */
     footer {
       background-color: #003366;
       color: white;
-      padding: 20px;
+      padding: 15px 20px;
       text-align: center;
       font-size: 14px;
     }
-    
     footer a {
       color: white;
       text-decoration: underline;
       margin: 0 10px;
-      transition: color 0.3s ease;
     }
-    
-    footer a:hover {
-      color: #CCE5FF;
-    }
-    
-    footer a:focus {
-      outline: 2px solid #ffffff;
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
-    
     footer img {
       vertical-align: middle;
       height: 31px;
       margin-top: 10px;
-      transition: transform 0.3s ease;
-    }
-    
-    footer a:hover img {
-      transform: scale(1.05);
-    }
-    
-    /* Guide Tab Styles */.guide-tab {
-      position: fixed;
-      right: 13px;
-      top: 40%;
-      transform: translateY(-50%) rotate(-90deg);
-      transform-origin: right center;
-      z-index: 1000;
-    }.guide-tab a {
-      display: block;
-      background-color: #AC3931;
-      color: #ffffff;
-      font-family: 'Arial-BoldMT', Arial, sans-serif;
-      font-weight: bold;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 5px 5px 0 0;
-      box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      letter-spacing: 0.5px;
-      font-size: 16px;
-      /* Minimum touch target */
-      min-width: 44px;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }.guide-tab a:hover {
-      background-color: #004080;
-      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
-      padding: 12px 28px;
-    }.guide-tab a:active {
-      background-color: #6f2420;
-    }.guide-tab a:focus {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-      background-color: #004080;
-    }.guide-tab a:focus:not(:focus-visible) {
-      outline: none;
-    }.guide-tab a:focus-visible {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-      background-color: #004080;
-    }
-    
-    /* Hidden content for screen readers */.sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
-    
-    /* High contrast mode support */
-    @media (prefers-contrast: high) {.nav-buttons a,.table-view-link,.guide-tab a {
-        border: 2px solid currentColor;
-      }
-    }
-    
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-    
-    /* Responsive design */
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 1.5em;
-      }.nav-buttons {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px;
-      }.nav-buttons a {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      object {
-        width: 95%;
-        max-height: 70vh;
-      }.guide-tab {
-        right: 5px;
-        top: 50%;
-      }.guide-tab a {
-        padding: 10px 20px;
-        font-size: 14px;
-      }
-    }
-    
-    /* Print styles */
-    @media print {.skip-link,.nav-buttons,.guide-tab,
-      footer {
-        display: none;
-      }
-      
-      body {
-        background: white;
-      }
-      
-      object {
-        width: 100%;
-        max-height: none;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Skip to content link for keyboard users -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-  
-  <!-- Hidden description for screen readers -->
-  <div id="svg-description" class="sr-only">
-    An interactive diagram showing Bloom's Taxonomy integrated with AI literacy. 
-    The diagram displays the Knowledge Dimension (Factual, Conceptual, Procedural, Metacognitive) 
-    and the Cognitive Process Dimension (Remember, Understand, Apply, Analyze, Evaluate, Create). 
-    Click on any section to explore specific learning activities and AI integration strategies.
-    You can also use the Tab key to navigate through interactive elements and press Enter to activate them.
-  </div>
-  
-  <!-- Guide Tab -->
-  <aside class="guide-tab" aria-label="Quick access">
-    <a href="guide.html" aria-label="Open user guide for Bloom's stAIrcase">Guide</a>
-  </aside>
-  
-  <header role="banner">
-    <h1>Bloom's stAIrcase</h1>
+  <header>
+    <h1>Bloom’s stAIrcase</h1>
   </header>
-  
-  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
-    <a href="all-activities.html" aria-label="View all activities">
-      <span aria-hidden="true">📋</span>All Activities
-    </a>
-    <a href="ai-literacy-framework.html" aria-label="Explore AI literacy framework">
-      <span aria-hidden="true">🧠</span>AI Literacy Framework
-    </a>
-    <a href="activities-by-discipline.html" aria-label="Browse activities by academic discipline">
-      <span aria-hidden="true">🎓</span>Activities by Discipline
-    </a>
-    <a href="activity-designer.html" aria-label="Design your own activity">
-      <span aria-hidden="true">🛠️</span>Activity Designer
-    </a>
+  <nav class="nav-buttons">
+    <a href="all-activities.html"><span>📋</span>All Activities</a>
+    <a href="ai-literacy-framework.html"><span>🧠</span>AI Literacy Framework</a>
+    <a href="activities-by-discipline.html"><span>🏛️</span>Activities by Discipline</a>
   </nav>
-  
-  <main id="main-content" class="main-content" role="main">
-    <h2 class="sr-only">Interactive Bloom's Taxonomy Diagram</h2>
-    
-    <object 
-      type="image/svg+xml" 
-      data="staircase.svg" 
-      aria-label="Interactive Bloom's StAIrcase diagram" 
-      aria-describedby="svg-description"
-      tabindex="0"
-      role="img">
-      <!-- Fallback content for browsers that don't support SVG -->
-      <p>Your browser does not support SVG. Please use a modern browser to view this interactive diagram, or <a href="accessible-table-view.html">view the accessible table version</a>.</p>
-    </object>
-    
-    <div class="alternative-link">
-      <a href="accessible-table-view.html" class="table-view-link" aria-label="View accessible table version of Bloom's taxonomy">
-        <span aria-hidden="true">📊</span> View Accessible Table
-      </a>
-    </div>
-  </main>
-  
-  <footer role="contentinfo">
+  <div class="main-content">
+    <object type="image/svg+xml" data="interactive_staircase_fixed_links_with_top.svg"></object>
+  </div>
+  <footer>
     <p>
-      <strong>Created by:</strong>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer" aria-label="Visit Brigette Meskell's LinkedIn profile (opens in new window)">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer" aria-label="Visit Nicole Baker's LinkedIn profile (opens in new window)">Nicole Baker, MSED, MSLIS</a>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" aria-label="This work is licensed under Creative Commons Attribution-ShareAlike 4.0 International License (opens in new window)">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
       </a>
     </p>
   </footer>
-  
-  <!-- Navigation tracking and accessibility enhancements -->
-  <script>
-    (function() {
-      // Track navigation clicks
-      document.querySelectorAll('.nav-buttons a,.table-view-link').forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          var linkText = this.textContent.trim();
-          var linkUrl = this.getAttribute('href');
-          
-          // Send to Google Analytics
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'navigation_click', {
-              'event_category': 'Navigation',
-              'event_label': linkText,
-              'value': linkUrl
-            });
-          }
-          
-          // Log to console for debugging
-          console.log('Navigation click:', linkText, linkUrl);
-        });
-      });
-      
-      // Remove focus outline after mouse click (but keep for keyboard)
-      document.querySelectorAll('a, button').forEach(function(element) {
-        element.addEventListener('mousedown', function() {
-          this.classList.add('mouse-focus');
-        });
-        
-        element.addEventListener('keydown', function() {
-          this.classList.remove('mouse-focus');
-        });
-      });
-      
-      // Announce page load to screen readers
-      var announcement = document.createElement('div');
-      announcement.setAttribute('role', 'status');
-      announcement.setAttribute('aria-live', 'polite');
-      announcement.className = 'sr-only';
-      announcement.textContent = 'Bloom\'s stAIrcase page loaded. Use Tab key to navigate through interactive elements.';
-      document.body.appendChild(announcement);
-      
-      // Log accessibility features loaded
-      console.log('Accessibility features loaded: keyboard navigation, screen reader support, focus management');
-    })();
-  </script>
 </body>
 </html>
