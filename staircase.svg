@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 1499.33 1080" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="svg-title svg-desc">
+
+<title id="svg-title">Bloom's Taxonomy Interactive Diagram</title>
+<desc id="svg-desc">Interactive visualization of Bloom's Taxonomy showing the Knowledge Dimension (Factual, Conceptual, Procedural, Metacognitive) and Cognitive Process Dimension (Remember, Understand, Apply, Analyze, Evaluate, Create). Click any section to learn more.</desc>
+
+<defs/>
+
+<style>
+/* Base styles for interactive elements */
+a {
+  cursor: pointer;
+}
+
+/* Smooth transitions */
+a g path,
+a g polygon {
+  transition: all 0.3s ease;
+}
+
+/* Hover effects for squares */
+a:hover g path,
+a:hover g polygon {
+  stroke: #e76f51 !important;
+  stroke-width: 4 !important;
+  fill-opacity: 0.9 !important;
+  box-shadow: 0 0 4px #e76f51;
+  filter: drop-shadow(0 0 4px #e76f51);
+  cursor: pointer;
+}
+
+/* Focus styles - only show for keyboard navigation */
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+a:focus-visible {
+  outline: 3px solid #e76f51;
+  outline-offset: 2px;
+}
+
+a:focus-visible g path,
+a:focus-visible g polygon {
+  stroke: #e76f51 !important;
+  stroke-width: 4 !important;
+  fill-opacity: 0.9 !important;
+  box-shadow: 0 0 4px #e76f51;
+  filter: drop-shadow(0 0 4px #e76f51);
+}
+
+/* Active state for touch devices */
+a:active g path,
+a:active g polygon {
+  stroke: #c1272d !important;
+  stroke-width: 5 !important;
+  box-shadow: 0 0 6px #c1272d;
+  filter: drop-shadow(0 0 6px #c1272d);
+}
+
+/* Visual indicator - subtle pulse on first element */
+@keyframes pulse-hint {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+a:first-of-type g path,
+a:first-of-type g polygon {
+  animation: pulse-hint 2s ease-in-out 3;
+}
+
+/* Styles for dimension label links */
+a text {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+a:hover text {
+  fill: #e76f51 !important;
+}
+
+a:focus-visible text {
+  fill: #e76f51 !important;
+  outline: 3px solid #e76f51;
+  outline-offset: 2px;
+}
+
+a:active text {
+  fill: #c1272d !important;
+}
+
+/* Print styles */
+@media print {
+  a:hover g path,
+  a:hover g polygon,
+  a:focus g path,
+  a:focus g polygon,
+  a:active g path,
+  a:active g polygon {
+    stroke: #000000 !important;
+    stroke-width: 1 !important;
+    fill-opacity: 1 !important;
+    filter: none !important;
+    box-shadow: none !important;
+  }
+  
+  a:hover text,
+  a:focus text,
+  a:active text {
+    fill: #000000 !important;
+  }
+  
+  a::after {
+    content: " [" attr(xlink:href) "]";
+    font-size: 8px;
+    fill: #666;
+  }
+}
+</style>
+
+<g id="Connectors">
+<path d="M555.067 701.61L557.457 723.01L646.647 820.04L645.047 798.24L555.067 701.61Z" fill="#cadef2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M646.857 820.21L762.377 732.04L761.447 710.93L645.527 798.3L646.857 820.21Z" fill="#cae1f5" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M554.877 700.89L550.407 678.63L667.217 601.96L669.127 622.8L554.877 700.89Z" fill="#b3d1ee" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M469.897 592.2L464.667 569.02L580.467 501.46L583.637 524.72L469.897 592.2Z" fill="#a8c8e9" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M392.657 493.7L385.737 468.25L501.767 409.17L505.167 432.91L392.657 493.7Z" fill="#89b2df" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M557.157 722.53L550.907 678.12L469.957 592.28L479.327 636.69L557.157 722.53Z" fill="#bed3ed" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M409.627 561.21L393.347 494.17L464.637 568.98L479.157 636.61L409.627 561.21Z" fill="#adcaea" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M322.167 403.03L348.247 494.14L408.737 560.2L386.327 468.21L322.167 403.03Z" fill="#9bbfe4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M761.407 710.62L761.817 687.6L667.147 601.06L669.317 623L761.407 710.62Z" fill="#cae6d2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M580.877 501.37L583.987 524.94L667.417 600.51L665.517 576.68L580.877 501.37Z" fill="#bee1c8" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M578.397 476.95L580.627 501.16L505.767 432.98L502.007 409.46L578.397 476.95Z" fill="#addabc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M429.657 324.65L433.827 348.45L501.597 409.11L498.397 383.51L429.657 324.65Z" fill="#9ed4b1" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M529.697 251.88L533.037 275.82L603.167 329.8L601.357 305.31L529.697 251.88Z" fill="#c0d72f" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M605.807 353.6L603.307 331.61L683.177 390.33L685.127 415.65L605.807 353.6Z" fill="#c9dc52" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M499.367 383.86L502.007 408.35L606.087 354.08L603.867 330.85L499.367 383.86Z" fill="#90cfa6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M578.237 477.25L580.597 501.21L685.617 440.39L685.157 415.66L578.237 477.25Z" fill="#a7d8b7" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M772.297 484.03L771.867 507.54L685.437 440.18L684.667 415.47L772.297 484.03Z" fill="#d3e27b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M665.517 576.47L667.547 600.85L771.307 530.97L772.197 507.74L665.517 576.47Z" fill="#b6ddc0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M868.667 585.4L867.007 609.87L771.437 531.2L771.997 507.65L868.667 585.4Z" fill="#dde9a2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M762.707 687.9L761.517 711.01L865.097 632.81L867.067 610.39L762.707 687.9Z" fill="#c3e3cc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M762.487 731.62L761.757 710.44L865.307 632.94L863.437 653.88L762.487 731.62Z" fill="#c7e2df" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M863.617 654.14L954.817 583.24L957.547 561.99L865.747 632.38L863.617 654.14Z" fill="#cfe2c6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M867.197 609.86L865.747 632.21L958.317 561.82L961.007 539.28L867.197 609.86Z" fill="#cce4b8" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M868.887 585.45L867.097 609.66L961.307 539.05L965.047 516.12L868.887 585.45Z" fill="#d1e395" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M869.307 422.95L866.807 446.24L964.957 515.49L968.747 491.08L869.307 422.95Z" fill="#f3e7a0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M622.567 183.86L623.467 207.95L698.787 257.51L698.087 231.07L622.567 183.86Z" fill="#f3d927" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M601.827 305.03L603.597 330.54L699.187 281.5L698.617 257.76L601.827 305.03Z" fill="#b4d334" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M698.417 257.99L699.077 281.48L779.807 336.3L780.607 311.64L698.417 257.99Z" fill="#f3de4f" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M683.777 390.14L684.677 415.15L779.327 360.92L779.997 337.63L683.777 390.14Z" fill="#bdd748" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M779.627 337.03L779.077 361.06L869.257 422.48L870.967 397.35L779.627 337.03Z" fill="#f2e379" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M772.507 483.75L771.957 507.33L867.217 446.15L869.327 422.72L772.507 483.75Z" fill="#c7dd6f" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M958.597 561.39L955.107 583.08L1036.29 519.39L1039.9 499.08L958.597 561.39Z" fill="#d9dec5" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M961.547 539.04L958.457 561.52L1040.3 498.81L1044.91 475.92L961.547 539.04Z" fill="#d6e0b1" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M965.097 515.66L961.757 538.66L1045.44 475.39L1049.59 453.43L965.097 515.66Z" fill="#dadf94" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M968.957 491.16L965.417 515.38L1050.25 452.69L1055 429.21L968.957 491.16Z" fill="#e7dd94" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M958.477 342.65L955.477 366.25L1054.89 428.62L1060.83 403.67L958.477 342.65Z" fill="#f3d4b6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M871.047 397.07L869.097 422.07L956.147 366.53L958.667 342.75L871.047 397.07Z" fill="#e6d76c" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M869.307 262.13L868.377 286.2L958.737 342.4L961.877 316.38L869.307 262.13Z" fill="#f3c698" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M780.427 311.66L779.987 336.76L868.857 286.73L869.817 262.49L780.427 311.66Z" fill="#e7d242" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M786.917 189.28L786.567 213.01L869.787 261.88L870.637 236.17L786.917 189.28Z" fill="#f2b578" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M698.577 230.72L698.437 257.36L786.987 212.94L786.707 188.92L698.577 230.72Z" fill="#e5cc1e" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M710.997 119.73L710.857 144.66L786.877 188.65L787.247 162.41L710.997 119.73Z" fill="#f3a659" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1040.25 499.19L1036.69 519.2L1109.88 462.14L1114.81 442.59L1040.25 499.19Z" fill="#d9d4cc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1045.05 475.7L1040.51 498.99L1114.85 442.31L1120.59 419.44L1045.05 475.7Z" fill="#d8d7b8" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1049.93 453.28L1045.61 475.02L1120.94 419.01L1126.54 396.29L1049.93 453.28Z" fill="#dbd69e" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1055.05 428.51L1050.51 452.58L1126.81 395.45L1132.51 372.12L1055.05 428.51Z" fill="#e5d0a9" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1060.97 403.94L1054.98 428.66L1133.24 371.6L1138.44 349.15L1060.97 403.94Z" fill="#e6c7a9" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1041.69 267.86L1037.8 292.2L1138.57 348.66L1145.78 322.27L1041.69 267.86Z" fill="#f2c0d1" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M961.897 316.23L958.707 342.26L1038.26 292.04L1041.11 267.94L961.897 316.23Z" fill="#e5b88a" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M952.957 193.42L950.227 218.49L1042.42 267.85L1046.79 241.12L952.957 193.42Z" fill="#f3a6c0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M871.177 236.44L869.887 262.02L950.607 218.47L953.177 193.3L871.177 236.44Z" fill="#e6a96c" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M870.347 123.92L868.327 148.94L953.337 192.66L957.077 167.22L870.347 123.92Z" fill="#f38db0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M787.207 162.42L787.237 188.53L868.997 148.63L870.537 123.99L787.207 162.42Z" fill="#e79a4b" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M793.117 59.81L792.997 83.91L870.817 123.86L871.137 97.74L793.117 59.81Z" fill="#f1749e" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1114.82 442.48L1110.02 461.91L1176.61 409.84L1181.97 390.46L1114.82 442.48Z" fill="#d9ccdc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1120.92 419.37L1115.07 442.1L1182.18 390.09L1188.32 368.73L1120.92 419.37Z" fill="#d8cdc9" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1126.54 395.97L1121.23 419.12L1188.68 368.01L1195.13 345.79L1126.54 395.97Z" fill="#ddcdb0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1133.32 371.84L1126.81 395.68L1195.75 344.88L1202.26 322.84L1133.32 371.84Z" fill="#e5c4ae" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1138.45 348.57L1133.53 371.48L1202.38 322.69L1209.74 297.76L1138.45 348.57Z" fill="#e4bcb6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1145.39 322.31L1138.64 347.86L1210.04 297.38L1216.71 273.2L1145.39 322.31Z" fill="#e6b3c5" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M1047.08 240.98L1042.54 267.53L1115.61 221.88L1120.66 197.89L1047.08 240.98Z" fill="#e699b3" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M956.967 167.04L953.607 192.54L1026.57 153.77L1030.54 128.88L956.967 167.04Z" fill="#e580a3" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<path d="M871.417 98.19L870.977 124.12L946.217 88.64L947.797 64.81L871.417 98.19Z" fill="#e56791" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+</g>
+
+<g id="Text">
+<!-- Knowledge Dimension - Large Parallelograms -->
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/metacognitive.html" tabindex="0" aria-label="Metacognitive - Knowledge of cognition in general and awareness of one's own cognition" role="link">
+<title>Click to learn about Metacognitive Knowledge</title>
+<g class="square" id="Metacognitive" opacity="1">
+<path d="M348.597 493.65L117.667 613.3L170.357 698.32L409.327 561.76L348.597 493.65Z" fill="#abbdcc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="37.6217" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.876095 -0.482138 0.482138 0.876095 137.498 631.998)" x="0" y="0">
+<tspan textLength="250.861" x="0" y="34.058"><![CDATA[Metacognitive]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/procedural.html" tabindex="0" aria-label="Procedural - How to do something, methods of inquiry, and criteria for using skills" role="link">
+<title>Click to learn about Procedural Knowledge</title>
+<g class="square" id="Procedural" opacity="1">
+<path d="M230.747 793.19L170.767 698.02L409.827 562.04L479.307 637.33L230.747 793.19Z" fill="#bccad6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.859261 -0.511537 0.511537 0.859261 211.733 707.838)" x="0" y="0">
+<tspan textLength="228.029" x="0" y="39.5145"><![CDATA[Procedural]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/conceptual.html" tabindex="0" aria-label="Conceptual - The interrelationship among basic elements within a larger structure" role="link">
+<title>Click to learn about Conceptual Knowledge</title>
+<g class="square" id="Conceptual" opacity="1">
+<path d="M298.957 903.51L230.837 793.12L478.907 637.92L558.227 724.65L298.957 903.51Z" fill="#ced9e4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.840591 -0.54167 0.54167 0.840591 277.927 806.547)" x="0" y="0">
+<tspan textLength="241.517" x="0" y="40.1554"><![CDATA[Conceptual]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/factual.html" tabindex="0" aria-label="Factual - The basic elements students must know to be acquainted with a discipline" role="link">
+<title>Click to learn about Factual Knowledge</title>
+<g class="square" id="Factual" opacity="1">
+<path d="M378.287 1029.58L298.777 903.59L558.957 724.92L647.297 822.07L378.287 1029.58Z" fill="#dee5ee" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.817531 -0.575885 0.575885 0.817531 391.619 886.457)" x="0" y="0">
+<tspan textLength="152.815" x="0" y="39.5145"><![CDATA[Factual]]></tspan>
+</text>
+</g>
+</a>
+
+<!-- Cognitive Process Dimension - Large Parallelograms -->
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/remember.html" tabindex="0" aria-label="Remember - Retrieve relevant knowledge from long-term memory" role="link">
+<title>Click to learn about Remember</title>
+<g class="square" id="Remember" opacity="1">
+<path d="M859.897 1051.41L646.907 822.07L761.577 733.38L973.897 936.29L859.897 1051.41Z" fill="#e8f4fc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.70927 0.704937 -0.704937 0.70927 750.82 776.005)" x="0" y="0">
+<tspan textLength="229.28" x="0" y="40.1554"><![CDATA[Remember]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/understand.html" tabindex="0" aria-label="Understand - Construct meaning from instructional messages" role="link">
+<title>Click to learn about Understand</title>
+<g class="square" id="Understand" opacity="1">
+<path d="M1076.13 834.63L974.017 936.4L761.687 733.06L863.847 653.97L1076.13 834.63Z" fill="#e1f1e4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.737573 0.675267 -0.675267 0.737573 842.826 688.268)" x="0" y="0">
+<tspan textLength="246.455" x="0" y="40.1554"><![CDATA[Understand]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/apply.html" tabindex="0" aria-label="Apply - Carry out or use a procedure in a given situation" role="link">
+<title>Click to learn about Apply</title>
+<g class="square" id="Apply" opacity="1">
+<path d="M1165.51 744.15L1076.14 834.65L864.327 653.64L954.117 584.46L1165.51 744.15Z" fill="#f4f6d7" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.778317 0.627871 -0.627871 0.778317 978.129 635.763)" x="0" y="0">
+<tspan textLength="123.217" x="0" y="40.1554"><![CDATA[Apply]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/analyze.html" tabindex="0" aria-label="Analyze - Break material into parts and determine how they relate to each other" role="link">
+<title>Click to learn about Analyze</title>
+<g class="square" id="Analyze" opacity="1">
+<path d="M1246.71 661.76C1246.68 661.9 1165.18 744.14 1165.18 744.14L953.767 584.57L1035.61 520.27L1246.72 661.75L1246.71 661.76Z" fill="#fffad8" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.808022 0.589152 -0.589152 0.808022 1043.64 551.842)" x="0" y="0">
+<tspan textLength="167.639" x="0" y="40.1554"><![CDATA[Analyze]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/evaluate.html" tabindex="0" aria-label="Evaluate - Make judgments based on criteria and standards" role="link">
+<title>Click to learn about Evaluate</title>
+<g class="square" id="Evaluate" opacity="1">
+<path d="M1315.57 592.01L1246.52 661.76L1035.67 520.51L1109.3 462.66L1315.57 592.01Z" fill="#fff1e2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.831528 0.555482 -0.555482 0.831528 1116.34 486.512)" x="0" y="0">
+<tspan textLength="179.542" x="0" y="39.5145"><![CDATA[Evaluate]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/rcreate.html" tabindex="0" aria-label="Create - Put elements together to form a coherent whole or reorganize into a new pattern" role="link">
+<title>Click to learn about Create</title>
+<g class="square" id="RCreate" opacity="1">
+<path d="M1381.67 525.85L1315.61 591.82L1110.57 462.7C1110.57 462.7 1176.19 411.52 1176.5 410.66C1176.81 409.8 1381.67 525.85 1381.67 525.85Z" fill="#fce5ef" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.867513 0.497415 -0.497415 0.867513 1193.69 438.753)" x="0" y="0">
+<tspan textLength="138.075" x="0" y="40.1554"><![CDATA[Create]]></tspan>
+</text>
+</g>
+</a>
+
+<!-- Small Action Squares -->
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/generate.html" tabindex="0" aria-label="Generate - Generate a lot of daily activities" role="link">
+<title>Generate - Click to learn more</title>
+<g class="square" id="Generate" opacity="1">
+<path d="M1041.1 267.92L1145.66 322.3L1216.81 272.95L1115.72 221.81L1041.1 267.92Z" fill="#f9cbdd" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1073.67 252.44)" x="0" y="0">
+<tspan textLength="116.268" x="0" y="24.2776"><![CDATA[Generate]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/assemble.html" tabindex="0" aria-label="Assemble - Assemble a team of experts" role="link">
+<title>Assemble - Click to learn more</title>
+<g class="square" id="Assemble" opacity="1">
+<path d="M953.077 192.99L1046.94 241.42L1120.08 197.87L1027.33 153.87L953.077 192.99Z" fill="#f7b1cb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="25.3359" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 977.657 179.868)" x="0" y="0">
+<tspan textLength="119.702" x="0" y="22.9359"><![CDATA[Assemble]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/design.html" tabindex="0" aria-label="Design - Design an efficient project workflow" role="link">
+<title>Design - Click to learn more</title>
+<g class="square" id="Design" opacity="1">
+<path d="M870.037 124.46L956.467 167.29L1030.2 128.57L945.817 88.29L870.037 124.46Z" fill="#f498ba" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999995 -0.00313082 0.00313082 0.999995 906.885 109.261)" x="0" y="0">
+<tspan textLength="89.4106" x="0" y="24.2776"><![CDATA[Design]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/create.html" tabindex="0" aria-label="Create - Create an innovative learning portfolio" role="link">
+<title>Create - Click to learn more</title>
+<g class="square" id="Create" opacity="1">
+<path d="M793.287 59.58L871.397 98L947.397 64.14L868.957 28.59L793.287 59.58Z" fill="#f27faa" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 832.067 44.31)" x="0" y="0">
+<tspan textLength="83.4787" x="0" y="24.2776"><![CDATA[Create]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/check.html" tabindex="0" aria-label="Check - Check for consistency among sources" role="link">
+<title>Check - Click to learn more</title>
+<g class="square" id="Check" opacity="1">
+<path d="M958.237 342.58L1060.82 404.13L1137.38 348.73L1037.74 292.18L958.237 342.58Z" fill="#fee0c2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1009.35 330.11)" x="0" y="0">
+<tspan textLength="80.4931" x="0" y="24.2776"><![CDATA[Check]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/determine.html" tabindex="0" aria-label="Determine - Determine relevance of results" role="link">
+<title>Determine - Click to learn more</title>
+<g class="square" id="Determine" opacity="1">
+<path d="M869.027 262.16L961.597 316.39L1041.65 267.84L950.757 218.52L869.027 262.16Z" fill="#fed2a4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 895.03 249.302)" x="0" y="0">
+<tspan textLength="131.156" x="0" y="24.2776"><![CDATA[Determine]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/judge.html" tabindex="0" aria-label="Judge - Judge efficiency of sampling techniques" role="link">
+<title>Judge - Click to learn more</title>
+<g class="square" id="Judge" opacity="1">
+<path d="M787.097 189.11L870.747 236.45L952.847 193.02L868.487 149L787.097 189.11Z" fill="#fdc286" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 834.727 173.992)" x="0" y="0">
+<tspan textLength="78.9741" x="0" y="24.2776"><![CDATA[Judge]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/reflect.html" tabindex="0" aria-label="Reflect - Reflect on one's progress" role="link">
+<title>Reflect - Click to learn more</title>
+<g class="square" id="Reflect" opacity="1">
+<path d="M710.687 119.55L787.187 162.3L869.717 124L793.217 84.31L710.687 119.55Z" fill="#fbb267" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 745.806 103.684)" x="0" y="0">
+<tspan textLength="89.4237" x="0" y="24.2776"><![CDATA[Reflect]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/select.html" tabindex="0" aria-label="Select - Select the most complete list of activities" role="link">
+<title>Select - Click to learn more</title>
+<g class="square" id="Select" opacity="1">
+<path d="M868.617 422.76L968.607 491.81L1054.74 429.18L955.277 366.37L868.617 422.76Z" fill="#fef5af" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 923.63 408.999)" x="0" y="0">
+<tspan textLength="79.0134" x="0" y="24.2776"><![CDATA[Select]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/differentiate.html" tabindex="0" aria-label="Differentiate - Differentiate high and low culture" role="link">
+<title>Differentiate - Click to learn more</title>
+<g class="square" id="Differentiate" opacity="1">
+<path d="M779.787 336.83L870.707 397.36L958.217 342.44L868.387 286.67L779.787 336.83Z" fill="#fff087" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="24.8547" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 800.411 323.489)" x="0" y="0">
+<tspan textLength="145.014" x="0" y="22.5003"><![CDATA[Differentiate]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/integrate.html" tabindex="0" aria-label="Integrate - Integrate compliance with regulations" role="link">
+<title>Integrate - Click to learn more</title>
+<g class="square" id="Integrate" opacity="1">
+<path d="M698.877 257.52L780.907 311.56L869.237 262.23L786.527 213.01L698.877 257.52Z" fill="#feeb5d" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 726.694 243.152)" x="0" y="0">
+<tspan textLength="113.256" x="0" y="24.2776"><![CDATA[Integrate]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/deconstruct.html" tabindex="0" aria-label="Deconstruct - Deconstruct one's biases" role="link">
+<title>Deconstruct - Click to learn more</title>
+<g class="square" id="Deconstruct" opacity="1">
+<path d="M622.557 183.7L697.857 231.22L786.667 188.61L710.717 144.8L622.557 183.7Z" fill="#ffe630" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="21.6632" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 642.886 173.44)" x="0" y="0">
+<tspan textLength="126.394" x="0" y="19.6112"><![CDATA[Deconstruct]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/respond.html" tabindex="0" aria-label="Respond - Respond to frequently asked questions" role="link">
+<title>Respond - Click to learn more</title>
+<g class="square" id="Respond" opacity="1">
+<path d="M771.597 507.82L868.527 585.5L964.237 516.22L866.767 446.13L771.597 507.82Z" fill="#eaeeae" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 816.212 496.372)" x="0" y="0">
+<tspan textLength="114.723" x="0" y="24.2776"><![CDATA[Respond]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/provide.html" tabindex="0" aria-label="Provide - Provide advice to novices" role="link">
+<title>Provide - Click to learn more</title>
+<g class="square" id="Provide" opacity="1">
+<path d="M684.117 415.77L772.187 484.35L868.827 422.59L778.897 361.06L684.117 415.77Z" fill="#dfe784" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 731.887 402.287)" x="0" y="0">
+<tspan textLength="98.3674" x="0" y="24.2776"><![CDATA[Provide]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/carry_out.html" tabindex="0" aria-label="Carry out - Carry out pH tests of water samples" role="link">
+<title>Carry out - Click to learn more</title>
+<g class="square" id="Carry_out" opacity="1">
+<path d="M603.647 330.91L683.417 390.66L779.347 337.06L699.237 281.41L603.647 330.91Z" fill="#d6e158" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 633.873 314.263)" x="0" y="0">
+<tspan textLength="119.214" x="0" y="24.2776"><![CDATA[Carry out]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/use.html" tabindex="0" aria-label="Use - Use techniques that match one's strengths" role="link">
+<title>Use - Click to learn more</title>
+<g class="square" id="Use" opacity="1">
+<path d="M529.207 251.52L600.947 305.49L697.687 258.15L623.797 208.27L529.207 251.52Z" fill="#ccdb2a" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 590.646 235.995)" x="0" y="0">
+<tspan textLength="49.1968" x="0" y="24.2776"><![CDATA[Use]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/summarize.html" tabindex="0" aria-label="Summarize - Summarize features of a new product" role="link">
+<title>Summarize - Click to learn more</title>
+<g class="square" id="Summarize" opacity="1">
+<path d="M762.447 687.86L866.917 610.11L771.357 531.56L666.887 601.47L762.447 687.86Z" fill="#cfe9d6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 700.714 589.223)" x="0" y="0">
+<tspan textLength="143.086" x="0" y="24.2776"><![CDATA[Summarize]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/classify.html" tabindex="0" aria-label="Classify - Classify adhesives by toxicity" role="link">
+<title>Classify - Click to learn more</title>
+<g class="square" id="Classify" opacity="1">
+<path d="M665.287 576.74L771.577 507.79L685.237 440.23L580.827 500.88L665.287 576.74Z" fill="#c5e4ce" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 625.564 486.609)" x="0" y="0">
+<tspan textLength="102.859" x="0" y="24.2776"><![CDATA[Classify]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/clarify.html" tabindex="0" aria-label="Clarify - Clarify assembly instructions" role="link">
+<title>Clarify - Click to learn more</title>
+<g class="square" id="Clarify" opacity="1">
+<path d="M578.157 477.03L684.257 415.65L606.407 353.39L501.677 409.14L578.157 477.03Z" fill="#b6ddc0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 550.407 395.68)" x="0" y="0">
+<tspan textLength="83.4656" x="0" y="24.2776"><![CDATA[Clarify]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/predict.html" tabindex="0" aria-label="Predict - Predict one's response to culture shock" role="link">
+<title>Predict - Click to learn more</title>
+<g class="square" id="Predict" opacity="1">
+<path d="M498.347 384.05L603.547 331.03L532.617 276.1L428.967 323.99L498.347 384.05Z" fill="#a7d8b7" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.99999 -0.00457952 0.00457952 0.99999 473.149 312.243)" x="0" y="0">
+<tspan textLength="90.9165" x="0" y="24.2776"><![CDATA[Predict]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/list.html" tabindex="0" aria-label="List - List primary and secondary colors" role="link">
+<title>List - Click to learn more</title>
+<g class="square" id="List" opacity="1">
+<path d="M554.967 701.52L644.997 798.67L760.657 710.65L668.887 623.16L554.967 701.52Z" fill="#c7e1f5" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999976 0.0069647 -0.0069647 0.999976 629.122 690.568)" x="0" y="0">
+<tspan textLength="47.6778" x="0" y="24.2776"><![CDATA[List]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/recognize.html" tabindex="0" aria-label="Recognize - Recognize symptoms of exhaustion" role="link">
+<title>Recognize - Click to learn more</title>
+<g class="square" id="Recognize" opacity="1">
+<path d="M550.077 678.73L667.337 601.77L583.397 524.81L470.417 592.4L550.077 678.73Z" fill="#bbd6f0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999986 0.00519945 -0.00519945 0.999986 502.439 582.131)" x="0" y="0">
+<tspan textLength="134.116" x="0" y="24.2776"><![CDATA[Recognize]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/recall.html" tabindex="0" aria-label="Recall - Recall how to perform CPR" role="link">
+<title>Recall - Click to learn more</title>
+<g class="square" id="Recall" opacity="1">
+<path d="M464.457 569.33L580.277 501.28L505.517 433.07L392.737 494.09L464.457 569.33Z" fill="#a9caeb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999992 0.00396642 -0.00396642 0.999992 442.388 482.351)" x="0" y="0">
+<tspan textLength="79.0134" x="0" y="24.2776"><![CDATA[Recall]]></tspan>
+</text>
+</g>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/squares/identify.html" tabindex="0" aria-label="Identify - Identify strategies for retaining information" role="link">
+<title>Identify - Click to learn more</title>
+<g class="square" id="Identify" opacity="1">
+<path d="M385.637 468.86L321.967 403.21L433.887 348.39L500.997 408.83L385.637 468.86Z" fill="#a9caeb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
+<g opacity="1">
+<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999971 0.00757111 -0.00757111 0.999971 365.015 384.145)" x="0" y="0">
+<tspan textLength="95.3556" x="0" y="24.2776"><![CDATA[Identify]]></tspan>
+</text>
+</g>
+</g>
+</a>
+
+<!-- Clickable Dimension Labels -->
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/dimensions/cognitive-process.html" tabindex="0" aria-label="Learn about the Cognitive Process Dimension" role="link">
+<title>Click to learn about The Cognitive Process Dimension</title>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="40.8947" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.703629 -0.710567 0.710567 0.703629 902.866 1022.82)" x="0" y="0" style="cursor: pointer;">
+<tspan textLength="661.285" x="0" y="37.0209"><![CDATA[The Cognitive Process Dimension]]></tspan>
+</text>
+</a>
+
+<a target="_top" xlink:href="https://bakerxn.github.io/blooms-stAIrcase/dimensions/knowledge.html" tabindex="0" aria-label="Learn about the Knowledge Dimension" role="link">
+<title>Click to learn about The Knowledge Dimension</title>
+<text fill="#000000" font-family="Arial-BoldMT" font-size="35.7467" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.529814 0.848114 -0.848114 0.529814 111.399 634.816)" x="0" y="0" style="cursor: pointer;">
+<tspan textLength="456.8" x="0" y="32.3605"><![CDATA[The Knowledge Dimension]]></tspan>
+</text>
+</a>
+</g>
+
+<script type="text/javascript">
+<![CDATA[
+(function() {
+  if (typeof document === 'undefined') return;
+  
+  // Track clicks and remove focus outline
+  document.querySelectorAll('a[xlink\\:href]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var section = this.querySelector('.square') ? this.querySelector('.square').id : 'unknown';
+      var url = this.getAttribute('xlink:href');
+      
+      // Remove focus outline after click
+      this.blur();
+      
+      // Log to console
+      console.log('Bloom\'s Taxonomy Click:', {
+        section: section,
+        url: url,
+        timestamp: new Date().toISOString()
+      });
+      
+      // Google Analytics tracking
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'click', {
+          'event_category': 'Blooms Taxonomy',
+          'event_label': section,
+          'value': 1
+        });
+      }
+      
+      if (typeof ga !== 'undefined') {
+        ga('send', 'event', 'Blooms Taxonomy', 'click', section);
+      }
+      
+      // LocalStorage tracking
+      try {
+        var clicks = JSON.parse(localStorage.getItem('bloomsClicks') || '[]');
+        clicks.push({
+          section: section,
+          url: url,
+          timestamp: new Date().toISOString()
+        });
+        if (clicks.length > 100) clicks = clicks.slice(-100);
+        localStorage.setItem('bloomsClicks', JSON.stringify(clicks));
+      } catch(e) {}
+    });
+  });
+  
+  console.log('Bloom\'s Taxonomy Interactive Diagram loaded');
+})();
+]]>
+</script>
+
+</svg>
