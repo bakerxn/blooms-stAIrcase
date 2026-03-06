@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activity Designer - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    body {
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+    }
+    
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #003366;
+    }
+    
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 2em;
+    }.content-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }.page-intro {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      border-left: 5px solid #AC3931;
+    }.page-intro h2 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 2em;
+    }.page-intro p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 1.05em;
+    }.info-note {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 15px;
+      margin: 20px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }.info-note::before {
+      content: "💡";
+      font-size: 1.5em;
+      flex-shrink: 0;
+    }.form-container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }.form-section {
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 2px solid #e0e0e0;
+    }.form-section:last-of-type {
+      border-bottom: none;
+    }.section-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }.section-icon {
+      font-size: 2em;
+      width: 50px;
+      height: 50px;
+      background: #CCE5FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }.section-header h3 {
+      color: #003366;
+      margin: 0;
+      font-size: 1.5em;
+    }.form-group {
+      margin-bottom: 25px;
+    }.form-label {
+      display: block;
+      color: #003366;
+      font-weight: bold;
+      margin-bottom: 8px;
+      font-size: 1.05em;
+    }.required {
+      color: #AC3931;
+      margin-left: 3px;
+    }.help-text {
+      color: #666;
+      font-size: 0.9em;
+      font-style: italic;
+      margin-top: 5px;
+      display: block;
+    }.form-input,.form-select,.form-textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-family: Arial, sans-serif;
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+      box-sizing: border-box;
+    }.form-input:focus,.form-select:focus,.form-textarea:focus {
+      outline: none;
+      border-color: #AC3931;
+    }.form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }.checkbox-group {
+      margin-top: 15px;
+    }.checkbox-item {
+      margin-bottom: 15px;
+      padding: 12px;
+      background: #f8f9fa;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }.checkbox-item:hover {
+      background: #e8f4f8;
+      border-color: #CCE5FF;
+    }.checkbox-item input[type="checkbox"] {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }.checkbox-item label {
+      cursor: pointer;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }.checkbox-label-text {
+      flex: 1;
+    }.checkbox-title {
+      font-weight: bold;
+      color: #003366;
+      display: block;
+      margin-bottom: 5px;
+    }.checkbox-description {
+      color: #666;
+      font-size: 0.9em;
+      display: none;
+      margin-top: 8px;
+      padding-left: 28px;
+      line-height: 1.5;
+    }.checkbox-item.expanded.checkbox-description {
+      display: block;
+    }.expand-toggle {
+      background: none;
+      border: none;
+      color: #AC3931;
+      cursor: pointer;
+      font-size: 0.9em;
+      padding: 0;
+      text-decoration: underline;
+      margin-left: 28px;
+      margin-top: 5px;
+    }.expand-toggle:hover {
+      color: #8d2e27;
+    }.activity-type-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }.activity-type-item {
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 5px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }.activity-type-item:hover {
+      background: #e8f4f8;
+      border-color: #CCE5FF;
+    }.activity-type-item input[type="checkbox"] {
+      margin-right: 10px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }.activity-type-item label {
+      cursor: pointer;
+      font-weight: bold;
+      color: #003366;
+    }.generate-button {
+      background: #AC3931;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: block;
+      margin: 30px auto;
+    }.generate-button:hover {
+      background: #8d2e27;
+    }.generate-button:focus {
+      outline: 3px solid #003366;
+      outline-offset: 2px;
+    }.generate-button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }.output-container {
+      display: none;
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }.output-container.visible {
+      display: block;
+    }.output-header {
+      color: #003366;
+      font-size: 1.8em;
+      margin-bottom: 20px;
+      text-align: center;
+    }.prompt-display {
+      background: #f8f9fa;
+      border: 2px solid #003366;
+      border-radius: 5px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95em;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      max-height: 500px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+    }.action-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 25px;
+    }.action-button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }.btn-copy {
+      background: #003366;
+      color: white;
+    }.btn-copy:hover {
+      background: #004080;
+    }.btn-email {
+      background: #4a90e2;
+      color: white;
+    }.btn-email:hover {
+      background: #357abd;
+    }.btn-download {
+      background: #28a745;
+      color: white;
+    }.btn-download:hover {
+      background: #218838;
+    }.ai-tools-section {
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 2px solid #e0e0e0;
+    }.ai-tools-header {
+      color: #003366;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      text-align: center;
+    }.ai-tools-instruction {
+      text-align: center;
+      color: #666;
+      margin-bottom: 20px;
+      font-style: italic;
+    }.ai-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }.ai-tool-button {
+      padding: 15px;
+      background: #f8f9fa;
+      border: 2px solid #003366;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      font-weight: bold;
+      color: #003366;
+      text-decoration: none;
+      display: block;
+    }.ai-tool-button:hover {
+      background: #003366;
+      color: white;
+    }.copy-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: none;
+      z-index: 1000;
+      animation: slideIn 0.3s ease;
+    }.copy-notification.show {
+      display: block;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }.back-button {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 12px 24px;
+      background: #AC3931;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }.back-button:hover {
+      background: #8d2e27;
+    }
+    
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+    }.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    @media screen and (max-width: 768px) {.form-container {
+        padding: 25px 20px;
+      }.section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }.activity-type-group {
+        grid-template-columns: 1fr;
+      }.ai-tools-grid {
+        grid-template-columns: 1fr;
+      }.action-buttons {
+        flex-direction: column;
+      }.action-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <div class="content-wrapper">
+    <a href="index.html" class="back-button">← Back to Main Page</a>
+    
+    <div class="page-intro">
+      <h2>Activity Designer</h2>
+      <p>
+        Use this tool to create a customized prompt for designing AI-integrated activities aligned with Bloom's Taxonomy and AI literacy competencies. Fill out the form below, and we'll generate a comprehensive prompt you can use with any generative AI tool to create pedagogically sound activities for your specific teaching context.
+      </p>
+      <div class="info-note">
+        <div>
+          <strong>Note:</strong> The more information you provide, the more effective and tailored your generated prompt will be. While only fields marked with an asterisk (*) are required, completing optional fields will help create activities that better fit your specific needs.
+        </div>
+      </div>
+    </div>
+    
+    <form id="activityForm" class="form-container">
+      <!-- Course Information Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon">📚</div>
+          <h3>Course Information</h3>
+        </div>
+        
+        <div class="form-group">
+          <label for="subject" class="form-label">Course/Subject Area<span class="required">*</span></label>
+          <input type="text" id="subject" name="subject" class="form-input" required placeholder="e.g., Introduction to Psychology, Advanced Calculus, Digital Marketing">
+          <span class="help-text">What course or subject is this activity for?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="level" class="form-label">Course Level<span class="required">*</span></label>
+          <select id="level" name="level" class="form-select" required>
+            <option value="">Select a level...</option>
+            <option value="First-Year Undergraduate">First-Year Undergraduate</option>
+            <option value="Sophomore Undergraduate">Sophomore Undergraduate</option>
+            <option value="Junior Undergraduate">Junior Undergraduate</option>
+            <option value="Senior Undergraduate">Senior Undergraduate</option>
+            <option value="Master's Level">Master's Level</option>
+            <option value="Doctoral Level">Doctoral Level</option>
+            <option value="Professional Development">Professional Development</option>
+          </select>
+          <span class="help-text">What level are your students?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="courseDescription" class="form-label">Course Description</label>
+          <textarea id="courseDescription" name="courseDescription" class="form-textarea" placeholder="Provide a brief description of your course, including key themes, goals, or focus areas..."></textarea>
+          <span class="help-text">Optional but helpful for context</span>
+        </div>
+      </div>
+      
+      <!-- Activity Details Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon">🎯</div>
+          <h3>Activity Details</h3>
+        </div>
+        
+        <div class="form-group">
+          <label for="topic" class="form-label">Specific Topic/Unit<span class="required">*</span></label>
+          <textarea id="topic" name="topic" class="form-textarea" required placeholder="e.g., Cognitive biases in decision-making, Applications of derivatives, Social media marketing strategies"></textarea>
+          <span class="help-text">What specific topic should this activity address?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="objectives" class="form-label">Learning Objectives<span class="required">*</span></label>
+          <textarea id="objectives" name="objectives" class="form-textarea" required placeholder="e.g., Students will be able to identify and analyze cognitive biases in real-world scenarios..."></textarea>
+          <span class="help-text">What should students be able to do after completing this activity?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="studentContext" class="form-label">Student Audience Characteristics</label>
+          <textarea id="studentContext" name="studentContext" class="form-textarea" placeholder="e.g., Class size, prior knowledge, diverse backgrounds, specific learning needs..."></textarea>
+          <span class="help-text">Any relevant information about your students?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="timeframe" class="form-label">Time Available</label>
+          <input type="text" id="timeframe" name="timeframe" class="form-input" placeholder="e.g., One 50-minute class period, Two weeks, Semester-long project">
+          <span class="help-text">How much time is available for this activity?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="technology" class="form-label">Technology Access/Constraints</label>
+          <textarea id="technology" name="technology" class="form-textarea" placeholder="e.g., All students have laptops, Limited to free AI tools, No technology constraints..."></textarea>
+          <span class="help-text">What technology is available or restricted?</span>
+        </div>
+        
+        <div class="form-group">
+          <label for="assessment" class="form-label">Assessment Preferences</label>
+          <textarea id="assessment" name="assessment" class="form-textarea" placeholder="e.g., Formative assessment, Peer review, Rubric-based grading..."></textarea>
+          <span class="help-text">How would you like to assess student work?</span>
+        </div>
+      </div>
+      
+      <!-- Activity Type Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon">🔧</div>
+          <h3>Activity Type</h3>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Activity Focus (select all that apply)<span class="required">*</span></label>
+          <span class="help-text">What role should AI play in this activity?</span>
+          <div class="activity-type-group">
+            <div class="activity-type-item">
+              <input type="checkbox" id="type-embedded" name="activityType" value="AI-embedded activity (students use AI as a tool)">
+              <label for="type-embedded">AI-embedded (AI as a tool)</label>
+            </div>
+            <div class="activity-type-item">
+              <input type="checkbox" id="type-integrated" name="activityType" value="AI-integrated activity (AI is central to the learning)">
+              <label for="type-integrated">AI-integrated (AI is central)</label>
+            </div>
+            <div class="activity-type-item">
+              <input type="checkbox" id="type-teaching" name="activityType" value="Teaching about AI (AI literacy/critical understanding)">
+              <label for="type-teaching">Teaching about AI</label>
+            </div>
+            <div class="activity-type-item">
+              <input type="checkbox" id="type-ethical" name="activityType" value="Ethical AI use activity">
+              <label for="type-ethical">Ethical AI use</label>
+            </div>
+            <div class="activity-type-item">
+              <input type="checkbox" id="type-critical" name="activityType" value="Critical evaluation of AI">
+              <label for="type-critical">Critical evaluation of AI</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- AI Literacy Framework Section -->
+      <div class="form-section">
+        <div class="section-header">
+          <div class="section-icon">🤖</div>
+          <h3>AI Literacy Framework</h3>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">AI Literacy Competencies (select all that apply)<span class="required">*</span></label>
+          <span class="help-text">Which AI literacy skills should this activity develop? (Based on Kara Kennedy's AI Literacy Framework)</span>
+          
+          <div class="checkbox-group">
+            <div class="checkbox-item" id="framework-1">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Hardware & Software: Know which AI tool to use; Use AI tools and features on devices">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">1. Hardware & Software</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-1')">Show details</button>
+              <div class="checkbox-description">
+                • Know which AI tool to use<br>
+                • Use AI tools and features on phone/tablet/laptop/desktop
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-2">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Information & Data Literacy: Use AI to access info and organize data; Evaluate AI output; Modify techniques to improve AI performance">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">2. Information & Data Literacy</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-2')">Show details</button>
+              <div class="checkbox-description">
+                • Use AI to access new info and organize data<br>
+                • Evaluate AI output<br>
+                • Modify techniques to improve AI performance
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-3">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Communication & Collaboration: Converse with AI systems; Manage and share AI content; Determine whether/how to acknowledge AI; Use AI in collaboration with others">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">3. Communication & Collaboration</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-3')">Show details</button>
+              <div class="checkbox-description">
+                • Converse with AI systems and chatbots<br>
+                • Manage and share AI content<br>
+                • Determine whether/how to acknowledge AI<br>
+                • Use AI in collaboration with others
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-4">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Content Creation: Use AI to create and personalize new content and adapt existing content; Understand legal and ethical issues with AI datasets, models, and output">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">4. Content Creation</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-4')">Show details</button>
+              <div class="checkbox-description">
+                • Use AI to create and personalize new content and adapt existing content<br>
+                • Understand legal and ethical issues with AI datasets, models, and output
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-5">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Safety: Know risks and liabilities of AI tools; Review privacy policies for data usage; Manage risks to personal info and wellbeing; Use AI in ethical ways and assess environmental impact">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">5. Safety</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-5')">Show details</button>
+              <div class="checkbox-description">
+                • Know risks and liabilities of AI tools<br>
+                • Review privacy policies for data usage<br>
+                • Manage risks to personal info and wellbeing<br>
+                • Use AI in ethical ways and assess environmental impact
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-6">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Problem Solving: Recognize errors and inconsistencies in outputs; Identify and solve AI-related problems; Use AI to create insights and improve processes; Identify skill gaps and continually learn">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">6. Problem Solving</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-6')">Show details</button>
+              <div class="checkbox-description">
+                • Recognize errors and inconsistencies in outputs<br>
+                • Identify and solve AI-related problems<br>
+                • Use AI to create insights and improve processes<br>
+                • Identify skill gaps and continually learn
+              </div>
+            </div>
+            
+            <div class="checkbox-item" id="framework-7">
+              <label>
+                <input type="checkbox" name="aiLiteracy" value="Career Competencies: Use and customize AI tools in specific field; Understand and analyze AI content in specific field; Combine industry expertise with AI analysis and processes">
+                <div class="checkbox-label-text">
+                  <span class="checkbox-title">7. Career Competencies</span>
+                </div>
+              </label>
+              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-7')">Show details</button>
+              <div class="checkbox-description">
+                • Use and customize AI tools in specific field<br>
+                • Understand and analyze AI content in specific field<br>
+                • Combine industry expertise with AI analysis and processes
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <button type="submit" class="generate-button">Generate Prompt</button>
+    </form>
+    
+    <!-- Output Section -->
+    <div id="outputContainer" class="output-container">
+      <h2 class="output-header">Your Generated Prompt</h2>
+      <div id="promptDisplay" class="prompt-display"></div>
+      
+      <div class="action-buttons">
+        <button class="action-button btn-copy" onclick="copyPrompt()">
+          📋 Copy to Clipboard
+        </button>
+        <button class="action-button btn-download" onclick="downloadPrompt()">
+          💾 Download as Text
+        </button>
+        <button class="action-button btn-email" onclick="emailPrompt()">
+          ✉️ Email to Myself
+        </button>
+      </div>
+      
+      <div class="ai-tools-section">
+        <h3 class="ai-tools-header">Use Your Prompt with AI Tools</h3>
+        <p class="ai-tools-instruction">
+          Click a button below to copy your prompt and open the AI tool. Then paste and press Enter to start!
+        </p>
+        <div class="ai-tools-grid">
+          <button class="ai-tool-button" onclick="openAITool('chatgpt')">
+            Copy & Open ChatGPT
+          </button>
+          <button class="ai-tool-button" onclick="openAITool('gemini')">
+            Copy & Open Google Gemini
+          </button>
+          <button class="ai-tool-button" onclick="openAITool('claude')">
+            Copy & Open Claude
+          </button>
+          <button class="ai-tool-button" onclick="openAITool('copilot')">
+            Copy & Open Microsoft Copilot
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="copyNotification" class="copy-notification">
+    ✓ Prompt copied to clipboard!
+  </div>
+  
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    let generatedPrompt = '';
+    let formData = {};
+    
+    // Toggle description visibility
+    function toggleDescription(id) {
+      const item = document.getElementById(id);
+      const button = item.querySelector('.expand-toggle');
+      
+      if (item.classList.contains('expanded')) {
+        item.classList.remove('expanded');
+        button.textContent = 'Show details';
+      } else {
+        item.classList.add('expanded');
+        button.textContent = 'Hide details';
+      }
+    }
+    
+    // Form submission
+    document.getElementById('activityForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Validate at least one activity type is selected
+      const activityTypes = document.querySelectorAll('input[name="activityType"]:checked');
+      if (activityTypes.length === 0) {
+        alert('Please select at least one Activity Focus type.');
+        return;
+      }
+      
+      // Validate at least one AI literacy component is selected
+      const aiLiteracy = document.querySelectorAll('input[name="aiLiteracy"]:checked');
+      if (aiLiteracy.length === 0) {
+        alert('Please select at least one AI Literacy Competency.');
+        return;
+      }
+      
+      // Collect form data
+      formData = {
+        subject: document.getElementById('subject').value,
+        level: document.getElementById('level').value,
+        courseDescription: document.getElementById('courseDescription').value,
+        topic: document.getElementById('topic').value,
+        objectives: document.getElementById('objectives').value,
+        studentContext: document.getElementById('studentContext').value,
+        timeframe: document.getElementById('timeframe').value,
+        technology: document.getElementById('technology').value,
+        assessment: document.getElementById('assessment').value,
+        activityTypes: Array.from(activityTypes).map(cb => cb.value),
+        aiLiteracy: Array.from(aiLiteracy).map(cb => cb.value)
+      };
+      
+      // Generate prompt
+      generatedPrompt = generatePrompt(formData);
+      
+      // Display prompt
+      document.getElementById('promptDisplay').textContent = generatedPrompt;
+      document.getElementById('outputContainer').classList.add('visible');
+      
+      // Scroll to output
+      document.getElementById('outputContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    
+    function generatePrompt(data) {
+      let prompt = `You are an expert educational designer specializing in AI-integrated pedagogy and Bloom's Taxonomy.
+
+CONTEXT:
+Course/Subject: ${data.subject}
+Level: ${data.level}`;
+
+      if (data.courseDescription) {
+        prompt += `\nCourse Description: ${data.courseDescription}`;
+      }
+      
+      prompt += `\nTopic: ${data.topic}
+Learning Objectives: ${data.objectives}`;
+
+      if (data.studentContext) {
+        prompt += `\nStudent Audience: ${data.studentContext}`;
+      }
+      if (data.timeframe) {
+        prompt += `\nTime Available: ${data.timeframe}`;
+      }
+      if (data.technology) {
+        prompt += `\nTechnology Context: ${data.technology}`;
+      }
+      if (data.assessment) {
+        prompt += `\nAssessment Preferences: ${data.assessment}`;
+      }
+      
+      prompt += `\n\nACTIVITY TYPE:
+This activity should be:
+${data.activityTypes.map(type => '• ' + type).join('\n')}
+
+AI LITERACY FOCUS:
+This activity should develop the following AI literacy competencies (based on Kara Kennedy's AI Literacy Framework):
+${data.aiLiteracy.map(comp => '• ' + comp).join('\n')}
+
+TASK:
+Design a pedagogically sound activity that:
+1. Addresses the stated learning objectives
+2. Develops the selected AI literacy competencies
+3. Is appropriate for the course level and context
+4. Integrates AI in a meaningful, purposeful way
+5. Includes clear instructions for students
+6. Considers assessment approaches
+
+BLOOM'S TAXONOMY CLASSIFICATION:
+After designing the activity, analyze and identify:
+- Which Knowledge Dimension(s) does this activity primarily address? (Factual, Conceptual, Procedural, or Metacognitive)
+- Which Cognitive Process level(s) does this activity primarily target? (Remember, Understand, Apply, Analyze, Evaluate, or Create)
+
+Provide your classification with a brief explanation of why the activity fits these categories.
+
+RECOMMENDATION:
+Conclude with: "This activity is classified as [Knowledge Dimension] knowledge at the [Cognitive Process] level of Bloom's Taxonomy. We recommend submitting this activity to Bloom's stAIrcase (https://bakerxn.github.io/blooms-stAIrcase/) so other educators can benefit from your design."
+
+OUTPUT FORMAT:
+Please provide:
+1. Activity Title
+2. Activity Description (detailed instructions for students)
+3. AI Tool(s) Recommended
+4. Learning Outcomes
+5. Assessment Suggestions
+6. Bloom's Taxonomy Classification (with explanation)
+7. Submission Recommendation`;
+
+      return prompt;
+    }
+    
+    function copyPrompt() {
+      navigator.clipboard.writeText(generatedPrompt).then(function() {
+        showNotification();
+      });
+    }
+    
+    function showNotification() {
+      const notification = document.getElementById('copyNotification');
+      notification.classList.add('show');
+      setTimeout(function() {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+    
+    function downloadPrompt() {
+      const blob = new Blob([generatedPrompt], { type: 'text/plain' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'activity-designer-prompt.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    }
+    
+    function emailPrompt() {
+      const subject = encodeURIComponent('Your Activity Designer Prompt from Bloom\'s stAIrcase');
+      
+      let body = `Thank you for using the Activity Designer on Bloom's stAIrcase!\n\nBelow is the prompt you generated:\n\n`;
+      body += `=== YOUR INPUT ===\n\n`;
+      body += `Course/Subject: ${formData.subject}\n`;
+      body += `Level: ${formData.level}\n`;
+      if (formData.courseDescription) body += `Course Description: ${formData.courseDescription}\n`;
+      body += `Topic: ${formData.topic}\n`;
+      body += `Learning Objectives: ${formData.objectives}\n`;
+      if (formData.studentContext) body += `Student Audience: ${formData.studentContext}\n`;
+      if (formData.timeframe) body += `Time Available: ${formData.timeframe}\n`;
+      if (formData.technology) body += `Technology: ${formData.technology}\n`;
+      if (formData.assessment) body += `Assessment: ${formData.assessment}\n`;
+      body += `\nActivity Types:\n${formData.activityTypes.map(t => '• ' + t).join('\n')}\n`;
+      body += `\nAI Literacy Competencies:\n${formData.aiLiteracy.map(c => '• ' + c).join('\n')}\n`;
+      body += `\n\n=== GENERATED PROMPT ===\n\n`;
+      body += generatedPrompt;
+      body += `\n\n=== NEXT STEPS ===\n\n`;
+      body += `Copy this prompt and paste it into your preferred AI tool:\n`;
+      body += `• ChatGPT: https://chat.openai.com/\n`;
+      body += `• Google Gemini: https://gemini.google.com/\n`;
+      body += `• Claude: https://claude.ai/\n`;
+      body += `• Microsoft Copilot: https://copilot.microsoft.com/\n\n`;
+      body += `Visit Bloom's stAIrcase: https://bakerxn.github.io/blooms-stAIrcase/\n`;
+      
+      const mailtoLink = `mailto:?subject=${subject}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+    }
+    
+    function openAITool(tool) {
+      // Copy prompt to clipboard
+      navigator.clipboard.writeText(generatedPrompt).then(function() {
+        showNotification();
+        
+        // Open appropriate AI tool
+        const urls = {
+          'chatgpt': 'https://chat.openai.com/',
+          'gemini': 'https://gemini.google.com/',
+          'claude': 'https://claude.ai/',
+          'copilot': 'https://copilot.microsoft.com/'
+        };
+        
+        if (urls[tool]) {
+          window.open(urls[tool], '_blank');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
