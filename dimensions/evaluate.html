@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluate - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    body {
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+    }
+    
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #003366;
+    }
+    
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 2em;
+    }.content-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }.page-header {
+      background: linear-gradient(135deg, #ffe5d0 0%, #ffd9b3 100%);
+      padding: 40px;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 3px solid #003366;
+      border-bottom: none;
+    }.page-header h2 {
+      color: #003366;
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+    }.dimension-label {
+      color: #666;
+      font-size: 1.1em;
+      font-style: italic;
+      margin: 0;
+    }.spectrum-container {
+      background: #ffffff;
+      padding: 30px;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }.spectrum-title {
+      text-align: center;
+      color: #003366;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }.spectrum-visual {
+      position: relative;
+      height: 80px;
+      background: linear-gradient(to right, 
+        #d4e9f7 0%, 
+        #d4f0d4 20%, 
+        #fffacd 40%, 
+        #fff4b3 60%, 
+        #ffd9b3 80%, 
+        #ffc9d9 100%);
+      border-radius: 40px;
+      border: 2px solid #003366;
+      margin: 20px 0;
+    }.spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #003366;
+    }.spectrum-marker {
+      position: absolute;
+      top: 50%;
+      left: 80%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: #AC3931;
+      border: 4px solid #003366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.75em;
+      line-height: 1.2;
+      padding: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }.spectrum-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #AC3931;
+    }.tab-container {
+      background: #ffffff;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+    }.tab-navigation {
+      display: flex;
+      border-bottom: 3px solid #003366;
+      background: #f8f9fa;
+      overflow-x: auto;
+    }.tab-button {
+      flex: 1;
+      padding: 15px 20px;
+      background: #fff5eb;
+      border: none;
+      border-right: 2px solid #003366;
+      cursor: pointer;
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      font-size: 1em;
+      color: #003366;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }.tab-button:last-child {
+      border-right: none;
+    }.tab-button:hover {
+      background: #ffd9b3;
+    }.tab-button:focus {
+      outline: 3px solid #AC3931;
+      outline-offset: -3px;
+      z-index: 10;
+    }.tab-button.active {
+      background: #ffffff;
+      color: #AC3931;
+      font-weight: bold;
+      border-bottom: 3px solid #AC3931;
+      margin-bottom: -3px;
+    }.tab-content {
+      display: none;
+      padding: 40px;
+      background: #ffffff;
+      line-height: 1.8;
+      color: #333;
+    }.tab-content.active {
+      display: block;
+    }.tab-content h3 {
+      color: #003366;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #AC3931;
+      padding-bottom: 10px;
+    }.tab-content h4 {
+      color: #AC3931;
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }.tab-content p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+    }.tab-content ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }.tab-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }.process-card {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.process-card h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.2em;
+    }.process-card.alternative-names {
+      font-style: italic;
+      color: #666;
+      margin-top: 5px;
+    }.example-box {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.example-box h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.1em;
+    }.tip-box {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.tip-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.tip-box h5::before {
+      content: "💡";
+      font-size: 1.5em;
+    }.ai-box {
+      background: #e8f4f8;
+      border: 2px solid #4a90e2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.ai-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.ai-box h5::before {
+      content: "🤖";
+      font-size: 1.5em;
+    }.bottom-navigation {
+      background: #ffffff;
+      padding: 30px 40px;
+      border: 3px solid #003366;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }.nav-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #AC3931;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    }.nav-button:hover {
+      background: #8d2e27;
+    }.nav-button:focus {
+      outline: 3px solid #003366;
+      outline-offset: 2px;
+    }.nav-button.secondary {
+      background: #003366;
+    }.nav-button.secondary:hover {
+      background: #004080;
+    }
+    
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+    }.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }.skip-link:focus {
+      top: 0;
+    }
+    
+    @media screen and (max-width: 768px) {.page-header {
+        padding: 25px;
+      }.page-header h2 {
+        font-size: 1.8em;
+      }.tab-button {
+        font-size: 0.9em;
+        padding: 12px 15px;
+        min-width: 120px;
+      }.tab-content {
+        padding: 25px 20px;
+      }.tab-content h3 {
+        font-size: 1.5em;
+      }.spectrum-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7em;
+      }.bottom-navigation {
+        padding: 20px;
+        flex-direction: column;
+      }.nav-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <main id="main-content" class="content-wrapper">
+    <div class="page-header">
+      <p class="dimension-label">Cognitive Process Dimension</p>
+      <h2>Evaluate</h2>
+    </div>
+    
+    <div class="spectrum-container">
+      <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
+      <div class="spectrum-visual" role="img" aria-label="Evaluate is positioned near the highest level of the higher order thinking skills">
+        <div class="spectrum-marker" aria-hidden="true">
+          YOU ARE HERE
+        </div>
+      </div>
+      <div class="spectrum-labels">
+        <span>Lower Order Thinking Skills</span>
+        <span>Higher Order Thinking Skills</span>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <nav class="tab-navigation" role="tablist" aria-label="Evaluate cognitive process information tabs">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="processes-panel" id="processes-tab" onclick="openTab(event, 'processes')">Cognitive Processes</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
+      </nav>
+      
+      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>What is Evaluate?</h3>
+        <p>
+          Evaluate involves making judgments based on criteria and standards. When students evaluate, they assess the quality, effectiveness, or value of something using explicit or implicit criteria. Evaluation requires critical thinking, reasoned judgment, and the ability to justify conclusions with evidence. It represents sophisticated thinking that combines understanding, analysis, and reasoned decision-making.
+        </p>
+        <p>
+          In the revised Bloom's Taxonomy, Evaluate is one of the highest-order cognitive processes. While Analyze involves breaking things down to understand them, Evaluate requires making judgments about their worth, quality, or effectiveness. Evaluation is essential for critical thinking, decision-making, and scholarly work. It's the cognitive process that enables students to assess arguments, judge solutions, critique methods, and make informed choices.
+        </p>
+        <p>
+          Evaluate sits near the top of the cognitive spectrum, requiring integration of multiple lower-order skills. Students must remember relevant information, understand concepts, apply criteria, and analyze components before they can make sound evaluative judgments. Evaluation differs from personal opinion—it requires systematic assessment using appropriate criteria and evidence-based reasoning. This cognitive process is fundamental to academic work, professional practice, and informed citizenship.
+        </p>
+        
+        <div class="tip-box">
+          <h5>Common Misconception</h5>
+          <p>
+            <strong>Myth:</strong> Evaluation is just giving your opinion or saying whether you like something.
+          </p>
+          <p>
+            <strong>Reality:</strong> True evaluation involves making judgments based on explicit criteria and supporting those judgments with evidence and reasoning. It's not about personal preference but about systematic assessment of quality, effectiveness, or value. Students must identify appropriate criteria, apply them consistently, and justify their evaluative conclusions. "I like it" is opinion; "It's effective because it meets these criteria in these ways" is evaluation.
+          </p>
+        </div>
+      </div>
+      
+      <div id="processes" class="tab-content" role="tabpanel" aria-labelledby="processes-tab">
+        <h3>Cognitive Processes Within Evaluate</h3>
+        <p>
+          The Evaluate category includes two specific cognitive processes that represent different types of evaluative judgment.
+        </p>
+        
+        <div class="process-card">
+          <h5>Checking</h5>
+          <p class="alternative-names">Alternative names: Coordinating, Detecting, Monitoring, Testing</p>
+          <p>
+            <strong>Definition:</strong> Detecting inconsistencies or fallacies within a process or product; determining whether a process or product has internal consistency; detecting the effectiveness of a procedure as it is being implemented. Checking involves testing against internal criteria—does it work? Is it consistent? Are there errors or problems?
+          </p>
+          <p>
+            <strong>Key characteristics:</strong>
+          </p>
+          <ul>
+            <li>Testing for internal consistency</li>
+            <li>Detecting errors, fallacies, or inconsistencies</li>
+            <li>Monitoring effectiveness during implementation</li>
+            <li>Verifying that criteria are met</li>
+            <li>Assessing functionality or workability</li>
+          </ul>
+          <p>
+            <strong>Example prompts:</strong> "Check for inconsistencies in...", "Test whether...", "Detect errors in...", "Monitor the effectiveness of...", "Verify that..."
+          </p>
+          <p>
+            <strong>Focus:</strong> Internal consistency, functionality, absence of errors
+          </p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Critiquing</h5>
+          <p class="alternative-names">Alternative name: Judging</p>
+          <p>
+            <strong>Definition:</strong> Judging a product or operation based on externally imposed criteria and standards. Critiquing involves assessing quality, value, or effectiveness against established or appropriate criteria. This is evaluation in its fullest sense—making reasoned judgments about worth or quality.
+          </p>
+          <p>
+            <strong>Key characteristics:</strong>
+          </p>
+          <ul>
+            <li>Applying external criteria or standards</li>
+            <li>Judging quality, effectiveness, or value</li>
+            <li>Assessing strengths and weaknesses</li>
+            <li>Making reasoned judgments with justification</li>
+            <li>Comparing against standards or alternatives</li>
+          </ul>
+          <p>
+            <strong>Example prompts:</strong> "Critique the argument...", "Judge the effectiveness of...", "Evaluate the quality of...", "Assess whether...", "How well does this meet...?"
+          </p>
+          <p>
+            <strong>Focus:</strong> Quality, effectiveness, value against external standards
+          </p>
+        </div>
+        
+        <h4>Relationship Between Checking and Critiquing</h4>
+        <p>
+          Both processes involve making judgments, but they differ in focus and criteria. Checking is more technical—testing for errors, consistency, or functionality using internal criteria. Critiquing is more comprehensive—judging overall quality or value using external standards. In practice, thorough evaluation often involves both: checking for internal consistency and critiquing against external standards.
+        </p>
+        
+        <p>
+          <strong>Example distinction:</strong>
+        </p>
+        <ul>
+          <li><strong>Checking:</strong> Does this computer program run without errors? Are the calculations internally consistent?</li>
+          <li><strong>Critiquing:</strong> Is this program well-designed? Does it effectively solve the intended problem? How does its quality compare to alternatives?</li>
+        </ul>
+      </div>
+      
+      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
+        <h3>Evaluate Across Disciplines</h3>
+        
+        <div class="example-box">
+          <h5>Science</h5>
+          <p><strong>Checking:</strong></p>
+          <ul>
+            <li>Test whether experimental procedures were followed correctly</li>
+            <li>Check data for internal consistency and outliers</li>
+            <li>Verify that calculations are accurate</li>
+            <li>Detect flaws in experimental design</li>
+          </ul>
+          <p><strong>Critiquing:</strong></p>
+          <ul>
+            <li>Evaluate the validity of a scientific study</li>
+            <li>Judge whether evidence supports a scientific claim</li>
+            <li>Assess the quality of a research methodology</li>
+            <li>Critique the ethical implications of a scientific application</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Mathematics</h5>
+          <p><strong>Checking:</strong></p>
+          <ul>
+            <li>Verify that a solution method is logically consistent</li>
+            <li>Check calculations for errors</li>
+            <li>Test whether a proof is valid</li>
+            <li>Detect fallacies in mathematical reasoning</li>
+          </ul>
+          <p><strong>Critiquing:</strong></p>
+          <ul>
+            <li>Judge the efficiency of different solution methods</li>
+            <li>Evaluate the elegance or generalizability of a proof</li>
+            <li>Assess which mathematical model best fits a situation</li>
+            <li>Critique the appropriateness of statistical methods used</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>History</h5>
+          <p><strong>Checking:</strong></p>
+          <ul>
+            <li>Verify that historical claims are supported by evidence</li>
+            <li>Check for internal consistency in historical accounts</li>
+            <li>Detect bias or unsupported assertions</li>
+            <li>Test whether interpretations align with available evidence</li>
+          </ul>
+          <p><strong>Critiquing:</strong></p>
+          <ul>
+            <li>Evaluate the credibility of historical sources</li>
+            <li>Judge the strength of historical arguments</li>
+            <li>Assess competing historical interpretations</li>
+            <li>Critique the significance of historical events</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Literature & Language Arts</h5>
+          <p><strong>Checking:</strong></p>
+          <ul>
+            <li>Verify that textual evidence supports interpretations</li>
+            <li>Check for logical consistency in arguments</li>
+            <li>Detect unsupported claims in literary analysis</li>
+            <li>Test whether writing follows conventions</li>
+          </ul>
+          <p><strong>Critiquing:</strong></p>
+          <ul>
+            <li>Evaluate the effectiveness of rhetorical strategies</li>
+            <li>Judge the quality of a literary work</li>
+            <li>Assess the strength of an argument</li>
+            <li>Critique the author's choices and their impact</li>
+          </ul>
+        </div>
+        
+        <div class="example-box">
+          <h5>Computer Science</h5>
+          <p><strong>Checking:</strong></p>
+          <ul>
+            <li>Test code for bugs and errors</li>
+            <li>Verify that algorithms produce correct outputs</li>
+            <li>Check for security vulnerabilities</li>
+            <li>Detect inefficiencies in code</li>
+          </ul>
+          <p><strong>Critiquing:</strong></p>
+          <ul>
+            <li>Evaluate the efficiency of different algorithms</li>
+            <li>Judge the quality of code design and structure</li>
+            <li>Assess the usability of a user interface</li>
+            <li>Critique the scalability of a system architecture</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
+        <h3>How Students Demonstrate Evaluate</h3>
+        
+        <p>
+          Students demonstrate evaluative thinking by making reasoned judgments based on criteria and supporting those judgments with evidence. Evaluation is shown through systematic assessment, not just expression of preference.
+        </p>
+        
+        <h4>Applying Criteria Systematically</h4>
+        <p>Students with evaluative skills can:</p>
+        <ul>
+          <li>Identify appropriate criteria for judgment</li>
+          <li>Apply criteria consistently and fairly</li>
+          <li>Explain why particular criteria are relevant</li>
+          <li>Use multiple criteria to make comprehensive judgments</li>
+          <li>Distinguish between appropriate and inappropriate criteria</li>
+        </ul>
+        
+        <h4>Making Evidence-Based Judgments</h4>
+        <p>Students demonstrate evaluation by:</p>
+        <ul>
+          <li>Supporting judgments with specific evidence</li>
+          <li>Providing reasoning for their evaluative conclusions</li>
+          <li>Distinguishing between opinion and reasoned judgment</li>
+          <li>Acknowledging strengths and weaknesses fairly</li>
+          <li>Making nuanced judgments rather than simplistic ones</li>
+        </ul>
+        
+        <h4>Checking and Critiquing Effectively</h4>
+        <p>Students show evaluative thinking when they:</p>
+        <ul>
+          <li>Detect errors, inconsistencies, or problems</li>
+          <li>Assess quality against relevant standards</li>
+          <li>Compare alternatives systematically</li>
+          <li>Make recommendations based on evaluation</li>
+          <li>Revise judgments when presented with new evidence</li>
+        </ul>
+        
+        <h4>Observable Behaviors</h4>
+        <p>Students with strong evaluative abilities:</p>
+        <ul>
+          <li>Question quality and effectiveness, not just accept information</li>
+          <li>Ask "How good is this?" and "How do we know?"</li>
+          <li>Provide balanced assessments considering multiple perspectives</li>
+          <li>Support their judgments with clear reasoning</li>
+          <li>Distinguish between fact, opinion, and reasoned judgment</li>
+          <li>Consider both strengths and limitations</li>
+          <li>Make decisions based on systematic evaluation</li>
+        </ul>
+        
+        <div class="tip-box">
+          <h5>Assessment Tip</h5>
+          <p>
+            To assess evaluation, ask students to make judgments and justify them with criteria and evidence. Provide evaluation tasks that require more than opinion: "Evaluate the effectiveness of... using these criteria," "Judge which solution is best and explain why," "Critique this argument and support your assessment." Look for evidence of systematic application of criteria, not just personal preference. Strong evaluation includes identification of criteria, evidence-based reasoning, and balanced judgment.
+          </p>
+        </div>
+      </div>
+      
+      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
+        <h3>Tips for Educators</h3>
+        
+        <h4>Developing Evaluative Thinking</h4>
+        <ul>
+          <li><strong>Teach criteria explicitly:</strong> Help students understand what makes something good, effective, or valuable in your discipline.</li>
+          <li><strong>Model evaluation:</strong> Think aloud as you evaluate, showing how to apply criteria and make reasoned judgments.</li>
+          <li><strong>Provide evaluation frameworks:</strong> Give students rubrics, checklists, or criteria lists to guide their evaluation.</li>
+          <li><strong>Distinguish opinion from evaluation:</strong> Help students understand that evaluation requires criteria and evidence, not just preference.</li>
+          <li><strong>Require justification:</strong> Always ask students to explain and support their evaluative judgments.</li>
+          <li><strong>Practice with varied examples:</strong> Have students evaluate multiple examples to develop consistency in applying criteria.</li>
+          <li><strong>Encourage balanced judgment:</strong> Teach students to consider both strengths and weaknesses in their evaluations.</li>
+        </ul>
+        
+        <h4>Common Pitfalls to Avoid</h4>
+        <ul>
+          <li><strong>Accepting unsupported judgments:</strong> Don't let students stop at "it's good" or "it's bad"—require criteria and evidence.</li>
+          <li><strong>Confusing opinion with evaluation:</strong> Personal preference isn't evaluation unless supported by appropriate criteria.</li>
+          <li><strong>Not teaching discipline-specific criteria:</strong> Students need to know what counts as quality in your field.</li>
+          <li><strong>Expecting evaluation without foundation:</strong> Students need understanding and analytical skills before they can evaluate effectively.</li>
+          <li><strong>Allowing one-sided judgments:</strong> Teach students to provide balanced evaluation, not just criticism or praise.</li>
+          <li><strong>Using vague criteria:</strong> "Good" or "effective" aren't criteria—be specific about what you're evaluating.</li>
+        </ul>
+        
+        <div class="ai-box">
+          <h5>AI Literacy Connection</h5>
+          <p>
+            <strong>How AI Relates to Evaluation:</strong> AI can check for certain types of errors and compare against explicit criteria, but it struggles with nuanced judgment, contextual evaluation, and ethical assessment. AI evaluation lacks the human judgment, values consideration, and contextual understanding that characterize sophisticated evaluative thinking.
+          </p>
+          <p>
+            <strong>Teaching Implications:</strong>
+          </p>
+          <ul>
+            <li>Use AI to perform initial checking (grammar, calculations, consistency), then have students do deeper critique</li>
+            <li>Have students evaluate AI outputs—this develops critical evaluation skills</li>
+            <li>Teach students that AI can apply explicit criteria but cannot make nuanced value judgments</li>
+            <li>Emphasize evaluation skills AI cannot replicate: ethical judgment, contextual assessment, consideration of human impact</li>
+            <li>Help students understand that AI evaluation is only as good as its programmed criteria</li>
+            <li>Teach students to evaluate AI tools themselves—their reliability, biases, and appropriate uses</li>
+            <li>Develop students' ability to judge when AI evaluation is sufficient vs. when human judgment is needed</li>
+          </ul>
+          <p>
+            <strong>Key Message:</strong> Evaluative thinking is uniquely human and increasingly important in the age of AI. While AI can check against explicit criteria, humans must make nuanced judgments considering context, ethics, values, and human impact. Students need strong evaluative skills to assess AI outputs critically, make decisions AI cannot make, and provide the reasoned judgment that technology lacks. The ability to evaluate effectively—to make sound judgments based on appropriate criteria—is essential for navigating an AI-augmented world.
+          </p>
+        </div>
+        
+        <div class="tip-box">
+          <h5>Practical Strategy</h5>
+          <p>
+            <strong>The "Criteria-Evidence-Judgment" Framework:</strong> Teach students to structure evaluation in three steps: (1) Identify the criteria (what makes this good/effective?), (2) Gather evidence (how does this measure against each criterion?), and (3) Make a judgment (overall, how good/effective is this and why?). This framework ensures systematic, evidence-based evaluation rather than unsupported opinion.
+          </p>
+        </div>
+        
+        <h4>Evaluation as a Foundation for Decision-Making</h4>
+        <p>Evaluation is essential for informed decision-making in all areas:</p>
+        <ul>
+          <li><strong>Academic work:</strong> Evaluating sources, arguments, and evidence</li>
+          <li><strong>Professional practice:</strong> Assessing quality, effectiveness, and value</li>
+          <li><strong>Civic engagement:</strong> Evaluating policies, claims, and candidates</li>
+          <li><strong>Personal life:</strong> Making informed choices based on reasoned judgment</li>
+        </ul>
+        <p>
+          Students who can evaluate effectively are prepared for the complex judgments required in higher education, careers, and citizenship. Evaluation—the ability to make reasoned, criteria-based judgments—is a hallmark of critical thinking and intellectual maturity.
+        </p>
+      </div>
+    </div>
+    
+    <div class="bottom-navigation">
+      <a href="../index.html" class="nav-button">← Back to Main Page</a>
+      <a href="../dimensions/cognitive-process.html" class="nav-button secondary">View Cognitive Process Table</a>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    function openTab(evt, tabName) {
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      var tabButtons = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+        tabButtons[i].setAttribute("aria-selected", "false");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+      evt.currentTarget.setAttribute("aria-selected", "true");
+      document.getElementById(tabName).focus();
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabPanels = document.querySelectorAll('.tab-content');
+      tabPanels.forEach(function(panel) {
+        panel.setAttribute('tabindex', '0');
+      });
+    });
+  </script>
+</body>
+</html>
