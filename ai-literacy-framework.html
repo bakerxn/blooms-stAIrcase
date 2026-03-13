@@ -2,83 +2,628 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>AI Literacy Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI Literacy Framework - An interactive visualization of the 7 key competencies for AI literacy, revised from Dr. Kara Kennedy's framework.">
+  <title>AI Literacy Framework - Bloom's stAIrcase</title>
   <link rel="stylesheet" href="theme.css">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-13637085796"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-13637085796', {
+      'page_title': 'AI Literacy Framework',
+      'page_path': '/ai-literacy-framework.html'
+    });
+  </script>
+  
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f5f8fa;
+    * {
+      box-sizing: border-box;
     }
+    
+    body {
+      font-family: "Arial-BoldMT", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+      line-height: 1.5;
+    }
+    
+    /* Skip link */.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #AC3931;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 10000;
+      border-radius: 0 0 4px 0;
+    }.skip-link:focus {
+      top: 0;
+      outline: 3px solid #ffffff;
+      outline-offset: 2px;
+    }
+    
+    /* Header */
     header {
       padding: 20px;
-      background-color: #003366;
       text-align: center;
+      background-color: #003366;
     }
+    
     header h1 {
-      color: white;
+      color: #ffffff;
       margin: 0;
       font-size: 2em;
-      font-family: 'Orbitron', sans-serif;
+      font-family: "Arial-BoldMT", Arial, sans-serif;
     }
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
+    
+    /* Back button */.back-button {
+      display: flex;
+      justify-content: flex-start;
+      padding: 15px 20px;
+      background-color: #CCE5FF;
+    }.back-button a {
+      padding: 10px 20px;
+      background: #AC3931;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+      min-width: 44px;
+      min-height: 44px;
+    }.back-button a:hover {
+      background-color: #004080;
+      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }.back-button a:focus {
+      outline: 3px solid #ffffff;
+      outline-offset: 3px;
+      background-color: #004080;
+    }.back-button a:focus:not(:focus-visible) {
+      outline: none;
+    }.back-button a span {
+      margin-right: 8px;
+      font-size: 20px;
+    }
+    
+    /* Main content */.main-content {
+      text-align: center;
+      background-color: #ffffff;
       padding: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }.main-content h2 {
+      color: #003366;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }.main-content p {
+      color: #333;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    
+    /* SVG container */.svg-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
       background: white;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
     }
-    p.tagline {
-      font-size: 1em;
-      color: #333;
-      text-align: center;
-    }
-    .btn-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: center;
-      margin-top: 30px;
-    }
-    .btn-list a {
-      padding: 12px 20px;
-      background: #e76f51;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
+    
+    svg {
       width: 100%;
-      max-width: 500px;
-      text-align: center;
-      transition: background 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      height: auto;
+      display: block;
     }
-    .btn-list a:hover {
-      background: #d55d42;
+    
+    /* SVG hover styles */
+    svg a:hover path,
+    svg a:hover text {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    
+    svg a:focus {
+      outline: 3px solid #AC3931;
+      outline-offset: 4px;
+    }
+    
+    svg a:focus:not(:focus-visible) {
+      outline: none;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: #CCE5FF;
+    }
+    
+    footer a:focus {
+      outline: 2px solid #ffffff;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+      transition: transform 0.3s ease;
+    }
+    
+    footer a:hover img {
+      transform: scale(1.05);
+    }
+    
+    /* Screen reader only */.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.5em;
+      }.main-content h2 {
+        font-size: 1.4em;
+      }.main-content p {
+        font-size: 1em;
+      }.svg-container {
+        padding: 10px;
+      }
+    }
+    
+    /* Print styles */
+    @media print {.skip-link,.back-button {
+        display: none;
+      }
+      
+      body {
+        background: white;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>AI LITERACY FRAMEWORK</h1>
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <h1>AI Literacy Framework</h1>
   </header>
-  <div class="container">
-    <p class="tagline">Created by Dr. Kara Kennedy, by mapping AI skills onto the UNESCO Digital Literacy Global Framework. 2023. Shared via Creative Commons (CC-BY).</p>
-    <div class="btn-list">
-      <a href="frameworks/hardware_&_software.html">🖥️ HARDWARE & SOFTWARE</a>
-      <a href="frameworks/information_&_data_literacy.html">📊 INFORMATION & DATA LITERACY</a>
-      <a href="frameworks/communication_&_collaboration.html">💬 COMMUNICATION & COLLABORATION</a>
-      <a href="frameworks/content_creation.html">🎨 CONTENT CREATION</a>
-      <a href="frameworks/safety.html">🛡️ SAFETY</a>
-      <a href="frameworks/problem_solving.html">🧠 PROBLEM SOLVING</a>
-      <a href="frameworks/career_competencies.html">💼 CAREER COMPETENCIES</a>
+  
+  <nav class="back-button" aria-label="Navigation">
+    <a href="index.html" aria-label="Return to homepage">
+      <span aria-hidden="true">←</span> Back to Home
+    </a>
+  </nav>
+  
+  <main id="main-content" class="main-content" role="main">
+    <h2>Seven Key Competencies for AI Literacy</h2>
+    <p>
+      This framework, revised from Dr. Kara Kennedy's AI Literacy Framework (2023), 
+      identifies seven essential competencies for understanding and working with artificial intelligence. 
+      Click on any section below to explore that competency in detail.
+    </p>
+    
+    <div class="svg-container">
+      <svg height="100%" stroke-miterlimit="10" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" version="1.1" viewBox="0 0 799 1803" width="100%" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-labelledby="svg-title svg-desc">
+        
+        <title id="svg-title">AI Literacy Framework Interactive Diagram</title>
+        <desc id="svg-desc">Interactive diagram showing 7 key AI literacy competencies: Hardware & Software, Information & Data Literacy, Communication & Collaboration, Content Creation, Safety & Ethics, Critical Thinking & Agency, and Career Competencies. Click any section to learn more.</desc>
+        
+        <defs/>
+        
+        <!-- Career Competencies -->
+        <a xlink:href="framework/career.html" tabindex="0" aria-label="Career Competencies - AI in specific fields and professional development" role="link">
+          <title>Click to learn about Career Competencies</title>
+          <g id="Career">
+            <path d="M138.033 1460.18L637.319 1460.18C687.368 1460.18 727.941 1500.75 727.941 1550.8L727.941 1551.33C727.941 1601.38 687.368 1641.95 637.319 1641.95L138.033 1641.95" fill="#ffb7af" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1531.18)" x="0" y="0">
+              <tspan textLength="175.262" x="0" y="18.5359"><![CDATA[AI in a specific field]]></tspan>
+            </text>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1581.72)" x="0" y="0">
+              <tspan textLength="128.602" x="0" y="18.5359"><![CDATA[a specific field]]></tspan>
+            </text>
+            <path d="M69.2269 1469.87L108.604 1469.87L108.604 1508.91L69.2269 1508.91L69.2269 1469.87Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#ffb7af" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1505.91)" x="0" y="0">
+                <tspan textLength="466.628" x="0" y="18.5359"><![CDATA[Stay aware of emerging best practices and tools for]]></tspan>
+              </text>
+              <path d="M153.725 1517.91C153.725 1516.85 154.623 1515.98 155.731 1515.98C156.839 1515.98 157.737 1516.85 157.737 1517.91C157.737 1518.98 156.839 1519.85 155.731 1519.85C154.623 1519.85 153.725 1518.98 153.725 1517.91Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1556.45)" x="0" y="0">
+                <tspan textLength="421.168" x="0" y="18.5359"><![CDATA[Understand, evaluate, and create AI content in]]></tspan>
+              </text>
+              <path d="M153.725 1568.45C153.725 1567.38 154.623 1566.52 155.731 1566.52C156.839 1566.52 157.737 1567.38 157.737 1568.45C157.737 1569.52 156.839 1570.39 155.731 1570.39C154.623 1570.39 153.725 1569.52 153.725 1568.45Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1606.99)" x="0" y="0">
+                <tspan textLength="473.416" x="0" y="18.5359"><![CDATA[Combine content competencies with AI literacy skills]]></tspan>
+              </text>
+              <path d="M153.725 1618.99C153.725 1617.92 154.623 1617.06 155.731 1617.06C156.839 1617.06 157.737 1617.92 157.737 1618.99C157.737 1620.06 156.839 1620.93 155.731 1620.93C154.623 1620.93 153.725 1620.06 153.725 1618.99Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M88.9154 1518.3L88.9154 1661.25" fill="none" opacity="1" stroke="#ffb7af" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 1473.89)" x="0" y="0">
+              <tspan textLength="359.553" x="0" y="23.91"><![CDATA[7. CAREER COMPETENCIES]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M699.279 1554.9C699.279 1537.85 685.697 1524.01 668.972 1524.01C663.809 1524.01 658.645 1525.38 654.155 1527.9L648.094 1521.72C647.42 1521.03 646.522 1520.92 645.624 1521.26C644.726 1521.6 644.277 1522.41 644.277 1523.32L644.277 1528.13L642.818 1526.64C642.369 1526.18 641.696 1526.18 641.247 1526.64C640.798 1527.1 640.798 1527.78 641.247 1528.24L642.706 1529.73L637.991 1529.73C637.093 1529.73 636.308 1530.3 635.971 1531.1C635.634 1531.9 635.746 1532.93 636.42 1533.62L642.481 1539.8C640.012 1544.37 638.665 1549.64 638.665 1554.9C638.665 1565.2 643.716 1574.47 651.349 1580.07L647.869 1585.22C647.533 1585.8 647.645 1586.48 648.094 1586.83C648.318 1586.94 648.543 1587.05 648.767 1587.05C649.104 1587.05 649.441 1586.94 649.665 1586.6L653.257 1581.45C657.859 1584.31 663.247 1585.91 668.972 1585.91C674.697 1585.91 680.085 1584.31 684.687 1581.45L688.279 1586.6C688.503 1586.94 688.84 1587.05 689.177 1587.05C689.401 1587.05 689.626 1586.94 689.85 1586.83C690.412 1586.48 690.524 1585.8 690.075 1585.22L686.595 1580.07C694.228 1574.47 699.279 1565.2 699.279 1554.9ZM646.522 1523.32L653.706 1530.64C654.155 1531.1 654.38 1531.67 654.38 1532.25L654.38 1538.31L646.522 1530.3L646.522 1523.32ZM637.991 1532.02L644.951 1532.02L652.808 1540.03L646.859 1540.03C646.298 1540.03 645.737 1539.8 645.288 1539.34L637.991 1532.02ZM668.972 1583.51C653.482 1583.51 640.91 1570.69 640.91 1554.9C640.91 1550.21 642.032 1545.63 644.165 1541.51C644.951 1542.09 645.849 1542.31 646.747 1542.31L654.941 1542.31L668.074 1555.7C668.299 1555.93 668.635 1556.05 668.86 1556.05C669.084 1556.05 669.421 1555.93 669.646 1555.7C670.095 1555.24 670.095 1554.56 669.646 1554.1L656.625 1540.71L656.625 1532.36C656.625 1531.44 656.288 1530.53 655.839 1529.73C659.88 1527.44 664.37 1526.3 668.972 1526.3C684.462 1526.3 697.034 1539.11 697.034 1554.9C697.034 1570.69 684.462 1583.51 668.972 1583.51Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M647.533 1547.92C647.645 1547.92 647.757 1548.04 647.982 1548.04C648.431 1548.04 648.88 1547.81 648.992 1547.35C649.216 1546.66 649.553 1545.86 649.89 1545.18C650.114 1544.6 649.89 1543.92 649.441 1543.69C648.88 1543.46 648.206 1543.69 647.982 1544.15C647.645 1544.95 647.196 1545.75 646.971 1546.55C646.635 1547.12 646.971 1547.69 647.533 1547.92Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M668.972 1530.87C665.268 1530.87 661.676 1531.79 658.308 1533.39C657.747 1533.62 657.523 1534.31 657.859 1534.88C658.084 1535.45 658.757 1535.68 659.319 1535.33C662.349 1533.85 665.492 1533.05 668.86 1533.05C680.646 1533.05 690.187 1542.77 690.187 1554.79C690.187 1566.8 680.646 1576.53 668.86 1576.53C657.074 1576.53 647.533 1566.8 647.533 1554.79C647.533 1553.64 647.645 1552.61 647.757 1551.47C647.869 1550.9 647.42 1550.21 646.859 1550.21C646.298 1550.1 645.624 1550.55 645.624 1551.13C645.4 1552.27 645.4 1553.53 645.4 1554.67C645.4 1567.95 655.951 1578.7 668.972 1578.7C681.993 1578.7 692.544 1567.95 692.544 1554.67C692.544 1541.4 681.993 1530.87 668.972 1530.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M668.972 1562.91C673.35 1562.91 676.83 1559.36 676.83 1554.9C676.83 1550.44 673.35 1546.89 668.972 1546.89C668.523 1546.89 668.074 1546.89 667.625 1547.01C667.064 1547.12 666.615 1547.69 666.727 1548.38C666.839 1548.95 667.401 1549.41 668.074 1549.29C668.411 1549.29 668.748 1549.18 668.972 1549.18C672.115 1549.18 674.585 1551.7 674.585 1554.9C674.585 1558.1 672.115 1560.62 668.972 1560.62C665.829 1560.62 663.36 1558.1 663.36 1554.9C663.36 1554.56 663.36 1554.21 663.472 1553.99C663.584 1553.41 663.135 1552.73 662.574 1552.61C661.9 1552.5 661.339 1552.96 661.227 1553.53C661.115 1553.99 661.115 1554.44 661.115 1554.9C661.115 1559.36 664.594 1562.91 668.972 1562.91ZM667.85 1567.49L667.85 1569.78C667.85 1570.46 668.299 1570.92 668.972 1570.92C669.646 1570.92 670.095 1570.46 670.095 1569.78L670.095 1567.49C670.095 1566.8 669.646 1566.34 668.972 1566.34C668.299 1566.34 667.85 1566.8 667.85 1567.49ZM654.38 1556.05L656.625 1556.05C657.298 1556.05 657.747 1555.59 657.747 1554.9C657.747 1554.21 657.298 1553.76 656.625 1553.76L654.38 1553.76C653.706 1553.76 653.257 1554.21 653.257 1554.9C653.257 1555.59 653.706 1556.05 654.38 1556.05ZM661.115 1568.75C661.339 1568.86 661.451 1568.86 661.676 1568.86C662.013 1568.86 662.462 1568.63 662.686 1568.29L663.809 1566.34C664.145 1565.77 663.921 1565.08 663.36 1564.74C662.798 1564.4 662.125 1564.63 661.788 1565.2L660.666 1567.14C660.441 1567.72 660.553 1568.4 661.115 1568.75ZM655.727 1548.49L657.635 1549.64C657.859 1549.75 657.972 1549.75 658.196 1549.75C658.533 1549.75 658.982 1549.52 659.206 1549.18C659.543 1548.61 659.319 1547.92 658.757 1547.58L656.849 1546.43C656.288 1546.09 655.614 1546.32 655.278 1546.89C655.053 1547.46 655.278 1548.15 655.727 1548.49ZM657.747 1560.16L655.839 1561.31C655.278 1561.65 655.165 1562.34 655.39 1562.91C655.614 1563.25 655.951 1563.48 656.4 1563.48C656.625 1563.48 656.737 1563.48 656.961 1563.37L658.87 1562.22C659.431 1561.88 659.543 1561.19 659.319 1560.62C658.982 1560.05 658.196 1559.94 657.747 1560.16Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M682.442 1554.9C682.442 1560.05 679.636 1564.74 675.146 1567.03C674.585 1567.37 674.36 1568.06 674.697 1568.52C674.921 1568.86 675.258 1569.09 675.707 1569.09C675.932 1569.09 676.044 1569.09 676.268 1568.98C681.432 1566.34 684.687 1560.85 684.687 1554.9C684.687 1546.09 677.615 1538.88 668.972 1538.88C666.503 1538.88 663.921 1539.45 661.676 1540.71C661.115 1541.06 660.89 1541.74 661.227 1542.2C661.564 1542.77 662.237 1543 662.686 1542.66C664.594 1541.63 666.727 1541.06 668.86 1541.06C676.381 1541.17 682.442 1547.35 682.442 1554.9Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+          </g>
+        </a>
+
+        <!-- Critical Thinking & Agency -->
+        <a xlink:href="framework/critical.html" tabindex="0" aria-label="Critical Thinking & Agency - Managing AI-human relationships and problem solving" role="link">
+          <title>Click to learn about Critical Thinking & Agency</title>
+          <g id="Critical">
+            <path d="M138.033 1262.47L637.319 1262.47C687.368 1262.47 727.941 1303.04 727.941 1353.09L727.941 1353.62C727.941 1403.67 687.368 1444.24 637.319 1444.24L138.033 1444.24" fill="#b9e1f9" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <g opacity="1">
+              <path d="M671.136 1345.78C660.942 1345.78 652.678 1354.34 652.678 1364.9C652.678 1375.46 660.942 1384.01 671.136 1384.01C681.33 1384.01 689.594 1375.46 689.594 1364.9C689.594 1354.34 681.33 1345.78 671.136 1345.78Z" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M684.198 1378.43L694.279 1388.87" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M681.075 1348.72L681.075 1317.84L632.8 1317.84L632.8 1381.07L661.197 1381.07" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M644.158 1332.55L671.136 1332.55M644.158 1341.37L671.136 1341.37M644.158 1359.02L652.678 1359.02M644.158 1367.84L652.678 1367.84M644.158 1350.19L659.777 1350.19" fill="none" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="round" stroke-width="2"/>
+              <path d="M658.783 1372.25L678.235 1372.25L678.235 1367.84L657.221 1367.84C657.505 1369.46 658.073 1370.93 658.783 1372.25ZM657.647 1360.49L678.235 1360.49L678.235 1356.08L659.777 1356.08C658.783 1357.4 658.073 1358.87 657.647 1360.49Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1317.84)" x="0" y="0">
+                <tspan textLength="315.281" x="0" y="18.5359"><![CDATA[Manage the AI-Human relationship]]></tspan>
+              </text>
+              <path d="M153.725 1329.84C153.725 1328.78 154.623 1327.91 155.731 1327.91C156.839 1327.91 157.737 1328.78 157.737 1329.84C157.737 1330.91 156.839 1331.78 155.731 1331.78C154.623 1331.78 153.725 1330.91 153.725 1329.84Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1372.04)" x="0" y="0">
+                <tspan textLength="219.662" x="0" y="18.5359"><![CDATA[Solve problems using AI]]></tspan>
+              </text>
+              <path d="M153.725 1384.04C153.725 1382.98 154.623 1382.11 155.731 1382.11C156.839 1382.11 157.737 1382.98 157.737 1384.04C157.737 1385.11 156.839 1385.98 155.731 1385.98C154.623 1385.98 153.725 1385.11 153.725 1384.04Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <path d="M153.725 1356.94C153.725 1355.88 154.623 1355.01 155.731 1355.01C156.839 1355.01 157.737 1355.88 157.737 1356.94C157.737 1358.01 156.839 1358.88 155.731 1358.88C154.623 1358.88 153.725 1358.01 153.725 1356.94Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1344.94)" x="0" y="0">
+                <tspan textLength="402.952" x="0" y="18.5359"><![CDATA[Evaluate how AI tools can perpetuate biases]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1399.14)" x="0" y="0">
+                <tspan textLength="218.542" x="0" y="18.5359"><![CDATA[Adapt as AI tools evolve]]></tspan>
+              </text>
+              <path d="M153.725 1411.14C153.725 1410.08 154.623 1409.21 155.731 1409.21C156.839 1409.21 157.737 1410.08 157.737 1411.14C157.737 1412.21 156.839 1413.08 155.731 1413.08C154.623 1413.08 153.725 1412.21 153.725 1411.14Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M69.2269 1269.42L108.604 1269.42L108.604 1308.46L69.2269 1308.46L69.2269 1269.42Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#b9e1f9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <path d="M88.9154 1317.3L88.9154 1460.25" fill="none" opacity="1" stroke="#b9e1f9" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 1277.46)" x="0" y="0">
+              <tspan textLength="432.882" x="0" y="23.91"><![CDATA[6. CRITICAL THINKING & AGENCY]]></tspan>
+            </text>
+          </g>
+        </a>
+
+        <!-- Safety & Ethics -->
+        <a xlink:href="framework/safety.html" tabindex="0" aria-label="Safety & Ethics - Understanding risks, legal issues, and ethical considerations" role="link">
+          <title>Click to learn about Safety & Ethics</title>
+          <g id="Safety">
+            <path d="M138.033 1064.76L637.319 1064.76C687.368 1064.76 727.941 1105.33 727.941 1155.38L727.941 1155.91C727.941 1205.96 687.368 1246.53 637.319 1246.53L138.033 1246.53" fill="#cde4bc" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <path d="M69.2269 1069.51L108.604 1069.51L108.604 1108.55L69.2269 1108.55L69.2269 1069.51Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#cde4bc" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <path d="M88.9154 1117.66L88.9154 1260.62" fill="none" opacity="1" stroke="#cde4bc" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 1079.55)" x="0" y="0">
+              <tspan textLength="263.68" x="0" y="23.91"><![CDATA[5. SAFETY & ETHICS]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M153.725 1134.11C153.725 1133.05 154.623 1132.18 155.731 1132.18C156.839 1132.18 157.737 1133.05 157.737 1134.11C157.737 1135.18 156.839 1136.05 155.731 1136.05C154.623 1136.05 153.725 1135.18 153.725 1134.11Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1121.66)" x="0" y="0">
+                <tspan textLength="317.52" x="0" y="18.5359"><![CDATA[Know risks and liabilities of AI tools]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <path d="M153.725 1159.07C153.725 1158.01 154.623 1157.14 155.731 1157.14C156.839 1157.14 157.737 1158.01 157.737 1159.07C157.737 1160.14 156.839 1161.01 155.731 1161.01C154.623 1161.01 153.725 1160.14 153.725 1159.07Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1147.07)" x="0" y="0">
+                <tspan textLength="432.525" x="0" y="18.5359"><![CDATA[Understand legal and ethical issues involving AI]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <path d="M153.725 1183.58C153.725 1182.51 154.623 1181.64 155.731 1181.64C156.839 1181.64 157.737 1182.51 157.737 1183.58C157.737 1184.65 156.839 1185.51 155.731 1185.51C154.623 1185.51 153.725 1184.65 153.725 1183.58Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1171.58)" x="0" y="0">
+                <tspan textLength="334.627" x="0" y="18.5359"><![CDATA[Protect your wellbeing when using AI]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <path d="M153.725 1208.08C153.725 1207.02 154.623 1206.15 155.731 1206.15C156.839 1206.15 157.737 1207.02 157.737 1208.08C157.737 1209.15 156.839 1210.02 155.731 1210.02C154.623 1210.02 153.725 1209.15 153.725 1208.08Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1196.08)" x="0" y="0">
+                <tspan textLength="385.435" x="0" y="18.5359"><![CDATA[Assess technology's environmental impact]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <path d="M625.71 1190.41L685.774 1190.41C688.848 1190.41 691.673 1188.77 693.168 1185.93C694.663 1183.18 694.663 1179.83 693.085 1177.07L663.094 1125.19C661.516 1122.52 658.857 1120.89 655.783 1120.89C652.71 1120.89 650.051 1122.52 648.473 1125.19L618.482 1177.07C616.904 1179.83 616.82 1183.18 618.399 1185.93C619.894 1188.69 622.636 1190.41 625.71 1190.41ZM622.719 1179.74L652.793 1127.86C653.457 1126.74 654.537 1126.05 655.783 1126.05C657.03 1126.05 658.11 1126.65 658.774 1127.86L688.848 1179.74C689.513 1180.86 689.513 1182.23 688.931 1183.44C688.266 1184.56 687.186 1185.25 685.857 1185.25L625.71 1185.25C624.464 1185.25 623.3 1184.56 622.636 1183.44C621.971 1182.32 622.054 1180.86 622.719 1179.74Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M655.783 1166.23C657.196 1166.23 658.276 1165.11 658.276 1163.65L658.276 1145.58C658.276 1144.12 657.196 1143 655.783 1143C654.371 1143 653.291 1144.12 653.291 1145.58L653.291 1163.65C653.291 1165.11 654.371 1166.23 655.783 1166.23ZM655.783 1169.84C654.407 1169.84 653.291 1171 653.291 1172.43C653.291 1173.85 654.407 1175.01 655.783 1175.01C657.16 1175.01 658.276 1173.85 658.276 1172.43C658.276 1171 657.16 1169.84 655.783 1169.84Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+          </g>
+        </a>
+
+        <!-- Content Creation -->
+        <a xlink:href="framework/content.html" tabindex="0" aria-label="Content Creation - Using AI to create and curate content" role="link">
+          <title>Click to learn about Content Creation</title>
+          <g id="Content">
+            <path d="M138.033 867.054L637.319 867.054C687.368 867.054 727.941 907.626 727.941 957.676L727.941 958.203C727.941 1008.25 687.368 1048.83 637.319 1048.83L138.033 1048.83" fill="#eee6ab" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 935.718)" x="0" y="0">
+              <tspan textLength="199.206" x="0" y="18.5359"><![CDATA[adapt existing content]]></tspan>
+            </text>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 986.628)" x="0" y="0">
+              <tspan textLength="261.783" x="0" y="18.5359"><![CDATA[content and human creativity]]></tspan>
+            </text>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 1012.08)" x="0" y="0">
+                <tspan textLength="394.943" x="0" y="18.5359"><![CDATA[Leverage AI for multimedia content creation]]></tspan>
+              </text>
+              <path d="M153.725 1024.08C153.725 1023.01 154.623 1022.15 155.731 1022.15C156.839 1022.15 157.737 1023.01 157.737 1024.08C157.737 1025.15 156.839 1026.02 155.731 1026.02C154.623 1026.02 153.725 1025.15 153.725 1024.08Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 910.263)" x="0" y="0">
+                <tspan textLength="404.081" x="0" y="18.5359"><![CDATA[Use AI to create and curate new content and]]></tspan>
+              </text>
+              <path d="M153.725 922.263C153.725 921.194 154.623 920.328 155.731 920.328C156.839 920.328 157.737 921.194 157.737 922.263C157.737 923.331 156.839 924.198 155.731 924.198C154.623 924.198 153.725 923.331 153.725 922.263Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 961.173)" x="0" y="0">
+                <tspan textLength="408.62" x="0" y="18.5359"><![CDATA[Stay aware of discourses about AI-generated]]></tspan>
+              </text>
+              <path d="M153.725 973.173C153.725 972.104 154.623 971.238 155.731 971.238C156.839 971.238 157.737 972.104 157.737 973.173C157.737 974.241 156.839 975.108 155.731 975.108C154.623 975.108 153.725 974.241 153.725 973.173Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M69.2269 867.418L108.604 867.418L108.604 906.46L69.2269 906.46L69.2269 867.418Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#eee6ab" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <path d="M88.9154 916.114L88.9154 1059.07" fill="none" opacity="1" stroke="#eee6ab" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 877.59)" x="0" y="0">
+              <tspan textLength="300.319" x="0" y="23.91"><![CDATA[4. CONTENT CREATION]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M602.475 970.681L599.011 970.681C598.055 970.681 597.279 971.392 597.279 972.271C597.279 973.151 598.055 973.861 599.011 973.861L602.475 973.861C603.431 973.861 604.207 973.151 604.207 972.271C604.207 971.392 603.431 970.681 602.475 970.681ZM602.475 978.631L599.011 978.631C598.055 978.631 597.279 979.342 597.279 980.221C597.279 981.1 598.055 981.811 599.011 981.811L602.475 981.811C603.431 981.811 604.207 981.1 604.207 980.221C604.207 979.342 603.431 978.631 602.475 978.631ZM602.475 986.581L599.011 986.581C598.055 986.581 597.279 987.292 597.279 988.171C597.279 989.05 598.055 989.761 599.011 989.761L602.475 989.761C603.431 989.761 604.207 989.05 604.207 988.171C604.207 987.292 603.431 986.581 602.475 986.581Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M691.136 973.949C689.137 972.529 686.585 972.05 684.139 972.631L660.913 978.159C660.457 976.917 659.669 975.783 658.607 974.877C656.853 973.379 654.474 972.608 652.086 972.769L648.291 973.019C646.808 973.109 645.318 972.861 643.974 972.278L627.671 965.218C623.855 963.565 619.622 962.929 615.433 963.383L594.938 965.592C592.323 965.876 590.35 967.913 590.35 970.328L590.35 990.459C590.35 991.937 591.078 993.306 592.347 994.216C593.617 995.127 595.243 995.45 596.806 995.086L608.174 992.48C611.07 991.815 614.12 992.154 616.762 993.429L638.565 1003.97C640.837 1005.07 643.331 1005.62 645.829 1005.62C648.292 1005.62 650.755 1005.08 653.006 1004.01L689.906 986.449C692.604 985.163 694.279 982.633 694.279 979.832C694.279 977.513 693.133 975.368 691.136 973.949ZM688.31 983.628L651.41 1001.19C647.885 1002.86 643.688 1002.85 640.179 1001.16L618.376 990.616C616.118 989.524 613.628 988.967 611.119 988.967C609.854 988.967 608.584 989.109 607.336 989.397L595.969 992.003C595.451 992.123 594.906 992.017 594.481 991.712C594.057 991.408 593.814 990.952 593.814 990.459L593.814 970.328C593.814 969.522 594.473 968.843 595.344 968.749L615.839 966.538C619.384 966.155 622.965 966.692 626.194 968.091L642.495 975.151C644.374 975.966 646.467 976.33 648.54 976.186L652.335 975.936C653.792 975.853 655.179 976.291 656.248 977.202C657.317 978.116 657.904 979.355 657.904 980.695L657.904 981.344C657.904 981.97 657.504 982.538 656.882 982.794L651.772 984.902C647.934 986.482 643.493 986.568 639.59 985.134L630.853 981.924C629.959 981.596 628.956 981.994 628.601 982.811C628.244 983.627 628.677 984.552 629.566 984.878L638.303 988.088C643.072 989.842 648.5 989.735 653.193 987.804L658.301 985.695C660.165 984.927 661.368 983.22 661.368 981.344L685.007 975.707C686.407 975.378 687.869 975.65 689.014 976.464C690.159 977.278 690.815 978.505 690.815 979.844C690.815 981.442 689.855 982.892 688.31 983.628ZM642.315 946.832C642.315 947.711 643.091 948.422 644.047 948.422C645.003 948.422 645.779 947.711 645.779 946.832L645.779 937.95L652.2 932.056C652.877 931.435 652.877 930.43 652.2 929.808C651.523 929.187 650.428 929.187 649.751 929.808L642.822 936.168C642.497 936.465 642.315 936.869 642.315 937.292L642.315 946.832Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M631.922 953.201L631.922 954.791L631.922 956.372C631.922 962.507 637.361 967.501 644.047 967.501C650.733 967.501 656.172 962.507 656.172 956.372L656.172 954.782L656.172 953.192C656.172 949.635 658.398 946.748 660.755 943.692C663.428 940.224 666.459 936.297 666.459 930.881C666.457 919.512 656.382 910.263 643.993 910.263C631.605 910.263 621.529 919.512 621.529 930.883C621.529 936.298 624.591 940.23 627.292 943.698C629.673 946.754 631.922 949.643 631.922 953.201ZM652.708 956.372C652.708 960.755 648.822 964.321 644.047 964.321C639.271 964.321 635.386 960.755 635.386 956.372L635.386 954.79L652.708 954.782L652.708 956.372ZM643.993 913.443C654.469 913.443 662.993 921.267 662.993 930.883C662.993 935.286 660.532 938.477 657.927 941.855C655.666 944.786 653.34 947.803 652.815 951.602L635.273 951.602C634.742 947.797 632.391 944.778 630.108 941.847C627.479 938.47 624.993 935.279 624.993 930.883C624.993 921.267 633.517 913.443 643.993 913.443Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M639.358 935.236C639.696 935.546 640.139 935.702 640.583 935.702C641.026 935.702 641.469 935.546 641.807 935.236C642.484 934.615 642.484 933.61 641.807 932.988L638.343 929.808C637.666 929.187 636.571 929.187 635.894 929.808C635.216 930.43 635.216 931.435 635.894 932.056L639.358 935.236Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+          </g>
+        </a>
+
+        <!-- Communication & Collaboration -->
+        <a xlink:href="framework/communication.html" tabindex="0" aria-label="Communication & Collaboration - Prompt engineering and transparent AI use" role="link">
+          <title>Click to learn about Communication & Collaboration</title>
+          <g id="Communication">
+            <path d="M138.033 669.345L637.319 669.345C687.368 669.345 727.941 709.918 727.941 759.967L727.941 760.495C727.941 810.544 687.368 851.117 637.319 851.117L138.033 851.117" fill="#d6a6e4" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 802.81)" x="0" y="0">
+                <tspan textLength="299.344" x="0" y="18.5359"><![CDATA[Use and talk about AI with others]]></tspan>
+              </text>
+              <path d="M153.725 814.81C153.725 813.742 154.623 812.876 155.731 812.876C156.839 812.876 157.737 813.742 157.737 814.81C157.737 815.879 156.839 816.745 155.731 816.745C154.623 816.745 153.725 815.879 153.725 814.81Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 725.534)" x="0" y="0">
+                <tspan textLength="327.798" x="0" y="18.5359"><![CDATA[Prompt engineering as conversation]]></tspan>
+              </text>
+              <path d="M153.725 737.534C153.725 736.465 154.623 735.599 155.731 735.599C156.839 735.599 157.737 736.465 157.737 737.534C157.737 738.602 156.839 739.468 155.731 739.468C154.623 739.468 153.725 738.602 153.725 737.534Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <path d="M153.725 789.052C153.725 787.983 154.623 787.117 155.731 787.117C156.839 787.117 157.737 787.983 157.737 789.052C157.737 790.12 156.839 790.986 155.731 790.986C154.623 790.986 153.725 790.12 153.725 789.052Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 777.052)" x="0" y="0">
+                <tspan textLength="331.197" x="0" y="18.5359"><![CDATA[Practice transparency when using AI]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 751.293)" x="0" y="0">
+                <tspan textLength="376.767" x="0" y="18.5359"><![CDATA[Manage and share AI content responsibly]]></tspan>
+              </text>
+              <path d="M153.725 764.293C153.725 763.224 154.623 762.358 155.731 762.358C156.839 762.358 157.737 763.224 157.737 764.293C157.737 765.361 156.839 766.227 155.731 766.227C154.623 766.227 153.725 765.361 153.725 764.293Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M88.9154 718.659L88.9154 856.662" fill="none" opacity="1" stroke="#d6a6e4" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <path d="M69.2269 669.691L108.604 669.691L108.604 708.733L69.2269 708.733L69.2269 669.691Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#d6a6e4" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 684.823)" x="0" y="0">
+              <tspan textLength="521.351" x="0" y="23.91"><![CDATA[3. COMMUNICATION & COLLABORATION]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M694.279 780.606C694.279 770.503 687.541 761.725 677.709 757.369C677.98 757.91 678.218 758.464 678.381 759.055C687.199 763.36 693.15 771.404 693.15 780.606C693.156 788.174 689.151 795.241 682.162 799.994C681.993 800.11 681.888 800.317 681.888 800.543C681.888 804.298 682.721 808.685 684.064 811.994C684.231 812.408 684.187 812.875 683.946 813.243C683.706 813.609 683.324 813.785 682.935 813.728C676.521 812.712 670.731 808.951 667.837 805.673C667.731 805.553 667.588 805.486 667.437 805.486L663.683 805.486C656.241 805.486 649.438 803.139 644.247 799.282C643.587 799.285 642.928 799.276 642.268 799.266C647.791 803.901 655.352 806.767 663.683 806.767L667.206 806.767C670.917 810.863 676.998 814.083 682.778 814.998C682.883 815.014 682.988 815.023 683.092 815.023C683.784 815.023 684.426 814.659 684.851 814.01C685.344 813.26 685.432 812.308 685.088 811.463C683.872 808.464 683.071 804.361 683.018 800.905C690.188 795.912 694.285 788.532 694.279 780.606Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M618.412 810.427C617.526 810.427 616.691 809.935 616.183 809.097C615.62 808.168 615.555 806.972 616.012 805.971C617.596 802.497 618.688 797.406 618.798 793.077C609.99 786.969 604.958 777.984 604.965 768.324C604.965 750.657 622.031 736.282 643.009 736.282C663.987 736.282 681.053 750.657 681.053 768.325C681.053 785.993 663.987 800.367 643.009 800.367L638.848 800.367C634.786 804.675 627.114 809.362 618.711 810.409C618.611 810.42 618.511 810.427 618.412 810.427ZM643.009 738.842C623.276 738.842 607.223 752.068 607.223 768.325L607.223 768.326C607.218 777.259 612.06 785.618 620.51 791.256C620.855 791.487 621.067 791.905 621.067 792.358C621.067 797.281 619.87 803.085 618.019 807.146C617.915 807.373 617.991 807.558 618.045 807.65C618.101 807.742 618.229 807.894 618.464 807.865C626.568 806.857 633.917 802.272 637.604 798.175C637.815 797.94 638.098 797.809 638.394 797.809L643.008 797.809C662.74 797.809 678.793 784.583 678.793 768.326C678.793 752.07 662.74 738.842 643.009 738.842ZM606.094 768.325L606.105 768.325L606.094 768.325Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M660.117 756.859L649.952 756.859C649.641 756.859 649.388 756.573 649.388 756.219C649.388 755.866 649.641 755.58 649.952 755.58L660.117 755.58C660.428 755.58 660.681 755.866 660.681 756.219C660.681 756.573 660.428 756.859 660.117 756.859ZM645.435 756.859L623.977 756.859C623.665 756.859 623.412 756.573 623.412 756.219C623.412 755.866 623.665 755.58 623.977 755.58L645.435 755.58C645.746 755.58 645.999 755.866 645.999 756.219C645.999 756.573 645.746 756.859 645.435 756.859ZM664.634 764.537L636.4 764.537C636.088 764.537 635.835 764.251 635.835 763.897C635.835 763.544 636.088 763.258 636.4 763.258L664.634 763.258C664.946 763.258 665.199 763.544 665.199 763.897C665.199 764.251 664.946 764.537 664.634 764.537ZM631.882 764.537L618.33 764.537C618.018 764.537 617.765 764.251 617.765 763.897C617.765 763.544 618.018 763.258 618.33 763.258L631.882 763.258C632.194 763.258 632.447 763.544 632.447 763.897C632.447 764.251 632.194 764.537 631.882 764.537ZM669.152 772.215L658.987 772.215C658.676 772.215 658.423 771.928 658.423 771.575C658.423 771.222 658.676 770.935 658.987 770.935L669.152 770.935C669.463 770.935 669.716 771.222 669.716 771.575C669.716 771.928 669.463 772.215 669.152 772.215ZM653.34 772.215L618.33 772.215C618.018 772.215 617.765 771.928 617.765 771.575C617.765 771.222 618.018 770.935 618.33 770.935L653.34 770.935C653.652 770.935 653.905 771.222 653.905 771.575C653.905 771.928 653.652 772.215 653.34 772.215ZM660.117 781.173L623.977 781.173C623.665 781.173 623.412 780.886 623.412 780.533C623.412 780.18 623.665 779.893 623.977 779.893L660.117 779.893C660.428 779.893 660.681 780.18 660.681 780.533C660.681 780.886 660.428 781.173 660.117 781.173Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+          </g>
+        </a>
+
+        <!-- Information & Data Literacy -->
+        <a xlink:href="framework/information.html" tabindex="0" aria-label="Information & Data Literacy - Using AI to retrieve, analyze, and verify information" role="link">
+          <title>Click to learn about Information & Data Literacy</title>
+          <g id="Information">
+            <path d="M138.033 471.637L637.319 471.637C687.368 471.637 727.941 512.21 727.941 562.259L727.941 562.787C727.941 612.836 687.368 653.409 637.319 653.409L138.033 653.409" fill="#a8d2d4" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 607.987)" x="0" y="0">
+              <tspan textLength="268.621" x="0" y="18.5359"><![CDATA[datasets used to train AI tools]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M153.725 592.878C153.725 591.809 154.623 590.943 155.731 590.943C156.839 590.943 157.737 591.809 157.737 592.878C157.737 593.946 156.839 594.813 155.731 594.813C154.623 594.813 153.725 593.946 153.725 592.878Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 580.878)" x="0" y="0">
+                <tspan textLength="402.882" x="0" y="18.5359"><![CDATA[Understand the current circumstances of the]]></tspan>
+              </text>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 553.768)" x="0" y="0">
+                <tspan textLength="341.085" x="0" y="18.5359"><![CDATA[Evaluate, verify, and identify AI output]]></tspan>
+              </text>
+              <path d="M153.725 565.768C153.725 564.7 154.623 563.834 155.731 563.834C156.839 563.834 157.737 564.7 157.737 565.768C157.737 566.837 156.839 567.703 155.731 567.703C154.623 567.703 153.725 566.837 153.725 565.768Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 526.659)" x="0" y="0">
+                <tspan textLength="407.471" x="0" y="18.5359"><![CDATA[Use AI to retrieve, analyze, and organize info]]></tspan>
+              </text>
+              <path d="M153.725 538.659C153.725 537.591 154.623 536.724 155.731 536.724C156.839 536.724 157.737 537.591 157.737 538.659C157.737 539.728 156.839 540.594 155.731 540.594C154.623 540.594 153.725 539.728 153.725 538.659Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M88.9154 517.659L88.9154 660.618" fill="none" opacity="1" stroke="#a8d2d4" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <path d="M69.2269 478.781L108.604 478.781L108.604 517.824L69.2269 517.824L69.2269 478.781Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#a8d2d4" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <g opacity="1">
+              <path d="M690.914 533.474C690.914 533.474 647.759 533.474 645.484 533.474C643.012 533.474 641.304 526.211 638.753 526.211L623.61 526.211C621.75 526.211 620.245 527.838 620.245 529.842L620.245 595.204C620.245 597.208 621.75 598.835 623.61 598.835L690.914 598.835C692.772 598.835 694.279 597.208 694.279 595.204L694.279 537.105C694.279 535.1 692.772 533.474 690.914 533.474Z" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="miter" stroke-width="2"/>
+              <path d="M694.279 564.339L694.279 546.183C694.279 544.177 692.773 542.552 690.914 542.552L623.61 542.552C621.75 542.552 620.245 544.177 620.245 546.183L620.245 564.339" fill="none" opacity="1" stroke="#000000" stroke-linecap="round" stroke-linejoin="miter" stroke-width="2"/>
+            </g>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 486.803)" x="0" y="0">
+              <tspan textLength="455.334" x="0" y="23.91"><![CDATA[2. INFORMATION & DATA LITERACY]]></tspan>
+            </text>
+          </g>
+        </a>
+
+        <!-- Hardware & Software -->
+        <a xlink:href="framework/hardware.html" tabindex="0" aria-label="Hardware & Software - Accessing AI tools and understanding how LLMs work" role="link">
+          <title>Click to learn about Hardware & Software</title>
+          <g id="Hardware">
+            <path d="M138.033 273.929L637.319 273.929C687.368 273.929 727.941 314.502 727.941 364.551L727.941 365.079C727.941 415.128 687.368 455.701 637.319 455.701L138.033 455.701" fill="#fecbaa" fill-rule="nonzero" opacity="1" stroke="#e56791" stroke-linecap="butt" stroke-linejoin="round" stroke-opacity="0" stroke-width="9.91686"/>
+            <g opacity="1">
+              <path d="M153.725 342.911C153.725 341.842 154.623 340.976 155.731 340.976C156.839 340.976 157.737 341.842 157.737 342.911C157.737 343.979 156.839 344.845 155.731 344.845C154.623 344.845 153.725 343.979 153.725 342.911Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 330.911)" x="0" y="0">
+                <tspan textLength="208.284" x="0" y="18.5359"><![CDATA[Picking the right AI tool]]></tspan>
+              </text>
+            </g>
+            <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 384.135)" x="0" y="0">
+              <tspan textLength="147.958" x="0" y="18.5359"><![CDATA[preferred device]]></tspan>
+            </text>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 357.523)" x="0" y="0">
+                <tspan textLength="412.03" x="0" y="18.5359"><![CDATA[Know how to access and use AI tools on your]]></tspan>
+              </text>
+              <path d="M153.725 368.769C153.725 367.701 154.623 366.835 155.731 366.835C156.839 366.835 157.737 367.701 157.737 368.769C157.737 369.838 156.839 370.704 155.731 370.704C154.623 370.704 153.725 369.838 153.725 368.769Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <g opacity="1">
+              <text fill="#000000" font-family="ArialMT" font-size="20.4755" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 165.219 410.747)" x="0" y="0">
+                <tspan textLength="253.784" x="0" y="18.5359"><![CDATA[Understand how LLMs work]]></tspan>
+              </text>
+              <path d="M153.725 422.747C153.725 421.678 154.623 420.812 155.731 420.812C156.839 420.812 157.737 421.678 157.737 422.747C157.737 423.815 156.839 424.681 155.731 424.681C154.623 424.681 153.725 423.815 153.725 422.747Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+            <path d="M69.2269 282.893L108.604 282.893L108.604 321.936L69.2269 321.936L69.2269 282.893Z" fill="#fecbaa" fill-opacity="0" fill-rule="nonzero" opacity="1" stroke="#fecbaa" stroke-linecap="butt" stroke-linejoin="round" stroke-width="20.6803"/>
+            <path d="M88.9154 326.911L88.9154 469.87" fill="none" opacity="1" stroke="#fecbaa" stroke-linecap="butt" stroke-linejoin="round" stroke-width="16.9305"/>
+            <text fill="#000000" font-family="Arial-BoldMT" font-size="26.4119" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 149.141 287.914)" x="0" y="0">
+              <tspan textLength="368.309" x="0" y="23.91"><![CDATA[1. HARDWARE & SOFTWARE]]></tspan>
+            </text>
+            <g opacity="1">
+              <path d="M692.884 398.493L687.301 398.493L687.301 329.606C687.301 322.853 682.292 317.359 676.136 317.359L597.981 317.359C591.825 317.359 586.816 322.853 586.816 329.606L586.816 398.493L581.233 398.493C580.463 398.493 579.838 399.179 579.838 400.024L579.838 403.086C579.838 408.152 583.593 412.271 588.211 412.271L685.906 412.271C690.524 412.271 694.279 408.152 694.279 403.086L694.279 400.024C694.279 399.179 693.654 398.493 692.884 398.493ZM589.607 329.606C589.607 324.54 593.363 320.421 597.981 320.421L676.136 320.421C680.754 320.421 684.51 324.54 684.51 329.606L684.51 398.493L589.607 398.493L589.607 329.606ZM691.488 403.086C691.488 406.463 688.984 409.209 685.906 409.209L588.211 409.209C585.133 409.209 582.629 406.463 582.629 403.086L582.629 401.555L588.211 401.555L685.906 401.555L691.488 401.555L691.488 403.086Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M679.625 329.606L594.492 329.606C594.107 329.606 593.794 329.949 593.794 330.371L593.794 377.827C593.794 378.25 594.107 378.593 594.492 378.593C594.877 378.593 595.19 378.25 595.19 377.827L595.19 331.137L678.927 331.137L678.927 392.37L595.19 392.37L595.19 390.074C595.19 389.651 594.877 389.308 594.492 389.308C594.107 389.308 593.794 389.651 593.794 390.074L593.794 393.136C593.794 393.558 594.107 393.901 594.492 393.901L679.625 393.901C680.01 393.901 680.323 393.558 680.323 393.136L680.323 330.371C680.323 329.949 680.01 329.606 679.625 329.606Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M594.492 386.247C594.877 386.247 595.19 385.904 595.19 385.481L595.19 382.42C595.19 381.997 594.877 381.654 594.492 381.654C594.107 381.654 593.794 381.997 593.794 382.42L593.794 385.481C593.794 385.904 594.107 386.247 594.492 386.247ZM641.943 404.617L632.174 404.617C631.789 404.617 631.476 404.96 631.476 405.382C631.476 405.805 631.789 406.148 632.174 406.148L641.943 406.148C642.328 406.148 642.641 405.805 642.641 405.382C642.641 404.96 642.328 404.617 641.943 404.617ZM656.583 355.645L666.672 355.645C666.918 355.645 667.146 355.505 667.271 355.272C667.397 355.041 667.404 354.754 667.286 354.517C666.435 352.781 665.319 351.269 663.969 350.024C658.911 345.332 651.237 345.263 646.122 349.863C644.157 351.616 642.75 353.557 641.945 355.632L611.937 355.632C608.911 355.632 606.355 358.442 606.355 361.77C606.355 365.081 608.911 367.878 611.937 367.878L641.946 367.878C642.76 369.956 644.204 371.956 646.122 373.66C648.652 375.927 651.803 377.059 654.955 377.057C658.186 377.057 661.416 375.868 663.976 373.493C665.338 372.209 666.444 370.704 667.263 369.017C667.379 368.78 667.372 368.494 667.245 368.263C667.119 368.033 666.892 367.891 666.646 367.891L656.592 367.891C655.055 367.851 653.806 366.459 653.806 364.784L653.806 358.753C653.806 357.064 655.057 355.67 656.583 355.645ZM656.568 369.423C656.572 369.423 656.578 369.423 656.583 369.423L665.418 369.423C664.77 370.493 663.983 371.467 663.069 372.328C658.523 376.544 651.616 376.606 647.002 372.472C645.258 370.92 643.952 369.12 643.226 367.266L643.044 366.807C642.933 366.527 642.682 366.346 642.404 366.346L611.937 366.346C609.668 366.346 607.75 364.25 607.75 361.769C607.75 359.272 609.668 357.161 611.937 357.161L642.404 357.161C642.682 357.161 642.933 356.98 643.044 356.7L643.227 356.236C643.945 354.389 645.215 352.645 647.005 351.048C651.611 346.907 658.516 346.97 663.07 351.195C663.984 352.037 664.779 353.015 665.443 354.115L656.574 354.115C654.278 354.151 652.41 356.232 652.41 358.753L652.41 364.784C652.41 367.287 654.275 369.368 656.568 369.423Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+              <path d="M640.548 360.223L637.756 360.223C637.371 360.223 637.059 360.565 637.059 360.988C637.059 361.411 637.371 361.753 637.756 361.753L640.548 361.753C640.933 361.753 641.245 361.411 641.245 360.988C641.245 360.565 640.933 360.223 640.548 360.223ZM633.569 360.223L614.031 360.223C613.645 360.223 613.333 360.565 613.333 360.988C613.333 361.411 613.645 361.753 614.031 361.753L633.569 361.753C633.955 361.753 634.267 361.411 634.267 360.988C634.267 360.565 633.955 360.223 633.569 360.223Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            </g>
+          </g>
+        </a>
+
+        <!-- Headers (non-interactive) -->
+        <g id="Headers">
+          <g opacity="1">
+            <path d="M123.326 97.9187L127.924 97.9187C129.196 97.9187 130.223 96.8951 130.223 95.6339C130.223 94.3726 129.196 93.349 127.924 93.349L123.326 93.349C122.054 93.349 121.027 94.3726 121.027 95.6339C121.027 96.8951 122.054 97.9187 123.326 97.9187ZM123.326 86.4945L127.924 86.4945C129.196 86.4945 130.223 85.4709 130.223 84.2097C130.223 82.9485 129.196 81.9249 127.924 81.9249L123.326 81.9249C122.054 81.9249 121.027 82.9485 121.027 84.2097C121.027 85.4709 122.054 86.4945 123.326 86.4945ZM127.924 120.767C129.196 120.767 130.223 119.743 130.223 118.482C130.223 117.221 129.196 116.197 127.924 116.197L123.326 116.197C122.054 116.197 121.027 117.221 121.027 118.482C121.027 119.743 122.054 120.767 123.326 120.767L127.924 120.767ZM127.924 139.046L123.326 139.046C122.054 139.046 121.027 140.069 121.027 141.331C121.027 142.592 122.054 143.615 123.326 143.615L127.924 143.615C129.196 143.615 130.223 142.592 130.223 141.331C130.223 140.069 129.196 139.046 127.924 139.046ZM127.924 150.47L123.326 150.47C122.054 150.47 121.027 151.494 121.027 152.755C121.027 154.016 122.054 155.04 123.326 155.04L127.924 155.04C129.196 155.04 130.223 154.016 130.223 152.755C130.223 151.494 129.196 150.47 127.924 150.47ZM127.924 161.894L123.326 161.894C122.054 161.894 121.027 162.918 121.027 164.179C121.027 165.44 122.054 166.464 123.326 166.464L127.924 166.464C129.196 166.464 130.223 165.44 130.223 164.179C130.223 162.918 129.196 161.894 127.924 161.894ZM127.924 173.318L123.326 173.318C122.054 173.318 121.027 174.342 121.027 175.603C121.027 176.864 122.054 177.888 123.326 177.888L127.924 177.888C129.196 177.888 130.223 176.864 130.223 175.603C130.223 174.342 129.196 173.318 127.924 173.318ZM127.924 184.743L123.326 184.743C122.054 184.743 121.027 185.766 121.027 187.027C121.027 188.289 122.054 189.312 123.326 189.312L127.924 189.312C129.196 189.312 130.223 188.289 130.223 187.027C130.223 185.766 129.196 184.743 127.924 184.743Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <!-- Additional header graphics omitted for brevity -->
+          </g>
+          <text fill="#000000" font-family="Menlo-Regular" font-size="20.531" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 89.8417 1657.25)" x="0" y="0">
+            <tspan textLength="395.542" x="111.887" y="25.158"><![CDATA[A revision of Dr. Kara Kennedy's]]></tspan>
+            <tspan textLength="506.788" x="56.2645" y="55.158"><![CDATA[AI Literacy Framework (2023) under CC-BY.]]></tspan>
+          </text>
+          <text fill="#000000" font-family="Menlo-Regular" font-size="20.531" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 89.8417 1722.25)" x="0" y="0">
+            <tspan textLength="457.345" x="80.9858" y="25.158"><![CDATA[Nicole Baker, Brigette Meskell | 2026]]></tspan>
+            <tspan textLength="432.624" x="93.3465" y="55.158"><![CDATA[Share via Creative Commons (CC-BY).]]></tspan>
+          </text>
+          <g opacity="1">
+            <path d="M233.84 112.895L244.216 81.5709L244.412 81.5709L254.788 112.895L233.84 112.895ZM263.443 138.564L274.9 138.564L248.838 66.8679L239.741 66.8679L213.678 138.564L225.185 138.564L230.693 122.533L257.886 122.533L263.443 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M282.571 138.564L293.439 138.564L293.439 66.8679L282.571 66.8679L282.571 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M332.68 138.564L378.461 138.564L378.461 128.286L343.547 128.286L343.547 66.8679L332.68 66.8679L332.68 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M388.689 138.564L399.556 138.564L399.556 66.8679L388.689 66.8679L388.689 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M426.799 138.564L437.715 138.564L437.715 76.5552L457.336 76.5552L457.336 66.8679L407.178 66.8679L407.178 76.5552L426.799 76.5552L426.799 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M465.007 138.564L510.788 138.564L510.788 128.286L475.875 128.286L475.875 107.24L505.674 107.24L505.674 97.6017L475.875 97.6017L475.875 77.1453L510.788 77.1453L510.788 66.8679L465.007 66.8679L465.007 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M531.884 76.5552L548.898 76.5552C552.373 76.5552 555.028 77.2928 556.864 78.768C559.192 80.4399 560.388 83.1445 560.454 86.8817C560.454 89.9961 559.454 92.6187 557.454 94.7496C555.422 97.0444 552.373 98.2246 548.308 98.2901L531.884 98.2901L531.884 76.5552ZM521.016 138.564L531.884 138.564L531.884 107.928L545.751 107.928L560.552 138.564L573.485 138.564L556.864 106.748C565.978 103.24 570.6 96.6182 570.731 86.8817C570.535 80.2596 568.158 75.1619 563.601 71.5886C559.831 68.4415 554.963 66.8679 548.996 66.8679L521.016 66.8679L521.016 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M595.122 112.895L605.497 81.5709L605.694 81.5709L616.07 112.895L595.122 112.895ZM624.724 138.564L636.182 138.564L610.12 66.8679L601.023 66.8679L574.96 138.564L586.467 138.564L591.975 122.533L619.168 122.533L624.724 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M678.865 118.501C675.849 125.024 671.292 128.286 665.195 128.286C662.638 128.286 660.441 127.745 658.605 126.664C656.737 125.746 655.229 124.549 654.081 123.074C652.672 121.533 651.737 119.517 651.278 117.025C650.754 114.534 650.492 109.764 650.492 102.716C650.492 95.6675 650.754 90.8648 651.278 88.3078C651.737 85.8819 652.672 83.8985 654.081 82.3577C655.229 80.8825 656.737 79.6532 658.605 78.6697C660.441 77.719 662.638 77.2108 665.195 77.1453C668.67 77.2108 671.62 78.2107 674.046 80.1449C676.374 82.1774 677.98 84.6361 678.865 87.521L690.372 87.521C689.224 81.5218 686.471 76.4896 682.111 72.4246C677.75 68.3923 672.112 66.3434 665.195 66.2778C659.556 66.3434 654.852 67.6875 651.082 70.3101C647.246 72.8999 644.46 75.8504 642.722 79.1614C641.64 80.8989 640.837 83.1773 640.313 85.9966C639.821 88.8159 639.575 94.389 639.575 102.716C639.575 110.911 639.821 116.452 640.313 119.337C640.575 120.877 640.903 122.156 641.296 123.172C641.722 124.156 642.198 125.188 642.722 126.27C644.46 129.581 647.246 132.499 651.082 135.023C654.852 137.646 659.556 139.023 665.195 139.154C671.423 139.154 676.816 137.384 681.373 133.843C685.799 130.27 688.798 125.156 690.372 118.501L678.865 118.501Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M710.533 138.564L720.761 138.564L720.761 109.059L742.349 66.8679L730.842 66.8679L715.647 98.6835L715.647 98.6835L700.453 66.8679L688.946 66.8679L710.533 109.059L710.533 138.564Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M218.39 206.87L225.293 206.87L225.293 187.411L244.221 187.411L244.221 181.289L225.293 181.289L225.293 167.858L247.469 167.858L247.469 161.33L218.39 161.33L218.39 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M259.651 167.483L270.458 167.483C272.665 167.483 274.352 167.952 275.518 168.889C276.996 169.951 277.756 171.669 277.798 174.043C277.798 176.021 277.163 177.687 275.892 179.04C274.601 180.498 272.665 181.247 270.083 181.289L259.651 181.289L259.651 167.483ZM252.748 206.87L259.651 206.87L259.651 187.411L268.459 187.411L277.86 206.87L286.075 206.87L275.518 186.661C281.306 184.433 284.242 180.227 284.326 174.043C284.201 169.836 282.691 166.598 279.797 164.329C277.402 162.33 274.31 161.33 270.52 161.33L252.748 161.33L252.748 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M299.818 190.566L306.408 170.669L306.533 170.669L313.124 190.566L299.818 190.566ZM318.621 206.87L325.899 206.87L309.344 161.33L303.566 161.33L287.012 206.87L294.321 206.87L297.819 196.687L315.092 196.687L318.621 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M330.771 206.87L337.674 206.87L337.674 178.478L337.799 178.478L347.325 200.342L353.072 200.342L362.599 178.478L362.755 178.478L362.755 206.87L369.658 206.87L369.658 161.33L363.13 161.33L350.324 191.003L350.324 191.003L337.268 161.33L330.771 161.33L330.771 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M379.247 206.87L408.326 206.87L408.326 200.342L386.149 200.342L386.149 186.974L405.077 186.974L405.077 180.852L386.149 180.852L386.149 167.858L408.326 167.858L408.326 161.33L379.247 161.33L379.247 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M422.1 206.87L427.847 206.87L436.562 174.043L436.687 174.043L445.37 206.87L451.148 206.87L462.517 161.33L455.24 161.33L448.056 193.689L447.931 193.689L439.123 161.33L434.125 161.33L425.286 193.689L425.161 193.689L418.008 161.33L410.731 161.33L422.1 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M466.484 184.1C466.484 189.306 466.64 192.825 466.953 194.657C467.119 195.636 467.327 196.448 467.577 197.093C467.848 197.718 468.15 198.374 468.483 199.061C469.587 201.164 471.357 203.018 473.793 204.621C476.187 206.287 479.176 207.161 482.757 207.245C486.38 207.161 489.4 206.287 491.815 204.621C494.21 203.018 495.938 201.164 497 199.061C497.77 197.958 498.301 196.49 498.593 194.657C498.864 192.825 498.999 189.306 498.999 184.1C498.999 178.811 498.864 175.271 498.593 173.48C498.301 171.69 497.77 170.242 497 169.139C495.938 167.036 494.21 165.162 491.815 163.517C489.4 161.851 486.38 160.997 482.757 160.955C479.176 160.997 476.187 161.851 473.793 163.517C471.357 165.162 469.587 167.036 468.483 169.139C467.796 170.242 467.286 171.69 466.953 173.48C466.64 175.271 466.484 178.811 466.484 184.1ZM473.418 184.1C473.418 179.623 473.585 176.573 473.918 174.948C474.209 173.407 474.803 172.148 475.698 171.169C476.427 170.232 477.385 169.451 478.572 168.826C479.738 168.223 481.133 167.9 482.757 167.858C484.402 167.9 485.828 168.223 487.036 168.826C488.181 169.451 489.098 170.232 489.785 171.169C490.68 172.148 491.294 173.407 491.628 174.948C491.94 176.573 492.096 179.623 492.096 184.1C492.096 188.577 491.94 191.607 491.628 193.189C491.294 194.772 490.68 196.052 489.785 197.031C489.098 197.968 488.181 198.728 487.036 199.311C485.828 199.998 484.402 200.342 482.757 200.342C481.133 200.342 479.738 199.998 478.572 199.311C477.385 198.728 476.427 197.968 475.698 197.031C474.803 196.052 474.209 194.772 473.918 193.189C473.585 191.607 473.418 188.577 473.418 184.1Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M513.96 167.483L524.767 167.483C526.974 167.483 528.661 167.952 529.827 168.889C531.306 169.951 532.066 171.669 532.107 174.043C532.107 176.021 531.472 177.687 530.202 179.04C528.911 180.498 526.974 181.247 524.392 181.289L513.96 181.289L513.96 167.483ZM507.057 206.87L513.96 206.87L513.96 187.411L522.768 187.411L532.17 206.87L540.384 206.87L529.827 186.661C535.616 184.433 538.552 180.227 538.635 174.043C538.51 169.836 537.001 166.598 534.106 164.329C531.712 162.33 528.619 161.33 524.83 161.33L507.057 161.33L507.057 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+            <path d="M546.069 206.87L552.972 206.87L552.972 193.002L560.968 184.6L560.968 184.6L573.368 206.87L581.551 206.87L565.434 179.29L580.021 161.33L571.837 161.33L553.097 184.787L552.972 184.787L552.972 161.33L546.069 161.33L546.069 206.87Z" fill="#000000" fill-rule="nonzero" opacity="1" stroke="none"/>
+          </g>
+        </g>
+      </svg>
     </div>
-    <br><br>
-    <div style="text-align:center;">
-      <a href="index.html" target="_top">← Back to Home</a>
-    </div>
-  </div>
+  </main>
+  
+  <footer role="contentinfo">
+    <p>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer" aria-label="Visit Brigette Meskell's LinkedIn profile (opens in new window)">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer" aria-label="Visit Nicole Baker's LinkedIn profile (opens in new window)">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer" aria-label="This work is licensed under Creative Commons Attribution-ShareAlike 4.0 International License (opens in new window)">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    (function() {
+      // Track clicks on framework sections
+      document.querySelectorAll('svg a').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var section = this.querySelector('g').id;
+          var url = this.getAttribute('xlink:href');
+          
+          // Send to Google Analytics
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'framework_click', {
+              'event_category': 'AI Literacy Framework',
+              'event_label': section,
+              'value': url
+            });
+          }
+          
+          // Log to console
+          console.log('Framework section clicked:', section, url);
+        });
+        
+        // Remove focus outline after mouse click
+        link.addEventListener('mousedown', function() {
+          this.blur();
+        });
+      });
+      
+      console.log('AI Literacy Framework page loaded with 7 interactive sections');
+    })();
+  </script>
 </body>
 </html>
