@@ -190,7 +190,7 @@ a:active text {
 <title>Click to learn about Metacognitive Knowledge</title>
 <g class="square" id="Metacognitive" opacity="1">
 <path d="M348.597 493.65L117.667 613.3L170.357 698.32L409.327 561.76L348.597 493.65Z" fill="#abbdcc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="37.6217" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.876095 -0.482138 0.482138 0.876095 137.498 631.998)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="37.6217" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.876095 -0.482138 0.482138 0.876095 137.498 631.998)" x="0" y="0">
 <tspan textLength="250.861" x="0" y="34.058"><![CDATA[Metacognitive]]></tspan>
 </text>
 </g>
@@ -200,7 +200,7 @@ a:active text {
 <title>Click to learn about Procedural Knowledge</title>
 <g class="square" id="Procedural" opacity="1">
 <path d="M230.747 793.19L170.767 698.02L409.827 562.04L479.307 637.33L230.747 793.19Z" fill="#bccad6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.859261 -0.511537 0.511537 0.859261 211.733 707.838)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.859261 -0.511537 0.511537 0.859261 211.733 707.838)" x="0" y="0">
 <tspan textLength="228.029" x="0" y="39.5145"><![CDATA[Procedural]]></tspan>
 </text>
 </g>
@@ -210,7 +210,7 @@ a:active text {
 <title>Click to learn about Conceptual Knowledge</title>
 <g class="square" id="Conceptual" opacity="1">
 <path d="M298.957 903.51L230.837 793.12L478.907 637.92L558.227 724.65L298.957 903.51Z" fill="#ced9e4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.840591 -0.54167 0.54167 0.840591 277.927 806.547)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.840591 -0.54167 0.54167 0.840591 277.927 806.547)" x="0" y="0">
 <tspan textLength="241.517" x="0" y="40.1554"><![CDATA[Conceptual]]></tspan>
 </text>
 </g>
@@ -220,7 +220,7 @@ a:active text {
 <title>Click to learn about Factual Knowledge</title>
 <g class="square" id="Factual" opacity="1">
 <path d="M378.287 1029.58L298.777 903.59L558.957 724.92L647.297 822.07L378.287 1029.58Z" fill="#dee5ee" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.817531 -0.575885 0.575885 0.817531 391.619 886.457)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.817531 -0.575885 0.575885 0.817531 391.619 886.457)" x="0" y="0">
 <tspan textLength="152.815" x="0" y="39.5145"><![CDATA[Factual]]></tspan>
 </text>
 </g>
@@ -231,7 +231,7 @@ a:active text {
 <title>Click to learn about Remember</title>
 <g class="square" id="Remember" opacity="1">
 <path d="M859.897 1051.41L646.907 822.07L761.577 733.38L973.897 936.29L859.897 1051.41Z" fill="#e8f4fc" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.70927 0.704937 -0.704937 0.70927 750.82 776.005)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.70927 0.704937 -0.704937 0.70927 750.82 776.005)" x="0" y="0">
 <tspan textLength="229.28" x="0" y="40.1554"><![CDATA[Remember]]></tspan>
 </text>
 </g>
@@ -241,7 +241,7 @@ a:active text {
 <title>Click to learn about Understand</title>
 <g class="square" id="Understand" opacity="1">
 <path d="M1076.13 834.63L974.017 936.4L761.687 733.06L863.847 653.97L1076.13 834.63Z" fill="#e1f1e4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.737573 0.675267 -0.675267 0.737573 842.826 688.268)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.737573 0.675267 -0.675267 0.737573 842.826 688.268)" x="0" y="0">
 <tspan textLength="246.455" x="0" y="40.1554"><![CDATA[Understand]]></tspan>
 </text>
 </g>
@@ -251,7 +251,7 @@ a:active text {
 <title>Click to learn about Apply</title>
 <g class="square" id="Apply" opacity="1">
 <path d="M1165.51 744.15L1076.14 834.65L864.327 653.64L954.117 584.46L1165.51 744.15Z" fill="#f4f6d7" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.778317 0.627871 -0.627871 0.778317 978.129 635.763)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.778317 0.627871 -0.627871 0.778317 978.129 635.763)" x="0" y="0">
 <tspan textLength="123.217" x="0" y="40.1554"><![CDATA[Apply]]></tspan>
 </text>
 </g>
@@ -261,7 +261,7 @@ a:active text {
 <title>Click to learn about Analyze</title>
 <g class="square" id="Analyze" opacity="1">
 <path d="M1246.71 661.76C1246.68 661.9 1165.18 744.14 1165.18 744.14L953.767 584.57L1035.61 520.27L1246.72 661.75L1246.71 661.76Z" fill="#fffad8" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.808022 0.589152 -0.589152 0.808022 1043.64 551.842)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.808022 0.589152 -0.589152 0.808022 1043.64 551.842)" x="0" y="0">
 <tspan textLength="167.639" x="0" y="40.1554"><![CDATA[Analyze]]></tspan>
 </text>
 </g>
@@ -271,7 +271,7 @@ a:active text {
 <title>Click to learn about Evaluate</title>
 <g class="square" id="Evaluate" opacity="1">
 <path d="M1315.57 592.01L1246.52 661.76L1035.67 520.51L1109.3 462.66L1315.57 592.01Z" fill="#fff1e2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.831528 0.555482 -0.555482 0.831528 1116.34 486.512)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="43.6493" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.831528 0.555482 -0.555482 0.831528 1116.34 486.512)" x="0" y="0">
 <tspan textLength="179.542" x="0" y="39.5145"><![CDATA[Evaluate]]></tspan>
 </text>
 </g>
@@ -281,7 +281,7 @@ a:active text {
 <title>Click to learn about Create</title>
 <g class="square" id="RCreate" opacity="1">
 <path d="M1381.67 525.85L1315.61 591.82L1110.57 462.7C1110.57 462.7 1176.19 411.52 1176.5 410.66C1176.81 409.8 1381.67 525.85 1381.67 525.85Z" fill="#fce5ef" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.867513 0.497415 -0.497415 0.867513 1193.69 438.753)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="44.3572" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.867513 0.497415 -0.497415 0.867513 1193.69 438.753)" x="0" y="0">
 <tspan textLength="138.075" x="0" y="40.1554"><![CDATA[Create]]></tspan>
 </text>
 </g>
@@ -292,7 +292,7 @@ a:active text {
 <title>Generate - Click to learn more</title>
 <g class="square" id="Generate" opacity="1">
 <path d="M1041.1 267.92L1145.66 322.3L1216.81 272.95L1115.72 221.81L1041.1 267.92Z" fill="#f9cbdd" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1073.67 252.44)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1073.67 252.44)" x="0" y="0">
 <tspan textLength="116.268" x="0" y="24.2776"><![CDATA[Generate]]></tspan>
 </text>
 </g>
@@ -302,7 +302,7 @@ a:active text {
 <title>Assemble - Click to learn more</title>
 <g class="square" id="Assemble" opacity="1">
 <path d="M953.077 192.99L1046.94 241.42L1120.08 197.87L1027.33 153.87L953.077 192.99Z" fill="#f7b1cb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="25.3359" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 977.657 179.868)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="25.3359" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 977.657 179.868)" x="0" y="0">
 <tspan textLength="119.702" x="0" y="22.9359"><![CDATA[Assemble]]></tspan>
 </text>
 </g>
@@ -312,7 +312,7 @@ a:active text {
 <title>Design - Click to learn more</title>
 <g class="square" id="Design" opacity="1">
 <path d="M870.037 124.46L956.467 167.29L1030.2 128.57L945.817 88.29L870.037 124.46Z" fill="#f498ba" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999995 -0.00313082 0.00313082 0.999995 906.885 109.261)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999995 -0.00313082 0.00313082 0.999995 906.885 109.261)" x="0" y="0">
 <tspan textLength="89.4106" x="0" y="24.2776"><![CDATA[Design]]></tspan>
 </text>
 </g>
@@ -322,7 +322,7 @@ a:active text {
 <title>Create - Click to learn more</title>
 <g class="square" id="Create" opacity="1">
 <path d="M793.287 59.58L871.397 98L947.397 64.14L868.957 28.59L793.287 59.58Z" fill="#f27faa" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 832.067 44.31)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 832.067 44.31)" x="0" y="0">
 <tspan textLength="83.4787" x="0" y="24.2776"><![CDATA[Create]]></tspan>
 </text>
 </g>
@@ -332,7 +332,7 @@ a:active text {
 <title>Check - Click to learn more</title>
 <g class="square" id="Check" opacity="1">
 <path d="M958.237 342.58L1060.82 404.13L1137.38 348.73L1037.74 292.18L958.237 342.58Z" fill="#fee0c2" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1009.35 330.11)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 1009.35 330.11)" x="0" y="0">
 <tspan textLength="80.4931" x="0" y="24.2776"><![CDATA[Check]]></tspan>
 </text>
 </g>
@@ -342,7 +342,7 @@ a:active text {
 <title>Determine - Click to learn more</title>
 <g class="square" id="Determine" opacity="1">
 <path d="M869.027 262.16L961.597 316.39L1041.65 267.84L950.757 218.52L869.027 262.16Z" fill="#fed2a4" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 895.03 249.302)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 895.03 249.302)" x="0" y="0">
 <tspan textLength="131.156" x="0" y="24.2776"><![CDATA[Determine]]></tspan>
 </text>
 </g>
@@ -352,7 +352,7 @@ a:active text {
 <title>Judge - Click to learn more</title>
 <g class="square" id="Judge" opacity="1">
 <path d="M787.097 189.11L870.747 236.45L952.847 193.02L868.487 149L787.097 189.11Z" fill="#fdc286" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 834.727 173.992)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 834.727 173.992)" x="0" y="0">
 <tspan textLength="78.9741" x="0" y="24.2776"><![CDATA[Judge]]></tspan>
 </text>
 </g>
@@ -362,7 +362,7 @@ a:active text {
 <title>Reflect - Click to learn more</title>
 <g class="square" id="Reflect" opacity="1">
 <path d="M710.687 119.55L787.187 162.3L869.717 124L793.217 84.31L710.687 119.55Z" fill="#fbb267" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 745.806 103.684)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 745.806 103.684)" x="0" y="0">
 <tspan textLength="89.4237" x="0" y="24.2776"><![CDATA[Reflect]]></tspan>
 </text>
 </g>
@@ -372,7 +372,7 @@ a:active text {
 <title>Select - Click to learn more</title>
 <g class="square" id="Select" opacity="1">
 <path d="M868.617 422.76L968.607 491.81L1054.74 429.18L955.277 366.37L868.617 422.76Z" fill="#fef5af" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 923.63 408.999)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 923.63 408.999)" x="0" y="0">
 <tspan textLength="79.0134" x="0" y="24.2776"><![CDATA[Select]]></tspan>
 </text>
 </g>
@@ -382,7 +382,7 @@ a:active text {
 <title>Differentiate - Click to learn more</title>
 <g class="square" id="Differentiate" opacity="1">
 <path d="M779.787 336.83L870.707 397.36L958.217 342.44L868.387 286.67L779.787 336.83Z" fill="#fff087" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="24.8547" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 800.411 323.489)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="24.8547" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 800.411 323.489)" x="0" y="0">
 <tspan textLength="145.014" x="0" y="22.5003"><![CDATA[Differentiate]]></tspan>
 </text>
 </g>
@@ -392,7 +392,7 @@ a:active text {
 <title>Integrate - Click to learn more</title>
 <g class="square" id="Integrate" opacity="1">
 <path d="M698.877 257.52L780.907 311.56L869.237 262.23L786.527 213.01L698.877 257.52Z" fill="#feeb5d" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 726.694 243.152)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 726.694 243.152)" x="0" y="0">
 <tspan textLength="113.256" x="0" y="24.2776"><![CDATA[Integrate]]></tspan>
 </text>
 </g>
@@ -402,7 +402,7 @@ a:active text {
 <title>Deconstruct - Click to learn more</title>
 <g class="square" id="Deconstruct" opacity="1">
 <path d="M622.557 183.7L697.857 231.22L786.667 188.61L710.717 144.8L622.557 183.7Z" fill="#ffe630" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="21.6632" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 642.886 173.44)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="21.6632" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 642.886 173.44)" x="0" y="0">
 <tspan textLength="126.394" x="0" y="19.6112"><![CDATA[Deconstruct]]></tspan>
 </text>
 </g>
@@ -412,7 +412,7 @@ a:active text {
 <title>Respond - Click to learn more</title>
 <g class="square" id="Respond" opacity="1">
 <path d="M771.597 507.82L868.527 585.5L964.237 516.22L866.767 446.13L771.597 507.82Z" fill="#eaeeae" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 816.212 496.372)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 816.212 496.372)" x="0" y="0">
 <tspan textLength="114.723" x="0" y="24.2776"><![CDATA[Respond]]></tspan>
 </text>
 </g>
@@ -422,7 +422,7 @@ a:active text {
 <title>Provide - Click to learn more</title>
 <g class="square" id="Provide" opacity="1">
 <path d="M684.117 415.77L772.187 484.35L868.827 422.59L778.897 361.06L684.117 415.77Z" fill="#dfe784" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 731.887 402.287)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 731.887 402.287)" x="0" y="0">
 <tspan textLength="98.3674" x="0" y="24.2776"><![CDATA[Provide]]></tspan>
 </text>
 </g>
@@ -432,7 +432,7 @@ a:active text {
 <title>Carry out - Click to learn more</title>
 <g class="square" id="Carry_out" opacity="1">
 <path d="M603.647 330.91L683.417 390.66L779.347 337.06L699.237 281.41L603.647 330.91Z" fill="#d6e158" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 633.873 314.263)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 633.873 314.263)" x="0" y="0">
 <tspan textLength="119.214" x="0" y="24.2776"><![CDATA[Carry out]]></tspan>
 </text>
 </g>
@@ -442,7 +442,7 @@ a:active text {
 <title>Use - Click to learn more</title>
 <g class="square" id="Use" opacity="1">
 <path d="M529.207 251.52L600.947 305.49L697.687 258.15L623.797 208.27L529.207 251.52Z" fill="#ccdb2a" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 590.646 235.995)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 590.646 235.995)" x="0" y="0">
 <tspan textLength="49.1968" x="0" y="24.2776"><![CDATA[Use]]></tspan>
 </text>
 </g>
@@ -452,7 +452,7 @@ a:active text {
 <title>Summarize - Click to learn more</title>
 <g class="square" id="Summarize" opacity="1">
 <path d="M762.447 687.86L866.917 610.11L771.357 531.56L666.887 601.47L762.447 687.86Z" fill="#cfe9d6" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 700.714 589.223)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 700.714 589.223)" x="0" y="0">
 <tspan textLength="143.086" x="0" y="24.2776"><![CDATA[Summarize]]></tspan>
 </text>
 </g>
@@ -462,7 +462,7 @@ a:active text {
 <title>Classify - Click to learn more</title>
 <g class="square" id="Classify" opacity="1">
 <path d="M665.287 576.74L771.577 507.79L685.237 440.23L580.827 500.88L665.287 576.74Z" fill="#c5e4ce" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 625.564 486.609)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 625.564 486.609)" x="0" y="0">
 <tspan textLength="102.859" x="0" y="24.2776"><![CDATA[Classify]]></tspan>
 </text>
 </g>
@@ -472,7 +472,7 @@ a:active text {
 <title>Clarify - Click to learn more</title>
 <g class="square" id="Clarify" opacity="1">
 <path d="M578.157 477.03L684.257 415.65L606.407 353.39L501.677 409.14L578.157 477.03Z" fill="#b6ddc0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 550.407 395.68)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(1 0 0 1 550.407 395.68)" x="0" y="0">
 <tspan textLength="83.4656" x="0" y="24.2776"><![CDATA[Clarify]]></tspan>
 </text>
 </g>
@@ -482,7 +482,7 @@ a:active text {
 <title>Predict - Click to learn more</title>
 <g class="square" id="Predict" opacity="1">
 <path d="M498.347 384.05L603.547 331.03L532.617 276.1L428.967 323.99L498.347 384.05Z" fill="#a7d8b7" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.99999 -0.00457952 0.00457952 0.99999 473.149 312.243)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.99999 -0.00457952 0.00457952 0.99999 473.149 312.243)" x="0" y="0">
 <tspan textLength="90.9165" x="0" y="24.2776"><![CDATA[Predict]]></tspan>
 </text>
 </g>
@@ -492,7 +492,7 @@ a:active text {
 <title>List - Click to learn more</title>
 <g class="square" id="List" opacity="1">
 <path d="M554.967 701.52L644.997 798.67L760.657 710.65L668.887 623.16L554.967 701.52Z" fill="#c7e1f5" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999976 0.0069647 -0.0069647 0.999976 629.122 690.568)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999976 0.0069647 -0.0069647 0.999976 629.122 690.568)" x="0" y="0">
 <tspan textLength="47.6778" x="0" y="24.2776"><![CDATA[List]]></tspan>
 </text>
 </g>
@@ -502,7 +502,7 @@ a:active text {
 <title>Recognize - Click to learn more</title>
 <g class="square" id="Recognize" opacity="1">
 <path d="M550.077 678.73L667.337 601.77L583.397 524.81L470.417 592.4L550.077 678.73Z" fill="#bbd6f0" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999986 0.00519945 -0.00519945 0.999986 502.439 582.131)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999986 0.00519945 -0.00519945 0.999986 502.439 582.131)" x="0" y="0">
 <tspan textLength="134.116" x="0" y="24.2776"><![CDATA[Recognize]]></tspan>
 </text>
 </g>
@@ -512,7 +512,7 @@ a:active text {
 <title>Recall - Click to learn more</title>
 <g class="square" id="Recall" opacity="1">
 <path d="M464.457 569.33L580.277 501.28L505.517 433.07L392.737 494.09L464.457 569.33Z" fill="#a9caeb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999992 0.00396642 -0.00396642 0.999992 442.388 482.351)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999992 0.00396642 -0.00396642 0.999992 442.388 482.351)" x="0" y="0">
 <tspan textLength="79.0134" x="0" y="24.2776"><![CDATA[Recall]]></tspan>
 </text>
 </g>
@@ -523,7 +523,7 @@ a:active text {
 <g class="square" id="Identify" opacity="1">
 <path d="M385.637 468.86L321.967 403.21L433.887 348.39L500.997 408.83L385.637 468.86Z" fill="#a9caeb" fill-rule="nonzero" opacity="1" stroke="#000000" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1"/>
 <g opacity="1">
-<text fill="#000000" font-family="Arial-BoldMT" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999971 0.00757111 -0.00757111 0.999971 365.015 384.145)" x="0" y="0">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="26.8179" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.999971 0.00757111 -0.00757111 0.999971 365.015 384.145)" x="0" y="0">
 <tspan textLength="95.3556" x="0" y="24.2776"><![CDATA[Identify]]></tspan>
 </text>
 </g>
@@ -533,14 +533,14 @@ a:active text {
 <!-- Clickable Dimension Labels -->
 <a target="_top" xlink:href="dimensions/cognitive-process.html" tabindex="0" aria-label="Learn about the Cognitive Process Dimension" role="link">
 <title>Click to learn about The Cognitive Process Dimension</title>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="40.8947" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.703629 -0.710567 0.710567 0.703629 902.866 1022.82)" x="0" y="0" style="cursor: pointer;">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="40.8947" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.703629 -0.710567 0.710567 0.703629 902.866 1022.82)" x="0" y="0" style="cursor: pointer;">
 <tspan textLength="661.285" x="0" y="37.0209"><![CDATA[The Cognitive Process Dimension]]></tspan>
 </text>
 </a>
 
 <a target="_top" xlink:href="dimensions/knowledge.html" tabindex="0" aria-label="Learn about the Knowledge Dimension" role="link">
 <title>Click to learn about The Knowledge Dimension</title>
-<text fill="#000000" font-family="Arial-BoldMT" font-size="35.7467" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.529814 0.848114 -0.848114 0.529814 111.399 634.816)" x="0" y="0" style="cursor: pointer;">
+<text fill="#000000" font-family="Arial, sans-serif" font-weight="bold" font-size="35.7467" opacity="1" stroke="none" text-anchor="start" transform="matrix(0.529814 0.848114 -0.848114 0.529814 111.399 634.816)" x="0" y="0" style="cursor: pointer;">
 <tspan textLength="456.8" x="0" y="32.3605"><![CDATA[The Knowledge Dimension]]></tspan>
 </text>
 </a>
