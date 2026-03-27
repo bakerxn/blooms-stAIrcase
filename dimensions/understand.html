@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understand - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;  
+      font-weight: bold;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+    }
+    
+    header {
+      padding: 20px;
+      text-align: center;
+      background-color: #003366;
+    }
+    
+    header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 2em;
+    }.content-wrapper {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }.page-header {
+      background: linear-gradient(135deg, #e1f1e4 0%, #d4f0d4 100%);
+      padding: 40px;
+      border-radius: 8px 8px 0 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border: 3px solid #003366;
+      border-bottom: none;
+    }.page-header h2 {
+      color: #003366;
+      font-size: 2.5em;
+      margin: 0 0 10px 0;
+    }.dimension-label {
+      color: #666;
+      font-size: 1.1em;
+      font-style: italic;
+      margin: 0;
+    }.spectrum-container {
+      background: #ffffff;
+      padding: 30px;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }.spectrum-title {
+      text-align: center;
+      color: #003366;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }.spectrum-visual {
+      position: relative;
+      height: 80px;
+      background: linear-gradient(to right, 
+        #d4e9f7 0%, 
+        #d4f0d4 20%, 
+        #fffacd 40%, 
+        #fff4b3 60%, 
+        #ffd9b3 80%, 
+        #ffc9d9 100%);
+      border-radius: 40px;
+      border: 2px solid #003366;
+      margin: 20px 0;
+    }.spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #003366;
+    }.spectrum-marker {
+      position: absolute;
+      top: 50%;
+      left: 20%;
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      background: #AC3931;
+      border: 4px solid #003366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.75em;
+      line-height: 1.2;
+      padding: 5px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      z-index: 10;
+    }.spectrum-marker::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 15px solid #AC3931;
+    }.tab-container {
+      background: #ffffff;
+      border-left: 3px solid #003366;
+      border-right: 3px solid #003366;
+    }.tab-navigation {
+      display: flex;
+      border-bottom: 3px solid #003366;
+      background: #f8f9fa;
+      overflow-x: auto;
+    }.tab-button {
+      flex: 1;
+      padding: 15px 20px;
+      background: #e8f4ec;
+      border: none;
+      border-right: 2px solid #003366;
+      cursor: pointer;
+      font-family: Arial, sans-serif;  
+      font-weight: bold;
+      font-size: 1em;
+      color: #003366;
+      transition: all 0.3s ease;
+      min-width: 150px;
+    }.tab-button:last-child {
+      border-right: none;
+    }.tab-button:hover {
+      background: #d4f0d4;
+    }.tab-button:focus {
+      outline: 3px solid #AC3931;
+      outline-offset: -3px;
+      z-index: 10;
+    }.tab-button.active {
+      background: #ffffff;
+      color: #AC3931;
+      font-weight: bold;
+      border-bottom: 3px solid #AC3931;
+      margin-bottom: -3px;
+    }.tab-content {
+      display: none;
+      padding: 40px;
+      background: #ffffff;
+      line-height: 1.8;
+      color: #333;
+    }.tab-content.active {
+      display: block;
+    }.tab-content h3 {
+      color: #003366;
+      font-size: 1.8em;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #AC3931;
+      padding-bottom: 10px;
+    }.tab-content h4 {
+      color: #AC3931;
+      font-size: 1.3em;
+      margin-top: 25px;
+      margin-bottom: 15px;
+    }.tab-content p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+    }.tab-content ul {
+      margin: 15px 0;
+      padding-left: 25px;
+    }.tab-content li {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }.process-card {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.process-card h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.2em;
+    }.process-card.alternative-names {
+      font-style: italic;
+      color: #666;
+      margin-top: 5px;
+    }.example-box {
+      background: #f8f9fa;
+      border-left: 4px solid #AC3931;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }.example-box h5 {
+      color: #003366;
+      margin-top: 0;
+      font-size: 1.1em;
+    }.tip-box {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.tip-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.tip-box h5::before {
+      content: "💡";
+      font-size: 1.5em;
+    }.ai-box {
+      background: #e8f4f8;
+      border: 2px solid #4a90e2;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }.ai-box h5 {
+      color: #003366;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }.ai-box h5::before {
+      content: "🤖";
+      font-size: 1.5em;
+    }.bottom-navigation {
+      background: #ffffff;
+      padding: 30px 40px;
+      border: 3px solid #003366;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+    }.nav-button {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #AC3931;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+    }.nav-button:hover {
+      background: #8d2e27;
+    }.nav-button:focus {
+      outline: 3px solid #003366;
+      outline-offset: 2px;
+    }.nav-button.secondary {
+      background: #003366;
+    }.nav-button.secondary:hover {
+      background: #004080;
+    }
+    
+    footer {
+      background-color: #003366;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+    
+    footer a {
+      color: white;
+      text-decoration: underline;
+      margin: 0 10px;
+    }
+    
+    footer img {
+      vertical-align: middle;
+      height: 31px;
+      margin-top: 10px;
+    }.sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }.skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }.skip-link:focus {
+      top: 0;
+    }
+    
+    @media screen and (max-width: 768px) {.page-header {
+        padding: 25px;
+      }.page-header h2 {
+        font-size: 1.8em;
+      }.tab-button {
+        font-size: 0.9em;
+        padding: 12px 15px;
+        min-width: 120px;
+      }.tab-content {
+        padding: 25px 20px;
+      }.tab-content h3 {
+        font-size: 1.5em;
+      }.spectrum-marker {
+        width: 50px;
+        height: 50px;
+        font-size: 0.7em;
+      }.bottom-navigation {
+        padding: 20px;
+        flex-direction: column;
+      }.nav-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <main id="main-content" class="content-wrapper">
+    <div class="page-header">
+      <p class="dimension-label">Cognitive Process Dimension</p>
+      <h2>Understand</h2>
+    </div>
+    
+    <div class="spectrum-container">
+      <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
+      <div class="spectrum-visual" role="img" aria-label="Understand is positioned in the lower order thinking skills area of the cognitive process spectrum">
+        <div class="spectrum-marker" aria-hidden="true">
+          YOU ARE HERE
+        </div>
+      </div>
+      <div class="spectrum-labels">
+        <span>Lower Order Thinking Skills</span>
+        <span>Higher Order Thinking Skills</span>
+      </div>
+    </div>
+    
+    <div class="tab-container">
+      <nav class="tab-navigation" role="tablist" aria-label="Understand cognitive process information tabs">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="processes-panel" id="processes-tab" onclick="openTab(event, 'processes')">Cognitive Processes</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
+      </nav>
+      
+      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+        <h3>What is Understand?</h3>
+        <p>
+          Understand involves constructing meaning from instructional messages, including oral, written, and graphic communication. When students understand, they can explain ideas or concepts in their own words, provide examples, make connections, and see relationships. Understanding goes beyond mere recall to involve making sense of information and integrating it with existing knowledge.
+        </p>
+        <p>
+          In the revised Bloom's Taxonomy, Understand (called "Comprehension" in the original taxonomy) represents the first level of genuine cognitive engagement with material. While Remember involves retrieving information as learned, Understand requires students to transform information into a form that makes sense to them. This transformation is evidence that students have constructed personal meaning from the material.
+        </p>
+        <p>
+          Understanding is foundational for all higher-order thinking. Students cannot effectively apply, analyze, evaluate, or create with knowledge they don't understand. However, understanding alone is not sufficient for expertise—students must also be able to use their understanding in practical and creative ways. Understand sits at the lower-order end of the cognitive spectrum, but it represents a crucial bridge between simple recall and more complex cognitive processes.
+        </p>
+        
+        <div class="tip-box">
+          <h5>Common Misconception</h5>
+          <p>
+            <strong>Myth:</strong> If students can repeat information back, they understand it.
+          </p>
+          <p>
+            <strong>Reality:</strong> Students can memorize and repeat information without truly understanding it. True understanding is demonstrated when students can explain concepts in their own words, provide new examples, make connections to other ideas, and apply their knowledge in different contexts. Teachers must look beyond simple recall to assess genuine understanding.
+          </p>
+        </div>
+      </div>
+      
+      <div id="processes" class="tab-content" role="tabpanel" aria-labelledby="processes-tab">
+        <h3>Cognitive Processes Within Understand</h3>
+        <p>
+          The Understand category includes seven specific cognitive processes that represent different ways students construct meaning from information.
+        </p>
+        
+        <div class="process-card">
+          <h5>Interpreting</h5>
+          <p class="alternative-names">Alternative names: Clarifying, Paraphrasing, Representing, Translating</p>
+          <p>
+            <strong>Definition:</strong> Converting information from one form of representation to another. This includes changing words into other words (paraphrasing), converting words to pictures or diagrams, or translating from one language to another.
+          </p>
+          <p><strong>Example:</strong> Paraphrasing a passage in your own words; creating a graph from numerical data; explaining a diagram in words</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Exemplifying</h5>
+          <p class="alternative-names">Alternative names: Illustrating, Instantiating</p>
+          <p>
+            <strong>Definition:</strong> Finding a specific example or illustration of a concept or principle. This involves identifying instances that fit a general category or providing concrete examples of abstract ideas.
+          </p>
+          <p><strong>Example:</strong> Giving an example of a metaphor; identifying instances of democracy; providing examples of renewable energy</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Classifying</h5>
+          <p class="alternative-names">Alternative names: Categorizing, Subsuming</p>
+          <p>
+            <strong>Definition:</strong> Determining that something belongs to a category. This involves recognizing the features of examples and matching them to known categories or concepts.
+          </p>
+          <p><strong>Example:</strong> Classifying animals by their characteristics; categorizing numbers as prime or composite; identifying types of governments</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Summarizing</h5>
+          <p class="alternative-names">Alternative names: Abstracting, Generalizing</p>
+          <p>
+            <strong>Definition:</strong> Abstracting a general theme or major points from information. This involves identifying the most important information and presenting it in condensed form.
+          </p>
+          <p><strong>Example:</strong> Writing a summary of a chapter; identifying the main idea of a passage; creating an abstract of a research article</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Inferring</h5>
+          <p class="alternative-names">Alternative names: Concluding, Extrapolating, Interpolating, Predicting</p>
+          <p>
+            <strong>Definition:</strong> Drawing a logical conclusion from presented information. This involves going beyond explicit information to identify patterns, make predictions, or draw conclusions.
+          </p>
+          <p><strong>Example:</strong> Predicting what will happen next in a story; inferring the author's purpose; drawing conclusions from data</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Comparing</h5>
+          <p class="alternative-names">Alternative names: Contrasting, Mapping, Matching</p>
+          <p>
+            <strong>Definition:</strong> Detecting correspondences between two ideas, objects, or situations. This involves identifying similarities and differences between things.
+          </p>
+          <p><strong>Example:</strong> Comparing two historical events; contrasting different theories; mapping relationships between concepts</p>
+        </div>
+        
+        <div class="process-card">
+          <h5>Explaining</h5>
+          <p class="alternative-names">Alternative names: Constructing models</p>
+          <p>
+            <strong>Definition:</strong> Constructing a cause-and-effect model of a system. This involves describing how something works or why something happens, often by identifying the relationships among parts.
+          </p>
+          <p><strong>Example:</strong> Explaining how photosynthesis works; describing why the seasons change; explaining the causes of a historical event</p>
+        </div>
+      </div>
+      
+      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
+        <h3>Understand Across Disciplines</h3>
+        
+        <div class="example-box">
+          <h5>Science</h5>
+          <p><strong>Interpreting:</strong> Translate a food web diagram into a written description; paraphrase the steps of mitosis</p>
+          <p><strong>Exemplifying:</strong> Provide examples of chemical changes; identify instances of Newton's third law in everyday life</p>
+          <p><strong>Classifying:</strong> Categorize organisms by their characteristics; classify rocks as igneous, sedimentary, or metamorphic</p>
+          <p><strong>Summarizing:</strong> Summarize the main findings of an experiment; identify the key points of a scientific article</p>
+          <p><strong>Inferring:</strong> Predict the products of a chemical reaction; infer the function of an organism's structure</p>
+          <p><strong>Comparing:</strong> Compare plant and animal cells; contrast renewable and nonrenewable resources</p>
+          <p><strong>Explaining:</strong> Explain how the water cycle works; describe why objects fall at the same rate regardless of mass</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Mathematics</h5>
+          <p><strong>Interpreting:</strong> Represent a word problem as an equation; translate a graph into a verbal description</p>
+          <p><strong>Exemplifying:</strong> Give examples of rational numbers; provide instances where the distributive property applies</p>
+          <p><strong>Classifying:</strong> Classify triangles by their angles; categorize functions as linear or nonlinear</p>
+          <p><strong>Summarizing:</strong> State the main idea of a proof; summarize the steps to solve a type of problem</p>
+          <p><strong>Inferring:</strong> Predict the next term in a sequence; infer the rule governing a pattern</p>
+          <p><strong>Comparing:</strong> Compare different methods for solving equations; contrast area and perimeter</p>
+          <p><strong>Explaining:</strong> Explain why the Pythagorean theorem works; describe how compound interest grows over time</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>History</h5>
+          <p><strong>Interpreting:</strong> Paraphrase a primary source document; translate a political cartoon's message into words</p>
+          <p><strong>Exemplifying:</strong> Provide examples of imperialism; identify instances of civil disobedience in history</p>
+          <p><strong>Classifying:</strong> Categorize governments as democratic or authoritarian; classify wars by their causes</p>
+          <p><strong>Summarizing:</strong> Summarize the main causes of World War I; identify the key outcomes of the Civil Rights Movement</p>
+          <p><strong>Inferring:</strong> Infer the author's bias from a historical account; predict consequences of a historical decision</p>
+          <p><strong>Comparing:</strong> Compare the American and French Revolutions; contrast different historical interpretations</p>
+          <p><strong>Explaining:</strong> Explain why the Industrial Revolution began in England; describe how the Constitution balances power</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Literature & Language Arts</h5>
+          <p><strong>Interpreting:</strong> Paraphrase a poem; translate figurative language into literal meaning</p>
+          <p><strong>Exemplifying:</strong> Provide examples of symbolism in a text; identify instances of irony</p>
+          <p><strong>Classifying:</strong> Classify texts by genre; categorize characters by their traits</p>
+          <p><strong>Summarizing:</strong> Summarize the plot of a story; identify the main argument of an essay</p>
+          <p><strong>Inferring:</strong> Infer a character's motivation; predict how a story will end based on foreshadowing</p>
+          <p><strong>Comparing:</strong> Compare two characters; contrast different authors' styles</p>
+          <p><strong>Explaining:</strong> Explain how the setting affects the mood; describe why the author chose a particular narrative structure</p>
+        </div>
+        
+        <div class="example-box">
+          <h5>Computer Science</h5>
+          <p><strong>Interpreting:</strong> Explain what a code snippet does in plain language; translate pseudocode into actual code</p>
+          <p><strong>Exemplifying:</strong> Provide examples of loops in real programs; identify instances where recursion is useful</p>
+          <p><strong>Classifying:</strong> Classify data structures by their properties; categorize algorithms by their efficiency</p>
+          <p><strong>Summarizing:</strong> Summarize what a function does; identify the main purpose of a program</p>
+          <p><strong>Inferring:</strong> Predict the output of code; infer the purpose of a variable</p>
+          <p><strong>Comparing:</strong> Compare different sorting algorithms; contrast object-oriented and functional programming</p>
+          <p><strong>Explaining:</strong> Explain how a search algorithm works; describe why certain data structures are more efficient</p>
+        </div>
+      </div>
+      
+      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
+        <h3>How Students Demonstrate Understanding</h3>
+        
+        <p>
+          Students demonstrate understanding by showing they can construct meaning from information. Unlike Remember, which involves retrieving information as learned, Understand requires students to transform, connect, and make sense of information in ways that show genuine comprehension.
+        </p>
+        
+        <h4>Explaining in Their Own Words</h4>
+        <p>Students with understanding can:</p>
+        <ul>
+          <li>Paraphrase information without losing meaning</li>
+          <li>Explain concepts using different words than the original source</li>
+          <li>Describe ideas clearly to someone unfamiliar with the topic</li>
+          <li>Translate between different forms of representation (words to diagrams, etc.)</li>
+        </ul>
+        
+        <h4>Providing Examples and Non-Examples</h4>
+        <p>Understanding is shown when students:</p>
+        <ul>
+          <li>Generate their own examples of concepts</li>
+          <li>Identify instances that fit or don't fit categories</li>
+          <li>Recognize concepts in new contexts</li>
+          <li>Explain why something is or isn't an example</li>
+        </ul>
+        
+        <h4>Making Connections</h4>
+        <p>Students demonstrate understanding by:</p>
+        <ul>
+          <li>Relating new information to prior knowledge</li>
+          <li>Identifying similarities and differences</li>
+          <li>Seeing patterns and relationships</li>
+          <li>Connecting ideas across topics or disciplines</li>
+        </ul>
+        
+        <h4>Observable Behaviors</h4>
+        <p>Students with strong understanding:</p>
+        <ul>
+          <li>Ask questions that show they're making sense of material</li>
+          <li>Can explain "why" and "how," not just "what"</li>
+          <li>Recognize when something doesn't make sense and seek clarification</li>
+          <li>Can summarize main ideas accurately</li>
+          <li>Make predictions based on their understanding</li>
+          <li>Apply their understanding to interpret new information</li>
+          <li>Explain concepts using analogies and metaphors</li>
+        </ul>
+        
+        <div class="tip-box">
+          <h5>Assessment Tip</h5>
+          <p>
+            To assess understanding, ask students to explain in their own words, provide new examples, compare and contrast, summarize, or predict. Avoid questions that can be answered by simple recall or recognition. Look for evidence that students have constructed personal meaning, not just memorized information. Good understanding questions include: "Explain why...", "Give an example of...", "How is X similar to Y?", "What would happen if...?"
+          </p>
+        </div>
+      </div>
+      
+      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
+        <h3>Tips for Educators</h3>
+        
+        <h4>Promoting Deep Understanding</h4>
+        <ul>
+          <li><strong>Check for understanding frequently:</strong> Don't assume students understand just because they're quiet or nodding. Ask them to explain, provide examples, or make connections.</li>
+          <li><strong>Use multiple representations:</strong> Present information in various forms (words, diagrams, examples, analogies) to help students construct robust understanding.</li>
+          <li><strong>Encourage elaboration:</strong> Have students explain ideas in their own words and connect new information to what they already know.</li>
+          <li><strong>Provide examples and non-examples:</strong> Help students understand concepts by showing what they are and what they aren't.</li>
+          <li><strong>Make thinking visible:</strong> Model your own understanding processes by thinking aloud as you interpret, compare, or explain.</li>
+          <li><strong>Use graphic organizers:</strong> Tools like concept maps, Venn diagrams, and comparison charts help students organize and connect information.</li>
+          <li><strong>Ask "why" and "how" questions:</strong> Push students beyond surface-level recall to deeper understanding.</li>
+        </ul>
+        
+        <h4>Common Pitfalls to Avoid</h4>
+        <ul>
+          <li><strong>Confusing recall with understanding:</strong> Students who can repeat information may not understand it. Always check for genuine comprehension.</li>
+          <li><strong>Moving too quickly:</strong> Understanding takes time. Allow students to process, discuss, and make connections.</li>
+          <li><strong>Providing only one representation:</strong> Students need multiple ways of encountering information to build understanding.</li>
+          <li><strong>Not addressing misconceptions:</strong> Check for and correct misunderstandings before they become entrenched.</li>
+          <li><strong>Focusing only on correct answers:</strong> Understanding is revealed in how students explain their thinking, not just whether they get the right answer.</li>
+        </ul>
+        
+        <div class="ai-box">
+          <h5>AI Literacy Connection</h5>
+          <p>
+            <strong>How AI Relates to Understanding:</strong> AI can provide explanations, examples, and multiple representations of concepts. However, AI cannot verify whether students truly understand—it can only check if their responses match expected patterns. True understanding requires human judgment and interaction.
+          </p>
+          <p>
+            <strong>Teaching Implications:</strong>
+          </p>
+          <ul>
+            <li>Use AI to generate multiple explanations and examples to support understanding</li>
+            <li>Have students explain concepts to AI and evaluate the AI's responses for accuracy</li>
+            <li>Teach students that AI explanations may be technically correct but not aid understanding</li>
+            <li>Help students recognize that understanding requires personal meaning-making, not just reading AI explanations</li>
+            <li>Use AI to provide immediate feedback on students' explanations and examples</li>
+            <li>Emphasize that students must verify their understanding, not just accept AI-generated content</li>
+            <li>Teach students to ask AI for different representations when they don't understand</li>
+          </ul>
+          <p>
+            <strong>Key Message:</strong> AI can support understanding by providing explanations and examples, but it cannot replace the cognitive work of constructing meaning. Students must actively engage with information—whether from AI or other sources—to build genuine understanding. Understanding enables students to evaluate AI explanations critically and recognize when AI outputs are incorrect or misleading.
+          </p>
+        </div>
+        
+        <div class="tip-box">
+          <h5>Practical Strategy</h5>
+          <p>
+            <strong>The "Teach It Back" Technique:</strong> Have students explain concepts to a partner as if teaching them for the first time. This requires students to construct their own understanding and identify gaps in their comprehension. Students who can teach a concept clearly demonstrate genuine understanding, while those who struggle reveal areas needing further instruction.
+          </p>
+        </div>
+        
+        <h4>Building from Understanding to Higher-Order Thinking</h4>
+        <p>Understanding is the foundation for more complex cognitive processes:</p>
+        <ul>
+          <li><strong>Understand → Apply:</strong> Students must understand concepts before they can apply them to new situations</li>
+          <li><strong>Understand → Analyze:</strong> Analysis requires understanding what you're breaking down and examining</li>
+          <li><strong>Understand → Evaluate:</strong> You can't make sound judgments about things you don't understand</li>
+          <li><strong>Understand → Create:</strong> Creation requires understanding the elements you're working with</li>
+        </ul>
+        <p>
+          Ensure students have solid understanding before pushing them to higher-order thinking. At the same time, don't stop at understanding—use it as a springboard for application, analysis, evaluation, and creation.
+        </p>
+      </div>
+    </div>
+    
+    <div class="bottom-navigation">
+      <a href="../index.html" class="nav-button">← Back to Main Page</a>
+      <a href="../dimensions/cognitive-process.html" class="nav-button secondary">View Cognitive Process Table</a>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      </a>
+    </p>
+  </footer>
+  
+  <script>
+    function openTab(evt, tabName) {
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].classList.remove("active");
+      }
+      
+      var tabButtons = document.getElementsByClassName("tab-button");
+      for (var i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+        tabButtons[i].setAttribute("aria-selected", "false");
+      }
+      
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+      evt.currentTarget.setAttribute("aria-selected", "true");
+      document.getElementById(tabName).focus();
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      var tabPanels = document.querySelectorAll('.tab-content');
+      tabPanels.forEach(function(panel) {
+        panel.setAttribute('tabindex', '0');
+      });
+    });
+  </script>
+</body>
+</html>
