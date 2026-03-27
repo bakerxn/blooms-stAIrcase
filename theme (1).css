@@ -1,0 +1,414 @@
+/* =============================================================
+   theme.css — Bloom's stAIrcase Global Stylesheet
+   Authors: Brigette Meskell & Nicole Baker
+   ============================================================= */
+
+
+/* ─── Color Palette ─────────────────────────────────────────── */
+/*
+  --color-navy:      #003366   (header, footer backgrounds)
+  --color-red:       #AC3931   (primary buttons, accents)
+  --color-blue-dark: #004080   (hover state for buttons)
+  --color-blue-dark-2:#6f2420  (active state for guide tab)
+  --color-blue-light:#CCE5FF   (nav bar background)
+  --color-bg:        #f5f8fa   (page background)
+  --color-white:     #ffffff
+*/
+
+
+/* ─── Reset & Box Model ──────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+
+/* ─── Base / Body ────────────────────────────────────────────── */
+body {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  background: #f5f8fa;
+  line-height: 1.5;
+}
+
+
+/* ─── Accessibility: Skip Link ───────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #AC3931;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  z-index: 10000;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
+
+
+/* ─── Accessibility: Screen Reader Only ─────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+/* ─── Header ─────────────────────────────────────────────────── */
+header {
+  padding: 20px;
+  text-align: center;
+  background-color: #003366;
+}
+
+header h1 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 2em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+
+/* ─── Navigation Bar ─────────────────────────────────────────── */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  background-color: #CCE5FF;
+  padding: 15px 10px;
+  z-index: 10;
+  position: relative;
+}
+
+.nav-buttons a {
+  padding: 12px 24px;
+  background: #AC3931;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  /* WCAG 2.5.5 minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.nav-buttons a span {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.nav-buttons a:hover {
+  background-color: #004080;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+.nav-buttons a:active {
+  transform: translateY(0);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.nav-buttons a:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+.nav-buttons a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.nav-buttons a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+
+/* ─── Main Content Area ──────────────────────────────────────── */
+.main-content {
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+
+/* ─── Embedded SVG Object ────────────────────────────────────── */
+object {
+  width: 90%;
+  height: auto;
+  max-height: 85vh;
+  display: block;
+  margin: 0 auto;
+  pointer-events: auto;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+
+object:focus {
+  outline: 3px solid #AC3931;
+  outline-offset: 4px;
+  border-color: #AC3931;
+}
+
+object:focus:not(:focus-visible) {
+  outline: none;
+  border-color: transparent;
+}
+
+
+/* ─── Alternative / Table View Link ─────────────────────────── */
+.alternative-link {
+  text-align: center;
+  margin: 30px auto;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  background-color: #ffffff;
+}
+
+.table-view-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #AC3931;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
+  /* WCAG 2.5.5 minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.table-view-link span {
+  margin-right: 8px;
+  font-size: 18px;
+}
+
+.table-view-link:hover {
+  background-color: #004080;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+  transform: translateY(-2px);
+}
+
+.table-view-link:active {
+  transform: translateY(0);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.table-view-link:focus {
+  outline: 3px solid #AC3931;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+.table-view-link:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.table-view-link:focus-visible {
+  outline: 3px solid #AC3931;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+
+/* ─── Footer ─────────────────────────────────────────────────── */
+footer {
+  background-color: #003366;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+footer a {
+  color: #ffffff;
+  text-decoration: underline;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #CCE5FF;
+}
+
+footer a:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+footer img {
+  vertical-align: middle;
+  height: 31px;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+footer a:hover img {
+  transform: scale(1.05);
+}
+
+
+/* ─── Guide Tab (Fixed Sidebar) ──────────────────────────────── */
+.guide-tab {
+  position: fixed;
+  right: 13px;
+  top: 40%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: right center;
+  z-index: 1000;
+}
+
+.guide-tab a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #AC3931;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 5px 5px 0 0;
+  box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  /* WCAG 2.5.5 minimum touch target */
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.guide-tab a:hover {
+  background-color: #004080;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
+  padding: 12px 28px;
+}
+
+.guide-tab a:active {
+  background-color: #6f2420;
+}
+
+.guide-tab a:focus {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+.guide-tab a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.guide-tab a:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
+  background-color: #004080;
+}
+
+
+/* ─── High Contrast Mode ─────────────────────────────────────── */
+@media (prefers-contrast: high) {
+  .nav-buttons a,
+  .table-view-link,
+  .guide-tab a {
+    border: 2px solid currentColor;
+  }
+}
+
+
+/* ─── Reduced Motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ─── Responsive: Mobile (max 768px) ────────────────────────── */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px;
+  }
+
+  .nav-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  object {
+    width: 95%;
+    max-height: 70vh;
+  }
+
+  .guide-tab {
+    right: 5px;
+    top: 50%;
+  }
+
+  .guide-tab a {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+
+/* ─── Print Styles ───────────────────────────────────────────── */
+@media print {
+  .skip-link,
+  .nav-buttons,
+  .guide-tab,
+  footer {
+    display: none;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  object {
+    width: 100%;
+    max-height: none;
+  }
+}
