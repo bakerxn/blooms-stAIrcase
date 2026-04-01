@@ -35,8 +35,8 @@ function buildRow(activity, pageType = 'square') {
   tdActivity.textContent = activity.Activity;
   tr.appendChild(tdActivity);
 
-  if (pageType === 'framework') {
-    // Column 2 (framework pages): Square link
+  if (pageType === 'all') {
+    // Column 2: Square link
     const tdSquare = document.createElement('td');
     const squareLink = document.createElement('a');
     squareLink.href        = activity.SquareURL || '#';
@@ -44,24 +44,15 @@ function buildRow(activity, pageType = 'square') {
     tdSquare.appendChild(squareLink);
     tr.appendChild(tdSquare);
 
-    // Column 3 (framework pages): Discipline — plain text
+    // Column 3: Discipline
     const tdDiscipline = document.createElement('td');
     tdDiscipline.textContent = activity.Discipline;
     tr.appendChild(tdDiscipline);
 
-  } else {
-    // pageType === 'square' (default)
-
-    // Column 2 (square pages): Discipline — plain text
-    const tdDiscipline = document.createElement('td');
-    tdDiscipline.textContent = activity.Discipline;
-    tr.appendChild(tdDiscipline);
-
-    // Column 3 (square pages): Framework tags
+    // Column 4: Framework tags
     const tdFramework = document.createElement('td');
     const tagList = document.createElement('div');
     tagList.className = 'tag-list';
-
     activity['AI Literacy Framework Tags'].forEach(({ tag, url }) => {
       const a = document.createElement('a');
       a.className   = 'tag';
@@ -69,7 +60,42 @@ function buildRow(activity, pageType = 'square') {
       a.textContent = tag;
       tagList.appendChild(a);
     });
+    tdFramework.appendChild(tagList);
+    tr.appendChild(tdFramework);
 
+  } else if (pageType === 'framework') {
+    // Column 2: Square link
+    const tdSquare = document.createElement('td');
+    const squareLink = document.createElement('a');
+    squareLink.href        = activity.SquareURL || '#';
+    squareLink.textContent = activity.Square;
+    tdSquare.appendChild(squareLink);
+    tr.appendChild(tdSquare);
+
+    // Column 3: Discipline
+    const tdDiscipline = document.createElement('td');
+    tdDiscipline.textContent = activity.Discipline;
+    tr.appendChild(tdDiscipline);
+
+  } else {
+    // pageType === 'square' (default)
+
+    // Column 2: Discipline
+    const tdDiscipline = document.createElement('td');
+    tdDiscipline.textContent = activity.Discipline;
+    tr.appendChild(tdDiscipline);
+
+    // Column 3: Framework tags
+    const tdFramework = document.createElement('td');
+    const tagList = document.createElement('div');
+    tagList.className = 'tag-list';
+    activity['AI Literacy Framework Tags'].forEach(({ tag, url }) => {
+      const a = document.createElement('a');
+      a.className   = 'tag';
+      a.href        = url || '#';
+      a.textContent = tag;
+      tagList.appendChild(a);
+    });
     tdFramework.appendChild(tagList);
     tr.appendChild(tdFramework);
   }
