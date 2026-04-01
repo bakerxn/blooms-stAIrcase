@@ -444,12 +444,13 @@
 <script src="js/activities.js"></script>
 <script>
   // All Activities page — no pre-filtering, sidebar filters enabled
-  renderActivitiesTable({
-    tbodyId:             'activities-tbody',
-    countId:             'results-count',
-    noResultsId:         'no-results',
-    enableSidebarFilters: true
-  });
+renderActivitiesTable({
+  tbodyId:              'activities-tbody',
+  countId:              'results-count',
+  noResultsId:          'no-results',
+  pageType:             'all',
+  enableSidebarFilters: true
+});
 </script>
 
 </body>
