@@ -8,7 +8,7 @@
 //     tbodyId:     (string)   ID of the <tbody> to populate
 //     countId:     (string)   ID of the element showing result count
 //     noResultsId: (string)   ID of the "no results" message element
-//     filterSquare:(string|null)  if set, only show this Square value
+//     filtersquares:(string|null)  if set, only show this squares value
 //     filterDiscipline: (string|null) if set, only show this Discipline
 //     filterFramework:  (string|null) if set, only show this Framework tag
 //     enableSidebarFilters: (boolean) true on the All Activities page
@@ -24,10 +24,8 @@ const FRAMEWORK_URLS = {
   'Content Creation':           'frameworks/content_creation.html',
   'Hardware & Software':        'frameworks/hardware_&_software.html',
   'Information & Data Literacy':'frameworks/information_&_data_literacy.html',
-  'Metacognition':              'frameworks/metacognition.html',
-  'Problem Solving':            'frameworks/problem_solving.html',
-  'Safety':                     'frameworks/safety.html',
-  'Self-Knowledge':             'frameworks/self-knowledge.html'
+  'Critical Thinking & Agency': 'frameworks/creative_thinking_&_agency.html',
+  'Safety & Ethics':            'frameworks/safety.html'
 };
 
 /**
@@ -37,7 +35,7 @@ function buildRow(activity) {
   const tr = document.createElement('tr');
 
   // Store filter data as data attributes (used by sidebar filters)
-  tr.dataset.square     = activity.Square;
+  tr.dataset.squares     = activity.squares;
   tr.dataset.discipline = activity.Discipline;
   tr.dataset.framework  = activity['AI Literacy Framework Tags'].join('|');
 
@@ -45,12 +43,12 @@ function buildRow(activity) {
   const tdActivity = document.createElement('td');
   tdActivity.textContent = activity.Activity;
 
-  // Column 2: Square link
-  const tdSquare = document.createElement('td');
-  const squareLink = document.createElement('a');
-  squareLink.href        = activity.SquareURL || '#';
-  squareLink.textContent = activity.Square;
-  tdSquare.appendChild(squareLink);
+  // Column 2: squares link
+  const tdsquares = document.createElement('td');
+  const squaresLink = document.createElement('a');
+  squaresLink.href        = activity.squaresURL || '#';
+  squaresLink.textContent = activity.squares;
+  tdsquares.appendChild(squaresLink);
 
   // Column 3: Discipline link
   const tdDiscipline = document.createElement('td');
@@ -75,7 +73,7 @@ function buildRow(activity) {
   tdFramework.appendChild(tagList);
 
   tr.appendChild(tdActivity);
-  tr.appendChild(tdSquare);
+  tr.appendChild(tdsquares);
   tr.appendChild(tdDiscipline);
   tr.appendChild(tdFramework);
 
@@ -90,7 +88,7 @@ async function renderActivitiesTable(options) {
     tbodyId,
     countId,
     noResultsId,
-    filterSquare       = null,
+    filtersquares       = null,
     filterDiscipline   = null,
     filterFramework    = null,
     enableSidebarFilters = false
@@ -116,9 +114,9 @@ async function renderActivitiesTable(options) {
     return;
   }
 
-  // Apply any hard-coded page-level filters (e.g., Square page only shows one square)
+  // Apply any hard-coded page-level filters (e.g., squares page only shows one squares)
   let filtered = allActivities.filter(activity => {
-    if (filterSquare && activity.Square !== filterSquare) return false;
+    if (filtersquares && activity.squares !== filtersquares) return false;
     if (filterDiscipline && activity.Discipline !== filterDiscipline) return false;
     if (filterFramework &&
         !activity['AI Literacy Framework Tags'].includes(filterFramework)) return false;
@@ -153,18 +151,18 @@ async function renderActivitiesTable(options) {
     }
 
     function applyFilters() {
-      const squareFilters     = getSelected('square');
+      const squaresFilters     = getSelected('squares');
       const disciplineFilters = getSelected('discipline');
       const frameworkFilters  = getSelected('framework');
       const activeFilters     =
-        squareFilters.length + disciplineFilters.length + frameworkFilters.length;
+        squaresFilters.length + disciplineFilters.length + frameworkFilters.length;
 
       let visibleCount = 0;
       const rows = tbody.querySelectorAll('tr');
 
       rows.forEach(row => {
-        const matchSquare = squareFilters.length === 0 ||
-          squareFilters.includes(row.dataset.square);
+        const matchsquares = squaresFilters.length === 0 ||
+          squaresFilters.includes(row.dataset.squares);
 
         const matchDiscipline = disciplineFilters.length === 0 ||
           disciplineFilters.includes(row.dataset.discipline);
@@ -174,7 +172,7 @@ async function renderActivitiesTable(options) {
           return frameworkFilters.some(f => rowFrameworks.includes(f));
         })();
 
-        const show = matchSquare && matchDiscipline && matchFramework;
+        const show = matchsquares && matchDiscipline && matchFramework;
         row.classList.toggle('hidden-row', !show);
         if (show) visibleCount++;
       });
