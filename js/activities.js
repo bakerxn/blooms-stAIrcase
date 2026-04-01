@@ -30,52 +30,51 @@ const FRAMEWORK_URLS = {
 
 /**
  * Builds one <tr> element from an activity object.
+ * pageType 'square'    → columns: Activity | Square | Discipline | Framework Tags
+ * pageType 'framework' → columns: Activity | Square | Discipline
  */
-function buildRow(activity) {
+function buildRow(activity, pageType = 'square') {
   const tr = document.createElement('tr');
 
-  // Store filter data as data attributes (used by sidebar filters)
-  tr.dataset.squares     = activity.squares;
+  tr.dataset.square     = activity.Square;
   tr.dataset.discipline = activity.Discipline;
-  tr.dataset.framework  = activity['AI Literacy Framework Tags'].join('|');
+  tr.dataset.framework  = activity['AI Literacy Framework Tags'].map(t => t.tag).join('|');
 
   // Column 1: Activity description
   const tdActivity = document.createElement('td');
   tdActivity.textContent = activity.Activity;
-
-  // Column 2: squares link
-  const tdsquares = document.createElement('td');
-  const squaresLink = document.createElement('a');
-  squaresLink.href        = activity.squaresURL || '#';
-  squaresLink.textContent = activity.squares;
-  tdsquares.appendChild(squaresLink);
-
-  // Column 3: Discipline link
-  const tdDiscipline = document.createElement('td');
-  const discLink = document.createElement('a');
-  discLink.href        = activity.DisciplineURL || '#';
-  discLink.textContent = activity.Discipline;
-  tdDiscipline.appendChild(discLink);
-
-  // Column 4: Framework tags
-  const tdFramework = document.createElement('td');
-  const tagList = document.createElement('div');
-  tagList.className = 'tag-list';
-
-  activity['AI Literacy Framework Tags'].forEach(tag => {
-    const a = document.createElement('a');
-    a.className   = 'tag';
-    a.href        = FRAMEWORK_URLS[tag] || '#';
-    a.textContent = tag;
-    tagList.appendChild(a);
-  });
-
-  tdFramework.appendChild(tagList);
-
   tr.appendChild(tdActivity);
-  tr.appendChild(tdsquares);
+
+  // Column 2: Square link
+  const tdSquare = document.createElement('td');
+  const squareLink = document.createElement('a');
+  squareLink.href        = activity.SquareURL || '#';
+  squareLink.textContent = activity.Square;
+  tdSquare.appendChild(squareLink);
+  tr.appendChild(tdSquare);
+
+  // Column 3: Discipline — plain text, no link
+  const tdDiscipline = document.createElement('td');
+  tdDiscipline.textContent = activity.Discipline;
   tr.appendChild(tdDiscipline);
-  tr.appendChild(tdFramework);
+
+  // Column 4: Framework tags — only shown on square pages
+  if (pageType === 'square') {
+    const tdFramework = document.createElement('td');
+    const tagList = document.createElement('div');
+    tagList.className = 'tag-list';
+
+    activity['AI Literacy Framework Tags'].forEach(({ tag, url }) => {
+      const a = document.createElement('a');
+      a.className   = 'tag';
+      a.href        = url || '#';
+      a.textContent = tag;
+      tagList.appendChild(a);
+    });
+
+    tdFramework.appendChild(tagList);
+    tr.appendChild(tdFramework);
+  }
 
   return tr;
 }
