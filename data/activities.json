@@ -286,211 +286,306 @@
   {
     "Activity": "Students critique AI-generated works based on aesthetic theory (e.g., formalism vs. expressionism) in a group critique format.",
     "Square": "Determine",
+    "SquareURL": "squares/determine.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Communication & Collaboration",
-      "Content Creation"
+      {
+        "tag": "Communication & Collaboration",
+        "url": "frameworks/communication_&_collaboration.html"
+      },
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/determine.html",
-    "Tagline": "Determine which tasks in your project might benefit from AI use, and which require human expertise."
   },
   {
     "Activity": "Assess the fairness of AI moderation algorithms using real-world case studies (e.g., social media flagging or deletion of posts), applying conceptual ethics frameworks.",
     "Square": "Determine",
+    "SquareURL": "squares/determine.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Safety & Ethics",
-      "Communication & Collaboration"
+      {
+        "tag": "Safety & Ethics",
+        "url": "frameworks/safety.html"
+      },
+      {
+        "tag": "Communication & Collaboration",
+        "url": "frameworks/communication_&_collaboration.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/determine.html",
-    "Tagline": "Determine which tasks in your project might benefit from AI use, and which require human expertise."
   },
   {
     "Activity": "Students critique the accuracy of an AI-generated explanation of a scientific process by cross-referencing with textbooks and databases.",
     "Square": "Check",
+    "SquareURL": "squares/check.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Critical Thinking & Agency",
-      "Information & Data Literacy"
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      },
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/check.html",
-    "Tagline": "Check the accuracy of AI-generated content by looking at reliable sources."
   },
   {
     "Activity": "Use an AI-generated summary of an artist\u2019s work and identify factual inconsistencies about techniques, historical periods, or named artists.",
     "Square": "Check",
+    "SquareURL": "squares/check.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Information & Data Literacy",
-      "Critical Thinking & Agency"
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/check.html",
-    "Tagline": "Check the accuracy of AI-generated content by looking at reliable sources."
   },
   {
     "Activity": "Compare AI-written historical summaries with verified sources to flag misleading or omitted facts.",
     "Square": "Check",
+    "SquareURL": "squares/check.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Critical Thinking & Agency",
-      "Information & Data Literacy"
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      },
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/check.html",
-    "Tagline": "Check the accuracy of AI-generated content by looking at reliable sources."
   },
   {
     "Activity": "Students keep a debugging log with AI assistant support and reflect on decision points.",
     "Square": "Deconstruct",
+    "SquareURL": "squares/deconstruct.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Critical Thinking & Agency",
-      "Career Competencies"
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      },
+      {
+        "tag": "Career Competencies"
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/deconstruct.html",
-    "Tagline": "Deconstruct the processes that happen behind the LLM you are using."
   },
   {
     "Activity": "Analyze own AI usage patterns across tools (text, image, audio) and explain when and why they shift strategy.",
     "Square": "Deconstruct",
+    "SquareURL": "squares/deconstruct.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Hardware & Software",
-      "Career Competencies"
+      {
+        "tag": "Hardware & Software",
+        "url": "frameworks/hardwares_&_software.html"
+      },
+      {
+        "tag": "Career Competencies",
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/deconstruct.html",
-    "Tagline": "Deconstruct the processes that happen behind the LLM you are using."
   },
   {
     "Activity": "Use a decision tree to analyze how personal bias might influence acceptance of AI claims in different contexts.",
     "Square": "Deconstruct",
+    "SquareURL": "squares/deconstruct.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Safety & Ethics",
-      "Critical Thinking & Agency"
+      {
+        "tag": "Safety & Ethics",
+        "url": "frameworks/safety.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/deconstruct.html",
-    "Tagline": "Deconstruct the processes that happen behind the LLM you are using."
   },
   {
     "Activity": "Students experiment with prompt engineering to improve model output and document what worked best.",
     "Square": "Integrate",
+    "SquareURL": "squares/integrate.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Information & Data Literacy",
-      "Critical Thinking & Agency"
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/integrate.html",
-    "Tagline": "Integrate AI generated output into your project, combining it with your human generated output."
   },
   {
     "Activity": "Modify input parameters for a text-to-image generator and analyze how the visual output changes.",
     "Square": "Integrate",
+    "SquareURL": "squares/integrate.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Content Creation",
-      "Information & Data Literacy"
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/integrate.html",
-    "Tagline": "Integrate AI generated output into your project, combining it with your human generated output."
   },
   {
     "Activity": "Dissect AI-supported annotation tools and compare how they affect the interpretation of historical documents.",
     "Square": "Integrate",
+    "SquareURL": "squares/integrate.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Content Creation",
-      "Information & Data Literacy"
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/integrate.html",
-    "Tagline": "Integrate AI generated output into your project, combining it with your human generated output."
   },
   {
     "Activity": "Compare model structures (decision tree vs. neural net) by visualizing workflows and dissecting their logic.",
     "Square": "Differentiate",
+    "SquareURL": "squares/differentiate.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Hardware & Software",
-      "Career Competencies"
+      {
+        "tag": "Hardware & Software",
+        "url": "frameworks/hardware_&_software.html"
+      },
+      {
+      "tag": "Career Competencies",
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/differentiate.html",
-    "Tagline": "Differentiate the capabilities of different AI chatbots by comparing outputs from each."
   },
   {
     "Activity": "Deconstruct how different AI models interpret a prompt like \"peace\" or \"chaos\" and analyze outcomes.",
     "Square": "Differentiate",
+    "SquareURL": "squares/differentiate.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Content Creation",
-      "Critical Thinking & Agency"
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/differentiate.html",
-    "Tagline": "Differentiate the capabilities of different AI chatbots by comparing outputs from each."
   },
   {
     "Activity": "Break down AI-generated persuasive texts to determine the rhetorical strategy used.",
     "Square": "Differentiate",
+    "SquareURL": "squares/differentiate.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Content Creation",
-      "Communication & Collaboration"
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Communication & Collaboration",
+        "url": "frameworks/communication_&_collaboration.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/differentiate.html",
-    "Tagline": "Differentiate the capabilities of different AI chatbots by comparing outputs from each."
   },
   {
     "Activity": "Given AI-generated data outputs, students identify incorrect or hallucinated data and mark discrepancies.",
     "Square": "Select",
+    "SquareURL": "squares/select.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Critical Thinking & Agency",
-      "Information & Data Literacy"
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
+      },
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/select.html",
-    "Tagline": "Select the best AI tool for your purposes."
   },
   {
     "Activity": "Analyze metadata from an AI-generated image and annotate potential ethical red flags (e.g., training data issues).",
     "Square": "Select",
+    "SquareURL": "squares/select.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Safety & Ethics",
-      "Content Creation"
+      {
+        "tag": "Safety & Ethics",
+        "url": "frameworks/safety.html"
+      },
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/select.html",
-    "Tagline": "Select the best AI tool for your purposes."
   },
   {
     "Activity": "Use multiple AI summarizers on the same article and critique which tool captures nuance best.",
     "Square": "Select",
+    "SquareURL": "squares/select.html",
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
-      "Information & Data Literacy",
-      "Career Competencies"
+      {
+        "tag": "Information & Data Literacy",
+        "url": "frameworks/information_&_data_literacy.html"
+      },
+      {
+        "tag": "Career Competencies",
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/select.html",
-    "Tagline": "Select the best AI tool for your purposes."
   },
   {
     "Activity": "Students create a personalized \"AI Toolbox\" listing tools best suited to their learning or research style and explain their rationale.",
     "Square": "Use",
+    "SquareURL": "squares/use.html",
     "Discipline": "STEM",
     "AI Literacy Framework Tags": [
-      "Hardware & Software",
-      "Career Competencies"
+      {
+        "tag": "Hardware & Software",
+        "url": "frameworks/hardware_&_software.html"
+      },
+      {
+        "tag": "Career Competencies",
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/use.html",
-    "Tagline": "Use an AI tool to solve a problem in your field."
   },
   {
     "Activity": "Use two different AI tools with the same prompt for a creative output in your chosen modality and document your experience, thought processes, and preferences during each stage of AI output.",
     "Square": "Use",
+    "SquareURL": "squares/use.html",
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
-      "Content Creation",
-      "Career Competencies"
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Career Competencies",
+        "url": "frameworks/career_competencies.html"
+      }
     ],
-    "Page link": "https://bakerxn.github.io/blooms-stAIrcase/squares/use.html",
-    "Tagline": "Use an AI tool to solve a problem in your field."
   },
   {
     "Activity": "Students journal how their critical thinking shifts when using AI for brainstorming vs. outlining.",
