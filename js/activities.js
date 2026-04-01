@@ -8,29 +8,19 @@
 //     tbodyId:     (string)   ID of the <tbody> to populate
 //     countId:     (string)   ID of the element showing result count
 //     noResultsId: (string)   ID of the "no results" message element
-//     filtersquares:(string|null)  if set, only show this squares value
-//     filterDiscipline: (string|null) if set, only show this Discipline
-//     filterFramework:  (string|null) if set, only show this Framework tag
+//     filterSquare:     (string|null)  if set, only show this Square value
+//     filterDiscipline: (string|null)  if set, only show this Discipline
+//     filterFramework:  (string|null)  if set, only show this Framework tag
+//     pageType:    ('square'|'framework')  controls which columns are shown
 //     enableSidebarFilters: (boolean) true on the All Activities page
 //   }
 // ─────────────────────────────────────────────────────────────
 
 const ACTIVITIES_JSON_PATH = new URL('../data/activities.json', document.baseURI).href;
 
-// Framework tag values mapped to their page URLs
-const FRAMEWORK_URLS = {
-  'Career Competencies':        'frameworks/career_competencies.html',
-  'Communication & Collaboration': 'frameworks/communication_&_collaboration.html',
-  'Content Creation':           'frameworks/content_creation.html',
-  'Hardware & Software':        'frameworks/hardware_&_software.html',
-  'Information & Data Literacy':'frameworks/information_&_data_literacy.html',
-  'Critical Thinking & Agency': 'frameworks/creative_thinking_&_agency.html',
-  'Safety & Ethics':            'frameworks/safety.html'
-};
-
 /**
  * Builds one <tr> element from an activity object.
- * pageType 'square'    → columns: Activity | Square | Discipline | Framework Tags
+ * pageType 'square'    → columns: Activity | Discipline | AI Literacy Framework Tags
  * pageType 'framework' → columns: Activity | Square | Discipline
  */
 function buildRow(activity, pageType = 'square') {
@@ -45,21 +35,29 @@ function buildRow(activity, pageType = 'square') {
   tdActivity.textContent = activity.Activity;
   tr.appendChild(tdActivity);
 
-  // Column 2: Square link
-  const tdSquare = document.createElement('td');
-  const squareLink = document.createElement('a');
-  squareLink.href        = activity.SquareURL || '#';
-  squareLink.textContent = activity.Square;
-  tdSquare.appendChild(squareLink);
-  tr.appendChild(tdSquare);
+  if (pageType === 'framework') {
+    // Column 2 (framework pages): Square link
+    const tdSquare = document.createElement('td');
+    const squareLink = document.createElement('a');
+    squareLink.href        = activity.SquareURL || '#';
+    squareLink.textContent = activity.Square;
+    tdSquare.appendChild(squareLink);
+    tr.appendChild(tdSquare);
 
-  // Column 3: Discipline — plain text, no link
-  const tdDiscipline = document.createElement('td');
-  tdDiscipline.textContent = activity.Discipline;
-  tr.appendChild(tdDiscipline);
+    // Column 3 (framework pages): Discipline — plain text
+    const tdDiscipline = document.createElement('td');
+    tdDiscipline.textContent = activity.Discipline;
+    tr.appendChild(tdDiscipline);
 
-  // Column 4: Framework tags — only shown on square pages
-  if (pageType === 'square') {
+  } else {
+    // pageType === 'square' (default)
+
+    // Column 2 (square pages): Discipline — plain text
+    const tdDiscipline = document.createElement('td');
+    tdDiscipline.textContent = activity.Discipline;
+    tr.appendChild(tdDiscipline);
+
+    // Column 3 (square pages): Framework tags
     const tdFramework = document.createElement('td');
     const tagList = document.createElement('div');
     tagList.className = 'tag-list';
@@ -87,9 +85,10 @@ async function renderActivitiesTable(options) {
     tbodyId,
     countId,
     noResultsId,
-    filtersquares       = null,
-    filterDiscipline   = null,
-    filterFramework    = null,
+    filterSquare         = null,   // FIX: was 'filtersquares' (wrong case + typo)
+    filterDiscipline     = null,
+    filterFramework      = null,
+    pageType             = 'square', // FIX: now accepted and passed to buildRow
     enableSidebarFilters = false
   } = options;
 
@@ -113,19 +112,22 @@ async function renderActivitiesTable(options) {
     return;
   }
 
-  // Apply any hard-coded page-level filters (e.g., squares page only shows one squares)
+  // Apply any hard-coded page-level filters (e.g., square page only shows one Square)
   let filtered = allActivities.filter(activity => {
-    if (filtersquares && activity.squares !== filtersquares) return false;
+    // FIX: was activity.squares — correct property is activity.Square
+    if (filterSquare && activity.Square !== filterSquare) return false;
     if (filterDiscipline && activity.Discipline !== filterDiscipline) return false;
+    // FIX: was .includes(filterFramework) on an array of objects — must check tag property
     if (filterFramework &&
-        !activity['AI Literacy Framework Tags'].includes(filterFramework)) return false;
+        !activity['AI Literacy Framework Tags'].some(t => t.tag === filterFramework)) return false;
     return true;
   });
 
   // Render all (page-level-filtered) rows into the tbody
   tbody.innerHTML = '';
+  // FIX: now passes pageType so buildRow shows correct columns per page
   filtered.forEach(activity => {
-    tbody.appendChild(buildRow(activity));
+    tbody.appendChild(buildRow(activity, pageType));
   });
 
   const total = filtered.length;
@@ -150,18 +152,19 @@ async function renderActivitiesTable(options) {
     }
 
     function applyFilters() {
-      const squaresFilters     = getSelected('squares');
+      const squareFilters     = getSelected('square');      // FIX: was 'squares'
       const disciplineFilters = getSelected('discipline');
       const frameworkFilters  = getSelected('framework');
       const activeFilters     =
-        squaresFilters.length + disciplineFilters.length + frameworkFilters.length;
+        squareFilters.length + disciplineFilters.length + frameworkFilters.length;
 
       let visibleCount = 0;
       const rows = tbody.querySelectorAll('tr');
 
       rows.forEach(row => {
-        const matchsquares = squaresFilters.length === 0 ||
-          squaresFilters.includes(row.dataset.squares);
+        // FIX: was row.dataset.squares — correct dataset key is row.dataset.square
+        const matchSquare = squareFilters.length === 0 ||
+          squareFilters.includes(row.dataset.square);
 
         const matchDiscipline = disciplineFilters.length === 0 ||
           disciplineFilters.includes(row.dataset.discipline);
@@ -171,7 +174,7 @@ async function renderActivitiesTable(options) {
           return frameworkFilters.some(f => rowFrameworks.includes(f));
         })();
 
-        const show = matchsquares && matchDiscipline && matchFramework;
+        const show = matchSquare && matchDiscipline && matchFramework;
         row.classList.toggle('hidden-row', !show);
         if (show) visibleCount++;
       });
