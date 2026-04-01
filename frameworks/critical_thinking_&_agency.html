@@ -1,4 +1,89 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>Problem Solving</title><link rel="stylesheet" href="../theme.css"></head><body><div class="container">
-<h1>Problem Solving</h1><a href="../index.html" target="_top">← Back to Home</a>
-<table class="table"><tr><th>Activity</th><th>Square</th><th>Discipline</th></tr><tr><td>Students build a functioning low-code AI prototype using tools like Peltarion, Zapier, or Scratch + Teachable Machine.</td><td><a href='../squares/design.html'>Design</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Design a simple concept for an AI system that addresses a specific campus or social need (e.g., sustainability dashboard).</td><td><a href='../squares/assemble.html'>Assemble</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Students complete an AI learning journal that includes entries reflecting on tool use, decision-making strategies, and peer feedback.</td><td><a href='../squares/reflect.html'>Reflect</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Analyze the differences in process and output when using two different prompt strategies for the same coding task in the same AI tool.</td><td><a href='../squares/judge.html'>Judge</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Students critique the accuracy of an AI-generated explanation of a scientific process by cross-referencing with textbooks and databases.</td><td><a href='../squares/check.html'>Check</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Use an AI-generated summary of an artist’s work and identify factual inconsistencies about techniques, historical periods, or named artists.</td><td><a href='../squares/check.html'>Check</a></td><td><a href='../disciplines/arts.html'>Arts</a></td></tr><tr><td>Compare AI-written historical summaries with verified sources to flag misleading or omitted facts.</td><td><a href='../squares/check.html'>Check</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr><tr><td>Students keep a debugging log with AI assistant support and reflect on decision points.</td><td><a href='../squares/deconstruct.html'>Deconstruct</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Use a decision tree to analyze how personal bias might influence acceptance of AI claims in different contexts.</td><td><a href='../squares/deconstruct.html'>Deconstruct</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr><tr><td>Students experiment with prompt engineering to improve model output and document what worked best.</td><td><a href='../squares/integrate.html'>Integrate</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Deconstruct how different AI models interpret a prompt like "peace" or "chaos" and analyze outcomes.</td><td><a href='../squares/differentiate.html'>Differentiate</a></td><td><a href='../disciplines/arts.html'>Arts</a></td></tr><tr><td>Given AI-generated data outputs, students identify incorrect or hallucinated data and mark discrepancies.</td><td><a href='../squares/select.html'>Select</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Students journal how their critical thinking shifts when using AI for brainstorming vs. outlining.</td><td><a href='../squares/use.html'>Use</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr><tr><td>Given different types of AI algorithms, students match them with appropriate real-world problems and justify their choices.</td><td><a href='../squares/provide.html'>Provide</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>After using different AI tools, students reflect on when they felt most in control and least in control, and chart their confidence over time.</td><td><a href='../squares/predict.html'>Predict</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Students predict how their own values affect how they interpret AI-generated historical narratives, then compare predictions to actual reactions.</td><td><a href='../squares/predict.html'>Predict</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr><tr><td>Students analyze steps taken by an AI assistant to solve a math or data science problem, then narrate those steps as a screencast.</td><td><a href='../squares/clarify.html'>Clarify</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Given several AI outputs, students work in pairs to group them based on the type of learning used (e.g., classification vs. clustering).</td><td><a href='../squares/classify.html'>Classify</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>Use ChatGPT to ask questions about how it selects sources or builds answers, then write a paragraph explaining its logic.</td><td><a href='../squares/summarize.html'>Summarize</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr><tr><td>Students complete a guided reflection form on past AI tools they’ve used, what worked well, what confused them, and what they want to improve.</td><td><a href='../squares/identify.html'>Identify</a></td><td><a href='../disciplines/stem.html'>STEM</a></td></tr><tr><td>In a scavenger hunt, students identify procedures for detecting AI-generated content in academic writing using tools like Turnitin or ZeroGPT.</td><td><a href='../squares/recall.html'>Recall</a></td><td><a href='../disciplines/humanities.html'>Humanities</a></td></tr></table></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critical Thinking & Agency — Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+  <style>
+    .container { max-width: 1100px; margin: 0 auto; padding: 30px 20px; }
+    .back-link { display: inline-block; margin-bottom: 20px; color: #AC3931; font-weight: bold; text-decoration: none; }
+    .back-link:hover { color: #004080; }
+    h1 { color: #003366; margin-bottom: 6px; }
+    #results-count { color: #555; margin-bottom: 12px; }
+    .table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+    .table th { background-color: #003366; color: #fff; padding: 12px 16px; text-align: left; font-size: 15px; }
+    .table td { padding: 12px 16px; border-bottom: 1px solid #e0e0e0; font-size: 14px; vertical-align: top; }
+    .table tr:last-child td { border-bottom: none; }
+    .table tr:hover td { background-color: #f0f6ff; }
+    .table td a { color: #AC3931; font-weight: bold; text-decoration: none; }
+    .table td a:hover { color: #004080; text-decoration: underline; }
+    #no-results { display: none; color: #888; font-style: italic; margin-top: 16px; }
+    #no-results.visible { display: block; }
+    .hidden-row { display: none; }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <aside class="guide-tab" aria-label="Quick access">
+    <a href="../guide.html" aria-label="Open user guide">Guide</a>
+  </aside>
+
+  <header role="banner">
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Go to home page">🏠 Home</a>
+    <a href="../all-activities.html" aria-label="View all activities">📋 All Activities</a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">🧠 AI Literacy Framework</a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">🛠️ Activity Designer</a>
+  </nav>
+
+  <main id="main-content" role="main">
+    <div class="container">
+      <a href="../index.html" class="back-link">← Back to Home</a>
+      <h1>Critical Thinking & Agency</h1>
+      <p id="results-count"></p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Activity</th>
+            <th>Square</th>
+            <th>Discipline</th>
+          </tr>
+        </thead>
+        <tbody id="activities-tbody">
+          <!-- Rows injected here by activities.js -->
+        </tbody>
+      </table>
+      <p id="no-results">No activities found.</p>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <p>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      </a>
+    </p>
+  </footer>
+
+  <script src="../js/activities.js"></script>
+  <script>
+    renderActivitiesTable({
+      tbodyId:         'activities-tbody',
+      countId:         'results-count',
+      noResultsId:     'no-results',
+      filterFramework: 'Critical Thinking & Agency',
+      pageType:        'framework'
+    });
+  </script>
+</body>
+</html>
