@@ -9,7 +9,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Create a \"creator's logbook\" documenting your ideation, AI tool choices, iterations, and emotional response to AI\u2019s involvement.",
@@ -25,7 +25,7 @@
         "tag": "Safety & Ethics",
         "url": "frameworks/safety.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Compile a reflective portfolio that includes AI-assisted writing, self-analysis of process, and ethical stance on using AI in scholarly work.",
@@ -41,7 +41,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students build a functioning low-code AI prototype using tools like Peltarion, Zapier, or Scratch + Teachable Machine.",
@@ -57,7 +57,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Plan and create a multimedia project (e.g., music video or animation) using at least three AI tools in the workflow.",
@@ -73,7 +73,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Develop a digital exhibit (e.g., timeline, archive, or podcast) using AI to help structure and format content.",
@@ -105,7 +105,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Create a mixed-media AI-assisted artwork exploring the concept of \"creativity vs. automation.\"",
@@ -121,7 +121,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students collaborate to write a speculative fiction short story about the future of AI ethics, guided by real theories.",
@@ -137,7 +137,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Build a slide deck or infographic explaining how an AI system like ChatGPT works, using both AI and peer-reviewed info.",
@@ -153,7 +153,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Curate a mini-gallery of AI-generated artworks, with accurate fact-based labels explaining medium, process, and input used.",
@@ -181,7 +181,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students complete an AI learning journal that includes entries reflecting on tool use, decision-making strategies, and peer feedback.",
@@ -193,7 +193,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Hold peer-review sessions where students give feedback on each other\u2019s creative AI process logs and personal toolkits.",
@@ -205,7 +205,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students create self-assessments reflecting on their AI-assisted research habits and evaluate changes they\u2019d make.",
@@ -221,7 +221,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Analyze the differences in process and output when using two different prompt strategies for the same coding task in the same AI tool.",
@@ -237,7 +237,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Evaluate how well a text-to-image AI tool followed a detailed script or storyboard, and suggest workflow improvements.",
@@ -249,7 +249,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Compare and critique the output from two AI writing assistants given the same research topic, using a rubric.",
@@ -265,7 +265,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Debate whether deep learning should be used in high-stakes fields like medicine, using AI-generated arguments for and against.",
@@ -281,7 +281,7 @@
         "tag": "Career Competencies"
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students critique AI-generated works based on aesthetic theory (e.g., formalism vs. expressionism) in a group critique format.",
@@ -297,7 +297,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Assess the fairness of AI moderation algorithms using real-world case studies (e.g., social media flagging or deletion of posts), applying conceptual ethics frameworks.",
@@ -313,7 +313,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students critique the accuracy of an AI-generated explanation of a scientific process by cross-referencing with textbooks and databases.",
@@ -329,7 +329,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use an AI-generated summary of an artist\u2019s work and identify factual inconsistencies about techniques, historical periods, or named artists.",
@@ -345,7 +345,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Compare AI-written historical summaries with verified sources to flag misleading or omitted facts.",
@@ -361,7 +361,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students keep a debugging log with AI assistant support and reflect on decision points.",
@@ -377,7 +377,7 @@
         "tag": "Career Competencies"
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Analyze own AI usage patterns across tools (text, image, audio) and explain when and why they shift strategy.",
@@ -393,7 +393,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use a decision tree to analyze how personal bias might influence acceptance of AI claims in different contexts.",
@@ -409,7 +409,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students experiment with prompt engineering to improve model output and document what worked best.",
@@ -425,7 +425,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Modify input parameters for a text-to-image generator and analyze how the visual output changes.",
@@ -441,7 +441,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Dissect AI-supported annotation tools and compare how they affect the interpretation of historical documents.",
@@ -457,7 +457,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Compare model structures (decision tree vs. neural net) by visualizing workflows and dissecting their logic.",
@@ -473,7 +473,7 @@
       "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Deconstruct how different AI models interpret a prompt like \"peace\" or \"chaos\" and analyze outcomes.",
@@ -489,7 +489,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Break down AI-generated persuasive texts to determine the rhetorical strategy used.",
@@ -505,7 +505,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Given AI-generated data outputs, students identify incorrect or hallucinated data and mark discrepancies.",
@@ -521,7 +521,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Analyze metadata from an AI-generated image and annotate potential ethical red flags (e.g., training data issues).",
@@ -537,7 +537,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use multiple AI summarizers on the same article and critique which tool captures nuance best.",
@@ -553,7 +553,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students create a personalized \"AI Toolbox\" listing tools best suited to their learning or research style and explain their rationale.",
@@ -569,7 +569,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use two different AI tools with the same prompt for a creative output in your chosen modality and document your experience, thought processes, and preferences during each stage of AI output.",
@@ -585,7 +585,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students journal how their critical thinking shifts when using AI for brainstorming vs. outlining.",
@@ -601,7 +601,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Build a basic predictive model using Google AutoML or a no-code AI tool and test it with a small data set.",
@@ -617,7 +617,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Follow instructor-provided guides to generate voiceovers for animations using AI, then test for clarity and tone.",
@@ -633,7 +633,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use a transcription AI tool (like Otter.ai) to convert and organize interview audio, then compare it with a human-transcribed version.",
@@ -649,7 +649,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Given different types of AI algorithms, students match them with appropriate real-world problems and justify their choices.",
@@ -665,7 +665,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students create a collage using AI tools, basing it on a conceptual theme (e.g., \u201cdecay\u201d or \u201cnostalgia\u201d).",
@@ -677,7 +677,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students create AI-generated personas for a dialogue about social justice, then reflect on the alignment of personas with known ethical theories.",
@@ -693,7 +693,7 @@
         "tag": "Safety & Ethics",
         "url": "frameworks/safety.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students identify AI tools suited for specific data sets and justify their tool choice by referencing AI technical documentation.",
@@ -709,7 +709,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use AI-generated filters in Adobe tools to re-edit an old design or image, documenting what was changed and why.",
@@ -725,7 +725,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students use AI to summarize articles and apply those summaries in discussion board debates.",
@@ -741,7 +741,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "After using different AI tools, students reflect on when they felt most in control and least in control, and chart their confidence over time.",
@@ -757,7 +757,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students track the types of prompts they tend to use across tools and reflect on how that shapes their outcomes.",
@@ -773,7 +773,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students predict how their own values affect how they interpret AI-generated historical narratives, then compare predictions to actual reactions.",
@@ -789,7 +789,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students analyze steps taken by an AI assistant to solve a math or data science problem, then narrate those steps as a screencast.",
@@ -805,7 +805,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use AI to generate a piece of music or art, then write a reflection on the steps taken throughout the process: what prompts, edits, or instructions were given to the AI tool to create the final output?",
@@ -821,7 +821,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Break down how a chatbot constructs a dialogue using temperature, tone, and persona settings\u2014then teach it to a peer.",
@@ -837,7 +837,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Given several AI outputs, students work in pairs to group them based on the type of learning used (e.g., classification vs. clustering).",
@@ -853,7 +853,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Compare how three different AI tools interpret the same visual prompt, then chart the style differences and speculate why.",
@@ -869,7 +869,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students use AI to search for examples of AI metaphors in fiction or nonfiction, then present how each example frames AI conceptually.",
@@ -885,7 +885,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students annotate a diagram of a machine learning workflow generated by an AI diagramming tool (like diagrams.net + ChatGPT).",
@@ -901,7 +901,7 @@
         "tag": "Career Competencies"
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Watch a video created by an AI video generator, then write a short explanation of how the AI created visual transitions or effects.",
@@ -917,7 +917,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use ChatGPT to ask questions about how it selects sources or builds answers, then write a paragraph explaining its logic.",
@@ -933,7 +933,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students complete a guided reflection form on past AI tools they\u2019ve used, what worked well, what confused them, and what they want to improve.",
@@ -949,7 +949,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students fill in a digital journal after exploring 3 AI tools for creativity (e.g., Midjourney, ChatGPT, Lumen5), noting personal ease/difficulty.",
@@ -965,7 +965,7 @@
         "tag": "Hardware & Software",
         "url": "frameworks/hardware_&_software.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students reflect on how their research habits have changed after using AI tools, using a Google Doc worksheet shared for peer feedback.",
@@ -981,7 +981,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students record a screen-capture tutorial using AI assistants (like GitHub Copilot or Scribehow) to demonstrate the steps of a workflow relating to their course or intended career field.",
@@ -997,7 +997,7 @@
         "tag": "Communication & Collaboration"
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students complete a step-by-step walkthrough of uploading audio into an AI music tool (like Amper Music), then explain each step to a partner.",
@@ -1013,7 +1013,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "In a scavenger hunt, students identify procedures for detecting AI-generated content in academic writing using tools like Turnitin or ZeroGPT.",
@@ -1029,7 +1029,7 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "In small groups, students use ChatGPT to look up and compile definitions for types of machine learning (supervised, unsupervised, reinforcement) and create a mini-poster.",
@@ -1045,7 +1045,7 @@
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students create a mind map in Canva with AI tool integrations, classifying AI tools into categories like generative, assistive, or curatorial.",
@@ -1061,7 +1061,7 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Students use an AI chatbot to summarize and categorize different ethical theories used in AI ethics debates, then quiz each other.",
@@ -1077,7 +1077,7 @@
         "tag": "Communication & Collaboration"
         "url": "frameworks/communication_&_collaboration.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "Use an AI art platform and list all features available in the tool; then match them to their creative applications in a worksheet.",
@@ -1093,7 +1093,7 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
-    ],
+    ]
   },
   {
     "Activity": "In a timeline-building activity, students label key developments in AI history",
@@ -1109,6 +1109,6 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ],
+    ]
   }
 ]
