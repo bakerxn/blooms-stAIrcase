@@ -169,7 +169,7 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
-    ] 
+    ]
   },
   {
     "Activity": "Construct a timeline or zine using AI to visualize factual developments in AI\u2019s role in society.",
@@ -231,7 +231,7 @@
     "AI Literacy Framework Tags": [
       {
         "tag": "Critical Thinking & Agency",
-        "url": "frameworks/critical_thinkning_&_agency.html"
+        "url": "frameworks/critical_thinking_&_agency.html"
       },
       {
         "tag": "Career Competencies",
@@ -387,7 +387,7 @@
     "AI Literacy Framework Tags": [
       {
         "tag": "Hardware & Software",
-        "url": "frameworks/hardwares_&_software.html"
+        "url": "frameworks/hardware_&_software.html"
       },
       {
         "tag": "Career Competencies",
@@ -470,7 +470,7 @@
         "url": "frameworks/hardware_&_software.html"
       },
       {
-      "tag": "Career Competencies",
+        "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
     ]
@@ -595,7 +595,7 @@
     "AI Literacy Framework Tags": [
       {
         "tag": "Communication & Collaboration",
-        "url": "frameworks/communication_&_collaboration"
+        "url": "frameworks/communication_&_collaboration.html"
       },
       {
         "tag": "Critical Thinking & Agency",
@@ -863,7 +863,7 @@
     "AI Literacy Framework Tags": [
       {
         "tag": "Content Creation",
-        "url": "frameworks/content_Creation.html"
+        "url": "frameworks/content_creation.html"
       },
       {
         "tag": "Information & Data Literacy",
@@ -878,7 +878,7 @@
     "Discipline": "Humanities",
     "AI Literacy Framework Tags": [
       {
-      "tag": "Communication & Collaboration",
+        "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
       },
       {
@@ -1006,7 +1006,7 @@
     "Discipline": "Arts",
     "AI Literacy Framework Tags": [
       {
-      "tag": "Hardware & Software",
+        "tag": "Hardware & Software",
         "url": "frameworks/hardware_&_software.html"
       },
       {
