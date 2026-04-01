@@ -1,4 +1,46 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<title>Assemble</title><link rel="stylesheet" href="../theme.css"></head><body><div class="container">
-<h1>Assemble</h1><h3>Assemble a guide that outlines AI usage, tools, and workflows specific to your subject area.</h3><a href="../index.html" target="_top">← Back to Home</a>
-<table class="table"><tr><th>Activity</th><th>Discipline</th><th>AI Literacy Framework Tags</th></tr><tr><td>Design a simple concept for an AI system that addresses a specific campus or social need (e.g., sustainability dashboard).</td><td><a href='../disciplines/stem.html'>STEM</a></td><td><a href="../frameworks/problem_solving.html">Problem Solving</a>, <a href="../frameworks/career_competencies.html">Career Competencies</a></td></tr><tr><td>Create a mixed-media AI-assisted artwork exploring the concept of “creativity vs. automation.”</td><td><a href='../disciplines/arts.html'>Arts</a></td><td><a href="../frameworks/content_creation.html">Content Creation</a>, <a href="../frameworks/communication_&_collaboration.html">Communication & Collaboration</a></td></tr><tr><td>Students collaborate to write a speculative fiction short story about the future of AI ethics, guided by real theories.</td><td><a href='../disciplines/humanities.html'>Humanities</a></td><td><a href="../frameworks/safety.html">Safety</a>, <a href="../frameworks/communication_&_collaboration.html">Communication & Collaboration</a></td></tr></table></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assemble — Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="../theme.css">
+</head>
+<body>
+<div class="container">
+
+  <a href="../index.html">← Back to Home</a>
+
+  <h1>Assemble</h1>
+  <h3>Assemble a guide that outlines AI usage, tools, and workflows specific to your subject area.</h3>
+
+  <p id="results-count"></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Activity</th>
+        <th>Discipline</th>
+        <th>AI Literacy Framework Tags</th>
+      </tr>
+    </thead>
+    <tbody id="activities-tbody">
+      <!-- Rows injected here by activities.js -->
+    </tbody>
+  </table>
+
+  <p id="no-results">No activities found.</p>
+
+</div>
+
+<script src="../js/activities.js"></script>
+<script>
+  renderActivitiesTable({
+    tbodyId:      'activities-tbody',
+    countId:      'results-count',
+    noResultsId:  'no-results',
+    filterSquare: 'Assemble'
+  });
+</script>
+
+</body>
+</html>
