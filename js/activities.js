@@ -15,7 +15,7 @@
 //   }
 // ─────────────────────────────────────────────────────────────
 
-const ACTIVITIES_JSON_PATH = '/blooms-stAIrcase/data/activities.json';
+const ACTIVITIES_JSON_PATH = new URL('../data/activities.json', document.baseURI).href;
 
 // Framework tag values mapped to their page URLs
 const FRAMEWORK_URLS = {
