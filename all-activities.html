@@ -108,6 +108,46 @@
       outline-offset: 2px;
     }
 
+    .filter-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #CCE5FF;
+  padding: 4px 0 8px;
+  margin-bottom: 10px;
+  font-size: 0.85em;
+  font-family: Arial, sans-serif;
+  color: #AC3931;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: left;
+}
+
+.filter-toggle:hover {
+  color: #003366;
+}
+
+.filter-toggle:focus {
+  outline: 2px solid #AC3931;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.toggle-icon {
+  font-size: 1em;
+  transition: transform 0.2s ease;
+  display: inline-block;
+}
+
+.filter-toggle[aria-expanded="true"] .toggle-icon {
+  transform: rotate(-180deg);
+}
+   
     /* ── Main content ───────────────────────────────────── */
     .content-area {
       flex: 1;
