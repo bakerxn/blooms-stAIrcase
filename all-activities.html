@@ -489,14 +489,25 @@
 <!-- Load the shared activities script -->
 <script src="js/activities.js"></script>
 <script>
-  // All Activities page — no pre-filtering, sidebar filters enabled
-renderActivitiesTable({
-  tbodyId:              'activities-tbody',
-  countId:              'results-count',
-  noResultsId:          'no-results',
-  pageType:             'all',
-  enableSidebarFilters: true
-});
+  renderActivitiesTable({
+    tbodyId:              'activities-tbody',
+    countId:              'results-count',
+    noResultsId:          'no-results',
+    pageType:             'all',
+    enableSidebarFilters: true
+  });
+</script>
+
+<script>
+  document.querySelectorAll('.filter-toggle').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var expanded = this.getAttribute('aria-expanded') === 'true';
+      var targetId = this.getAttribute('aria-controls');
+      var target = document.getElementById(targetId);
+      this.setAttribute('aria-expanded', String(!expanded));
+      target.hidden = expanded;
+    });
+  });
 </script>
 
 </body>
