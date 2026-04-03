@@ -336,67 +336,73 @@
 
     <!-- Sidebar filters -->
     <aside id="filter-sidebar" class="sidebar" aria-label="Filter activities">
-      <h2>Filter Activities</h2>
+  <h2>Filter Activities</h2>
 
-      <!-- Discipline filter -->
-      <div class="filter-group">
-        <h3 id="filter-discipline-label">Discipline</h3>
-        <fieldset aria-labelledby="filter-discipline-label" style="border:none;margin:0;padding:0;">
-          <label><input type="checkbox" class="filter-cb" data-col="discipline" value="Arts"> Arts</label>
-          <label><input type="checkbox" class="filter-cb" data-col="discipline" value="Humanities"> Humanities</label>
-          <label><input type="checkbox" class="filter-cb" data-col="discipline" value="STEM"> STEM</label>
-        </fieldset>
-      </div>
+  <!-- Discipline filter -->
+  <div class="filter-group">
+    <button class="filter-toggle" aria-expanded="true" aria-controls="filter-discipline-list" id="filter-discipline-label">
+      Discipline <span class="toggle-icon" aria-hidden="true">▾</span>
+    </button>
+    <fieldset id="filter-discipline-list" class="filter-list" aria-labelledby="filter-discipline-label" style="border:none;margin:0;padding:0;">
+      <label><input type="checkbox" class="filter-cb" data-col="discipline" value="Arts"> Arts</label>
+      <label><input type="checkbox" class="filter-cb" data-col="discipline" value="Humanities"> Humanities</label>
+      <label><input type="checkbox" class="filter-cb" data-col="discipline" value="STEM"> STEM</label>
+    </fieldset>
+  </div>
 
-      <!-- AI Literacy Framework filter -->
-      <div class="filter-group">
-        <h3 id="filter-framework-label">AI Literacy Framework</h3>
-        <fieldset aria-labelledby="filter-framework-label" style="border:none;margin:0;padding:0;">
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Career Competencies"> Career Competencies</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Communication & Collaboration"> Communication & Collaboration</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Content Creation"> Content Creation</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Hardware & Software"> Hardware & Software</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Information & Data Literacy"> Information & Data Literacy</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Metacognition"> Metacognition</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Problem Solving"> Problem Solving</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Safety"> Safety</label>
-          <label><input type="checkbox" class="filter-cb" data-col="framework" value="Self-Knowledge"> Self-Knowledge</label>
-        </fieldset>
-      </div>
-      
-      <!-- Square filter -->
-      <div class="filter-group">
-        <h3 id="filter-square-label">Square</h3>
-        <fieldset aria-labelledby="filter-square-label" style="border:none;margin:0;padding:0;">
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Assemble"> Assemble</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Carry Out"> Carry Out</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Clarify"> Clarify</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Classify"> Classify</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Check"> Check</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Create"> Create</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Deconstruct"> Deconstruct</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Design"> Design</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Determine"> Determine</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Differentiate"> Differentiate</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Generate"> Generate</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Identify"> Identify</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Integrate"> Integrate</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Judge"> Judge</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="List"> List</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Predict"> Predict</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Provide"> Provide</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Recall"> Recall</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Recognize"> Recognize</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Reflect"> Reflect</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Respond"> Respond</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Select"> Select</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Summarize"> Summarize</label>
-          <label><input type="checkbox" class="filter-cb" data-col="square" value="Use"> Use</label>
-        </fieldset>
-      </div>
+  <!-- AI Literacy Framework filter -->
+  <div class="filter-group">
+    <button class="filter-toggle" aria-expanded="true" aria-controls="filter-framework-list" id="filter-framework-label">
+      AI Literacy Framework <span class="toggle-icon" aria-hidden="true">▾</span>
+    </button>
+    <fieldset id="filter-framework-list" class="filter-list" aria-labelledby="filter-framework-label" style="border:none;margin:0;padding:0;">
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Career Competencies"> Career Competencies</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Communication & Collaboration"> Communication & Collaboration</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Content Creation"> Content Creation</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Hardware & Software"> Hardware & Software</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Information & Data Literacy"> Information & Data Literacy</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Metacognition"> Metacognition</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Problem Solving"> Problem Solving</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Safety"> Safety</label>
+      <label><input type="checkbox" class="filter-cb" data-col="framework" value="Self-Knowledge"> Self-Knowledge</label>
+    </fieldset>
+  </div>
 
-      <button class="clear-btn" id="clear-filters-btn" aria-label="Clear all filters">Clear All Filters</button>
-    </aside>
+  <!-- Square filter -->
+  <div class="filter-group">
+    <button class="filter-toggle" aria-expanded="false" aria-controls="filter-square-list" id="filter-square-label">
+      Square <span class="toggle-icon" aria-hidden="true">▾</span>
+    </button>
+    <fieldset id="filter-square-list" class="filter-list" aria-labelledby="filter-square-label" hidden style="border:none;margin:0;padding:0;">
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Assemble"> Assemble</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Carry Out"> Carry Out</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Clarify"> Clarify</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Classify"> Classify</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Check"> Check</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Create"> Create</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Deconstruct"> Deconstruct</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Design"> Design</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Determine"> Determine</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Differentiate"> Differentiate</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Generate"> Generate</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Identify"> Identify</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Integrate"> Integrate</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Judge"> Judge</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="List"> List</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Predict"> Predict</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Provide"> Provide</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Recall"> Recall</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Recognize"> Recognize</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Reflect"> Reflect</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Respond"> Respond</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Select"> Select</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Summarize"> Summarize</label>
+      <label><input type="checkbox" class="filter-cb" data-col="square" value="Use"> Use</label>
+    </fieldset>
+  </div>
+
+  <button class="clear-btn" id="clear-filters-btn" aria-label="Clear all filters">Clear All Filters</button>
+</aside>
 
     <!-- Main content -->
     <main id="main-content" class="content-area" role="main">
