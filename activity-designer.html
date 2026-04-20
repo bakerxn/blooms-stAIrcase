@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      font-weight: bold
+      font-weight: bold;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
@@ -155,9 +155,11 @@
       margin-top: 8px;
       padding-left: 28px;
       line-height: 1.5;
-    }.checkbox-item.expanded.checkbox-description {
+    }
+      .checkbox-item.expanded .checkbox-description {
       display: block;
-    }.expand-toggle {
+}
+.expand-toggle {
       background: none;
       border: none;
       color: #AC3931;
@@ -414,239 +416,344 @@
     
     <form id="activityForm" class="form-container">
       <!-- Course Information Section -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="section-icon">📚</div>
-          <h3>Course Information</h3>
-        </div>
-        
-        <div class="form-group">
-          <label for="subject" class="form-label">Course/Subject Area<span class="required">*</span></label>
-          <input type="text" id="subject" name="subject" class="form-input" required placeholder="e.g., Introduction to Psychology, Advanced Calculus, Digital Marketing">
-          <span class="help-text">What course or subject is this activity for?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="level" class="form-label">Course Level<span class="required">*</span></label>
-          <select id="level" name="level" class="form-select" required>
-            <option value="">Select a level...</option>
-            <option value="First-Year Undergraduate">First-Year Undergraduate</option>
-            <option value="Sophomore Undergraduate">Sophomore Undergraduate</option>
-            <option value="Junior Undergraduate">Junior Undergraduate</option>
-            <option value="Senior Undergraduate">Senior Undergraduate</option>
-            <option value="Master's Level">Master's Level</option>
-            <option value="Doctoral Level">Doctoral Level</option>
-            <option value="Professional Development">Professional Development</option>
-          </select>
-          <span class="help-text">What level are your students?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="courseDescription" class="form-label">Course Description</label>
-          <textarea id="courseDescription" name="courseDescription" class="form-textarea" placeholder="Provide a brief description of your course, including key themes, goals, or focus areas..."></textarea>
-          <span class="help-text">Optional but helpful for context</span>
-        </div>
-      </div>
+<!-- Course Information Section -->
+<div class="form-section">
+  <div class="section-header">
+    <div class="section-icon">📚</div>
+    <h3>Course Information</h3>
+  </div>
+  
+  <p class="section-intro">
+    This section establishes the teaching context — your discipline, your students, and how your course works — so AI can calibrate its suggestions to your actual classroom. Formal course numbers mean wildly different things at different institutions, so we lean on <em>your</em> qualitative description of what students can handle. The more specifically you describe who you're teaching, the better the generated activity will fit.
+  </p>
+  
+  <div class="form-group">
+    <label for="discipline" class="form-label">Discipline / Field<span class="required">*</span></label>
+    <input type="text" id="discipline" name="discipline" class="form-input" required placeholder="e.g., Biology, History, Computer Science, Business, Nursing">
+    <span class="help-text">The broad academic area of your course.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="department" class="form-label">Department or Program</label>
+    <input type="text" id="department" name="department" class="form-input" placeholder="e.g., Department of Biological Sciences, School of Business, Pre-Health Program">
+    <span class="help-text">Optional, but useful for interdisciplinary programs, pre-professional tracks, or departments with distinctive approaches.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="subject" class="form-label">Course Name<span class="required">*</span></label>
+    <input type="text" id="subject" name="subject" class="form-input" required placeholder="e.g., Introduction to Cellular Biology, U.S. History Since 1865, Principles of Marketing">
+    <span class="help-text">The specific course you're teaching.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="courseDescription" class="form-label">Course Description</label>
+    <textarea id="courseDescription" name="courseDescription" class="form-textarea" placeholder="Describe your course's themes, goals, and teaching approach. What do students actually do in your class? What's distinctive about how you teach it? Even 2–3 sentences helps AI understand your pedagogical voice."></textarea>
+    <span class="help-text">Optional, but this is where AI learns your teaching style.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="studentContext" class="form-label">Student Readiness &amp; Context<span class="required">*</span></label>
+    <textarea id="studentContext" name="studentContext" class="form-textarea" required placeholder="e.g., Second-year students, most new to academic research. Can handle a 5-page paper with guided source-finding but struggle with independent thesis development. Mix of pre-health majors and general education students. Class of 35. Expected to complete ~4 hours of homework per week for this course."></textarea>
+    <span class="help-text">Describe your students qualitatively: their academic maturity, what they can handle independently, typical workload expectations, class size, and anything distinctive (diverse backgrounds, specific learning needs, prior knowledge). This matters more than course numbers — it's what helps AI calibrate complexity, scaffolding, and length.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="level" class="form-label">Course Level <span style="font-weight: normal; color: #666;">(quick reference)</span></label>
+    <select id="level" name="level" class="form-select">
+      <option value="">Select a level...</option>
+      <option value="First-Year Undergraduate">First-Year Undergraduate</option>
+      <option value="Sophomore Undergraduate">Sophomore Undergraduate</option>
+      <option value="Junior Undergraduate">Junior Undergraduate</option>
+      <option value="Senior Undergraduate">Senior Undergraduate</option>
+      <option value="Master's Level">Master's Level</option>
+      <option value="Doctoral Level">Doctoral Level</option>
+      <option value="Professional Development">Professional Development</option>
+    </select>
+    <span class="help-text">A rough category as a secondary reference point. Your qualitative description above matters more.</span>
+  </div>
+</div>
       
       <!-- Activity Details Section -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="section-icon">🎯</div>
-          <h3>Activity Details</h3>
-        </div>
-        
-        <div class="form-group">
-          <label for="topic" class="form-label">Specific Topic/Unit<span class="required">*</span></label>
-          <textarea id="topic" name="topic" class="form-textarea" required placeholder="e.g., Cognitive biases in decision-making, Applications of derivatives, Social media marketing strategies"></textarea>
-          <span class="help-text">What specific topic should this activity address?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="objectives" class="form-label">Learning Objectives<span class="required">*</span></label>
-          <textarea id="objectives" name="objectives" class="form-textarea" required placeholder="e.g., Students will be able to identify and analyze cognitive biases in real-world scenarios..."></textarea>
-          <span class="help-text">What should students be able to do after completing this activity?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="studentContext" class="form-label">Student Audience Characteristics</label>
-          <textarea id="studentContext" name="studentContext" class="form-textarea" placeholder="e.g., Class size, prior knowledge, diverse backgrounds, specific learning needs..."></textarea>
-          <span class="help-text">Any relevant information about your students?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="timeframe" class="form-label">Time Available</label>
-          <input type="text" id="timeframe" name="timeframe" class="form-input" placeholder="e.g., One 50-minute class period, Two weeks, Semester-long project">
-          <span class="help-text">How much time is available for this activity?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="technology" class="form-label">Technology Access/Constraints</label>
-          <textarea id="technology" name="technology" class="form-textarea" placeholder="e.g., All students have laptops, Limited to free AI tools, No technology constraints..."></textarea>
-          <span class="help-text">What technology is available or restricted?</span>
-        </div>
-        
-        <div class="form-group">
-          <label for="assessment" class="form-label">Assessment Preferences</label>
-          <textarea id="assessment" name="assessment" class="form-textarea" placeholder="e.g., Formative assessment, Peer review, Rubric-based grading..."></textarea>
-          <span class="help-text">How would you like to assess student work?</span>
+<!-- Activity Details Section -->
+<div class="form-section">
+  <div class="section-header">
+    <div class="section-icon">🎯</div>
+    <h3>Activity Details</h3>
+  </div>
+  
+  <p class="section-intro">
+    This section defines what students will actually <em>do</em>. The more concretely you describe the assignment — its topic, format, length, and what you want students to walk away having learned — the better AI can propose an activity that fits. Just as important: tell AI which parts of the thinking must stay with the student. That's how you keep the human at the center of the learning.
+  </p>
+  
+  <div class="form-group">
+    <label for="topic" class="form-label">Specific Topic or Unit<span class="required">*</span></label>
+    <textarea id="topic" name="topic" class="form-textarea" required placeholder="e.g., Cognitive biases in decision-making; Applications of derivatives in economics; Analyzing primary sources from the Civil Rights Movement"></textarea>
+    <span class="help-text">What specific topic, unit, or content area will this activity address?</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="objectives" class="form-label">Learning Goals<span class="required">*</span></label>
+    <textarea id="objectives" name="objectives" class="form-textarea" required placeholder="Share this however works for you:&#10;&#10;As formal learning objectives: 'Students will be able to identify and analyze cognitive biases in real-world case studies.'&#10;&#10;OR as keywords and skills: 'Critical thinking about bias; Evaluating evidence; Applying behavioral economics concepts to everyday decisions.'"></textarea>
+    <span class="help-text">What should students know, be able to do, or think differently about after completing this activity? Formal learning objectives are welcome, but a list of target skills, concepts, and habits of mind works just as well.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="assignmentSpecs" class="form-label">Assignment Format &amp; Specifications</label>
+    <textarea id="assignmentSpecs" name="assignmentSpecs" class="form-textarea" placeholder="e.g., 5-page research paper requiring 6+ peer-reviewed sources. OR: 10-minute group presentation with slides. OR: Weekly discussion posts (300 words) responding to assigned readings. OR: Semester-long portfolio with 4 component projects."></textarea>
+    <span class="help-text">What will students produce? Include the format (paper, presentation, project, discussion, portfolio, etc.), length or scope, and any research or source requirements.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="timeframe" class="form-label">Time Available</label>
+    <input type="text" id="timeframe" name="timeframe" class="form-input" placeholder="e.g., One 50-minute class period; Two-week unit with 3 class meetings; Semester-long project with weekly check-ins">
+    <span class="help-text">How much time — both in-class and out-of-class — is available for this activity?</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="technology" class="form-label">Technology Access &amp; Constraints</label>
+    <textarea id="technology" name="technology" class="form-textarea" placeholder="e.g., All students have laptops and campus Wi-Fi. Institution provides ChatGPT Edu access. OR: Limited to free AI tools; some students work from phones only. OR: No AI tool restrictions but concerns about data privacy for certain assignments."></textarea>
+    <span class="help-text">What technology can students access? Any tools required, provided, or off-limits?</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="humanWork" class="form-label">Protected Student Work <span style="font-weight: normal; color: #666;">(what must students do without AI?)</span></label>
+    <textarea id="humanWork" name="humanWork" class="form-textarea" placeholder="e.g., Students must read the primary source and draft their own initial interpretation before using AI. OR: Students must write their own thesis statement; AI can help refine it but not generate it. OR: Students must defend their final conclusions orally in their own words."></textarea>
+    <span class="help-text">Which parts of the thinking, writing, or decision-making must stay with the student? Naming this up front helps ensure AI enhances the learning rather than replacing it.</span>
+  </div>
+  
+  <div class="form-group">
+    <label for="assessment" class="form-label">Assessment Preferences</label>
+    <textarea id="assessment" name="assessment" class="form-textarea" placeholder="e.g., Rubric-based grading with peer review component. OR: Formative assessment through low-stakes drafts, with summative final. OR: Reflection on AI use required alongside the final product."></textarea>
+    <span class="help-text">How would you like to assess student work? Include any grading approaches, rubrics, or reflection components you're considering.</span>
+  </div>
+</div>
+      
+<!-- Activity Type Section -->
+<div class="form-section">
+  <div class="section-header">
+    <div class="section-icon">🔧</div>
+    <h3>Activity Purpose</h3>
+  </div>
+  
+  <p class="section-intro">
+    There's a meaningful difference between using AI as a <em>tool</em> to learn course content, making AI itself the <em>subject</em> of study, and asking students to <em>critically examine</em> how AI works. This choice shapes the entire activity — so pick the primary purpose, even if your activity touches more than one.
+  </p>
+  
+  <div class="form-group">
+    <label class="form-label">What is the primary purpose of AI in this activity?<span class="required">*</span></label>
+    <span class="help-text">Select the option that best describes AI's role. The generated prompt will help you think through whether and how secondary purposes fit in.</span>
+    
+    <div class="checkbox-group">
+      <div class="checkbox-item" id="purpose-1">
+        <label>
+          <input type="radio" name="activityPurpose" value="Learning course content with AI: Students use AI as a tool to deepen their understanding of the course subject matter. AI supports the learning of something other than AI itself.">
+          <div class="checkbox-label-text">
+            <span class="checkbox-title">Learning course content with AI</span>
+            <span class="checkbox-subtitle">AI as a tool to support learning the course subject</span>
+          </div>
+        </label>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('purpose-1')">Show example</button>
+        <div class="checkbox-description">
+          Students use AI to help them understand, apply, or engage with course content. The focus stays on the discipline (biology, history, marketing, etc.), and AI is a means to that end.
+          <br><br>
+          <em>Example: In a history course, students use AI to role-play a conversation with a historical figure, then critique the historical accuracy of the responses using primary sources.</em>
         </div>
       </div>
       
-      <!-- Activity Type Section -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="section-icon">🔧</div>
-          <h3>Activity Type</h3>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">Activity Focus (select all that apply)<span class="required">*</span></label>
-          <span class="help-text">What role should AI play in this activity?</span>
-          <div class="activity-type-group">
-            <div class="activity-type-item">
-              <input type="checkbox" id="type-embedded" name="activityType" value="AI-embedded activity (students use AI as a tool)">
-              <label for="type-embedded">AI-embedded (AI as a tool)</label>
-            </div>
-            <div class="activity-type-item">
-              <input type="checkbox" id="type-integrated" name="activityType" value="AI-integrated activity (AI is central to the learning)">
-              <label for="type-integrated">AI-integrated (AI is central)</label>
-            </div>
-            <div class="activity-type-item">
-              <input type="checkbox" id="type-teaching" name="activityType" value="Teaching about AI (AI literacy/critical understanding)">
-              <label for="type-teaching">Teaching about AI</label>
-            </div>
-            <div class="activity-type-item">
-              <input type="checkbox" id="type-ethical" name="activityType" value="Ethical AI use activity">
-              <label for="type-ethical">Ethical AI use</label>
-            </div>
-            <div class="activity-type-item">
-              <input type="checkbox" id="type-critical" name="activityType" value="Critical evaluation of AI">
-              <label for="type-critical">Critical evaluation of AI</label>
-            </div>
+      <div class="checkbox-item" id="purpose-2">
+        <label>
+          <input type="radio" name="activityPurpose" value="Learning about AI: Students develop understanding of how AI works, what it can and cannot do, and how to use it effectively. AI itself is the subject being studied.">
+          <div class="checkbox-label-text">
+            <span class="checkbox-title">Learning about AI</span>
+            <span class="checkbox-subtitle">AI literacy itself is the learning goal</span>
           </div>
+        </label>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('purpose-2')">Show example</button>
+        <div class="checkbox-description">
+          Students build foundational understanding of how AI tools work, what they're good at, where they fail, and how to use them skillfully. The focus is on developing AI literacy as a transferable competency.
+          <br><br>
+          <em>Example: Students test the same prompt across three different AI tools, document the variations in output, and develop a set of principles for when each tool is most useful.</em>
         </div>
       </div>
       
-      <!-- AI Literacy Framework Section -->
-      <div class="form-section">
-        <div class="section-header">
-          <div class="section-icon">🤖</div>
-          <h3>AI Literacy Framework</h3>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label">AI Literacy Competencies (select all that apply)<span class="required">*</span></label>
-          <span class="help-text">Which AI literacy skills should this activity develop? (Based on Kara Kennedy's AI Literacy Framework)</span>
-          
-          <div class="checkbox-group">
-            <div class="checkbox-item" id="framework-1">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Hardware & Software: Know which AI tool to use; Use AI tools and features on devices">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">1. Hardware & Software</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-1')">Show details</button>
-              <div class="checkbox-description">
-                • Know which AI tool to use<br>
-                • Use AI tools and features on phone/tablet/laptop/desktop
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-2">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Information & Data Literacy: Use AI to access info and organize data; Evaluate AI output; Modify techniques to improve AI performance">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">2. Information & Data Literacy</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-2')">Show details</button>
-              <div class="checkbox-description">
-                • Use AI to access new info and organize data<br>
-                • Evaluate AI output<br>
-                • Modify techniques to improve AI performance
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-3">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Communication & Collaboration: Converse with AI systems; Manage and share AI content; Determine whether/how to acknowledge AI; Use AI in collaboration with others">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">3. Communication & Collaboration</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-3')">Show details</button>
-              <div class="checkbox-description">
-                • Converse with AI systems and chatbots<br>
-                • Manage and share AI content<br>
-                • Determine whether/how to acknowledge AI<br>
-                • Use AI in collaboration with others
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-4">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Content Creation: Use AI to create and personalize new content and adapt existing content; Understand legal and ethical issues with AI datasets, models, and output">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">4. Content Creation</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-4')">Show details</button>
-              <div class="checkbox-description">
-                • Use AI to create and personalize new content and adapt existing content<br>
-                • Understand legal and ethical issues with AI datasets, models, and output
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-5">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Safety: Know risks and liabilities of AI tools; Review privacy policies for data usage; Manage risks to personal info and wellbeing; Use AI in ethical ways and assess environmental impact">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">5. Safety</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-5')">Show details</button>
-              <div class="checkbox-description">
-                • Know risks and liabilities of AI tools<br>
-                • Review privacy policies for data usage<br>
-                • Manage risks to personal info and wellbeing<br>
-                • Use AI in ethical ways and assess environmental impact
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-6">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Problem Solving: Recognize errors and inconsistencies in outputs; Identify and solve AI-related problems; Use AI to create insights and improve processes; Identify skill gaps and continually learn">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">6. Problem Solving</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-6')">Show details</button>
-              <div class="checkbox-description">
-                • Recognize errors and inconsistencies in outputs<br>
-                • Identify and solve AI-related problems<br>
-                • Use AI to create insights and improve processes<br>
-                • Identify skill gaps and continually learn
-              </div>
-            </div>
-            
-            <div class="checkbox-item" id="framework-7">
-              <label>
-                <input type="checkbox" name="aiLiteracy" value="Career Competencies: Use and customize AI tools in specific field; Understand and analyze AI content in specific field; Combine industry expertise with AI analysis and processes">
-                <div class="checkbox-label-text">
-                  <span class="checkbox-title">7. Career Competencies</span>
-                </div>
-              </label>
-              <button type="button" class="expand-toggle" onclick="toggleDescription('framework-7')">Show details</button>
-              <div class="checkbox-description">
-                • Use and customize AI tools in specific field<br>
-                • Understand and analyze AI content in specific field<br>
-                • Combine industry expertise with AI analysis and processes
-              </div>
-            </div>
+      <div class="checkbox-item" id="purpose-3">
+        <label>
+          <input type="radio" name="activityPurpose" value="Critically examining AI: Students analyze, evaluate, or challenge AI systems — their outputs, biases, ethical implications, labor practices, environmental costs, or societal effects. AI is the object of critical inquiry.">
+          <div class="checkbox-label-text">
+            <span class="checkbox-title">Critically examining AI</span>
+            <span class="checkbox-subtitle">AI as the object of critical inquiry</span>
           </div>
+        </label>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('purpose-3')">Show example</button>
+        <div class="checkbox-description">
+          Students investigate AI from a critical perspective — its biases, ethical dimensions, environmental impact, labor practices, or effects on society and the professions. The focus is on interrogating AI rather than using it.
+          <br><br>
+          <em>Example: Students audit an AI image generator for demographic bias by running a standardized set of prompts, then write an analysis connecting their findings to course readings on algorithmic fairness.</em>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+      
+<!-- AI Literacy Framework Section -->
+<div class="form-section">
+  <div class="section-header">
+    <div class="section-icon">🤖</div>
+    <h3>AI Literacy Framework</h3>
+  </div>
+  
+  <p class="section-intro">
+    AI literacy isn't one skill — it's a cluster of competencies, from knowing which tool to use, to evaluating output, to understanding ethical and environmental implications. This section uses <em>Kara Kennedy's AI Literacy Framework</em> to help you pinpoint which competencies your activity should build. Choose one <em>primary</em> competency (the main one you want students to develop) and up to two <em>secondary</em> competencies that your activity will also touch. Focusing your choice makes the generated activity sharper than trying to address everything at once.
+  </p>
+  
+  <div class="form-group">
+    <label class="form-label">Which AI literacy competencies should this activity develop?<span class="required">*</span></label>
+    <span class="help-text">Select one Primary competency (required) and up to two Secondary competencies (optional). Click "Show details" on any competency to see what it includes.</span>
+    
+    <div class="checkbox-group" id="aiLiteracyGroup">
+      <div class="checkbox-item" id="framework-1">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">1. Hardware &amp; Software</span>
+            <span class="literacy-tagline">Knowing which AI tool to use and how to operate it</span>
+          </div>
+          <div class="priority-toggle" data-competency="1">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-1')">Show details</button>
+        <div class="checkbox-description">
+          • Knowing which AI tool is appropriate for a given task<br>
+          • Using AI tools and features on phone, tablet, laptop, or desktop
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-2">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">2. Information &amp; Data Literacy</span>
+            <span class="literacy-tagline">Accessing, evaluating, and improving AI-generated information</span>
+          </div>
+          <div class="priority-toggle" data-competency="2">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-2')">Show details</button>
+        <div class="checkbox-description">
+          • Using AI to access new information and organize data<br>
+          • Evaluating AI output for accuracy, bias, and usefulness<br>
+          • Modifying prompts and techniques to improve AI performance
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-3">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">3. Communication &amp; Collaboration</span>
+            <span class="literacy-tagline">Working with AI and acknowledging its use</span>
+          </div>
+          <div class="priority-toggle" data-competency="3">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-3')">Show details</button>
+        <div class="checkbox-description">
+          • Conversing productively with AI systems and chatbots<br>
+          • Managing and sharing AI-generated content<br>
+          • Determining whether and how to acknowledge AI use<br>
+          • Using AI in collaboration with human partners
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-4">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">4. Content Creation</span>
+            <span class="literacy-tagline">Creating and adapting content with AI, ethically</span>
+          </div>
+          <div class="priority-toggle" data-competency="4">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-4')">Show details</button>
+        <div class="checkbox-description">
+          • Using AI to create, personalize, and adapt content<br>
+          • Understanding legal and ethical issues with AI training datasets, models, and outputs
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-5">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">5. Safety</span>
+            <span class="literacy-tagline">Risks, privacy, wellbeing, and environmental impact</span>
+          </div>
+          <div class="priority-toggle" data-competency="5">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-5')">Show details</button>
+        <div class="checkbox-description">
+          • Recognizing the risks and liabilities of AI tools<br>
+          • Reviewing privacy policies and understanding data usage<br>
+          • Managing risks to personal information and wellbeing<br>
+          • Using AI ethically and assessing its environmental impact
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-6">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">6. Problem Solving</span>
+            <span class="literacy-tagline">Troubleshooting, applying insight, and continued learning</span>
+          </div>
+          <div class="priority-toggle" data-competency="6">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-6')">Show details</button>
+        <div class="checkbox-description">
+          • Recognizing errors and inconsistencies in AI output<br>
+          • Identifying and solving AI-related problems<br>
+          • Using AI to generate insights and improve processes<br>
+          • Identifying one's own skill gaps and continually learning
+        </div>
+      </div>
+      
+      <div class="checkbox-item" id="framework-7">
+        <div class="literacy-header">
+          <div class="literacy-title-block">
+            <span class="checkbox-title">7. Career Competencies</span>
+            <span class="literacy-tagline">Applying AI within a specific professional field</span>
+          </div>
+          <div class="priority-toggle" data-competency="7">
+            <button type="button" class="priority-btn" data-priority="primary">Primary</button>
+            <button type="button" class="priority-btn" data-priority="secondary">Secondary</button>
+            <button type="button" class="priority-btn active" data-priority="none">—</button>
+          </div>
+        </div>
+        <button type="button" class="expand-toggle" onclick="toggleDescription('framework-7')">Show details</button>
+        <div class="checkbox-description">
+          • Using and customizing AI tools within a specific field<br>
+          • Understanding and analyzing AI-generated content within a specific field<br>
+          • Combining industry expertise with AI analysis and processes
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       
       <button type="submit" class="generate-button">Generate Prompt</button>
     </form>
@@ -711,6 +818,51 @@
     let generatedPrompt = '';
     let formData = {};
     
+    // Handle priority toggle buttons
+document.querySelectorAll('.priority-toggle').forEach(toggle => {
+  toggle.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('priority-btn')) return;
+    
+    const competency = this.dataset.competency;
+    const priority = e.target.dataset.priority;
+    const item = document.getElementById('framework-' + competency);
+    
+    // If selecting Primary, first clear any existing Primary selection elsewhere
+    if (priority === 'primary') {
+      document.querySelectorAll('.priority-toggle').forEach(otherToggle => {
+        if (otherToggle.dataset.competency !== competency) {
+          const primaryBtn = otherToggle.querySelector('[data-priority="primary"]');
+          if (primaryBtn.classList.contains('active')) {
+            primaryBtn.classList.remove('active');
+            otherToggle.querySelector('[data-priority="none"]').classList.add('active');
+            const otherItem = document.getElementById('framework-' + otherToggle.dataset.competency);
+            otherItem.classList.remove('has-primary');
+          }
+        }
+      });
+    }
+    
+    // If selecting Secondary, enforce max of 2 Secondary selections
+    if (priority === 'secondary') {
+      const currentSecondaries = document.querySelectorAll('.priority-btn.active[data-priority="secondary"]');
+      const thisIsAlreadySecondary = this.querySelector('[data-priority="secondary"]').classList.contains('active');
+      if (currentSecondaries.length >= 2 && !thisIsAlreadySecondary) {
+        alert('You can select up to 2 Secondary competencies. Deselect one first, or change it to Primary.');
+        return;
+      }
+    }
+    
+    // Update button states within this toggle
+    this.querySelectorAll('.priority-btn').forEach(btn => btn.classList.remove('active'));
+    e.target.classList.add('active');
+    
+    // Update item visual state
+    item.classList.remove('has-primary', 'has-secondary');
+    if (priority === 'primary') item.classList.add('has-primary');
+    if (priority === 'secondary') item.classList.add('has-secondary');
+  });
+});
+
     // Toggle description visibility
     function toggleDescription(id) {
       const item = document.getElementById(id);
@@ -729,34 +881,54 @@
     document.getElementById('activityForm').addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Validate at least one activity type is selected
-      const activityTypes = document.querySelectorAll('input[name="activityType"]:checked');
-      if (activityTypes.length === 0) {
-        alert('Please select at least one Activity Focus type.');
-        return;
-      }
+// Validate an activity purpose is selected
+const activityPurpose = document.querySelector('input[name="activityPurpose"]:checked');
+if (!activityPurpose) {
+  alert('Please select the primary purpose of AI in this activity.');
+  return;
+}
       
-      // Validate at least one AI literacy component is selected
-      const aiLiteracy = document.querySelectorAll('input[name="aiLiteracy"]:checked');
-      if (aiLiteracy.length === 0) {
-        alert('Please select at least one AI Literacy Competency.');
-        return;
-      }
+// Validate a Primary AI literacy competency is selected
+const primaryBtn = document.querySelector('.priority-btn.active[data-priority="primary"]');
+if (!primaryBtn) {
+  alert('Please designate one AI Literacy Competency as Primary.');
+  return;
+}
+
+// Gather primary and secondary competencies
+const competencyNames = {
+  '1': 'Hardware & Software: Knowing which AI tool to use; using AI tools and features on devices',
+  '2': 'Information & Data Literacy: Using AI to access info and organize data; evaluating AI output; modifying techniques to improve AI performance',
+  '3': 'Communication & Collaboration: Conversing with AI systems; managing and sharing AI content; determining whether/how to acknowledge AI; using AI in collaboration with others',
+  '4': 'Content Creation: Using AI to create and personalize new content and adapt existing content; understanding legal and ethical issues with AI datasets, models, and output',
+  '5': 'Safety: Knowing risks and liabilities of AI tools; reviewing privacy policies for data usage; managing risks to personal info and wellbeing; using AI ethically and assessing environmental impact',
+  '6': 'Problem Solving: Recognizing errors and inconsistencies in outputs; identifying and solving AI-related problems; using AI to create insights and improve processes; identifying skill gaps and continually learning',
+  '7': 'Career Competencies: Using and customizing AI tools in a specific field; understanding and analyzing AI content in a specific field; combining industry expertise with AI analysis and processes'
+};
+
+const primaryCompetency = competencyNames[primaryBtn.closest('.priority-toggle').dataset.competency];
+const secondaryCompetencies = Array.from(
+  document.querySelectorAll('.priority-btn.active[data-priority="secondary"]')
+).map(btn => competencyNames[btn.closest('.priority-toggle').dataset.competency]);
       
       // Collect form data
-      formData = {
-        subject: document.getElementById('subject').value,
-        level: document.getElementById('level').value,
-        courseDescription: document.getElementById('courseDescription').value,
-        topic: document.getElementById('topic').value,
-        objectives: document.getElementById('objectives').value,
-        studentContext: document.getElementById('studentContext').value,
-        timeframe: document.getElementById('timeframe').value,
-        technology: document.getElementById('technology').value,
-        assessment: document.getElementById('assessment').value,
-        activityTypes: Array.from(activityTypes).map(cb => cb.value),
-        aiLiteracy: Array.from(aiLiteracy).map(cb => cb.value)
-      };
+formData = {
+  discipline: document.getElementById('discipline').value,
+  department: document.getElementById('department').value,
+  subject: document.getElementById('subject').value,
+  level: document.getElementById('level').value,
+  courseDescription: document.getElementById('courseDescription').value,
+  studentContext: document.getElementById('studentContext').value,
+  topic: document.getElementById('topic').value,
+  objectives: document.getElementById('objectives').value,
+  assignmentSpecs: document.getElementById('assignmentSpecs').value,
+  timeframe: document.getElementById('timeframe').value,
+  technology: document.getElementById('technology').value,
+  humanWork: document.getElementById('humanWork').value,
+  assessment: document.getElementById('assessment').value,
+activityPurpose: activityPurpose.value,
+primaryCompetency: primaryCompetency,
+secondaryCompetencies: secondaryCompetencies};
       
       // Generate prompt
       generatedPrompt = generatePrompt(formData);
@@ -769,40 +941,60 @@
       document.getElementById('outputContainer').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
     
-    function generatePrompt(data) {
-      let prompt = `You are an expert educational designer specializing in AI-integrated pedagogy and Bloom's Taxonomy.
+function generatePrompt(data) {
+  let prompt = `You are an expert educational designer specializing in AI-integrated pedagogy and Bloom's Taxonomy.
 
 CONTEXT:
-Course/Subject: ${data.subject}
-Level: ${data.level}`;
+Discipline/Field: ${data.discipline}`;
 
-      if (data.courseDescription) {
-        prompt += `\nCourse Description: ${data.courseDescription}`;
-      }
+  if (data.department) {
+    prompt += `\nDepartment/Program: ${data.department}`;
+  }
+  
+  prompt += `\nCourse Name: ${data.subject}`;
+  
+  if (data.courseDescription) {
+    prompt += `\nCourse Description: ${data.courseDescription}`;
+  }
+  
+  prompt += `\nStudent Readiness & Context: ${data.studentContext}`;
+  
+  if (data.level) {
+    prompt += `\nCourse Level (general category): ${data.level}`;
+  }
+  
+prompt += `\nTopic: ${data.topic}
+Learning Goals: ${data.objectives}`;
+
+  if (data.assignmentSpecs) {
+    prompt += `\nAssignment Format & Specifications: ${data.assignmentSpecs}`;
+  }
+  if (data.timeframe) {
+    prompt += `\nTime Available: ${data.timeframe}`;
+  }
+  if (data.technology) {
+    prompt += `\nTechnology Context: ${data.technology}`;
+  }
+  if (data.humanWork) {
+    prompt += `\nProtected Student Work (must be done without AI): ${data.humanWork}`;
+  }
+  if (data.assessment) {
+    prompt += `\nAssessment Preferences: ${data.assessment}`;
+  }
       
-      prompt += `\nTopic: ${data.topic}
-Learning Objectives: ${data.objectives}`;
+prompt += `\n\nACTIVITY PURPOSE:
+${data.activityPurpose}
 
-      if (data.studentContext) {
-        prompt += `\nStudent Audience: ${data.studentContext}`;
-      }
-      if (data.timeframe) {
-        prompt += `\nTime Available: ${data.timeframe}`;
-      }
-      if (data.technology) {
-        prompt += `\nTechnology Context: ${data.technology}`;
-      }
-      if (data.assessment) {
-        prompt += `\nAssessment Preferences: ${data.assessment}`;
-      }
-      
-      prompt += `\n\nACTIVITY TYPE:
-This activity should be:
-${data.activityTypes.map(type => '• ' + type).join('\n')}
+AI LITERACY FOCUS (based on Kara Kennedy's AI Literacy Framework):
+Primary competency (the main literacy this activity should develop):
+- ${data.primaryCompetency}`;
 
-AI LITERACY FOCUS:
-This activity should develop the following AI literacy competencies (based on Kara Kennedy's AI Literacy Framework):
-${data.aiLiteracy.map(comp => '• ' + comp).join('\n')}
+if (data.secondaryCompetencies && data.secondaryCompetencies.length > 0) {
+  prompt += `\n\nSecondary competencies (supporting literacies this activity will also touch):
+${data.secondaryCompetencies.map(comp => '• ' + comp).join('\n')}`;
+}
+
+prompt += `
 
 TASK:
 Design a pedagogically sound activity that:
@@ -867,18 +1059,23 @@ Please provide:
       
       let body = `Thank you for using the Activity Designer on Bloom's stAIrcase!\n\nBelow is the prompt you generated:\n\n`;
       body += `=== YOUR INPUT ===\n\n`;
-      body += `Course/Subject: ${formData.subject}\n`;
-      body += `Level: ${formData.level}\n`;
+body += `Discipline/Field: ${formData.discipline}\n`;
+if (formData.department) body += `Department/Program: ${formData.department}\n`;
+body += `Course Name: ${formData.subject}\n`;
+if (formData.level) body += `Course Level: ${formData.level}\n`;
       if (formData.courseDescription) body += `Course Description: ${formData.courseDescription}\n`;
-      body += `Topic: ${formData.topic}\n`;
-      body += `Learning Objectives: ${formData.objectives}\n`;
-      if (formData.studentContext) body += `Student Audience: ${formData.studentContext}\n`;
-      if (formData.timeframe) body += `Time Available: ${formData.timeframe}\n`;
-      if (formData.technology) body += `Technology: ${formData.technology}\n`;
-      if (formData.assessment) body += `Assessment: ${formData.assessment}\n`;
-      body += `\nActivity Types:\n${formData.activityTypes.map(t => '• ' + t).join('\n')}\n`;
-      body += `\nAI Literacy Competencies:\n${formData.aiLiteracy.map(c => '• ' + c).join('\n')}\n`;
-      body += `\n\n=== GENERATED PROMPT ===\n\n`;
+body += `Topic: ${formData.topic}\n`;
+body += `Learning Goals: ${formData.objectives}\n`;
+if (formData.assignmentSpecs) body += `Assignment Format & Specifications: ${formData.assignmentSpecs}\n`;
+if (formData.timeframe) body += `Time Available: ${formData.timeframe}\n`;
+if (formData.technology) body += `Technology: ${formData.technology}\n`;
+if (formData.humanWork) body += `Protected Student Work: ${formData.humanWork}\n`;
+if (formData.assessment) body += `Assessment: ${formData.assessment}\n`;
+      body += `\nActivity Purpose: ${formData.activityPurpose}\n`;
+body += `\nPrimary AI Literacy Competency:\n• ${formData.primaryCompetency}\n`;
+if (formData.secondaryCompetencies && formData.secondaryCompetencies.length > 0) {
+  body += `\nSecondary AI Literacy Competencies:\n${formData.secondaryCompetencies.map(c => '• ' + c).join('\n')}\n`;
+}      body += `\n\n=== GENERATED PROMPT ===\n\n`;
       body += generatedPrompt;
       body += `\n\n=== NEXT STEPS ===\n\n`;
       body += `Copy this prompt and paste it into your preferred AI tool:\n`;
