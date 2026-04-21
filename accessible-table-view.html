@@ -1,148 +1,377 @@
-
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Accessible Bloom's stAIrcase</title>
+<title>Accessible Table View - Bloom's stAIrcase</title>
+<link rel="stylesheet" href="theme.css">
 <style>
-body {font-family:system-ui;margin:0;background:#fff;color:#111}
-main {max-width:1100px;margin:auto;padding:1rem}
-h1 {margin-bottom:0.5rem}
-table {border-collapse:collapse;width:100%}
-th,td {border:1px solid #ccc;padding:.6rem;text-align:center}
-th {background:#f3f4f6;font-weight:600}
-th[scope="row"]{text-align:left;background:#f9fafb}
-button {
-    width:100%;
-    padding:.4rem;
-    border:none;
-    background:none;
-    cursor:pointer;
-    font:inherit;
-}
-button:hover {background:#eef2ff}
-button:focus {outline:3px solid #2563eb}
-.selected {background:#e0e7ff}
-aside {
-    margin-top:1rem;
-    border:1px solid #ccc;
-    padding:1rem;
-    border-radius:12px;
-    min-height:60px;
-}
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f5f8fa;
+    color: #111;
+  }
+  
+  header {
+    padding: 20px;
+    text-align: center;
+    background-color: #003366;
+  }
+  
+  header h1 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 2em;
+  }
+  
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    padding: 10px 20px;
+    background: #AC3931;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .back-link:hover,
+  .back-link:focus {
+    background: #8d2e27;
+  }
+  
+  .page-intro {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-left: 5px solid #AC3931;
+    margin-bottom: 1.5rem;
+  }
+  
+  .page-intro h2 {
+    color: #003366;
+    margin-top: 0;
+  }
+  
+  .page-intro p {
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .instructions {
+    background: #fff9e6;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+  
+  .table-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 600px;
+  }
+  
+  th, td {
+    border: 1px solid #ccc;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  th {
+    background: #003366;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  th a {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: background 0.2s ease;
+  }
+  
+  th a:hover,
+  th a:focus {
+    background: #00509d;
+    outline: 3px solid #AC3931;
+    outline-offset: -3px;
+  }
+  
+  th[scope="row"] {
+    background: #CCE5FF;
+    padding: 0;
+  }
+  
+  th[scope="row"] a {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #003366;
+    text-decoration: none;
+    text-align: left;
+    font-size: 1rem;
+    transition: background 0.2s ease;
+  }
+  
+  th[scope="row"] a:hover,
+  th[scope="row"] a:focus {
+    background: #99CCFF;
+    outline: 3px solid #AC3931;
+    outline-offset: -3px;
+  }
+  
+  .corner-header {
+    background: #001f3f;
+    color: #fff;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .corner-header .corner-row-label {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  td a {
+    display: block;
+    padding: 1rem 0.5rem;
+    color: #003366;
+    text-decoration: none;
+    font-weight: 600;
+    height: 100%;
+    transition: background 0.2s ease;
+  }
+  
+  td a:hover,
+  td a:focus {
+    background: #CCE5FF;
+    outline: 3px solid #AC3931;
+    outline-offset: -3px;
+  }
+  
+  .legend {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+  }
+  
+  .legend h3 {
+    color: #003366;
+    margin-top: 0;
+  }
+  
+  .legend dl {
+    margin: 0;
+  }
+  
+  .legend dt {
+    font-weight: bold;
+    color: #003366;
+    margin-top: 0.75rem;
+  }
+  
+  .legend dd {
+    margin-left: 0;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .legend a {
+    color: #AC3931;
+  }
+  
+  .legend a:hover,
+  .legend a:focus {
+    color: #8d2e27;
+  }
+  
+  footer {
+    background: #003366;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 2rem;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: underline;
+    margin: 0 10px;
+  }
+  
+  footer img {
+    vertical-align: middle;
+    height: 31px;
+    margin-top: 10px;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  @media (max-width: 600px) {
+    .table-wrapper {
+      padding: 0.5rem;
+    }
+    th, td a, th a, th[scope="row"] a {
+      padding: 0.6rem 0.25rem;
+      font-size: 0.9rem;
+    }
+  }
 </style>
 </head>
 <body>
-<main>
-<h1>Accessible Bloom's stAIrcase</h1>
-<p>This is a fully keyboard-accessible alternative to the SVG version.</p>
-<table id="tbl" aria-label="Bloom's stAIrcase interactive table"></table>
-<aside id="info" aria-live="polite">Select a cell to generate a prompt.</aside>
-</main>
-
-<script>
-const data = {"topLeftHeader": "The Knowledge Dimension", "topHeader": "The Cognitive Process Dimension", "colHeaders": ["Create", "Evaluate", "Analyze", "Apply", "Understand", "Remember"], "rowHeaders": ["Metacognative", "Procedural", "Conceptual", "Factual"], "cells": [["create", "reflect", "deconstruct", "use", "predict", "identify"], ["design", "judge", "integrate", "carry out", "clarify", "recall"], ["assemble", "determine", "differentiate", "provide", "classify", "recognize"], ["generate", "check", "select", "respond", "summarize", "list"]]};
-
-let table = document.getElementById("tbl");
-
-// Build header
-let thead = document.createElement("thead");
-let r1 = document.createElement("tr");
-
-let thCorner = document.createElement("th");
-thCorner.rowSpan = 2;
-thCorner.textContent = data.topLeftHeader;
-r1.appendChild(thCorner);
-
-let thTop = document.createElement("th");
-thTop.colSpan = data.colHeaders.length;
-thTop.textContent = data.topHeader;
-r1.appendChild(thTop);
-thead.appendChild(r1);
-
-let r2 = document.createElement("tr");
-data.colHeaders.forEach(h=>{
-    let th=document.createElement("th");
-    th.scope="col";
-    th.textContent=h;
-    r2.appendChild(th);
-});
-thead.appendChild(r2);
-table.appendChild(thead);
-
-// Build body
-let tbody=document.createElement("tbody");
-data.rowHeaders.forEach((row,ri)=>{
-    let tr=document.createElement("tr");
-    let th=document.createElement("th");
-    th.scope="row";
-    th.textContent=row;
-    tr.appendChild(th);
-
-    data.colHeaders.forEach((col,ci)=>{
-        let td=document.createElement("td");
-        let btn=document.createElement("button");
-        let val=data.cells[ri][ci]||"";
-        btn.textContent=val||"—";
-        btn.setAttribute("aria-label", row + ", " + col + ": " + val);
-        btn.onclick=()=>{
-            document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
-            td.classList.add("selected");
-            document.getElementById("info").textContent =
-                "Knowledge: " + row +
-                " | Cognitive Process: " + col +
-                " | Verb: " + val +
-                "\n\nStarter Prompt: Create an activity where students " +
-                val + " using " + row.toLowerCase() + " knowledge.";
-        };
-        td.appendChild(btn);
-        tr.appendChild(td);
-    });
-    tbody.appendChild(tr);
-});
-
-table.appendChild(tbody);
-</script>
-
-<script>
-const info = document.getElementById("info");
-function select(el,msg){
- document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
- el.classList.add("selected");
- info.textContent = msg;
-}
-
-document.querySelectorAll('tbody th[scope="row"]').forEach(th=>{
- let label=th.textContent.trim();
- let btn=document.createElement("button");
- btn.textContent=label;
- btn.setAttribute("aria-label","Knowledge type: "+label);
- btn.onclick=()=>select(th,"Knowledge Type: "+label);
- th.textContent="";
- th.appendChild(btn);
-});
-
-document.querySelectorAll("thead tr:last-child th").forEach(th=>{
- let label=th.textContent.trim();
- let btn=document.createElement("button");
- btn.textContent=label;
- btn.setAttribute("aria-label","Cognitive process: "+label);
- btn.onclick=()=>select(th,"Cognitive Process: "+label);
- th.textContent="";
- th.appendChild(btn);
-});
-
-let topHeader=document.querySelector("thead tr:first-child th:last-child");
-if(topHeader){
- let label=topHeader.textContent.trim();
- let btn=document.createElement("button");
- btn.textContent=label;
- btn.onclick=()=>select(topHeader,"Dimension: "+label);
- topHeader.textContent="";
- topHeader.appendChild(btn);
-}
-</script>
-
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header>
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <main>
+    <a href="index.html" class="back-link">← Back to Visual Diagram</a>
+    
+    <div class="page-intro">
+      <h2>Accessible Table View</h2>
+      <p>
+        This is the table equivalent of the interactive visual diagram on the homepage. Every cell links to the same detailed content as the visual version, so whichever format works better for you, you have full access to the framework. Use Tab and Enter to navigate with a keyboard, or your preferred screen reader commands.
+      </p>
+    </div>
+    
+    <div class="instructions">
+      <strong>How to use:</strong> Each row represents a Knowledge Dimension (what students know). Each column represents a Cognitive Process (what students do with that knowledge). The verb inside each cell is a sample learning objective at that intersection. Click any verb to see example activities and AI literacy integration strategies. You can also click a row or column header to learn more about that dimension.
+    </div>
+    
+    <div class="table-wrapper">
+      <table aria-label="Bloom's stAIrcase: Knowledge Dimension by Cognitive Process Dimension">
+        <caption class="sr-only">
+          Bloom's stAIrcase interactive table. Rows are Knowledge Dimensions (Metacognitive, Procedural, Conceptual, Factual). Columns are Cognitive Processes (Create, Evaluate, Analyze, Apply, Understand, Remember). Each cell contains a verb that represents a learning objective at the intersection of those dimensions. Row and column headers link to detailed information about each dimension. Cells link to example activities and AI literacy integration strategies.
+        </caption>
+        <thead>
+          <tr>
+            <th class="corner-header" rowspan="2" scope="col">
+              The Knowledge Dimension
+              <span class="corner-row-label">×<br>The Cognitive Process Dimension</span>
+            </th>
+            <th colspan="6" scope="colgroup">The Cognitive Process Dimension</th>
+          </tr>
+          <tr>
+            <th scope="col"><a href="dimensions/rcreate.html" aria-label="Create: learn more about this cognitive process">Create</a></th>
+            <th scope="col"><a href="dimensions/evaluate.html" aria-label="Evaluate: learn more about this cognitive process">Evaluate</a></th>
+            <th scope="col"><a href="dimensions/analyze.html" aria-label="Analyze: learn more about this cognitive process">Analyze</a></th>
+            <th scope="col"><a href="dimensions/apply.html" aria-label="Apply: learn more about this cognitive process">Apply</a></th>
+            <th scope="col"><a href="dimensions/understand.html" aria-label="Understand: learn more about this cognitive process">Understand</a></th>
+            <th scope="col"><a href="dimensions/remember.html" aria-label="Remember: learn more about this cognitive process">Remember</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><a href="dimensions/metacognitive.html" aria-label="Metacognitive: learn more about this knowledge dimension">Metacognitive</a></th>
+            <td><a href="squares/create.html" aria-label="Metacognitive knowledge, Create process: Create — view activity examples">Create</a></td>
+            <td><a href="squares/reflect.html" aria-label="Metacognitive knowledge, Evaluate process: Reflect — view activity examples">Reflect</a></td>
+            <td><a href="squares/deconstruct.html" aria-label="Metacognitive knowledge, Analyze process: Deconstruct — view activity examples">Deconstruct</a></td>
+            <td><a href="squares/use.html" aria-label="Metacognitive knowledge, Apply process: Use — view activity examples">Use</a></td>
+            <td><a href="squares/predict.html" aria-label="Metacognitive knowledge, Understand process: Predict — view activity examples">Predict</a></td>
+            <td><a href="squares/identify.html" aria-label="Metacognitive knowledge, Remember process: Identify — view activity examples">Identify</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="dimensions/procedural.html" aria-label="Procedural: learn more about this knowledge dimension">Procedural</a></th>
+            <td><a href="squares/design.html" aria-label="Procedural knowledge, Create process: Design — view activity examples">Design</a></td>
+            <td><a href="squares/judge.html" aria-label="Procedural knowledge, Evaluate process: Judge — view activity examples">Judge</a></td>
+            <td><a href="squares/integrate.html" aria-label="Procedural knowledge, Analyze process: Integrate — view activity examples">Integrate</a></td>
+            <td><a href="squares/carry_out.html" aria-label="Procedural knowledge, Apply process: Carry out — view activity examples">Carry out</a></td>
+            <td><a href="squares/clarify.html" aria-label="Procedural knowledge, Understand process: Clarify — view activity examples">Clarify</a></td>
+            <td><a href="squares/recall.html" aria-label="Procedural knowledge, Remember process: Recall — view activity examples">Recall</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="dimensions/conceptual.html" aria-label="Conceptual: learn more about this knowledge dimension">Conceptual</a></th>
+            <td><a href="squares/assemble.html" aria-label="Conceptual knowledge, Create process: Assemble — view activity examples">Assemble</a></td>
+            <td><a href="squares/determine.html" aria-label="Conceptual knowledge, Evaluate process: Determine — view activity examples">Determine</a></td>
+            <td><a href="squares/differentiate.html" aria-label="Conceptual knowledge, Analyze process: Differentiate — view activity examples">Differentiate</a></td>
+            <td><a href="squares/provide.html" aria-label="Conceptual knowledge, Apply process: Provide — view activity examples">Provide</a></td>
+            <td><a href="squares/classify.html" aria-label="Conceptual knowledge, Understand process: Classify — view activity examples">Classify</a></td>
+            <td><a href="squares/recognize.html" aria-label="Conceptual knowledge, Remember process: Recognize — view activity examples">Recognize</a></td>
+          </tr>
+          <tr>
+            <th scope="row"><a href="dimensions/factual.html" aria-label="Factual: learn more about this knowledge dimension">Factual</a></th>
+            <td><a href="squares/generate.html" aria-label="Factual knowledge, Create process: Generate — view activity examples">Generate</a></td>
+            <td><a href="squares/check.html" aria-label="Factual knowledge, Evaluate process: Check — view activity examples">Check</a></td>
+            <td><a href="squares/select.html" aria-label="Factual knowledge, Analyze process: Select — view activity examples">Select</a></td>
+            <td><a href="squares/respond.html" aria-label="Factual knowledge, Apply process: Respond — view activity examples">Respond</a></td>
+            <td><a href="squares/summarize.html" aria-label="Factual knowledge, Understand process: Summarize — view activity examples">Summarize</a></td>
+            <td><a href="squares/list.html" aria-label="Factual knowledge, Remember process: List — view activity examples">List</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="legend">
+      <h3>About the Dimensions</h3>
+      <dl>
+        <dt>Metacognitive</dt>
+        <dd>Knowledge of cognition in general and awareness of one's own cognition. <a href="dimensions/metacognitive.html">Learn more about Metacognitive knowledge</a>.</dd>
+        
+        <dt>Procedural</dt>
+        <dd>How to do something, methods of inquiry, and criteria for using skills. <a href="dimensions/procedural.html">Learn more about Procedural knowledge</a>.</dd>
+        
+        <dt>Conceptual</dt>
+        <dd>The interrelationship among basic elements within a larger structure. <a href="dimensions/conceptual.html">Learn more about Conceptual knowledge</a>.</dd>
+        
+        <dt>Factual</dt>
+        <dd>The basic elements students must know to be acquainted with a discipline. <a href="dimensions/factual.html">Learn more about Factual knowledge</a>.</dd>
+      </dl>
+      
+      <p style="margin-top: 1.5rem;">
+        <a href="dimensions/knowledge.html">Read more about The Knowledge Dimension</a> &nbsp;|&nbsp;
+        <a href="dimensions/cognitive-process.html">Read more about The Cognitive Process Dimension</a>
+      </p>
+    </div>
+  </main>
+  
+  <footer>
+    <p>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      </a>
+    </p>
+  </footer>
 </body>
 </html>
