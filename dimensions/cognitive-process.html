@@ -7,90 +7,130 @@
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1400px;
       margin: 40px auto;
       padding: 0 20px;
+    }
+    
+    .unified-block {
       background: #ffffff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.page-header {
+      overflow: hidden;
+    }
+    
+    .page-header {
       padding: 30px 30px 20px;
       border-bottom: 3px solid #AC3931;
-    }.page-header h2 {
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
-      margin: 0 0 20px 0;
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
-    }.description {
+      margin: 0;
+    }
+    
+    .description {
       padding: 30px;
       line-height: 1.8;
       font-size: 1.1em;
       color: #333;
-    }.table-container {
+    }
+    
+    .description p {
+      margin: 0 0 15px 0;
+    }
+    
+    .description p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .citation {
+      font-size: 0.95em;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .citation a {
+      color: #AC3931;
+    }
+    
+    .citation a:hover,
+    .citation a:focus {
+      color: #8d2e27;
+    }
+    
+    .table-container {
       padding: 20px 30px 40px;
       overflow-x: auto;
-    }.cognitive-table {
+    }
+    
+    .cognitive-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
       font-size: 0.95em;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-header {
-      background-color: #CCE5FF;
-      color: #003366;
+    }
+    
+    /* Spectrum row with rainbow gradient background */
+    .spectrum-header {
+      color: #000000;
       text-align: center;
       font-size: 1.1em;
       padding: 15px;
-      position: relative;
       border: 2px solid #003366;
-    }.spectrum-content {
+      background: linear-gradient(to right, 
+        #d4e9f7 0%, 
+        #d4f0d4 20%, 
+        #fffacd 40%, 
+        #fff4b3 60%, 
+        #ffd9b3 80%, 
+        #ffc9d9 100%);
+    }
+    
+    .spectrum-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
       padding: 10px 20px;
-    }.spectrum-start {
+    }
+    
+    .spectrum-start,
+    .spectrum-end {
       font-weight: bold;
       white-space: nowrap;
-    }.spectrum-arrow-line {
+      color: #000000;
+    }
+    
+    .spectrum-arrow-line {
       flex-grow: 1;
       height: 3px;
-      background: linear-gradient(to right, #003366 0%, #AC3931 50%, #003366 100%);
+      background: #000000;
       position: relative;
       min-width: 200px;
-    }.spectrum-arrow-line::after {
+    }
+    
+    .spectrum-arrow-line::after {
       content: "▶";
       position: absolute;
       right: -10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #AC3931;
+      color: #000000;
       font-size: 1.5em;
-    }.spectrum-end {
-      font-weight: bold;
-      white-space: nowrap;
-    }.cognitive-table thead tr.category-row th {
+    }
+    
+    .cognitive-table thead tr.category-row th {
       padding: 15px 10px;
       font-weight: bold;
       border: 2px solid #003366;
@@ -98,29 +138,41 @@
       vertical-align: top;
     }
     
-    /* Color coding for categories matching PDF */.remember-col {
+    /* Color coding for category header row (second row) */
+    .remember-col {
       background-color: #d4e9f7;
       color: #003366;
-    }.understand-col {
+    }
+    .understand-col {
       background-color: #d4f0d4;
       color: #003366;
-    }.apply-col {
+    }
+    .apply-col {
       background-color: #fffacd;
       color: #003366;
-    }.analyze-col {
+    }
+    .analyze-col {
       background-color: #fff4b3;
       color: #003366;
-    }.evaluate-col {
+    }
+    .evaluate-col {
       background-color: #ffd9b3;
       color: #003366;
-    }.create-col {
+    }
+    .create-col {
       background-color: #ffc9d9;
       color: #003366;
-    }.cognitive-table td {
+    }
+    
+    /* Process list cells — white background for accessibility */
+    .cognitive-table td {
       padding: 15px 10px;
       border: 2px solid #003366;
       vertical-align: top;
-    }.category-link {
+      background-color: #ffffff;
+    }
+    
+    .category-link {
       color: #003366;
       text-decoration: none;
       cursor: pointer;
@@ -130,125 +182,86 @@
       border-radius: 4px;
       font-size: 1.2em;
       font-weight: bold;
-    }.category-link:hover {
+    }
+    
+    .category-link:hover {
       background-color: #AC3931;
       color: #ffffff;
       transform: scale(1.05);
-    }.category-link:focus {
+    }
+    
+    .category-link:focus {
       outline: 3px solid #AC3931;
       outline-offset: 2px;
-    }.category-link:active {
+    }
+    
+    .category-link:active {
       background-color: #8d2e27;
       color: #ffffff;
-    }.process-list {
+    }
+    
+    .process-list {
       list-style: none;
       padding: 0;
       margin: 10px 0 0 0;
-    }.process-list > li {
+    }
+    
+    .process-list > li {
       padding: 8px 0;
-      color: #555;
+      color: #333;
       line-height: 1.5;
       font-size: 0.95em;
-    }.process-name {
+    }
+    
+    .process-name {
       font-weight: bold;
       color: #003366;
       display: block;
       margin-bottom: 5px;
-    }.alternative-names {
+    }
+    
+    .alternative-names {
       list-style: none;
       padding-left: 15px;
       margin: 5px 0;
       font-size: 0.9em;
-      color: #666;
-    }.alternative-names li {
+      color: #555;
+    }
+    
+    .alternative-names li {
       padding: 2px 0;
       position: relative;
       padding-left: 15px;
-    }.alternative-names li::before {
+    }
+    
+    .alternative-names li::before {
       content: "•";
       position: absolute;
       left: 0;
       color: #AC3931;
       font-weight: bold;
-    }.back-button {
-      display: inline-block;
-      margin: 30px;
-      padding: 12px 24px;
-      background: #AC3931;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
+      padding: 8px 16px;
       text-decoration: none;
-      border-radius: 5px;
       font-weight: bold;
-      transition: background 0.3s ease;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.back-button:hover {
-      background: #8d2e27;
-    }.back-button:focus {
-      outline: 3px solid #003366;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
       outline-offset: 2px;
     }
     
-    footer {
-      background-color: #003366;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-    
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
-    }
-    
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }
-    
-    /* Mobile Responsive */
-    @media screen and (max-width: 1024px) {.cognitive-table {
-        font-size: 0.85em;
-      }.category-link {
-        font-size: 1em;
-      }.spectrum-arrow-line {
-        min-width: 100px;
-      }
-    }
-    
-    @media screen and (max-width: 768px) {.page-header h2 {
-        font-size: 1.8em;
-      }.description {
-        padding: 20px;
-        font-size: 1em;
-      }.cognitive-table {
-        font-size: 0.75em;
-      }.cognitive-table th,.cognitive-table td {
-        padding: 8px 5px;
-      }.spectrum-content {
-        flex-direction: column;
-        gap: 10px;
-      }.spectrum-arrow-line {
-        width: 3px;
-        height: 60px;
-        min-width: auto;
-        background: linear-gradient(to bottom, #003366 0%, #AC3931 50%, #003366 100%);
-      }.spectrum-arrow-line::after {
-        content: "▼";
-        right: auto;
-        left: 50%;
-        top: auto;
-        bottom: -15px;
-        transform: translateX(-50%);
-      }.category-link {
-        font-size: 0.9em;
-      }
-    }
-    
-    /* Screen reader only text */.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -260,289 +273,323 @@
       border-width: 0;
     }
     
-    /* Skip link */.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
+    @media screen and (max-width: 1024px) {
+      .cognitive-table {
+        font-size: 0.85em;
+      }
+      .category-link {
+        font-size: 1em;
+      }
+      .spectrum-arrow-line {
+        min-width: 100px;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .page-header h2 {
+        font-size: 1.8em;
+      }
+      .description {
+        padding: 20px;
+        font-size: 1em;
+      }
+      .cognitive-table {
+        font-size: 0.75em;
+      }
+      .cognitive-table th,
+      .cognitive-table td {
+        padding: 8px 5px;
+      }
+      .spectrum-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .spectrum-arrow-line {
+        width: 3px;
+        height: 60px;
+        min-width: auto;
+      }
+      .spectrum-arrow-line::after {
+        content: "▼";
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -15px;
+        transform: translateX(-50%);
+      }
+      .category-link {
+        font-size: 0.9em;
+      }
     }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
-  <a href="../index.html" class="back-button" aria-label="Return to main page">← Back to Main Page</a>
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
   
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <h2>The Cognitive Process Dimension</h2>
-    </div>
-    
-    <div class="description">
-      <p>
-        The Cognitive Process Dimension represents a continuum of increasing cognitive complexity—from lower order thinking skills to higher order thinking skills. Anderson and Krathwohl (2001) identify nineteen specific cognitive processes that further clarify the scope of the six categories.
-      </p>
-      <p>
-        This taxonomy provides a framework for determining and clarifying learning objectives. Learning activities often involve both lower order and higher order thinking skills as well as a mix of concrete and abstract knowledge.
-      </p>
-      <p>
-        <small>(Table adapted from Anderson and Krathwohl, 2001, pp. 67–68.)</small>
-      </p>
-    </div>
-    
-    <div class="table-container">
-      <table class="cognitive-table" role="table" aria-label="Cognitive Process Dimension categories and cognitive processes">
-        <thead>
-          <tr>
-            <th colspan="6" class="spectrum-header" scope="colgroup">
-              <div class="spectrum-content" role="presentation">
-                <span class="spectrum-start">lower order thinking skills</span>
-                <div class="spectrum-arrow-line" aria-hidden="true"></div>
-                <span class="spectrum-end">higher order thinking skills</span>
-              </div>
-            </th>
-          </tr>
-          <tr class="category-row">
-            <th scope="col" class="remember-col">
-              <a href="remember.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Remember"
-                 tabindex="0">
-                remember
-              </a>
-            </th>
-            <th scope="col" class="understand-col">
-              <a href="understand.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Understand"
-                 tabindex="0">
-                understand
-              </a>
-            </th>
-            <th scope="col" class="apply-col">
-              <a href="apply.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Apply"
-                 tabindex="0">
-                apply
-              </a>
-            </th>
-            <th scope="col" class="analyze-col">
-              <a href="analyze.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Analyze"
-                 tabindex="0">
-                analyze
-              </a>
-            </th>
-            <th scope="col" class="evaluate-col">
-              <a href="evaluate.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Evaluate"
-                 tabindex="0">
-                evaluate
-              </a>
-            </th>
-            <th scope="col" class="create-col">
-              <a href="rcreate.html" 
-                 class="category-link" 
-                 aria-label="Learn more about Create"
-                 tabindex="0">
-                create
-              </a>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="remember-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">recognizing</span>
-                  <ul class="alternative-names">
-                    <li>identifying</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">recalling</span>
-                  <ul class="alternative-names">
-                    <li>retrieving</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-            
-            <td class="understand-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">interpreting</span>
-                  <ul class="alternative-names">
-                    <li>clarifying</li>
-                    <li>paraphrasing</li>
-                    <li>representing</li>
-                    <li>translating</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">exemplifying</span>
-                  <ul class="alternative-names">
-                    <li>illustrating</li>
-                    <li>instantiating</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">classifying</span>
-                  <ul class="alternative-names">
-                    <li>categorizing</li>
-                    <li>subsuming</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">summarizing</span>
-                  <ul class="alternative-names">
-                    <li>abstracting</li>
-                    <li>generalizing</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">inferring</span>
-                  <ul class="alternative-names">
-                    <li>concluding</li>
-                    <li>extrapolating</li>
-                    <li>interpolating</li>
-                    <li>predicting</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">comparing</span>
-                  <ul class="alternative-names">
-                    <li>contrasting</li>
-                    <li>mapping</li>
-                    <li>matching</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">explaining</span>
-                  <ul class="alternative-names">
-                    <li>constructing models</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-            
-            <td class="apply-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">executing</span>
-                  <ul class="alternative-names">
-                    <li>carrying out</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">implementing</span>
-                  <ul class="alternative-names">
-                    <li>using</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-            
-            <td class="analyze-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">differentiating</span>
-                  <ul class="alternative-names">
-                    <li>discriminating</li>
-                    <li>distinguishing</li>
-                    <li>focusing</li>
-                    <li>selecting</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">organizing</span>
-                  <ul class="alternative-names">
-                    <li>finding coherence</li>
-                    <li>integrating</li>
-                    <li>outlining</li>
-                    <li>parsing</li>
-                    <li>structuring</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">attributing</span>
-                  <ul class="alternative-names">
-                    <li>deconstructing</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-            
-            <td class="evaluate-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">checking</span>
-                  <ul class="alternative-names">
-                    <li>coordinating</li>
-                    <li>detecting</li>
-                    <li>monitoring</li>
-                    <li>testing</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">critiquing</span>
-                  <ul class="alternative-names">
-                    <li>judging</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-            
-            <td class="create-col">
-              <ul class="process-list">
-                <li>
-                  <span class="process-name">generating</span>
-                  <ul class="alternative-names">
-                    <li>hypothesizing</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">planning</span>
-                  <ul class="alternative-names">
-                    <li>designing</li>
-                  </ul>
-                </li>
-                <li>
-                  <span class="process-name">producing</span>
-                  <ul class="alternative-names">
-                    <li>constructing</li>
-                  </ul>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="unified-block">
+      <div class="page-header">
+        <h2>The Cognitive Process Dimension</h2>
+      </div>
+      
+      <div class="description">
+        <p>
+          The Cognitive Process Dimension represents a continuum of increasing cognitive complexity — from lower order thinking skills to higher order thinking skills. Anderson and Krathwohl (2001) identify nineteen specific cognitive processes that further clarify the scope of the six categories.
+        </p>
+        <p>
+          This taxonomy provides a framework for determining and clarifying learning objectives. Learning activities often involve both lower order and higher order thinking skills as well as a mix of concrete and abstract knowledge.
+        </p>
+        <p class="citation">
+          The content of this page is adapted from Rex Heer's <em>A Model of Learning Objectives based on A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives</em>, published by the Center for Excellence in Learning and Teaching at Iowa State University. <a href="https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/" target="_blank" rel="noopener noreferrer">View the original source</a>.
+        </p>
+      </div>
+      
+      <div class="table-container">
+        <table class="cognitive-table" role="table" aria-label="Cognitive Process Dimension categories and cognitive processes">
+          <thead>
+            <tr>
+              <th colspan="6" class="spectrum-header" scope="colgroup">
+                <div class="spectrum-content" role="presentation">
+                  <span class="spectrum-start">lower order thinking skills</span>
+                  <div class="spectrum-arrow-line" aria-hidden="true"></div>
+                  <span class="spectrum-end">higher order thinking skills</span>
+                </div>
+              </th>
+            </tr>
+            <tr class="category-row">
+              <th scope="col" class="remember-col">
+                <a href="remember.html" class="category-link" aria-label="Learn more about Remember" tabindex="0">
+                  remember
+                </a>
+              </th>
+              <th scope="col" class="understand-col">
+                <a href="understand.html" class="category-link" aria-label="Learn more about Understand" tabindex="0">
+                  understand
+                </a>
+              </th>
+              <th scope="col" class="apply-col">
+                <a href="apply.html" class="category-link" aria-label="Learn more about Apply" tabindex="0">
+                  apply
+                </a>
+              </th>
+              <th scope="col" class="analyze-col">
+                <a href="analyze.html" class="category-link" aria-label="Learn more about Analyze" tabindex="0">
+                  analyze
+                </a>
+              </th>
+              <th scope="col" class="evaluate-col">
+                <a href="evaluate.html" class="category-link" aria-label="Learn more about Evaluate" tabindex="0">
+                  evaluate
+                </a>
+              </th>
+              <th scope="col" class="create-col">
+                <a href="rcreate.html" class="category-link" aria-label="Learn more about Create" tabindex="0">
+                  create
+                </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">recognizing</span>
+                    <ul class="alternative-names">
+                      <li>identifying</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">recalling</span>
+                    <ul class="alternative-names">
+                      <li>retrieving</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">interpreting</span>
+                    <ul class="alternative-names">
+                      <li>clarifying</li>
+                      <li>paraphrasing</li>
+                      <li>representing</li>
+                      <li>translating</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">exemplifying</span>
+                    <ul class="alternative-names">
+                      <li>illustrating</li>
+                      <li>instantiating</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">classifying</span>
+                    <ul class="alternative-names">
+                      <li>categorizing</li>
+                      <li>subsuming</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">summarizing</span>
+                    <ul class="alternative-names">
+                      <li>abstracting</li>
+                      <li>generalizing</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">inferring</span>
+                    <ul class="alternative-names">
+                      <li>concluding</li>
+                      <li>extrapolating</li>
+                      <li>interpolating</li>
+                      <li>predicting</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">comparing</span>
+                    <ul class="alternative-names">
+                      <li>contrasting</li>
+                      <li>mapping</li>
+                      <li>matching</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">explaining</span>
+                    <ul class="alternative-names">
+                      <li>constructing models</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">executing</span>
+                    <ul class="alternative-names">
+                      <li>carrying out</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">implementing</span>
+                    <ul class="alternative-names">
+                      <li>using</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">differentiating</span>
+                    <ul class="alternative-names">
+                      <li>discriminating</li>
+                      <li>distinguishing</li>
+                      <li>focusing</li>
+                      <li>selecting</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">organizing</span>
+                    <ul class="alternative-names">
+                      <li>finding coherence</li>
+                      <li>integrating</li>
+                      <li>outlining</li>
+                      <li>parsing</li>
+                      <li>structuring</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">attributing</span>
+                    <ul class="alternative-names">
+                      <li>deconstructing</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">checking</span>
+                    <ul class="alternative-names">
+                      <li>coordinating</li>
+                      <li>detecting</li>
+                      <li>monitoring</li>
+                      <li>testing</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">critiquing</span>
+                    <ul class="alternative-names">
+                      <li>judging</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+              
+              <td>
+                <ul class="process-list">
+                  <li>
+                    <span class="process-name">generating</span>
+                    <ul class="alternative-names">
+                      <li>hypothesizing</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">planning</span>
+                    <ul class="alternative-names">
+                      <li>designing</li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="process-name">producing</span>
+                    <ul class="alternative-names">
+                      <li>constructing</li>
+                    </ul>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
