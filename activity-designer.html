@@ -52,7 +52,16 @@
       display: flex;
       align-items: flex-start;
       gap: 10px;
-    }.info-note::before {
+    }
+      .info-note-heads-up {
+    background: #e8f4f8;
+    border-color: #4a90e2;
+  }
+
+  .info-note-heads-up::before {
+    content: "💾";
+  }
+    .info-note::before {
       content: "💡";
       font-size: 1.5em;
       flex-shrink: 0;
@@ -331,18 +340,6 @@
         transform: translateX(0);
         opacity: 1;
       }
-    }.back-button {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 12px 24px;
-      background: #AC3931;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }.back-button:hover {
-      background: #8d2e27;
     }
     
     footer {
@@ -394,13 +391,24 @@
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>Bloom's stAIrcase</h1>
-  </header>
-  
-  <div class="content-wrapper">
-    <a href="index.html" class="back-button">← Back to Main Page</a>
+  <body>
+    <header>
+      <h1>Bloom's stAIrcase</h1>
+    </header>
+    
+    <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+      <a href="index.html" aria-label="Return to home page">
+        <span aria-hidden="true">🏠</span>Home
+      </a>
+      <a href="all-activities.html" aria-label="View all activities">
+        <span aria-hidden="true">📋</span>All Activities
+      </a>
+      <a href="ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+        <span aria-hidden="true">🧠</span>AI Literacy Framework
+      </a>
+    </nav>
+    
+    <div class="content-wrapper">
     
     <div class="page-intro">
       <h2>Activity Designer</h2>
@@ -412,6 +420,11 @@
           <strong>Note:</strong> The more information you provide, the more effective and tailored your generated prompt will be. While only fields marked with an asterisk (*) are required, completing optional fields will help create activities that better fit your specific needs.
         </div>
       </div>
+      <div class="info-note info-note-heads-up">
+      <div>
+        <strong>Heads up:</strong> Your responses aren't saved automatically — if you close this tab or hit "back" before generating, you'll need to start over. Once you generate your prompt, you'll have options to copy it, download it, or email it to yourself. We recommend setting aside 5–10 minutes to fill this out in one sitting.
+      </div>
+    </div>
     </div>
     
     <form id="activityForm" class="form-container">
