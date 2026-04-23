@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About & Guide - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+      color: #333;
+    }
+    
+    .content-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    /* Page intro banner */
+    .page-intro {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #AC3931;
+      margin-bottom: 30px;
+    }
+    
+    .page-intro h2 {
+      color: #003366;
+      margin: 0 0 15px 0;
+      font-size: 2.2em;
+    }
+    
+    .page-intro p.page-subtitle {
+      color: #555;
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin: 0;
+      font-style: italic;
+    }
+    
+    /* Table of contents */
+    .toc {
+      background: #f0f6fb;
+      border-left: 4px solid #003366;
+      padding: 20px 25px;
+      border-radius: 0 5px 5px 0;
+      margin-bottom: 30px;
+    }
+    
+    .toc h3 {
+      color: #003366;
+      margin: 0 0 12px 0;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .toc ol {
+      margin: 0;
+      padding-left: 25px;
+      line-height: 1.8;
+    }
+    
+    .toc ol a {
+      color: #AC3931;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .toc ol a:hover,
+    .toc ol a:focus {
+      color: #8d2e27;
+      text-decoration: underline;
+    }
+    
+    /* Content sections */
+    .section {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      line-height: 1.8;
+      scroll-margin-top: 20px;
+    }
+    
+    .section h3 {
+      color: #003366;
+      font-size: 1.7em;
+      margin: 0 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #AC3931;
+    }
+    
+    .section h4 {
+      color: #AC3931;
+      font-size: 1.25em;
+      margin-top: 30px;
+      margin-bottom: 12px;
+    }
+    
+    .section p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+    }
+    
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .section a {
+      color: #AC3931;
+      font-weight: bold;
+    }
+    
+    .section a:hover,
+    .section a:focus {
+      color: #8d2e27;
+    }
+    
+    .section ul,
+    .section ol {
+      padding-left: 25px;
+      margin: 15px 0;
+    }
+    
+    .section li {
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    
+    /* Step-by-step layout for "How to Use This Site" */
+    .step-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+      counter-reset: step-counter;
+    }
+    
+    .step-list li {
+      position: relative;
+      padding: 20px 20px 20px 70px;
+      margin-bottom: 15px;
+      background: #f8f9fa;
+      border-left: 4px solid #003366;
+      border-radius: 0 5px 5px 0;
+      counter-increment: step-counter;
+    }
+    
+    .step-list li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 15px;
+      top: 20px;
+      width: 40px;
+      height: 40px;
+      background: #AC3931;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    
+    .step-list strong {
+      color: #003366;
+      font-size: 1.1em;
+      display: block;
+      margin-bottom: 6px;
+    }
+    
+    /* Callout boxes */
+    .callout {
+      background: #fff9e6;
+      border: 2px solid #ffd700;
+      border-radius: 8px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      line-height: 1.6;
+    }
+    
+    .callout strong:first-child {
+      color: #003366;
+    }
+    
+    /* AI Statement has a distinct look */
+    .ai-statement-section {
+      background: #ffffff;
+      border-top: 6px solid #4a90e2;
+    }
+    
+    /* Resources & credits have cleaner, lighter feel */
+    .resources-note {
+      background: #e8f4f8;
+      border-left: 4px solid #4a90e2;
+      padding: 15px 20px;
+      border-radius: 0 5px 5px 0;
+      margin: 20px 0;
+    }
+    
+    .citation-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .citation-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 0;
+    }
+    
+    .citation-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .citation-list strong {
+      color: #003366;
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    .citation-list .citation-detail {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .section,
+      .page-intro {
+        padding: 25px 20px;
+      }
+      .section h3 {
+        font-size: 1.4em;
+      }
+      .page-intro h2 {
+        font-size: 1.7em;
+      }
+      .step-list li {
+        padding: 18px 15px 18px 60px;
+      }
+      .step-list li::before {
+        left: 10px;
+        width: 36px;
+        height: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
+  <main id="main-content" class="content-wrapper">
+    
+    <div class="page-intro">
+      <h2>About & Guide</h2>
+      <p class="page-subtitle">What this site is, who it's for, how to use it, and the thinking behind it.</p>
+    </div>
+    
+    <nav class="toc" aria-label="Table of contents">
+      <h3>On This Page</h3>
+      <ol>
+        <li><a href="#welcome">Welcome &amp; What This Is</a></li>
+        <li><a href="#how-to-use">How to Use This Site</a></li>
+        <li><a href="#bloom-ai-design">Using Bloom's Taxonomy for AI Activity Design</a></li>
+        <li><a href="#ai-statement">Our AI Statement</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#credits">Credits &amp; Sources</a></li>
+      </ol>
+    </nav>
+    
+    <!-- Section 1: Welcome -->
+    <section class="section" id="welcome">
+      <h3>1. Welcome &amp; What This Is</h3>
+      <p>
+        Generative AI arrived in classrooms faster than most institutions could respond. Faculty were left to figure it out individually, often without the time, the frameworks, or the permission to experiment carefully. We built Bloom's stAIrcase because we believe that gap is solvable — and that cautious, thoughtful faculty are exactly the people whose voices should shape how AI gets integrated into higher education.
+      </p>
+      <p>
+        This site combines two well-established frameworks — Anderson and Krathwohl's revision of Bloom's Taxonomy and Dr. Kara Kennedy's AI Literacy Framework — into an interactive resource that helps faculty design AI-integrated activities grounded in pedagogical theory rather than trend. Whether you're AI-curious or AI-skeptical, whether you're redesigning one assignment or reimagining a whole course, we've tried to make a space where you can think carefully about what role AI should play in your students' learning.
+      </p>
+      <p>
+        Bloom's stAIrcase is built and maintained by <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> and <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>. The site is open-access and licensed under Creative Commons Attribution-ShareAlike 4.0.
+      </p>
+    </section>
+    
+    <!-- Section 2: How to Use This Site -->
+    <section class="section" id="how-to-use">
+      <h3>2. How to Use This Site</h3>
+      <p>
+        The site has four main areas. Most faculty will find value in exploring them in this order, but they're designed to stand on their own too — jump in wherever makes sense.
+      </p>
+      
+      <ol class="step-list">
+        <li>
+          <strong>Explore the visual diagram</strong>
+          The homepage shows Bloom's Taxonomy as an interactive diagram: four Knowledge Dimensions (Factual, Conceptual, Procedural, Metacognitive) crossed with six Cognitive Processes (Remember, Understand, Apply, Analyze, Evaluate, Create). Each intersection holds a verb describing what students do at that level — click any cell to see example activities and AI literacy connections. <a href="index.html">Start exploring</a>.
+        </li>
+        <li>
+          <strong>Browse the AI Literacy Framework</strong>
+          Our adapted version of Dr. Kara Kennedy's seven-competency framework for AI literacy — from knowing which tool to use, to understanding legal and ethical implications, to applying AI within a specific professional field. Click any competency to learn what it includes and why it matters. <a href="ai-literacy-framework.html">View the framework</a>.
+        </li>
+        <li>
+          <strong>Design an activity</strong>
+          Our Activity Designer walks you through a structured form about your course, students, and goals — then generates a comprehensive prompt you can paste into your preferred AI tool. The AI then starts a collaborative conversation to help you design an activity tailored to your specific context. <a href="activity-designer.html">Try the Activity Designer</a>.
+        </li>
+        <li>
+          <strong>Browse and submit activities</strong>
+          Once you've designed an activity, consider submitting it so other educators can benefit. The All Activities page collects community submissions organized by discipline and Bloom's classification. <a href="all-activities.html">See all activities</a>.
+        </li>
+      </ol>
+      
+      <div class="callout">
+        <strong>Accessibility note:</strong> Every interactive element on this site is keyboard-navigable and screen-reader-accessible. If you prefer a non-visual alternative to the main diagram, we've built an <a href="accessible-table-view.html">accessible table view</a> that contains the same content in a screen-reader-optimized format.
+      </div>
+    </section>
+    
+    <!-- Section 3: Using Bloom's for AI Activity Design -->
+    <section class="section" id="bloom-ai-design">
+      <h3>3. Using Bloom's Taxonomy for AI Activity Design</h3>
+      <p>
+        If AI is already changing what's possible — and what's at stake — in student learning, then we need better ways to think about <em>where</em> and <em>how</em> AI should show up in our courses. Bloom's Taxonomy, especially as revised by Anderson and Krathwohl in 2001, gives us a map for that thinking.
+      </p>
+      
+      <h4>The Core Idea</h4>
+      <p>
+        Generative AI is good at some cognitive work and not at others. It excels at tasks involving Factual and Conceptual knowledge at lower cognitive levels — remembering, summarizing, and rephrasing. It struggles with genuine Evaluation and Creation, especially when those require contextual judgment, ethical reasoning, or synthesis across a student's own lived experience. It is essentially incapable of Metacognitive work — knowing what you don't know, reflecting on your own learning strategies, or monitoring your own understanding.
+      </p>
+      <p>
+        This matters pedagogically because an AI-integrated activity designed thoughtfully uses AI to support lower-order work (so students can spend their effort on higher-order thinking), while <em>protecting</em> the higher-order and metacognitive work that only humans can genuinely do. An AI-integrated activity designed carelessly lets AI do the higher-order thinking for students — which is exactly what faculty worry about, and rightly so.
+      </p>
+      
+      <h4>A Practical Approach</h4>
+      <p>
+        When designing an activity with AI integration, we suggest working through these questions:
+      </p>
+      <ol>
+        <li>
+          <strong>What do you want students to learn?</strong> Identify which Knowledge Dimension (Factual, Conceptual, Procedural, or Metacognitive) the activity primarily targets.
+        </li>
+        <li>
+          <strong>What cognitive work should they do?</strong> Identify which Cognitive Process level (Remember, Understand, Apply, Analyze, Evaluate, or Create) the activity primarily targets.
+        </li>
+        <li>
+          <strong>Where does AI genuinely help?</strong> Consider where AI could reduce busywork, scaffold weaker skills, or provide feedback — without taking over the learning itself.
+        </li>
+        <li>
+          <strong>What must stay human?</strong> Name the specific thinking, decision-making, or reflection that students must do without AI assistance. In our Activity Designer, this is called <em>Protected Student Work</em>.
+        </li>
+        <li>
+          <strong>How will you know students did it?</strong> Design assessment that captures the human cognitive work, not just the final artifact.
+        </li>
+      </ol>
+      
+      <h4>A Note on Universal Design for Learning</h4>
+      <p>
+        Throughout our work, we draw on <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener noreferrer">Universal Design for Learning (UDL)</a> principles: offering multiple means of engagement, representation, and action/expression. UDL and AI integration work well together — both assume students come in with different strengths, contexts, and needs, and both push us toward pedagogical flexibility rather than one-size-fits-all instruction. When using our Activity Designer, UDL principles are baked into every generated prompt, shaping the AI's recommendations throughout.
+      </p>
+    </section>
+    
+    <!-- Section 4: Our AI Statement -->
+    <section class="section ai-statement-section" id="ai-statement">
+      <h3>4. Our AI Statement</h3>
+      <p>
+        We built this site about thoughtful AI integration. It would be dishonest — and pedagogically incoherent — not to be transparent about how we used AI in building it ourselves. The principles we teach for faculty designing AI-integrated activities are the same principles we used to make this site.
+      </p>
+      
+      <h4>How AI Was Used</h4>
+      <p>
+        We used generative AI as a collaborator throughout the process of building Bloom's stAIrcase. Specifically, AI assisted with writing and debugging code, drafting prose we then edited, suggesting design alternatives, organizing complex information into the structures you see, and catching errors we wouldn't have noticed on our own.
+      </p>
+      
+      <h4>What Stayed Human</h4>
+      <p>
+        The pedagogical decisions — which frameworks to adopt, how to adapt them, which competencies to emphasize, how to define "protected student work," what a responsible AI-integrated activity looks like — are ours. We vetted every source cited here, read Kennedy's framework and Heer's adaptation of Anderson and Krathwohl in their original contexts, and made editorial choices about what to include, exclude, and emphasize. When AI suggested something pedagogically unsound, we pushed back or discarded it. When AI caught a framing we hadn't considered, we took it seriously but checked its reasoning against our own expertise and the published literature.
+      </p>
+      
+      <h4>Our Stance</h4>
+      <p>
+        We are neither AI boosters nor AI refusers. We believe generative AI is already part of higher education — the question isn't whether to engage with it but how to engage with it thoughtfully, ethically, and with our students' learning at the center. We also believe faculty have been asked to figure this out largely alone, which is unfair. This site is one small contribution toward making the thinking more collective.
+      </p>
+      
+      <h4>What We Recommend for Faculty</h4>
+      <p>
+        If you're using AI in your teaching — whether to design activities, give feedback on student work, or build course materials — we recommend applying the same principle we've tried to model here: be transparent about what AI did, name what you kept human, and be explicit with your students about both. The pedagogical integrity of AI-integrated work depends on that honesty.
+      </p>
+    </section>
+    
+    <!-- Section 5: Resources -->
+    <section class="section" id="resources">
+      <h3>5. Resources</h3>
+      <p>
+        We maintain a curated list of articles, tools, researchers, and frameworks that have shaped our thinking about AI in education. The list is hosted in a public Google Doc so we can update it as new resources emerge.
+      </p>
+      
+      <div class="resources-note">
+        <strong>Browse our resource list:</strong> <a href="https://docs.google.com/document/d/YOUR_GOOGLE_DOC_ID/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Open the Bloom's stAIrcase Resource List (Google Doc)</a>
+      </div>
+      
+      <p>
+        The list includes readings on AI literacy frameworks, critical perspectives on generative AI in education, practical teaching strategies, and foundational texts on Bloom's Taxonomy and Universal Design for Learning. It is grouped by category for browsing, and each entry includes a brief note about why it's worth reading.
+      </p>
+      <p>
+        If you'd like to suggest a resource for inclusion, please reach out to <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole</a> or <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette</a> directly.
+      </p>
+    </section>
+    
+    <!-- Section 6: Credits & Sources -->
+    <section class="section" id="credits">
+      <h3>6. Credits &amp; Sources</h3>
+      <p>
+        This site stands on the shoulders of others. We gratefully acknowledge the following scholars and works whose thinking directly shaped Bloom's stAIrcase:
+      </p>
+      
+      <ul class="citation-list">
+        <li>
+          <strong>Dr. Kara Kennedy — AI Literacy Framework (2023)</strong>
+          <span class="citation-detail">Our AI literacy content is adapted from Dr. Kennedy's framework, used here under a Creative Commons CC-BY license. <a href="https://ailiteracy.institute/ai-literacy-and-ai-literacy-framework/" target="_blank" rel="noopener noreferrer">View the original framework</a>.</span>
+        </li>
+        <li>
+          <strong>Rex Heer — A Model of Learning Objectives (Iowa State CELT)</strong>
+          <span class="citation-detail">Our Bloom's Taxonomy interactive diagram adapts Rex Heer's visual model, published by the Center for Excellence in Learning and Teaching at Iowa State University. <a href="https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/" target="_blank" rel="noopener noreferrer">View Heer's original model</a>.</span>
+        </li>
+        <li>
+          <strong>Lorin W. Anderson &amp; David R. Krathwohl — A Taxonomy for Learning, Teaching, and Assessing (2001)</strong>
+          <span class="citation-detail">The revised Bloom's Taxonomy that grounds this entire site. Anderson, L. W., &amp; Krathwohl, D. R. (Eds.). (2001). <em>A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives</em>. Longman.</span>
+        </li>
+        <li>
+          <strong>David Wiley — Generative Textbooks</strong>
+          <span class="citation-detail">The inspiration for our Activity Designer's prompt-generation approach. <a href="https://generativetextbooks.org/" target="_blank" rel="noopener noreferrer">Visit Generative Textbooks</a>.</span>
+        </li>
+        <li>
+          <strong>CAST — Universal Design for Learning Guidelines</strong>
+          <span class="citation-detail">UDL principles inform every activity recommendation produced by our tool. <a href="https://udlguidelines.cast.org/" target="_blank" rel="noopener noreferrer">View the UDL Guidelines</a>.</span>
+        </li>
+      </ul>
+      
+      <h4>License</h4>
+      <p>
+        Bloom's stAIrcase is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)</a>. You are free to share and adapt our work for any purpose, including commercially, as long as you give appropriate credit and distribute your contributions under the same license.
+      </p>
+      
+      <h4>Questions or Feedback?</h4>
+      <p>
+        Reach out to <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker</a> or <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell</a> on LinkedIn. We'd love to hear how you're using the site in your own teaching.
+      </p>
+    </section>
+    
+  </main>
+  
+  <footer role="contentinfo">
+    <p>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
