@@ -26,7 +26,7 @@
     
     body {
       font-family: Arial, sans-serif;
-      font-weight: bold
+      font-weight: bold;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
@@ -64,40 +64,6 @@
       font-family: Arial, sans-serif;
       font-weight: bold
 
-    }
-    
-    /* Back button */.back-button {
-      display: flex;
-      justify-content: flex-start;
-      padding: 15px 20px;
-      background-color: #CCE5FF;
-    }.back-button a {
-      padding: 10px 20px;
-      background: #AC3931;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      font-size: 16px;
-      display: inline-flex;
-      align-items: center;
-      transition: all 0.3s ease;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-      min-width: 44px;
-      min-height: 44px;
-    }.back-button a:hover {
-      background-color: #004080;
-      box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.25);
-      transform: translateY(-2px);
-    }.back-button a:focus {
-      outline: 3px solid #ffffff;
-      outline-offset: 3px;
-      background-color: #004080;
-    }.back-button a:focus:not(:focus-visible) {
-      outline: none;
-    }.back-button a span {
-      margin-right: 8px;
-      font-size: 20px;
     }
     
     /* Main content */.main-content {
@@ -253,7 +219,9 @@
     }
     
     /* Print styles */
-    @media print {.skip-link,.back-button {
+    @media print {
+      .skip-link,
+      .nav-buttons {
         display: none;
       }
       
@@ -271,9 +239,15 @@
     <h1>AI Literacy Framework</h1>
   </header>
   
-  <nav class="back-button" aria-label="Navigation">
-    <a href="index.html" aria-label="Return to homepage">
-      <span aria-hidden="true">←</span> Back to Home
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
     </a>
   </nav>
   
