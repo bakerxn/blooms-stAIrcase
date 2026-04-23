@@ -7,102 +7,159 @@
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1400px;
       margin: 40px auto;
       padding: 0 20px;
+    }
+    
+    .unified-block {
       background: #ffffff;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.page-header {
+      overflow: hidden;
+    }
+    
+    .page-header {
       padding: 30px 30px 20px;
       border-bottom: 3px solid #AC3931;
-    }.page-header h2 {
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
-      margin: 0 0 20px 0;
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
-    }.description {
+      margin: 0;
+    }
+    
+    .description {
       padding: 30px;
       line-height: 1.8;
       font-size: 1.1em;
       color: #333;
-    }.table-container {
+    }
+    
+    .description p {
+      margin: 0 0 15px 0;
+    }
+    
+    .description p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .citation {
+      font-size: 0.95em;
+      color: #666;
+      font-style: italic;
+    }
+    
+    .citation a {
+      color: #AC3931;
+    }
+    
+    .citation a:hover,
+    .citation a:focus {
+      color: #8d2e27;
+    }
+    
+    .table-container {
       padding: 20px 30px 40px;
       overflow-x: auto;
-    }.knowledge-table {
+    }
+    
+    .knowledge-table {
       width: 100%;
       border-collapse: collapse;
       margin: 20px 0;
       font-size: 1em;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-header {
-      background-color: #CCE5FF;
-      color: #003366;
+    }
+    
+    /* Spectrum row with blue-gray gradient */
+    .spectrum-header {
+      color: #000000;
       text-align: center;
       font-size: 1.1em;
       padding: 15px;
       border: 2px solid #003366;
-    }.spectrum-content {
+      background: linear-gradient(to right, 
+        #dee5ee 0%, 
+        #ced9e4 35%, 
+        #bccad6 70%, 
+        #abbdcc 100%);
+    }
+    
+    .spectrum-content {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 20px;
       padding: 10px 20px;
-    }.spectrum-start {
+    }
+    
+    .spectrum-start,
+    .spectrum-end {
       font-weight: bold;
       white-space: nowrap;
-    }.spectrum-arrow-line {
+      color: #000000;
+    }
+    
+    .spectrum-arrow-line {
       flex-grow: 1;
       height: 3px;
-      background: linear-gradient(to right, #003366 0%, #AC3931 50%, #003366 100%);
+      background: #000000;
       position: relative;
       min-width: 200px;
-    }.spectrum-arrow-line::after {
+    }
+    
+    .spectrum-arrow-line::after {
       content: "▶";
       position: absolute;
       right: -10px;
       top: 50%;
       transform: translateY(-50%);
-      color: #AC3931;
+      color: #000000;
       font-size: 1.5em;
-    }.spectrum-end {
-      font-weight: bold;
-      white-space: nowrap;
-    }.knowledge-table thead tr.type-row th {
+    }
+    
+    .knowledge-table thead tr.type-row th {
       padding: 15px;
       font-weight: bold;
       border: 2px solid #003366;
       text-align: center;
-      background-color: #e8f0f7;
       color: #003366;
       vertical-align: top;
-    }.knowledge-table td {
+    }
+    
+    /* Column header backgrounds matching the spectrum gradient stops */
+    .factual-col {
+      background-color: #dee5ee;
+    }
+    .conceptual-col {
+      background-color: #ced9e4;
+    }
+    .procedural-col {
+      background-color: #bccad6;
+    }
+    .metacognitive-col {
+      background-color: #abbdcc;
+    }
+    
+    /* Subtype cells — white background for accessibility */
+    .knowledge-table td {
       padding: 15px;
       border: 2px solid #003366;
       vertical-align: top;
-      background-color: #f8f9fa;
-    }.major-type-link {
+      background-color: #ffffff;
+    }
+    
+    .major-type-link {
       color: #003366;
       text-decoration: none;
       cursor: pointer;
@@ -112,98 +169,74 @@
       border-radius: 4px;
       font-size: 1.2em;
       font-weight: bold;
-    }.major-type-link:hover {
+    }
+    
+    .major-type-link:hover {
       background-color: #AC3931;
       color: #ffffff;
       transform: scale(1.05);
-    }.major-type-link:focus {
+    }
+    
+    .major-type-link:focus {
       outline: 3px solid #AC3931;
       outline-offset: 2px;
-    }.major-type-link:active {
+    }
+    
+    .major-type-link:active {
       background-color: #8d2e27;
       color: #ffffff;
-    }.subtype-content {
-      color: #555;
-      line-height: 1.6;
-      font-size: 0.95em;
-    }.table-note {
+    }
+    
+.subtype-content {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #003366;
+  font-weight: bold;
+  line-height: 1.5;
+  font-size: 0.95em;
+}
+
+.subtype-content li {
+  padding: 8px 0 8px 15px;
+  position: relative;
+}
+
+.subtype-content li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #AC3931;
+  font-weight: bold;
+}
+    
+    .table-note {
       padding: 20px 30px;
       font-style: italic;
       color: #555;
       line-height: 1.6;
-    }.back-button {
-      display: inline-block;
-      margin: 30px;
-      padding: 12px 24px;
-      background: #AC3931;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
+      padding: 8px 16px;
       text-decoration: none;
-      border-radius: 5px;
       font-weight: bold;
-      transition: background 0.3s ease;
-      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.back-button:hover {
-      background: #8d2e27;
-    }.back-button:focus {
-      outline: 3px solid #003366;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
       outline-offset: 2px;
     }
     
-    footer {
-      background-color: #003366;
-      color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
-    }
-    
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
-    }
-    
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }
-    
-    /* Mobile Responsive */
-    @media screen and (max-width: 1024px) {.spectrum-arrow-line {
-        min-width: 100px;
-      }
-    }
-    
-    @media screen and (max-width: 768px) {.page-header h2 {
-        font-size: 1.8em;
-      }.description {
-        padding: 20px;
-        font-size: 1em;
-      }.knowledge-table {
-        font-size: 0.9em;
-      }.knowledge-table th,.knowledge-table td {
-        padding: 10px;
-      }.spectrum-content {
-        flex-direction: column;
-        gap: 10px;
-      }.spectrum-arrow-line {
-        width: 3px;
-        height: 60px;
-        min-width: auto;
-        background: linear-gradient(to bottom, #003366 0%, #AC3931 50%, #003366 100%);
-      }.spectrum-arrow-line::after {
-        content: "▼";
-        right: auto;
-        left: 50%;
-        top: auto;
-        bottom: -15px;
-        transform: translateX(-50%);
-      }
-    }
-    
-    /* Screen reader only text */.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -215,142 +248,173 @@
       border-width: 0;
     }
     
-    /* Skip link */.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
+    @media screen and (max-width: 1024px) {
+      .spectrum-arrow-line {
+        min-width: 100px;
+      }
+    }
+    
+    @media screen and (max-width: 768px) {
+      .page-header h2 {
+        font-size: 1.8em;
+      }
+      .description {
+        padding: 20px;
+        font-size: 1em;
+      }
+      .knowledge-table {
+        font-size: 0.9em;
+      }
+      .knowledge-table th,
+      .knowledge-table td {
+        padding: 10px;
+      }
+      .spectrum-content {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .spectrum-arrow-line {
+        width: 3px;
+        height: 60px;
+        min-width: auto;
+      }
+      .spectrum-arrow-line::after {
+        content: "▼";
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -15px;
+        transform: translateX(-50%);
+      }
     }
   </style>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
-  <a href="../index.html" class="back-button" aria-label="Return to main page">← Back to Main Page</a>
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
   
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <h2>The Knowledge Dimension</h2>
-    </div>
-    
-    <div class="description">
-      <p>
-        The Knowledge Dimension classifies four types of knowledge that learners may be expected to acquire or construct—ranging from concrete to abstract. This taxonomy provides a framework for determining and clarifying learning objectives.
-      </p>
-      <p>
-        Learning activities often involve both lower order and higher order thinking skills as well as a mix of concrete and abstract knowledge.
-      </p>
-      <p>
-        <small>(Table adapted from Anderson and Krathwohl, 2001, p. 46.)</small>
-      </p>
-    </div>
-    
-    <div class="table-container">
-      <table class="knowledge-table" role="table" aria-label="Knowledge Dimension major types and subtypes">
-        <thead>
-          <tr>
-            <th colspan="4" class="spectrum-header" scope="colgroup">
-              <div class="spectrum-content" role="presentation">
-                <span class="spectrum-start">concrete knowledge</span>
-                <div class="spectrum-arrow-line" aria-hidden="true"></div>
-                <span class="spectrum-end">abstract knowledge</span>
-              </div>
-            </th>
-          </tr>
-          <tr class="type-row">
-            <th scope="col">
-              <a href="factual.html" 
-                 class="major-type-link" 
-                 aria-label="Learn more about Factual knowledge"
-                 tabindex="0">
-                factual
-              </a>
-            </th>
-            <th scope="col">
-              <a href="conceptual.html" 
-                 class="major-type-link" 
-                 aria-label="Learn more about Conceptual knowledge"
-                 tabindex="0">
-                conceptual
-              </a>
-            </th>
-            <th scope="col">
-              <a href="procedural.html" 
-                 class="major-type-link" 
-                 aria-label="Learn more about Procedural knowledge"
-                 tabindex="0">
-                procedural
-              </a>
-            </th>
-            <th scope="col">
-              <a href="metacognitive.html" 
-                 class="major-type-link" 
-                 aria-label="Learn more about Metacognitive knowledge"
-                 tabindex="0">
-                metacognitive*
-              </a>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div class="subtype-content">
-                knowledge of terminology<br><br>
-                knowledge of specific details and elements
-              </div>
-            </td>
-            <td>
-              <div class="subtype-content">
-                knowledge of classifications and categories<br><br>
-                knowledge of principles and generalizations<br><br>
-                knowledge of theories, models, and structures
-              </div>
-            </td>
-            <td>
-              <div class="subtype-content">
-                knowledge of subject-specific skills and algorithms<br><br>
-                knowledge of subject-specific techniques and methods<br><br>
-                knowledge of criteria for determining when to use appropriate procedures
-              </div>
-            </td>
-            <td>
-              <div class="subtype-content">
-                strategic knowledge<br><br>
-                knowledge about cognitive tasks, including appropriate contextual and conditional knowledge<br><br>
-                self-knowledge
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="unified-block">
+      <div class="page-header">
+        <h2>The Knowledge Dimension</h2>
+      </div>
       
-      <div class="table-note">
+      <div class="description">
         <p>
-          *Metacognitive knowledge is a special case. In this model, "metacognitive knowledge is knowledge of [one's own] cognition and about oneself in relation to various subject matters..." (Anderson and Krathwohl, 2001, p. 44).
+          The Knowledge Dimension classifies four types of knowledge that learners may be expected to acquire or construct — ranging from concrete to abstract. This taxonomy provides a framework for determining and clarifying learning objectives.
         </p>
+        <p>
+          Learning activities often involve both lower order and higher order thinking skills as well as a mix of concrete and abstract knowledge.
+        </p>
+        <p class="citation">
+          The content of this page is adapted from Rex Heer's <em>A Model of Learning Objectives based on A Taxonomy for Learning, Teaching, and Assessing: A Revision of Bloom's Taxonomy of Educational Objectives</em>, published by the Center for Excellence in Learning and Teaching at Iowa State University. <a href="https://celt.iastate.edu/prepare-and-teach/design-your-course/blooms-taxonomy/" target="_blank" rel="noopener noreferrer">View the original source</a>.
+        </p>
+      </div>
+      
+      <div class="table-container">
+        <table class="knowledge-table" role="table" aria-label="Knowledge Dimension major types and subtypes">
+          <thead>
+            <tr>
+              <th colspan="4" class="spectrum-header" scope="colgroup">
+                <div class="spectrum-content" role="presentation">
+                  <span class="spectrum-start">concrete knowledge</span>
+                  <div class="spectrum-arrow-line" aria-hidden="true"></div>
+                  <span class="spectrum-end">abstract knowledge</span>
+                </div>
+              </th>
+            </tr>
+            <tr class="type-row">
+              <th scope="col" class="factual-col">
+                <a href="factual.html" class="major-type-link" aria-label="Learn more about Factual knowledge" tabindex="0">
+                  factual
+                </a>
+              </th>
+              <th scope="col" class="conceptual-col">
+                <a href="conceptual.html" class="major-type-link" aria-label="Learn more about Conceptual knowledge" tabindex="0">
+                  conceptual
+                </a>
+              </th>
+              <th scope="col" class="procedural-col">
+                <a href="procedural.html" class="major-type-link" aria-label="Learn more about Procedural knowledge" tabindex="0">
+                  procedural
+                </a>
+              </th>
+              <th scope="col" class="metacognitive-col">
+                <a href="metacognitive.html" class="major-type-link" aria-label="Learn more about Metacognitive knowledge" tabindex="0">
+                  metacognitive*
+                </a>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+  <tr>
+    <td>
+      <ul class="subtype-content">
+        <li>knowledge of terminology</li>
+        <li>knowledge of specific details and elements</li>
+      </ul>
+    </td>
+    <td>
+      <ul class="subtype-content">
+        <li>knowledge of classifications and categories</li>
+        <li>knowledge of principles and generalizations</li>
+        <li>knowledge of theories, models, and structures</li>
+      </ul>
+    </td>
+    <td>
+      <ul class="subtype-content">
+        <li>knowledge of subject-specific skills and algorithms</li>
+        <li>knowledge of subject-specific techniques and methods</li>
+        <li>knowledge of criteria for determining when to use appropriate procedures</li>
+      </ul>
+    </td>
+    <td>
+      <ul class="subtype-content">
+        <li>strategic knowledge</li>
+        <li>knowledge about cognitive tasks, including appropriate contextual and conditional knowledge</li>
+        <li>self-knowledge</li>
+      </ul>
+    </td>
+  </tr>
+</tbody>
+        </table>
+        
+        <div class="table-note">
+          <p>
+            *Metacognitive knowledge is a special case. In this model, "metacognitive knowledge is knowledge of [one's own] cognition and about oneself in relation to various subject matters..." (Anderson and Krathwohl, 2001, p. 44).
+          </p>
+        </div>
       </div>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
