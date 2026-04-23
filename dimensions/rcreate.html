@@ -7,56 +7,60 @@
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
-    }.page-header {
-      background: linear-gradient(135deg, #ffd9e8 0%, #ffc9d9 100%);
-      padding: 40px;
-      border-radius: 8px 8px 0 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* The unified block — holds the header banner, spectrum, and content together */
+    .unified-block {
       border: 3px solid #003366;
-      border-bottom: none;
-    }.page-header h2 {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      background: #ffffff;
+    }
+    
+    .page-header {
+     background: linear-gradient(135deg, #ffd9e8 0%, #ffc9d9 100%);
+      padding: 40px;
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
       margin: 0 0 10px 0;
-    }.dimension-label {
+    }
+    
+    .dimension-label {
       color: #666;
       font-size: 1.1em;
       font-style: italic;
       margin: 0;
-    }.spectrum-container {
-      background: #ffffff;
-      padding: 30px;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-title {
+    }
+    
+    .spectrum-container {
+      padding: 30px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .spectrum-title {
       text-align: center;
       color: #003366;
       font-size: 1.2em;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
       font-weight: bold;
-    }.spectrum-visual {
+    }
+    
+    .spectrum-visual {
       position: relative;
       height: 80px;
       background: linear-gradient(to right, 
@@ -68,20 +72,24 @@
         #ffc9d9 100%);
       border-radius: 40px;
       border: 2px solid #003366;
-      margin: 20px 0;
-    }.spectrum-labels {
+      margin: 20px 0 30px 0;
+    }
+    
+    .spectrum-labels {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
       font-weight: bold;
       color: #003366;
-    }.spectrum-marker {
+    }
+    
+    .spectrum-marker {
       position: absolute;
       top: 50%;
       left: 95%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
+      width: 90px;
+      height: 90px;
       background: #AC3931;
       border: 4px solid #003366;
       border-radius: 50%;
@@ -92,11 +100,14 @@
       color: white;
       font-weight: bold;
       font-size: 0.75em;
-      line-height: 1.2;
-      padding: 5px;
+      line-height: 1.1;
+      padding: 8px;
+      box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 10;
-    }.spectrum-marker::after {
+    }
+    
+    .spectrum-marker::after {
       content: '';
       position: absolute;
       bottom: -20px;
@@ -107,136 +118,42 @@
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-top: 15px solid #AC3931;
-    }.tab-container {
-      background: #ffffff;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-    }.tab-navigation {
-      display: flex;
-      flex-wrap: wrap;        
-      border-bottom: 3px solid #003366;
-      background: #f8f9fa;
-    }.tab-button {
-      flex: 1;
-      padding: 15px 20px;
-      background: #e8f4ec;
-      border: none;
-      border-right: 2px solid #003366;
-      cursor: pointer;
-      font-family: Arial, sans-serif;  
-      font-weight: bold;
-      font-size: 1em;
-      color: #003366;
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }.tab-button:last-child {
-      border-right: none;
-    }.tab-button:hover {
-      background: #ffc9d9;
-    }.tab-button:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: -3px;
-      z-index: 10;
-    }.tab-button.active {
-      background: #ffffff;
-      color: #AC3931;
-      font-weight: bold;
-      border-bottom: 3px solid #AC3931;
-      margin-bottom: -3px;
-    }.tab-content {
-      display: none;
-      padding: 40px;
-      background: #ffffff;
+    }
+    
+    .content-section {
+      padding: 30px 40px 40px 40px;
+      border-top: 1px solid #e0e0e0;
       line-height: 1.8;
-      color: #333;
-    }.tab-content.active {
-      display: block;
-    }.tab-content h3 {
+    }
+    
+    .content-section h3 {
       color: #003366;
       font-size: 1.8em;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #AC3931;
       padding-bottom: 10px;
-    }.tab-content h4 {
-      color: #AC3931;
-      font-size: 1.3em;
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }.tab-content p {
+    }
+    
+    .content-section h3:not(:first-child) {
+      margin-top: 40px;
+    }
+    
+    .content-section p {
       margin-bottom: 15px;
       font-size: 1.05em;
-    }.tab-content ul {
-      margin: 15px 0;
-      padding-left: 25px;
-    }.tab-content li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }.process-card {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.process-card h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.2em;
-    }.process-card.alternative-names {
-      font-style: italic;
-      color: #666;
-      margin-top: 5px;
-    }.example-box {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.example-box h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.1em;
-    }.tip-box {
-      background: #fff9e6;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.tip-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.tip-box h5::before {
-      content: "💡";
-      font-size: 1.5em;
-    }.ai-box {
-      background: #e8f4f8;
-      border: 2px solid #4a90e2;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.ai-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.ai-box h5::before {
-      content: "🤖";
-      font-size: 1.5em;
-    }.bottom-navigation {
-      background: #ffffff;
-      padding: 30px 40px;
-      border: 3px solid #003366;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
+      color: #333;
+    }
+    
+    .bottom-navigation {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 15px;
-    }.nav-button {
+      margin-top: 30px;
+    }
+    
+    .nav-button {
       display: inline-block;
       padding: 12px 24px;
       background: #AC3931;
@@ -246,37 +163,47 @@
       font-weight: bold;
       transition: background 0.3s ease;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.nav-button:hover {
+    }
+    
+    .nav-button:hover,
+    .nav-button:focus {
       background: #8d2e27;
-    }.nav-button:focus {
+    }
+    
+    .nav-button:focus {
       outline: 3px solid #003366;
       outline-offset: 2px;
-    }.nav-button.secondary {
+    }
+    
+    .nav-button.secondary {
       background: #003366;
-    }.nav-button.secondary:hover {
+    }
+    
+    .nav-button.secondary:hover,
+    .nav-button.secondary:focus {
       background: #004080;
     }
     
-    footer {
-      background-color: #003366;
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
     }
     
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
     }
     
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -286,41 +213,35 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
-    }.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
     }
     
-    @media screen and (max-width: 768px) {.page-header {
+    @media screen and (max-width: 768px) {
+      .page-header {
         padding: 25px;
-      }.page-header h2 {
+      }
+      .page-header h2 {
         font-size: 1.8em;
-      }.tab-button {
-        font-size: 0.9em;
-        padding: 12px 15px;
-        min-width: 120px;
-      }.tab-content {
-        padding: 25px 20px;
-      }.tab-content h3 {
+      }
+      .spectrum-container,
+      .content-section {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      .content-section h3 {
         font-size: 1.5em;
-      }.spectrum-marker {
-        width: 50px;
-        height: 50px;
+      }
+      .spectrum-marker {
+        width: 75px;
+        height: 75px;
         font-size: 0.7em;
-      }.bottom-navigation {
-        padding: 20px;
+      }
+      .bottom-navigation {
         flex-direction: column;
-      }.nav-button {
+      }
+      .nav-button {
         width: 100%;
         text-align: center;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -328,430 +249,81 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <p class="dimension-label">Cognitive Process Dimension</p>
-      <h2>Create</h2>
-    </div>
-    
-    <div class="spectrum-container">
-      <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
-      <div class="spectrum-visual" role="img" aria-label="Create is positioned at the highest level of higher order thinking skills">
-        <div class="spectrum-marker" aria-hidden="true">
-          YOU ARE HERE
+    <div class="unified-block">
+      <div class="page-header">
+        <p class="dimension-label">Cognitive Process Dimension</p>
+        <h2>Create</h2>
+      </div>
+      
+      <div class="spectrum-container">
+        <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
+        <div class="spectrum-visual" role="img" aria-label="Analyze is positioned in the higher order thinking skills area of the cognitive process spectrum">
+          <div class="spectrum-marker" aria-hidden="true">
+            YOU ARE HERE
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Lower Order Thinking Skills</span>
+          <span>Higher Order Thinking Skills</span>
         </div>
       </div>
-      <div class="spectrum-labels">
-        <span>Lower Order Thinking Skills</span>
-        <span>Higher Order Thinking Skills</span>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <nav class="tab-navigation" role="tablist" aria-label="Create cognitive process information tabs">
-        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="processes-panel" id="processes-tab" onclick="openTab(event, 'processes')">Cognitive Processes</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
-      </nav>
       
-      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+      <div class="content-section">
         <h3>What is Create?</h3>
         <p>
-          Create involves putting elements together to form a coherent or functional whole; reorganizing elements into a new pattern or structure. When students create, they generate new products, ideas, or ways of viewing things by combining knowledge in original ways. Creation requires imagination, innovation, and the ability to synthesize diverse elements into something new and meaningful.
+          Create involves synthesizing and organizing elements to achieve the generation of a new structured whole. Creating is generating new products, ideas, or ways of viewing things by combining knowledge in original ways. Creation requires imagination, innovation, execution and the ability to synthesize diverse elements into something new and meaningful.
         </p>
         <p>
-          In the revised Bloom's Taxonomy, Create sits at the pinnacle of cognitive processes. While the original taxonomy placed "Synthesis" (similar to Create) below Evaluation, the revision recognizes that creating something new and original represents the highest form of cognitive work. Creation requires students to draw upon all other cognitive processes—remembering information, understanding concepts, applying knowledge, analyzing components, and evaluating quality—and integrate them to produce something novel.
-        </p>
-        <p>
-          Create represents the highest level of cognitive complexity because it requires divergent thinking, originality, and the ability to see new possibilities. Unlike other cognitive processes that work with existing material, Create involves generating something that didn't exist before. This could be a physical product, a new idea, a solution to a problem, or a fresh perspective. Creation is the ultimate goal of education—developing students who can innovate, solve novel problems, and contribute original work to their fields.
+          The original taxonomy placed "Synthesis" (similar to Create) below Evaluation, the revision we use in our framework emphasizing that creation is a higher-order thinking skill. Creation requires students to draw upon all other cognitive processes—remembering information, understanding concepts, applying knowledge, analyzing components, and evaluating quality—and integrate them to produce something novel. Create involves the three main cognitive processes, generating, planning, and producing. 
         </p>
         
-        <div class="tip-box">
-          <h5>Common Misconception</h5>
-          <p>
-            <strong>Myth:</strong> Creation is only about artistic or creative work, or it means making something completely original that has never existed.
-          </p>
-          <p>
-            <strong>Reality:</strong> Create applies to all disciplines and involves reorganizing or combining elements in new ways, not necessarily inventing something entirely unprecedented. A student creates when they design a new experiment, develop an original argument, propose a solution to a problem, or synthesize information into a new framework—even if similar work exists elsewhere. What matters is that the student is generating something new to them by putting elements together in original ways, not just reproducing what they've been taught.
-          </p>
-        </div>
-      </div>
-      
-      <div id="processes" class="tab-content" role="tabpanel" aria-labelledby="processes-tab">
-        <h3>Cognitive Processes Within Create</h3>
+        <h3>AI Literacy Connection</h3>
         <p>
-          The Create category includes three specific cognitive processes that represent different aspects of generating new or original work.
+          AI can generate or create content, but it is fundamentally different from human creation. AI recombines patterns from training data combined with your prompt engineering; it doesn't truly innovate, understand context, or create with purpose and meaning. Human creation involves intentionality, values, contextual judgment, and genuine originality that AI cannot replicate.
         </p>
-        
-        <div class="process-card">
-          <h5>Generating</h5>
-          <p class="alternative-names">Alternative name: Hypothesizing</p>
-          <p>
-            <strong>Definition:</strong> Coming up with alternative hypotheses based on criteria. Generating involves producing multiple possibilities, ideas, or solutions. This is the divergent thinking phase of creation—brainstorming, imagining possibilities, and developing options before settling on a final product.
-          </p>
-          <p>
-            <strong>Key characteristics:</strong>
-          </p>
-          <ul>
-            <li>Producing multiple ideas or possibilities</li>
-            <li>Thinking divergently and creatively</li>
-            <li>Developing hypotheses or alternatives</li>
-            <li>Brainstorming and exploring options</li>
-            <li>Imagining what could be rather than what is</li>
-          </ul>
-          <p>
-            <strong>Example prompts:</strong> "Generate possible solutions to...", "Develop hypotheses that could explain...", "Brainstorm ideas for...", "What are alternative ways to...?"
-          </p>
-        </div>
-        
-        <div class="process-card">
-          <h5>Planning</h5>
-          <p class="alternative-names">Alternative name: Designing</p>
-          <p>
-            <strong>Definition:</strong> Devising a procedure for accomplishing a task. Planning involves organizing ideas into a coherent structure or developing a method for creating something. This is the organizational phase of creation—determining how to turn ideas into reality, designing the structure, and mapping out the process.
-          </p>
-          <p>
-            <strong>Key characteristics:</strong>
-          </p>
-          <ul>
-            <li>Organizing ideas into a coherent plan</li>
-            <li>Designing structures or procedures</li>
-            <li>Determining steps or methods</li>
-            <li>Creating frameworks or outlines</li>
-            <li>Mapping out how to achieve goals</li>
-          </ul>
-          <p>
-            <strong>Example prompts:</strong> "Design a plan for...", "Develop a procedure to...", "Outline a strategy for...", "Create a framework for..."
-          </p>
-        </div>
-        
-        <div class="process-card">
-          <h5>Producing</h5>
-          <p class="alternative-names">Alternative name: Constructing</p>
-          <p>
-            <strong>Definition:</strong> Inventing a product. Producing involves executing the plan and actually creating the final product, whether it's a physical object, written work, performance, solution, or new idea. This is the execution phase of creation—bringing ideas and plans to fruition in tangible form.
-          </p>
-          <p>
-            <strong>Key characteristics:</strong>
-          </p>
-          <ul>
-            <li>Creating a final product or solution</li>
-            <li>Executing plans and designs</li>
-            <li>Constructing something new</li>
-            <li>Synthesizing elements into a whole</li>
-            <li>Bringing ideas to tangible reality</li>
-          </ul>
-          <p>
-            <strong>Example prompts:</strong> "Create a product that...", "Construct a solution to...", "Produce an original...", "Build a model that..."
-          </p>
-        </div>
-        
-        <h4>Relationship Among the Processes</h4>
         <p>
-          These three processes often work together in the creative process, though they may occur in different orders or iterate. Generating produces ideas and possibilities, planning organizes those ideas into a workable structure, and producing creates the final product. In practice, creators often cycle through these processes—generating ideas, planning how to implement them, producing drafts, generating new ideas based on what they've produced, revising plans, and refining products.
-        </p>
-        
-        <p>
-          <strong>Creative process example:</strong>
-        </p>
-        <ul>
-          <li><strong>Generating:</strong> Brainstorm possible topics for a research paper</li>
-          <li><strong>Planning:</strong> Develop an outline organizing the argument and evidence</li>
-          <li><strong>Producing:</strong> Write the paper, synthesizing research into original analysis</li>
-          <li><em>Then iterate:</em> Generate new ideas while writing, revise the plan, refine the product</li>
-        </ul>
-      </div>
-      
-      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
-        <h3>Create Across Disciplines</h3>
-        
-        <div class="example-box">
-          <h5>Science</h5>
-          <p><strong>Generating:</strong></p>
-          <ul>
-            <li>Develop hypotheses to explain observed phenomena</li>
-            <li>Generate possible experimental designs to test a question</li>
-            <li>Brainstorm alternative explanations for data</li>
-          </ul>
-          <p><strong>Planning:</strong></p>
-          <ul>
-            <li>Design a complete experimental procedure</li>
-            <li>Develop a research plan for investigating a question</li>
-            <li>Create a model to represent a scientific system</li>
-          </ul>
-          <p><strong>Producing:</strong></p>
-          <ul>
-            <li>Conduct an original experiment and produce findings</li>
-            <li>Build a working model or prototype</li>
-            <li>Create a new classification system for organizing data</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Mathematics</h5>
-          <p><strong>Generating:</strong></p>
-          <ul>
-            <li>Generate multiple approaches to solving a novel problem</li>
-            <li>Develop conjectures about mathematical relationships</li>
-            <li>Brainstorm ways to represent a mathematical concept</li>
-          </ul>
-          <p><strong>Planning:</strong></p>
-          <ul>
-            <li>Design a proof strategy for a theorem</li>
-            <li>Develop a mathematical model for a real-world situation</li>
-            <li>Plan an approach to an unfamiliar type of problem</li>
-          </ul>
-          <p><strong>Producing:</strong></p>
-          <ul>
-            <li>Construct an original proof</li>
-            <li>Create a new problem that tests specific concepts</li>
-            <li>Produce a mathematical model and solution</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>History</h5>
-          <p><strong>Generating:</strong></p>
-          <ul>
-            <li>Generate alternative interpretations of historical events</li>
-            <li>Develop hypotheses about historical causation</li>
-            <li>Brainstorm possible perspectives on a historical question</li>
-          </ul>
-          <p><strong>Planning:</strong></p>
-          <ul>
-            <li>Design a research plan for a historical investigation</li>
-            <li>Develop an organizational framework for a historical argument</li>
-            <li>Plan a historical narrative structure</li>
-          </ul>
-          <p><strong>Producing:</strong></p>
-          <ul>
-            <li>Write an original historical interpretation</li>
-            <li>Create a documentary or presentation synthesizing historical evidence</li>
-            <li>Produce a new framework for understanding a historical period</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Literature & Language Arts</h5>
-          <p><strong>Generating:</strong></p>
-          <ul>
-            <li>Brainstorm ideas for creative writing</li>
-            <li>Generate multiple interpretations of a text</li>
-            <li>Develop possible thesis statements for an essay</li>
-          </ul>
-          <p><strong>Planning:</strong></p>
-          <ul>
-            <li>Outline the structure of an original argument</li>
-            <li>Design the plot structure for a story</li>
-            <li>Plan the organization of a persuasive essay</li>
-          </ul>
-          <p><strong>Producing:</strong></p>
-          <ul>
-            <li>Write an original story, poem, or play</li>
-            <li>Create an original literary analysis with a unique thesis</li>
-            <li>Produce a multimedia text combining multiple modes</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Computer Science</h5>
-          <p><strong>Generating:</strong></p>
-          <ul>
-            <li>Brainstorm possible algorithms for a problem</li>
-            <li>Generate alternative program designs</li>
-            <li>Develop multiple approaches to debugging</li>
-          </ul>
-          <p><strong>Planning:</strong></p>
-          <ul>
-            <li>Design the architecture for a software system</li>
-            <li>Develop a plan for implementing a program</li>
-            <li>Create pseudocode for a complex algorithm</li>
-          </ul>
-          <p><strong>Producing:</strong></p>
-          <ul>
-            <li>Write an original program to solve a problem</li>
-            <li>Build a functional application or game</li>
-            <li>Create a new algorithm or data structure</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
-        <h3>How Students Demonstrate Create</h3>
-        
-        <p>
-          Students demonstrate creative thinking by generating original work, developing new ideas, or reorganizing elements in novel ways. Creation is shown through products that represent synthesis and originality, not just reproduction of what has been taught.
-        </p>
-        
-        <h4>Generating Original Ideas</h4>
-        <p>Students with creative abilities can:</p>
-        <ul>
-          <li>Produce multiple ideas or possibilities</li>
-          <li>Think divergently and imagine alternatives</li>
-          <li>Develop original hypotheses or solutions</li>
-          <li>See new connections or possibilities</li>
-          <li>Go beyond given information to generate new ideas</li>
-        </ul>
-        
-        <h4>Organizing and Synthesizing</h4>
-        <p>Students demonstrate creation by:</p>
-        <ul>
-          <li>Organizing diverse elements into coherent wholes</li>
-          <li>Synthesizing information from multiple sources</li>
-          <li>Developing original frameworks or structures</li>
-          <li>Combining ideas in new ways</li>
-          <li>Creating plans or designs for original work</li>
-        </ul>
-        
-        <h4>Producing Original Work</h4>
-        <p>Students show creative thinking when they:</p>
-        <ul>
-          <li>Create products that are new to them</li>
-          <li>Solve problems in original ways</li>
-          <li>Produce work that shows synthesis and integration</li>
-          <li>Develop unique perspectives or interpretations</li>
-          <li>Build, construct, or compose original products</li>
-        </ul>
-        
-        <h4>Observable Behaviors</h4>
-        <p>Students engaged in creation:</p>
-        <ul>
-          <li>Take risks and try new approaches</li>
-          <li>Persist through challenges in developing original work</li>
-          <li>Revise and refine their creations</li>
-          <li>Draw upon multiple sources and types of knowledge</li>
-          <li>Show originality in their thinking and products</li>
-          <li>Ask "what if" questions and explore possibilities</li>
-          <li>Integrate learning from different areas</li>
-          <li>Take ownership of their creative work</li>
-        </ul>
-        
-        <div class="tip-box">
-          <h5>Assessment Tip</h5>
-          <p>
-            To assess creation, provide open-ended tasks that require students to generate original work. Look for evidence of synthesis (combining elements in new ways), originality (going beyond what was taught), and coherence (creating something that works as a whole). Creation tasks should allow multiple possible solutions and encourage students to make choices about how to approach problems. Assess both the creative process (generating, planning) and the product (what students produce). Remember that "original" means new to the student, not necessarily unprecedented in the world.
-          </p>
-        </div>
-      </div>
-      
-      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
-        <h3>Tips for Educators</h3>
-        
-        <h4>Fostering Creative Thinking</h4>
-        <ul>
-          <li><strong>Provide open-ended tasks:</strong> Give students problems with multiple possible solutions and opportunities to make creative choices.</li>
-          <li><strong>Encourage divergent thinking:</strong> Ask students to generate multiple ideas before settling on one; value quantity and variety in brainstorming.</li>
-          <li><strong>Model the creative process:</strong> Show students how you generate ideas, plan work, and produce creative products in your field.</li>
-          <li><strong>Allow time for creation:</strong> Creative work takes time—for ideation, planning, production, and revision.</li>
-          <li><strong>Create a safe environment:</strong> Students need to feel safe taking risks and making mistakes in creative work.</li>
-          <li><strong>Teach creative processes:</strong> Explicitly teach strategies for generating ideas, planning work, and refining products.</li>
-          <li><strong>Value originality:</strong> Recognize and celebrate when students go beyond reproducing what they've learned to create something new.</li>
-        </ul>
-        
-        <h4>Common Pitfalls to Avoid</h4>
-        <ul>
-          <li><strong>Confusing creation with application:</strong> Following a procedure isn't creating; students must make original choices and generate new products.</li>
-          <li><strong>Expecting creation without foundation:</strong> Students need solid understanding and skills before they can create effectively.</li>
-          <li><strong>Providing too much structure:</strong> Over-scaffolding limits creativity; students need freedom to make choices.</li>
-          <li><strong>Not teaching the creative process:</strong> Don't assume students know how to generate ideas, plan, and produce—teach these skills.</li>
-          <li><strong>Valuing only the final product:</strong> The creative process (generating, planning, revising) is as important as the final product.</li>
-          <li><strong>Punishing failure:</strong> Creative work involves risk and iteration; students need to feel safe trying and failing.</li>
-          <li><strong>Limiting creation to "creative" subjects:</strong> All disciplines involve creation—scientific experiments, mathematical proofs, historical interpretations, etc.</li>
-        </ul>
-        
-        <div class="ai-box">
-          <h5>AI Literacy Connection</h5>
-          <p>
-            <strong>How AI Relates to Creation:</strong> AI can generate content, but its "creativity" is fundamentally different from human creation. AI recombines patterns from training data; it doesn't truly innovate, understand context, or create with purpose and meaning. Human creation involves intentionality, values, contextual judgment, and genuine originality that AI cannot replicate.
-          </p>
-          <p>
-            <strong>Teaching Implications:</strong>
-          </p>
-          <ul>
-            <li>Use AI as a brainstorming partner, but emphasize that students must generate their own original ideas</li>
-            <li>Teach students to use AI-generated content as raw material to transform, not finished products to submit</li>
-            <li>Emphasize creative processes AI cannot do: purposeful creation, contextual innovation, value-driven design</li>
-            <li>Have students create things AI cannot: work requiring deep contextual understanding, ethical judgment, or human experience</li>
-            <li>Teach students to evaluate and improve AI-generated content through human creativity</li>
-            <li>Help students understand that true creation involves synthesis of knowledge, experience, and values—not just pattern recombination</li>
-            <li>Focus on creative work that requires human judgment, originality, and purposeful innovation</li>
-          </ul>
-          <p>
-            <strong>Key Message:</strong> In the age of AI, human creativity is more valuable than ever. While AI can generate content, humans create with purpose, meaning, context, and genuine innovation. Students need to develop creative capacities that distinguish them from AI: the ability to generate truly original ideas, synthesize knowledge in contextually appropriate ways, create with ethical consideration and human values, and produce work that reflects deep understanding and purposeful innovation. Creative thinking—the ability to generate, plan, and produce original work—is what makes us uniquely human and irreplaceably valuable.
-          </p>
-        </div>
-        
-        <div class="tip-box">
-          <h5>Practical Strategy</h5>
-          <p>
-            <strong>The "Create-Critique-Revise" Cycle:</strong> Structure creative assignments in cycles: (1) Create an initial version (generating and producing), (2) Critique it using criteria (evaluating), (3) Revise and improve (creating again). This iterative process mirrors how professionals create and helps students understand that creation involves refinement, not just initial production. It also integrates multiple cognitive processes in service of creation.
-          </p>
-        </div>
-        
-        <h4>Creation as the Pinnacle of Learning</h4>
-        <p>Create represents the highest cognitive achievement because it requires students to:</p>
-        <ul>
-          <li><strong>Integrate all other cognitive processes:</strong> Remember, understand, apply, analyze, and evaluate in service of creation</li>
-          <li><strong>Think independently:</strong> Go beyond what they've been taught to generate original work</li>
-          <li><strong>Solve novel problems:</strong> Address challenges that don't have predetermined solutions</li>
-          <li><strong>Contribute new knowledge:</strong> Add something to their field or community</li>
-          <li><strong>Take ownership of learning:</strong> Make choices and take responsibility for their work</li>
-        </ul>
-        <p>
-          Students who can create effectively are prepared for the demands of advanced study, professional work, and civic engagement. Creation—the ability to generate original ideas, synthesize knowledge, and produce new work—is the ultimate goal of education and the hallmark of expert thinking.
+          Honing AI literacy and human-AI collaboration through creation might look like, using AI as a brainstorming partner while working through original ideas; using AI-generated content as raw material to transform and mold, evaluate and improve, not finished products to submit; emphasizing and understanding the essential differences between human creativity and AI generation; analyzing deliverables that involved AI in their creation; Help students understand that true creation involves synthesis of knowledge, experience, and values—not just pattern recombination of training data and prompts; centering creative work that requires human judgment, originality, and purposeful innovation.
         </p>
       </div>
     </div>
     
     <div class="bottom-navigation">
       <a href="../index.html" class="nav-button">← Back to Main Page</a>
-      <a href="../dimensions/cognitive-process.html" class="nav-button secondary">View Cognitive Process Table</a>
+      <a href="cognitive-process.html" class="nav-button secondary">View Cognitive Process Dimension</a>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
-  
-  <script>
-    function openTab(evt, tabName) {
-      var tabContents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      var tabButtons = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
-        tabButtons[i].setAttribute("aria-selected", "false");
-      }
-      
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
-      evt.currentTarget.setAttribute("aria-selected", "true");
-      document.getElementById(tabName).focus();
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      var tabPanels = document.querySelectorAll('.tab-content');
-      tabPanels.forEach(function(panel) {
-        panel.setAttribute('tabindex', '0');
-      });
-    });
-  </script>
 </body>
 </html>
