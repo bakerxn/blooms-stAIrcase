@@ -3,79 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conceptual Knowledge - Bloom's stAIrcase</title>
+  <title>Conceptual - Bloom's stAIrcase</title>
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
-    }.page-header {
-      background: linear-gradient(135deg, #ced9e4 0%, #bccad6 100%);
-      padding: 40px;
-      border-radius: 8px 8px 0 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* The unified block — holds the header banner, spectrum, and content together */
+    .unified-block {
       border: 3px solid #003366;
-      border-bottom: none;
-    }.page-header h2 {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      background: #ffffff;
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #c9d4df 0%, #c0cad6 100%);
+      padding: 40px;
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
       margin: 0 0 10px 0;
-    }.dimension-label {
+    }
+    
+    .dimension-label {
       color: #666;
       font-size: 1.1em;
       font-style: italic;
       margin: 0;
-    }.spectrum-container {
-      background: #ffffff;
-      padding: 30px;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-title {
+    }
+    
+    .spectrum-container {
+      padding: 30px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .spectrum-title {
       text-align: center;
       color: #003366;
       font-size: 1.2em;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
       font-weight: bold;
-    }.spectrum-visual {
+    }
+    
+    .spectrum-visual {
       position: relative;
       height: 80px;
-      background: linear-gradient(to right, #dee5ee 0%, #bccad6 50%, #abbdcc 100%);
+      background: linear-gradient(to right, 
+        #dee5ee 0%,
+        #ced9e4 35%,
+        #bccad6 70%,
+        #abbdcc 100%);
       border-radius: 40px;
       border: 2px solid #003366;
-      margin: 20px 0;
-    }.spectrum-labels {
+      margin: 20px 0 30px 0;
+    }
+    
+    .spectrum-labels {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
       font-weight: bold;
       color: #003366;
-    }.spectrum-marker {
+    }
+    
+    .spectrum-marker {
       position: absolute;
       top: 50%;
       left: 40%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
+      width: 90px;
+      height: 90px;
       background: #AC3931;
       border: 4px solid #003366;
       border-radius: 50%;
@@ -86,11 +98,14 @@
       color: white;
       font-weight: bold;
       font-size: 0.75em;
-      line-height: 1.2;
-      padding: 5px;
+      line-height: 1.1;
+      padding: 8px;
+      box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 10;
-    }.spectrum-marker::after {
+    }
+    
+    .spectrum-marker::after {
       content: '';
       position: absolute;
       bottom: -20px;
@@ -101,122 +116,42 @@
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-top: 15px solid #AC3931;
-    }.tab-container {
-      background: #ffffff;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-    }.tab-navigation {
-      display: flex;
-      flex-wrap: wrap;        
-      border-bottom: 3px solid #003366;
-      background: #f8f9fa;
-    }.tab-button {
-      flex: 1;
-      padding: 15px 20px;
-      background: #e8f4ec;
-      border: none;
-      border-right: 2px solid #003366;
-      cursor: pointer;
-      font-family: Arial, sans-serif;  
-      font-weight: bold;
-      font-size: 1em;
-      color: #003366;
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }.tab-button:last-child {
-      border-right: none;
-    }.tab-button:hover {
-      background: #CCE5FF;
-    }.tab-button:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: -3px;
-      z-index: 10;
-    }.tab-button.active {
-      background: #ffffff;
-      color: #AC3931;
-      font-weight: bold;
-      border-bottom: 3px solid #AC3931;
-      margin-bottom: -3px;
-    }.tab-content {
-      display: none;
-      padding: 40px;
-      background: #ffffff;
+    }
+    
+    .content-section {
+      padding: 30px 40px 40px 40px;
+      border-top: 1px solid #e0e0e0;
       line-height: 1.8;
-      color: #333;
-    }.tab-content.active {
-      display: block;
-    }.tab-content h3 {
+    }
+    
+    .content-section h3 {
       color: #003366;
       font-size: 1.8em;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #AC3931;
       padding-bottom: 10px;
-    }.tab-content h4 {
-      color: #AC3931;
-      font-size: 1.3em;
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }.tab-content p {
+    }
+    
+    .content-section h3:not(:first-child) {
+      margin-top: 40px;
+    }
+    
+    .content-section p {
       margin-bottom: 15px;
       font-size: 1.05em;
-    }.tab-content ul {
-      margin: 15px 0;
-      padding-left: 25px;
-    }.tab-content li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }.example-box {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.example-box h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.1em;
-    }.tip-box {
-      background: #fff9e6;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.tip-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.tip-box h5::before {
-      content: "💡";
-      font-size: 1.5em;
-    }.ai-box {
-      background: #e8f4f8;
-      border: 2px solid #4a90e2;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.ai-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.ai-box h5::before {
-      content: "🤖";
-      font-size: 1.5em;
-    }.bottom-navigation {
-      background: #ffffff;
-      padding: 30px 40px;
-      border: 3px solid #003366;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
+      color: #333;
+    }
+    
+    .bottom-navigation {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 15px;
-    }.nav-button {
+      margin-top: 30px;
+    }
+    
+    .nav-button {
       display: inline-block;
       padding: 12px 24px;
       background: #AC3931;
@@ -226,37 +161,47 @@
       font-weight: bold;
       transition: background 0.3s ease;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.nav-button:hover {
+    }
+    
+    .nav-button:hover,
+    .nav-button:focus {
       background: #8d2e27;
-    }.nav-button:focus {
+    }
+    
+    .nav-button:focus {
       outline: 3px solid #003366;
       outline-offset: 2px;
-    }.nav-button.secondary {
+    }
+    
+    .nav-button.secondary {
       background: #003366;
-    }.nav-button.secondary:hover {
+    }
+    
+    .nav-button.secondary:hover,
+    .nav-button.secondary:focus {
       background: #004080;
     }
     
-    footer {
-      background-color: #003366;
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
     }
     
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
     }
     
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -266,41 +211,35 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
-    }.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
     }
     
-    @media screen and (max-width: 768px) {.page-header {
+    @media screen and (max-width: 768px) {
+      .page-header {
         padding: 25px;
-      }.page-header h2 {
+      }
+      .page-header h2 {
         font-size: 1.8em;
-      }.tab-button {
-        font-size: 0.9em;
-        padding: 12px 15px;
-        min-width: 120px;
-      }.tab-content {
-        padding: 25px 20px;
-      }.tab-content h3 {
+      }
+      .spectrum-container,
+      .content-section {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      .content-section h3 {
         font-size: 1.5em;
-      }.spectrum-marker {
-        width: 50px;
-        height: 50px;
+      }
+      .spectrum-marker {
+        width: 75px;
+        height: 75px;
         font-size: 0.7em;
-      }.bottom-navigation {
-        padding: 20px;
+      }
+      .bottom-navigation {
         flex-direction: column;
-      }.nav-button {
+      }
+      .nav-button {
         width: 100%;
         text-align: center;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -308,304 +247,84 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <p class="dimension-label">Knowledge Dimension</p>
-      <h2>Conceptual Knowledge</h2>
-    </div>
-    
-    <div class="spectrum-container">
-      <p class="spectrum-title">Position on the Knowledge Dimension Spectrum</p>
+    <div class="unified-block">
+      <div class="page-header">
+        <p class="dimension-label">Knowledge Dimension</p>
+        <h2>Conceptual</h2>
+      </div>
+      
+      <div class="spectrum-container">
+        <p class="spectrum-title">Position on the Knowledge Spectrum</p>
       <div class="spectrum-visual" role="img" aria-label="Conceptual knowledge is positioned in the middle of the knowledge spectrum">
-        <div class="spectrum-marker" aria-hidden="true">
-          YOU ARE HERE
+          <div class="spectrum-marker" aria-hidden="true">
+            YOU ARE HERE
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Concrete Knowledge</span>
+          <span>Abstract Knowledge</span>
         </div>
       </div>
-      <div class="spectrum-labels">
-        <span>Concrete Knowledge</span>
-        <span>Abstract Knowledge</span>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <nav class="tab-navigation" role="tablist" aria-label="Conceptual knowledge information tabs">
-        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="overview-panel" id="overview-tab" onclick="openTab(event, 'overview')">Overview</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="subtypes-panel" id="subtypes-tab" onclick="openTab(event, 'subtypes')">Subtypes</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="examples-panel" id="examples-tab" onclick="openTab(event, 'examples')">Examples</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="demonstration-panel" id="demonstration-tab" onclick="openTab(event, 'demonstration')">Student Demonstration</button>
-        <button class="tab-button" role="tab" aria-selected="false" aria-controls="teaching-panel" id="teaching-tab" onclick="openTab(event, 'teaching')">Teaching Tips</button>
-      </nav>
       
-      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+      <div class="content-section">
         <h3>What is Conceptual Knowledge?</h3>
         <p>
-          Conceptual knowledge represents the interrelationships among basic elements within a larger structure that enable them to function together. It goes beyond isolated facts to encompass the schemas, models, and theories that organize and connect information within a discipline. This type of knowledge helps students understand how individual pieces of information relate to one another and fit into broader frameworks.
+          Conceptual knowledge goes beyond isolated facts to encompass the schemas, models, and theories that organize and connect information within a discipline. This type of knowledge helps students understand how individual pieces of information relate to one another and fit into broader frameworks and contexts.
         </p>
         <p>
-          Unlike factual knowledge, which consists of discrete pieces of information, conceptual knowledge is about the relationships, patterns, and organizing principles that give meaning to facts. Students with strong conceptual knowledge can see the "big picture," understand underlying principles, and transfer their learning to new contexts. They don't just know facts—they understand how those facts connect and why they matter.
+          Unlike factual knowledge, which consists of discrete pieces of information, conceptual knowledge involves the relationships, patterns, and organizing principles that give meaning to facts. Students with strong conceptual knowledge can see the "big picture," understand underlying principles, and transfer their learning to new contexts. They don't just know facts, they understand how those facts connect and why they matter.
         </p>
         <p>
-          In the Knowledge Dimension spectrum, conceptual knowledge sits between factual and procedural knowledge. It's more abstract than factual knowledge but more concrete than metacognitive knowledge. Conceptual understanding is essential for deep learning and is often what distinguishes novices from experts in a field.
+          In the Knowledge Dimension spectrum, conceptual knowledge sits between factual and procedural knowledge. It's more abstract than factual knowledge but more concrete than metacognitive and procedural knowledge. 
         </p>
         
-        <div class="tip-box">
-          <h5>Common Misconception</h5>
-          <p>
-            <strong>Myth:</strong> If students know the facts, they automatically understand the concepts.
-          </p>
-          <p>
-            <strong>Reality:</strong> Students can memorize facts without understanding the underlying concepts. Conversely, students can understand concepts without knowing every related fact. Effective instruction explicitly teaches both facts and the conceptual frameworks that organize them, helping students see how individual pieces of information connect to form coherent understanding.
-          </p>
-        </div>
-      </div>
-      
-      <div id="subtypes" class="tab-content" role="tabpanel" aria-labelledby="subtypes-tab">
-        <h3>Types of Conceptual Knowledge</h3>
-        
-        <h4>1. Knowledge of Classifications and Categories</h4>
+        <h3>AI Literacy Connection</h3>
         <p>
-          This includes understanding how elements are organized into groups based on shared characteristics. Students learn the categories, classes, and divisions within a discipline and understand the criteria for membership in each category. This type of knowledge helps students organize information and recognize patterns.
+          AI can provide explanations of concepts, generate examples, and create visual representations. However, AI-generated explanations may lack the nuance and context that human teachers provide, and AI cannot assess whether students truly understand concepts or are just repeating information.
         </p>
-        <ul>
-          <li>Taxonomies and classification systems</li>
-          <li>Categories and their defining features</li>
-          <li>Hierarchical relationships among categories</li>
-          <li>Criteria for categorization</li>
-        </ul>
-        
-        <h4>2. Knowledge of Principles and Generalizations</h4>
         <p>
-          This encompasses the broad ideas, rules, and patterns that summarize observations and describe relationships within a discipline. Principles and generalizations represent abstractions that apply across multiple specific instances. They help students predict, explain, and understand phenomena.
+          Teaching AI literacy through conceptual knowledge might look like, using AI to generate multiple examples of concepts in a context for students to review and evaluate; have students critique AI explanations of concepts through a lens (i.e. ethical); teaching students that AI may provide factually correct information without deep conceptual coherence, in other words, demystifying AI’s anthropomorphic status; emphasize that conceptual understanding enables students to evaluate AI outputs critically; and using AI-generated concept maps as discussion starters.
         </p>
-        <ul>
-          <li>Scientific laws and principles</li>
-          <li>Mathematical rules and properties</li>
-          <li>General patterns and trends</li>
-          <li>Cause-and-effect relationships</li>
-          <li>Rules that govern phenomena</li>
-        </ul>
-        
-        <h4>3. Knowledge of Theories, Models, and Structures</h4>
-        <p>
-          This includes understanding the comprehensive frameworks that organize and explain large bodies of knowledge within a discipline. Theories and models provide coherent explanations for complex phenomena and show how multiple principles and concepts work together. This is the most abstract form of conceptual knowledge.
-        </p>
-        <ul>
-          <li>Scientific theories (e.g., evolution, atomic theory)</li>
-          <li>Conceptual models (e.g., economic models, literary frameworks)</li>
-          <li>Paradigms and worldviews</li>
-          <li>Comprehensive explanatory frameworks</li>
-          <li>Interconnected systems of concepts</li>
-        </ul>
-        
-        <div class="example-box">
-          <h5>Distinguishing the Subtypes</h5>
-          <p><strong>Classifications:</strong> Knowing that living things are classified into kingdoms, phyla, classes, orders, families, genera, and species.</p>
-          <p><strong>Principles:</strong> Understanding that natural selection drives evolution through differential survival and reproduction.</p>
-          <p><strong>Theories:</strong> Comprehending evolutionary theory as a comprehensive framework that explains the diversity and unity of life.</p>
-        </div>
-      </div>
-      
-      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
-        <h3>Conceptual Knowledge Across Disciplines</h3>
-        
-        <div class="example-box">
-          <h5>Science</h5>
-          <p><strong>Classifications:</strong> Periodic table organization; taxonomy of living organisms; states of matter; types of chemical reactions</p>
-          <p><strong>Principles:</strong> Conservation of energy; Newton's laws of motion; natural selection; the water cycle</p>
-          <p><strong>Theories/Models:</strong> Atomic theory; cell theory; plate tectonics; germ theory of disease; climate systems</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Mathematics</h5>
-          <p><strong>Classifications:</strong> Types of numbers (natural, whole, integers, rational, irrational); categories of shapes; types of functions</p>
-          <p><strong>Principles:</strong> Commutative property; distributive property; relationship between addition and subtraction; properties of equality</p>
-          <p><strong>Theories/Models:</strong> Number theory; geometric principles; algebraic structures; probability theory</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>History</h5>
-          <p><strong>Classifications:</strong> Types of government systems; historical periods and eras; categories of primary sources</p>
-          <p><strong>Principles:</strong> Cause and effect in historical events; patterns of social change; economic principles affecting societies</p>
-          <p><strong>Theories/Models:</strong> Social contract theory; Marxist historical interpretation; theories of democracy; models of revolution</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Literature & Language Arts</h5>
-          <p><strong>Classifications:</strong> Literary genres; parts of speech; types of figurative language; narrative structures</p>
-          <p><strong>Principles:</strong> Theme development; character motivation; plot structure; rhetorical strategies</p>
-          <p><strong>Theories/Models:</strong> Literary criticism frameworks; narrative theory; rhetorical situation model; reader-response theory</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Arts</h5>
-          <p><strong>Classifications:</strong> Art movements and styles; musical genres; color categories; dance forms</p>
-          <p><strong>Principles:</strong> Color theory; principles of design; harmony and dissonance; rhythm and tempo</p>
-          <p><strong>Theories/Models:</strong> Aesthetic theory; music theory; compositional frameworks; performance theory</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Computer Science</h5>
-          <p><strong>Classifications:</strong> Data types; programming paradigms; types of algorithms; network protocols</p>
-          <p><strong>Principles:</strong> Abstraction; modularity; efficiency; recursion; object-oriented principles</p>
-          <p><strong>Theories/Models:</strong> Computational theory; information theory; models of computation; software design patterns</p>
-        </div>
-      </div>
-      
-      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
-        <h3>How Students Demonstrate Conceptual Knowledge</h3>
-        
-        <p>
-          Students demonstrate conceptual knowledge by showing they understand relationships, principles, and organizing frameworks—not just isolated facts. They can explain connections, apply concepts to new situations, and use conceptual understanding to make sense of information.
-        </p>
-        
-        <h4>Explaining Relationships and Connections</h4>
-        <p>Students with conceptual knowledge can:</p>
-        <ul>
-          <li>Explain how concepts relate to one another</li>
-          <li>Describe why things are categorized in particular ways</li>
-          <li>Articulate underlying principles that govern phenomena</li>
-          <li>Connect new information to existing conceptual frameworks</li>
-          <li>Explain the "why" behind facts and procedures</li>
-        </ul>
-        
-        <h4>Applying Concepts to New Situations</h4>
-        <p>Students demonstrate conceptual understanding when they:</p>
-        <ul>
-          <li>Use concepts to interpret unfamiliar examples</li>
-          <li>Apply principles to solve novel problems</li>
-          <li>Recognize when a concept applies in a new context</li>
-          <li>Transfer learning from one situation to another</li>
-          <li>Make predictions based on conceptual understanding</li>
-        </ul>
-        
-        <h4>Organizing and Structuring Information</h4>
-        <p>Students show conceptual knowledge by:</p>
-        <ul>
-          <li>Creating concept maps or diagrams showing relationships</li>
-          <li>Organizing information into meaningful categories</li>
-          <li>Identifying patterns and generalizations</li>
-          <li>Explaining how parts fit into larger wholes</li>
-          <li>Using theories or models to explain complex phenomena</li>
-        </ul>
-        
-        <h4>Observable Behaviors</h4>
-        <p>Students with strong conceptual knowledge:</p>
-        <ul>
-          <li>Ask "why" and "how" questions that probe deeper understanding</li>
-          <li>Make connections between different topics or units</li>
-          <li>Recognize when information doesn't fit expected patterns</li>
-          <li>Can explain concepts in their own words using examples</li>
-          <li>Apply learning in contexts different from where it was taught</li>
-          <li>Identify misconceptions and explain why they're incorrect</li>
-        </ul>
-        
-        <div class="tip-box">
-          <h5>Assessment Tip</h5>
-          <p>
-            To assess conceptual knowledge, ask students to explain relationships, provide examples from new contexts, create visual representations of connections, or apply concepts to solve unfamiliar problems. Avoid questions that can be answered with memorized facts alone. Look for evidence that students understand the "why" and "how," not just the "what."
-          </p>
-        </div>
-      </div>
-      
-      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
-        <h3>Tips for Educators</h3>
-        
-        <h4>Building Strong Conceptual Understanding</h4>
-        <ul>
-          <li><strong>Make connections explicit:</strong> Don't assume students will see relationships on their own. Explicitly teach how concepts connect and why they're organized in particular ways.</li>
-          <li><strong>Use multiple representations:</strong> Present concepts through words, diagrams, examples, and analogies to help students build rich mental models.</li>
-          <li><strong>Teach concepts before details:</strong> Provide the conceptual framework first, then fill in specific facts and details within that structure.</li>
-          <li><strong>Encourage explanation:</strong> Regularly ask students to explain concepts in their own words and describe relationships.</li>
-          <li><strong>Use concept mapping:</strong> Have students create visual representations showing how ideas connect.</li>
-          <li><strong>Compare and contrast:</strong> Help students understand concepts by examining similarities and differences.</li>
-        </ul>
-        
-        <h4>Common Pitfalls to Avoid</h4>
-        <ul>
-          <li><strong>Teaching facts without concepts:</strong> Students who only learn isolated facts lack the framework to organize and apply their knowledge.</li>
-          <li><strong>Assuming understanding:</strong> Students may appear to understand because they can repeat definitions, but lack true conceptual grasp.</li>
-          <li><strong>Moving too quickly:</strong> Conceptual understanding takes time to develop. Allow for processing, discussion, and application.</li>
-          <li><strong>Neglecting misconceptions:</strong> Address common misconceptions explicitly, as they interfere with conceptual understanding.</li>
-          <li><strong>Over-relying on definitions:</strong> Knowing a definition doesn't mean understanding a concept. Students need multiple examples and applications.</li>
-        </ul>
-        
-        <div class="ai-box">
-          <h5>AI Literacy Connection</h5>
-          <p>
-            <strong>How AI Relates to Conceptual Knowledge:</strong> AI can provide explanations of concepts, generate examples, and create visual representations. However, AI-generated explanations may lack the nuance and context that human teachers provide, and AI cannot assess whether students truly understand concepts or are just repeating information.
-          </p>
-          <p>
-            <strong>Teaching Implications:</strong>
-          </p>
-          <ul>
-            <li>Use AI to generate multiple examples of concepts for student practice</li>
-            <li>Have students critique AI explanations of concepts, identifying strengths and weaknesses</li>
-            <li>Teach students that AI may provide factually correct information without deep conceptual coherence</li>
-            <li>Emphasize that conceptual understanding enables students to evaluate AI outputs critically</li>
-            <li>Use AI-generated concept maps as discussion starters, not finished products</li>
-            <li>Help students understand that strong conceptual knowledge allows them to recognize when AI makes conceptual errors</li>
-          </ul>
-          <p>
-            <strong>Key Message:</strong> Conceptual knowledge is uniquely human and essential for making sense of AI-provided information. Students with strong conceptual understanding can evaluate, organize, and apply information from AI tools effectively, while those without it may accept AI outputs uncritically.
-          </p>
-        </div>
-        
-        <div class="tip-box">
-          <h5>Practical Strategy</h5>
-          <p>
-            <strong>The "Explain to a Younger Student" Technique:</strong> Ask students to explain a concept as if teaching it to someone younger. This requires them to identify the core idea, use accessible language, provide clear examples, and explain relationships—all indicators of genuine conceptual understanding rather than mere memorization.
-          </p>
-        </div>
       </div>
     </div>
     
     <div class="bottom-navigation">
       <a href="../index.html" class="nav-button">← Back to Main Page</a>
-      <a href="../dimensions/knowledge.html" class="nav-button secondary">View Knowledge Dimension Table</a>
+      <a href="knowledge.html" class="nav-button secondary">View Knowledge Dimension</a>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
-  
-  <script>
-    function openTab(evt, tabName) {
-      var tabContents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      var tabButtons = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
-        tabButtons[i].setAttribute("aria-selected", "false");
-      }
-      
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
-      evt.currentTarget.setAttribute("aria-selected", "true");
-      document.getElementById(tabName).focus();
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      var tabPanels = document.querySelectorAll('.tab-content');
-      tabPanels.forEach(function(panel) {
-        panel.setAttribute('tabindex', '0');
-      });
-    });
-  </script>
 </body>
 </html>
