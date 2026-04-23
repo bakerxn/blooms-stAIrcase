@@ -7,58 +7,60 @@
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
-    }.page-header {
-      background: linear-gradient(135deg, #e8f4fc 0%, #d4e9f7 100%);
-      padding: 40px;
-      border-radius: 8px 8px 0 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* The unified block — holds the header banner, spectrum, and content together */
+    .unified-block {
       border: 3px solid #003366;
-      border-bottom: none;
-    }.page-header h2 {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      background: #ffffff;
+    }
+    
+    .page-header {
+     background: linear-gradient(135deg, #e8f4fc 0%, #d4e9f7 100%);
+      padding: 40px;
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
       margin: 0 0 10px 0;
-    }.dimension-label {
+    }
+    
+    .dimension-label {
       color: #666;
       font-size: 1.1em;
       font-style: italic;
       margin: 0;
     }
     
-    /* Spectrum Visualization */.spectrum-container {
-      background: #ffffff;
-      padding: 30px;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-title {
+    .spectrum-container {
+      padding: 30px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .spectrum-title {
       text-align: center;
       color: #003366;
       font-size: 1.2em;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
       font-weight: bold;
-    }.spectrum-visual {
+    }
+    
+    .spectrum-visual {
       position: relative;
       height: 80px;
       background: linear-gradient(to right, 
@@ -70,32 +72,42 @@
         #ffc9d9 100%);
       border-radius: 40px;
       border: 2px solid #003366;
-      margin: 20px 0;
-    }.spectrum-labels {
+      margin: 20px 0 30px 0;
+    }
+    
+    .spectrum-labels {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
       font-weight: bold;
       color: #003366;
-    }.spectrum-marker {
+    }
+    
+    .spectrum-marker {
       position: absolute;
       top: 50%;
       left: 10%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
+      width: 90px;
+      height: 90px;
       background: #AC3931;
       border: 4px solid #003366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       color: white;
       font-weight: bold;
-      font-size: 0.9em;
+      font-size: 0.75em;
+      line-height: 1.1;
+      padding: 8px;
+      box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 10;
-    }.spectrum-marker::after {
+    }
+    
+    .spectrum-marker::after {
       content: '';
       position: absolute;
       bottom: -20px;
@@ -108,138 +120,40 @@
       border-top: 15px solid #AC3931;
     }
     
-    /* Tab Navigation */.tab-container {
-      background: #ffffff;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-    }.tab-navigation {
-      display: flex;
-      flex-wrap: wrap;        
-      border-bottom: 3px solid #003366;
-      background: #f8f9fa;
-    }.tab-button {
-      flex: 1;
-      padding: 15px 20px;
-      background: #e8f4ec;
-      border: none;
-      border-right: 2px solid #003366;
-      cursor: pointer;
-      font-family: Arial, sans-serif;  
-      font-weight: bold;
-      font-size: 1em;
-      color: #003366;
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }.tab-button:last-child {
-      border-right: none;
-    }.tab-button:hover {
-      background: #CCE5FF;
-    }.tab-button:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: -3px;
-      z-index: 10;
-    }.tab-button.active {
-      background: #ffffff;
-      color: #AC3931;
-      font-weight: bold;
-      border-bottom: 3px solid #AC3931;
-      margin-bottom: -3px;
-    }.tab-content {
-      display: none;
-      padding: 40px;
-      background: #ffffff;
+    .content-section {
+      padding: 30px 40px 40px 40px;
+      border-top: 1px solid #e0e0e0;
       line-height: 1.8;
-      color: #333;
-    }.tab-content.active {
-      display: block;
-    }.tab-content h3 {
+    }
+    
+    .content-section h3 {
       color: #003366;
       font-size: 1.8em;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #AC3931;
       padding-bottom: 10px;
-    }.tab-content h4 {
-      color: #AC3931;
-      font-size: 1.3em;
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }.tab-content p {
-      margin-bottom: 15px;
-      font-size: 1.05em;
-    }.tab-content ul {
-      margin: 15px 0;
-      padding-left: 25px;
-    }.tab-content li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }.process-card {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.process-card h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.2em;
-    }.process-card.alternative-names {
-      font-style: italic;
-      color: #666;
-      margin-top: 5px;
-    }.example-box {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.example-box h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.1em;
-    }.tip-box {
-      background: #fff9e6;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.tip-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.tip-box h5::before {
-      content: "💡";
-      font-size: 1.5em;
-    }.ai-box {
-      background: #e8f4f8;
-      border: 2px solid #4a90e2;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.ai-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.ai-box h5::before {
-      content: "🤖";
-      font-size: 1.5em;
     }
     
-    /* Navigation Buttons */.bottom-navigation {
-      background: #ffffff;
-      padding: 30px 40px;
-      border: 3px solid #003366;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
+    .content-section h3:not(:first-child) {
+      margin-top: 40px;
+    }
+    
+    .content-section p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+      color: #333;
+    }
+    
+    .bottom-navigation {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 15px;
-    }.nav-button {
+      margin-top: 30px;
+    }
+    
+    .nav-button {
       display: inline-block;
       padding: 12px 24px;
       background: #AC3931;
@@ -249,39 +163,47 @@
       font-weight: bold;
       transition: background 0.3s ease;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.nav-button:hover {
+    }
+    
+    .nav-button:hover,
+    .nav-button:focus {
       background: #8d2e27;
-    }.nav-button:focus {
+    }
+    
+    .nav-button:focus {
       outline: 3px solid #003366;
       outline-offset: 2px;
-    }.nav-button.secondary {
+    }
+    
+    .nav-button.secondary {
       background: #003366;
-    }.nav-button.secondary:hover {
+    }
+    
+    .nav-button.secondary:hover,
+    .nav-button.secondary:focus {
       background: #004080;
     }
     
-    footer {
-      background-color: #003366;
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
     }
     
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
     }
     
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }
-    
-    /* Accessibility */.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -291,42 +213,35 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
-    }.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
     }
     
-    /* Mobile Responsive */
-    @media screen and (max-width: 768px) {.page-header {
+    @media screen and (max-width: 768px) {
+      .page-header {
         padding: 25px;
-      }.page-header h2 {
+      }
+      .page-header h2 {
         font-size: 1.8em;
-      }.tab-button {
-        font-size: 0.9em;
-        padding: 12px 15px;
-        min-width: 120px;
-      }.tab-content {
-        padding: 25px 20px;
-      }.tab-content h3 {
+      }
+      .spectrum-container,
+      .content-section {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      .content-section h3 {
         font-size: 1.5em;
-      }.spectrum-marker {
-        width: 50px;
-        height: 50px;
-        font-size: 0.8em;
-      }.bottom-navigation {
-        padding: 20px;
+      }
+      .spectrum-marker {
+        width: 75px;
+        height: 75px;
+        font-size: 0.7em;
+      }
+      .bottom-navigation {
         flex-direction: column;
-      }.nav-button {
+      }
+      .nav-button {
         width: 100%;
         text-align: center;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -334,404 +249,81 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <p class="dimension-label">Cognitive Process Dimension</p>
-      <h2>Remember</h2>
-    </div>
-    
-    <div class="spectrum-container">
-      <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
-      <div class="spectrum-visual" role="img" aria-label="Remember is positioned at the lower order thinking skills end of the cognitive process spectrum">
-        <div class="spectrum-marker" aria-hidden="true">
-          YOU ARE HERE
+    <div class="unified-block">
+      <div class="page-header">
+        <p class="dimension-label">Cognitive Process Dimension</p>
+        <h2>Remember</h2>
+      </div>
+      
+      <div class="spectrum-container">
+        <p class="spectrum-title">Position on the Cognitive Process Dimension Spectrum</p>
+        <div class="spectrum-visual" role="img" aria-label="Analyze is positioned in the higher order thinking skills area of the cognitive process spectrum">
+          <div class="spectrum-marker" aria-hidden="true">
+            YOU ARE HERE
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Lower Order Thinking Skills</span>
+          <span>Higher Order Thinking Skills</span>
         </div>
       </div>
-      <div class="spectrum-labels">
-        <span>Lower Order Thinking Skills</span>
-        <span>Higher Order Thinking Skills</span>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <nav class="tab-navigation" role="tablist" aria-label="Remember cognitive process information tabs">
-        <button class="tab-button active" 
-                role="tab" 
-                aria-selected="true" 
-                aria-controls="overview-panel" 
-                id="overview-tab"
-                onclick="openTab(event, 'overview')">
-          Overview
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="processes-panel" 
-                id="processes-tab"
-                onclick="openTab(event, 'processes')">
-          Cognitive Processes
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="examples-panel" 
-                id="examples-tab"
-                onclick="openTab(event, 'examples')">
-          Examples
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="demonstration-panel" 
-                id="demonstration-tab"
-                onclick="openTab(event, 'demonstration')">
-          Student Demonstration
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="teaching-panel" 
-                id="teaching-tab"
-                onclick="openTab(event, 'teaching')">
-          Teaching Tips
-        </button>
-      </nav>
       
-      <!-- Overview Tab -->
-      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+      <div class="content-section">
         <h3>What is Remember?</h3>
         <p>
-          Remember is the foundational cognitive process in the revised Bloom's Taxonomy. It involves retrieving relevant knowledge from long-term memory. This process is essential because it provides the building blocks for all higher-order thinking. Without the ability to remember, students cannot understand, apply, analyze, evaluate, or create.
+          Remember involves retrieving relevant knowledge from long-term memory. This process is essential because it provides the building blocks for all higher-order thinking. Without the ability to remember, students cannot understand, apply, analyze, evaluate, or create.
         </p>
         <p>
-          In the original Bloom's Taxonomy, this category was called "Knowledge," but the revision renamed it "Remember" to emphasize that this is an active cognitive process, not a passive state. Remembering requires students to actively retrieve information from memory, whether through recognition (identifying information when presented) or recall (producing information from memory without cues).
+          Remembering (in the original Bloom's Taxonomy, this category was called "Knowledge”) requires students to actively retrieve information from memory, whether through recognition or recall.Remember sits at the lower-order thinking skills end of the Cognitive Process Dimension. While sometimes characterized as "basic," remembering is actually a complex cognitive process that involves encoding, storage, and retrieval of information. Expert performance in any domain requires extensive, well-organized knowledge that can be quickly and accurately remembered. 
+        </p>
+        
+        <h3>AI Literacy Connection</h3>
+        <p>
+          AI tools, especially large language models, instantly retrieve vast amounts of information. The existence of these kinds of tools disrupts the promotion of recall and retrieval as an educational priority or means of assessment.
         </p>
         <p>
-          Remember sits at the lower-order thinking skills end of the Cognitive Process Dimension. While sometimes characterized as "basic," remembering is actually a complex cognitive process that involves encoding, storage, and retrieval of information. Expert performance in any domain requires extensive, well-organized knowledge that can be quickly and accurately remembered.
+          In practice, teaching AI literacy through remembering might look like, centering foundational knowledge by identifying core facts and concepts that students should know automatically to think efficiently; teach strategic remembering, by emphasizing what's worth remembering vs. what can be looked up and contexts for each; emphasize recall and retrieve through student review and verification of AI outputs; emphasizing what students need to remember enough to understand AI outputs; and use AI as a study tool, have AI generate flashcards, quizzes, and practice questions to support remembering.
         </p>
-        
-        <div class="tip-box">
-          <h5>Common Misconception</h5>
-          <p>
-            <strong>Myth:</strong> Remembering is just rote memorization and is less valuable than higher-order thinking.
-          </p>
-          <p>
-            <strong>Reality:</strong> While rote memorization without understanding has limited value, the ability to remember relevant information is essential for all higher-order thinking. Experts in any field have extensive knowledge stored in long-term memory that they can quickly access. The key is to ensure students are remembering meaningful information and connecting it to conceptual understanding.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Cognitive Processes Tab -->
-      <div id="processes" class="tab-content" role="tabpanel" aria-labelledby="processes-tab">
-        <h3>Cognitive Processes Within Remember</h3>
-        <p>
-          The Remember category includes two specific cognitive processes that represent different ways students retrieve information from memory.
-        </p>
-        
-        <div class="process-card">
-          <h5>Recognizing</h5>
-          <p class="alternative-names">Alternative name: Identifying</p>
-          <p>
-            <strong>Definition:</strong> Locating knowledge in long-term memory that is consistent with presented material. Recognition involves identifying information when it is presented, such as selecting the correct answer from multiple choices or matching terms with definitions.
-          </p>
-          <p>
-            <strong>Key characteristics:</strong>
-          </p>
-          <ul>
-            <li>Information is provided; students identify what is correct</li>
-            <li>Requires familiarity with the material</li>
-            <li>Generally easier than recall because cues are present</li>
-            <li>Can involve identifying patterns, symbols, or concepts</li>
-          </ul>
-          <p>
-            <strong>Example prompts:</strong> "Which of these is...?", "Select all that apply...", "Identify the...", "Match the following..."
-          </p>
-        </div>
-        
-        <div class="process-card">
-          <h5>Recalling</h5>
-          <p class="alternative-names">Alternative name: Retrieving</p>
-          <p>
-            <strong>Definition:</strong> Retrieving relevant knowledge from long-term memory without significant cues or prompts. Recall requires students to produce information from memory, such as answering fill-in-the-blank questions or listing specific facts.
-          </p>
-          <p>
-            <strong>Key characteristics:</strong>
-          </p>
-          <ul>
-            <li>Students must produce information without prompts</li>
-            <li>Requires stronger memory encoding than recognition</li>
-            <li>More challenging than recognition because no cues are provided</li>
-            <li>Can involve retrieving facts, procedures, or concepts</li>
-          </ul>
-          <p>
-            <strong>Example prompts:</strong> "List the...", "Name the...", "What is...?", "Define...", "State the..."
-          </p>
-        </div>
-        
-        <h4>Relationship Between Recognizing and Recalling</h4>
-        <p>
-          Both processes involve retrieving information from memory, but they differ in the level of support provided. Recognition provides cues (the correct answer is present among options), while recall requires students to generate the answer independently. In educational practice, students typically find recognition easier than recall, which is why multiple-choice questions are often perceived as less challenging than short-answer questions.
-        </p>
-      </div>
-      
-      <!-- Examples Tab -->
-      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
-        <h3>Remember Across Disciplines</h3>
-        
-        <div class="example-box">
-          <h5>Science</h5>
-          <p><strong>Recognizing:</strong></p>
-          <ul>
-            <li>Identify the parts of a cell in a diagram</li>
-            <li>Select which of these substances is an acid</li>
-            <li>Match each planet with its characteristic</li>
-          </ul>
-          <p><strong>Recalling:</strong></p>
-          <ul>
-            <li>Name the three states of matter</li>
-            <li>List the steps of the scientific method</li>
-            <li>State Newton's first law of motion</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Mathematics</h5>
-          <p><strong>Recognizing:</strong></p>
-          <ul>
-            <li>Identify which equation represents a linear function</li>
-            <li>Select the correct formula for area of a circle</li>
-            <li>Match each shape with its name</li>
-          </ul>
-          <p><strong>Recalling:</strong></p>
-          <ul>
-            <li>Write the quadratic formula</li>
-            <li>List the first ten prime numbers</li>
-            <li>State the Pythagorean theorem</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>History</h5>
-          <p><strong>Recognizing:</strong></p>
-          <ul>
-            <li>Identify which event occurred during the Renaissance</li>
-            <li>Select the correct date for the Declaration of Independence</li>
-            <li>Match historical figures with their accomplishments</li>
-          </ul>
-          <p><strong>Recalling:</strong></p>
-          <ul>
-            <li>Name the three branches of U.S. government</li>
-            <li>List the causes of World War I</li>
-            <li>State the main purpose of the Bill of Rights</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Literature & Language Arts</h5>
-          <p><strong>Recognizing:</strong></p>
-          <ul>
-            <li>Identify examples of metaphor in a poem</li>
-            <li>Select which sentence contains a simile</li>
-            <li>Match authors with their famous works</li>
-          </ul>
-          <p><strong>Recalling:</strong></p>
-          <ul>
-            <li>Define the term "protagonist"</li>
-            <li>List the elements of a story</li>
-            <li>Name the author of Romeo and Juliet</li>
-          </ul>
-        </div>
-        
-        <div class="example-box">
-          <h5>Computer Science</h5>
-          <p><strong>Recognizing:</strong></p>
-          <ul>
-            <li>Identify which code snippet contains a loop</li>
-            <li>Select the correct syntax for a function</li>
-            <li>Match programming terms with their definitions</li>
-          </ul>
-          <p><strong>Recalling:</strong></p>
-          <ul>
-            <li>Write the basic structure of an HTML document</li>
-            <li>List the primitive data types in Python</li>
-            <li>State what "debugging" means</li>
-          </ul>
-        </div>
-      </div>
-      
-      <!-- Demonstration Tab -->
-      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
-        <h3>How Students Demonstrate Remember</h3>
-        
-        <p>
-          Students demonstrate the Remember cognitive process through various assessment formats and classroom activities. The key indicator is whether students can retrieve previously learned information accurately.
-        </p>
-        
-        <h4>Assessment Formats for Recognizing</h4>
-        <ul>
-          <li><strong>Multiple-choice questions:</strong> Students select the correct answer from options</li>
-          <li><strong>True/false statements:</strong> Students identify whether statements are accurate</li>
-          <li><strong>Matching exercises:</strong> Students connect related items (terms to definitions, dates to events)</li>
-          <li><strong>Labeling diagrams:</strong> Students identify parts of a diagram from a word bank</li>
-          <li><strong>Selection tasks:</strong> Students choose all correct examples from a set</li>
-        </ul>
-        
-        <h4>Assessment Formats for Recalling</h4>
-        <ul>
-          <li><strong>Fill-in-the-blank questions:</strong> Students complete sentences with missing information</li>
-          <li><strong>Short-answer questions:</strong> Students provide brief factual responses</li>
-          <li><strong>List generation:</strong> Students produce lists of related items</li>
-          <li><strong>Definition writing:</strong> Students define terms in their own words</li>
-          <li><strong>Labeling without word banks:</strong> Students identify diagram parts from memory</li>
-        </ul>
-        
-        <h4>Observable Behaviors</h4>
-        <p>Students successfully demonstrating Remember can:</p>
-        <ul>
-          <li>Quickly answer factual questions during class discussions</li>
-          <li>Correctly use terminology when speaking or writing</li>
-          <li>Retrieve relevant information when solving problems</li>
-          <li>Reference specific facts, dates, or names without looking them up</li>
-          <li>Identify errors when incorrect information is presented</li>
-          <li>Build upon remembered information to engage in higher-order thinking</li>
-        </ul>
-        
-        <h4>Progression to Higher-Order Thinking</h4>
-        <p>
-          While Remember is essential, it should serve as a foundation for more complex thinking. Students who can only remember information but cannot understand, apply, or analyze it have limited competence. Effective instruction ensures students can remember key information while also developing higher-order cognitive skills.
-        </p>
-        
-        <div class="tip-box">
-          <h5>Assessment Tip</h5>
-          <p>
-            Balance recognition and recall tasks in assessments. Recognition tasks (like multiple-choice) are efficient for checking broad knowledge, while recall tasks (like short-answer) better ensure students have deeply encoded information. Consider using both types to get a complete picture of student memory.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Teaching Tips Tab -->
-      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
-        <h3>Tips for Educators</h3>
-        
-        <h4>Strategies to Support Remembering</h4>
-        <ul>
-          <li><strong>Spaced repetition:</strong> Review information multiple times over increasing intervals to strengthen long-term memory</li>
-          <li><strong>Retrieval practice:</strong> Have students actively recall information rather than passively reviewing it</li>
-          <li><strong>Elaborative encoding:</strong> Help students connect new information to existing knowledge</li>
-          <li><strong>Multiple modalities:</strong> Present information through visual, auditory, and kinesthetic channels</li>
-          <li><strong>Meaningful organization:</strong> Help students organize information into logical structures</li>
-          <li><strong>Mnemonic devices:</strong> Teach memory strategies like acronyms, visualization, and chunking</li>
-        </ul>
-        
-        <h4>Moving Beyond Remember</h4>
-        <p>
-          While Remember is foundational, instruction should not stop there:
-        </p>
-        <ul>
-          <li>Use remembered information as a springboard for understanding and application</li>
-          <li>Ask "why" and "how" questions that require students to go beyond recall</li>
-          <li>Connect facts to concepts and real-world contexts</li>
-          <li>Ensure students can both remember information and do something meaningful with it</li>
-        </ul>
-        
-        <h4>Common Pitfalls to Avoid</h4>
-        <ul>
-          <li><strong>Over-reliance on memorization:</strong> Don't spend all instructional time on rote learning</li>
-          <li><strong>Decontextualized facts:</strong> Information remembered in isolation is harder to retrieve and less useful</li>
-          <li><strong>Passive review:</strong> Re-reading notes is less effective than active retrieval practice</li>
-          <li><strong>Cramming:</strong> Massed practice leads to poor long-term retention; use spaced practice instead</li>
-          <li><strong>Testing only recognition:</strong> Balance recognition tasks with recall to ensure deeper encoding</li>
-        </ul>
-        
-        <div class="ai-box">
-          <h5>AI Literacy Connection</h5>
-          <p>
-            <strong>How AI Impacts Remember:</strong> AI tools, especially large language models, can instantly retrieve vast amounts of information. This fundamentally changes what students need to remember.
-          </p>
-          <p>
-            <strong>Teaching Implications:</strong>
-          </p>
-          <ul>
-            <li><strong>Focus on foundational knowledge:</strong> Identify core facts and concepts that students should know automatically to think efficiently</li>
-            <li><strong>Teach strategic remembering:</strong> Help students know what's worth remembering vs. what can be looked up</li>
-            <li><strong>Emphasize verification:</strong> AI can confidently state incorrect information; students must remember enough to recognize errors</li>
-            <li><strong>Build mental models:</strong> Students need to remember enough to understand AI outputs and integrate them with existing knowledge</li>
-            <li><strong>Use AI as a study tool:</strong> AI can generate flashcards, quizzes, and practice questions to support remembering</li>
-          </ul>
-          <p>
-            <strong>Key Message:</strong> In the age of AI, the goal shifts from remembering everything to remembering strategically—knowing core information that enables efficient thinking and recognizing when AI-provided information is accurate or flawed.
-          </p>
-        </div>
-        
-        <div class="tip-box">
-          <h5>Practical Strategy</h5>
-          <p>
-            <strong>The "Must-Know vs. Nice-to-Know" Framework:</strong> Work with students to categorize information into "must-know" (foundational facts worth memorizing) and "nice-to-know" (information that can be looked up when needed). This helps students focus their memory efforts strategically and reduces cognitive overload.
-          </p>
-        </div>
-        
-        <h4>Connecting Remember to Other Cognitive Processes</h4>
-        <p>
-          Remember works in concert with other cognitive processes:
-        </p>
-        <ul>
-          <li><strong>Remember + Understand:</strong> Students recall facts and explain their meaning</li>
-          <li><strong>Remember + Apply:</strong> Students retrieve procedures and use them in new situations</li>
-          <li><strong>Remember + Analyze:</strong> Students recall information and break it into components</li>
-          <li><strong>Remember + Evaluate:</strong> Students retrieve criteria and make judgments</li>
-          <li><strong>Remember + Create:</strong> Students draw on remembered knowledge to generate new ideas</li>
-        </ul>
       </div>
     </div>
     
     <div class="bottom-navigation">
       <a href="../index.html" class="nav-button">← Back to Main Page</a>
-      <a href="../dimensions/cognitive-process.html" class="nav-button secondary">View Cognitive Process Table</a>
+      <a href="cognitive-process.html" class="nav-button secondary">View Cognitive Process Dimension</a>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
-  
-  <script>
-    function openTab(evt, tabName) {
-      var tabContents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      var tabButtons = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
-        tabButtons[i].setAttribute("aria-selected", "false");
-      }
-      
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
-      evt.currentTarget.setAttribute("aria-selected", "true");
-      
-      document.getElementById(tabName).focus();
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      var tabPanels = document.querySelectorAll('.tab-content');
-      tabPanels.forEach(function(panel) {
-        panel.setAttribute('tabindex', '0');
-      });
-    });
-  </script>
 </body>
 </html>
