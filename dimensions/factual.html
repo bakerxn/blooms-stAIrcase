@@ -3,93 +3,109 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Factual Knowledge - Bloom's stAIrcase</title>
+  <title>Factual - Bloom's stAIrcase</title>
   <link rel="stylesheet" href="../theme.css">
   <style>
     body {
-      font-family: Arial, sans-serif; 
-      font-weight: bold;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f5f8fa;
+      color: #333;
     }
     
-    header {
-      padding: 20px;
-      text-align: center;
-      background-color: #003366;
-    }
-    
-    header h1 {
-      color: #ffffff;
-      margin: 0;
-      font-size: 2em;
-    }.content-wrapper {
+    .content-wrapper {
       max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
-    }.page-header {
-      background: linear-gradient(135deg, #dee5ee 0%, #abbdcc 100%);
-      padding: 40px;
-      border-radius: 8px 8px 0 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* The unified block — holds the header banner, spectrum, and content together */
+    .unified-block {
       border: 3px solid #003366;
-      border-bottom: none;
-    }.page-header h2 {
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      background: #ffffff;
+    }
+    
+    .page-header {
+      background: linear-gradient(135deg, #d9e1ea 0%, #cfd8e2 100%);
+      padding: 40px;
+    }
+    
+    .page-header h2 {
       color: #003366;
       font-size: 2.5em;
       margin: 0 0 10px 0;
-    }.dimension-label {
+    }
+    
+    .dimension-label {
       color: #666;
       font-size: 1.1em;
       font-style: italic;
       margin: 0;
     }
     
-    /* Spectrum Visualization */.spectrum-container {
-      background: #ffffff;
-      padding: 30px;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }.spectrum-title {
+    .spectrum-container {
+      padding: 30px 40px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .spectrum-title {
       text-align: center;
       color: #003366;
       font-size: 1.2em;
-      margin-bottom: 20px;
+      margin: 0 0 20px 0;
       font-weight: bold;
-    }.spectrum-visual {
+    }
+    
+    .spectrum-visual {
       position: relative;
       height: 80px;
-      background: linear-gradient(to right, #dee5ee 0%, #abbdcc 100%);
+      background: linear-gradient(to right, 
+        #dee5ee 0%,
+        #ced9e4 35%,
+        #bccad6 70%,
+        #abbdcc 100%);
       border-radius: 40px;
       border: 2px solid #003366;
-      margin: 20px 0;
-    }.spectrum-labels {
+      margin: 20px 0 30px 0;
+    }
+    
+    .spectrum-labels {
       display: flex;
       justify-content: space-between;
       margin-top: 10px;
       font-weight: bold;
       color: #003366;
-    }.spectrum-marker {
+    }
+    
+    .spectrum-marker {
       position: absolute;
       top: 50%;
       left: 15%;
       transform: translate(-50%, -50%);
-      width: 60px;
-      height: 60px;
+      width: 90px;
+      height: 90px;
       background: #AC3931;
       border: 4px solid #003366;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
       color: white;
       font-weight: bold;
-      font-size: 0.9em;
+      font-size: 0.75em;
+      line-height: 1.1;
+      padding: 8px;
+      box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       z-index: 10;
-    }.spectrum-marker::after {
+    }
+    
+    .spectrum-marker::after {
       content: '';
       position: absolute;
       bottom: -20px;
@@ -102,124 +118,40 @@
       border-top: 15px solid #AC3931;
     }
     
-    /* Tab Navigation */.tab-container {
-      background: #ffffff;
-      border-left: 3px solid #003366;
-      border-right: 3px solid #003366;
-    }.tab-navigation {
-      display: flex;
-      flex-wrap: wrap;        
-      border-bottom: 3px solid #003366;
-      background: #f8f9fa;
-    }.tab-button {
-      flex: 1;
-      padding: 15px 20px;
-      background: #e8f4ec;
-      border: none;
-      border-right: 2px solid #003366;
-      cursor: pointer;
-      font-family: Arial, sans-serif;  
-      font-weight: bold;
-      font-size: 1em;
-      color: #003366;
-      transition: all 0.3s ease;
-      min-width: 120px;
-    }.tab-button:last-child {
-      border-right: none;
-    }.tab-button:hover {
-      background: #CCE5FF;
-    }.tab-button:focus {
-      outline: 3px solid #AC3931;
-      outline-offset: -3px;
-      z-index: 10;
-    }.tab-button.active {
-      background: #ffffff;
-      color: #AC3931;
-      font-weight: bold;
-      border-bottom: 3px solid #AC3931;
-      margin-bottom: -3px;
-    }.tab-content {
-      display: none;
-      padding: 40px;
-      background: #ffffff;
+    .content-section {
+      padding: 30px 40px 40px 40px;
+      border-top: 1px solid #e0e0e0;
       line-height: 1.8;
-      color: #333;
-    }.tab-content.active {
-      display: block;
-    }.tab-content h3 {
+    }
+    
+    .content-section h3 {
       color: #003366;
       font-size: 1.8em;
       margin-top: 0;
       margin-bottom: 20px;
       border-bottom: 2px solid #AC3931;
       padding-bottom: 10px;
-    }.tab-content h4 {
-      color: #AC3931;
-      font-size: 1.3em;
-      margin-top: 25px;
-      margin-bottom: 15px;
-    }.tab-content p {
-      margin-bottom: 15px;
-      font-size: 1.05em;
-    }.tab-content ul {
-      margin: 15px 0;
-      padding-left: 25px;
-    }.tab-content li {
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }.example-box {
-      background: #f8f9fa;
-      border-left: 4px solid #AC3931;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 4px;
-    }.example-box h5 {
-      color: #003366;
-      margin-top: 0;
-      font-size: 1.1em;
-    }.tip-box {
-      background: #fff9e6;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.tip-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.tip-box h5::before {
-      content: "💡";
-      font-size: 1.5em;
-    }.ai-box {
-      background: #e8f4f8;
-      border: 2px solid #4a90e2;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px 0;
-    }.ai-box h5 {
-      color: #003366;
-      margin-top: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }.ai-box h5::before {
-      content: "🤖";
-      font-size: 1.5em;
     }
     
-    /* Navigation Buttons */.bottom-navigation {
-      background: #ffffff;
-      padding: 30px 40px;
-      border: 3px solid #003366;
-      border-top: none;
-      border-radius: 0 0 8px 8px;
+    .content-section h3:not(:first-child) {
+      margin-top: 40px;
+    }
+    
+    .content-section p {
+      margin-bottom: 15px;
+      font-size: 1.05em;
+      color: #333;
+    }
+    
+    .bottom-navigation {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 15px;
-    }.nav-button {
+      margin-top: 30px;
+    }
+    
+    .nav-button {
       display: inline-block;
       padding: 12px 24px;
       background: #AC3931;
@@ -229,39 +161,47 @@
       font-weight: bold;
       transition: background 0.3s ease;
       box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
-    }.nav-button:hover {
+    }
+    
+    .nav-button:hover,
+    .nav-button:focus {
       background: #8d2e27;
-    }.nav-button:focus {
+    }
+    
+    .nav-button:focus {
       outline: 3px solid #003366;
       outline-offset: 2px;
-    }.nav-button.secondary {
+    }
+    
+    .nav-button.secondary {
       background: #003366;
-    }.nav-button.secondary:hover {
+    }
+    
+    .nav-button.secondary:hover,
+    .nav-button.secondary:focus {
       background: #004080;
     }
     
-    footer {
-      background-color: #003366;
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
       color: white;
-      padding: 15px 20px;
-      text-align: center;
-      font-size: 14px;
-      margin-top: 40px;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
     }
     
-    footer a {
-      color: white;
-      text-decoration: underline;
-      margin: 0 10px;
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
     }
     
-    footer img {
-      vertical-align: middle;
-      height: 31px;
-      margin-top: 10px;
-    }
-    
-    /* Accessibility */.sr-only {
+    .sr-only {
       position: absolute;
       width: 1px;
       height: 1px;
@@ -271,42 +211,35 @@
       clip: rect(0, 0, 0, 0);
       white-space: nowrap;
       border-width: 0;
-    }.skip-link {
-      position: absolute;
-      top: -40px;
-      left: 0;
-      background: #003366;
-      color: white;
-      padding: 8px;
-      text-decoration: none;
-      z-index: 100;
-    }.skip-link:focus {
-      top: 0;
     }
     
-    /* Mobile Responsive */
-    @media screen and (max-width: 768px) {.page-header {
+    @media screen and (max-width: 768px) {
+      .page-header {
         padding: 25px;
-      }.page-header h2 {
+      }
+      .page-header h2 {
         font-size: 1.8em;
-      }.tab-button {
-        font-size: 0.9em;
-        padding: 12px 15px;
-        min-width: 120px;
-      }.tab-content {
-        padding: 25px 20px;
-      }.tab-content h3 {
+      }
+      .spectrum-container,
+      .content-section {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+      .content-section h3 {
         font-size: 1.5em;
-      }.spectrum-marker {
-        width: 50px;
-        height: 50px;
-        font-size: 0.8em;
-      }.bottom-navigation {
-        padding: 20px;
+      }
+      .spectrum-marker {
+        width: 75px;
+        height: 75px;
+        font-size: 0.7em;
+      }
+      .bottom-navigation {
         flex-direction: column;
-      }.nav-button {
+      }
+      .nav-button {
         width: 100%;
         text-align: center;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -314,322 +247,84 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
-  <header>
+  <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
   
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="../index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="../all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="../ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="../activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
   <main id="main-content" class="content-wrapper">
-    <div class="page-header">
-      <p class="dimension-label">Knowledge Dimension</p>
-      <h2>Factual Knowledge</h2>
-    </div>
-    
-    <div class="spectrum-container">
-      <p class="spectrum-title">Position on the Knowledge Dimension Spectrum</p>
+    <div class="unified-block">
+      <div class="page-header">
+        <p class="dimension-label">Knowledge Dimension</p>
+        <h2>Factual</h2>
+      </div>
+      
+      <div class="spectrum-container">
+        <p class="spectrum-title">Position on the Knowledge Spectrum</p>
       <div class="spectrum-visual" role="img" aria-label="Factual knowledge is positioned at the concrete end of the knowledge spectrum">
-        <div class="spectrum-marker" aria-hidden="true">
-          YOU ARE HERE
+          <div class="spectrum-marker" aria-hidden="true">
+            YOU ARE HERE
+          </div>
+        </div>
+        <div class="spectrum-labels">
+          <span>Concrete Knowledge</span>
+          <span>Abstract Knowledge</span>
         </div>
       </div>
-      <div class="spectrum-labels">
-        <span>Concrete Knowledge</span>
-        <span>Abstract Knowledge</span>
-      </div>
-    </div>
-    
-    <div class="tab-container">
-      <nav class="tab-navigation" role="tablist" aria-label="Factual knowledge information tabs">
-        <button class="tab-button active" 
-                role="tab" 
-                aria-selected="true" 
-                aria-controls="overview-panel" 
-                id="overview-tab"
-                onclick="openTab(event, 'overview')">
-          Overview
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="subtypes-panel" 
-                id="subtypes-tab"
-                onclick="openTab(event, 'subtypes')">
-          Subtypes
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="examples-panel" 
-                id="examples-tab"
-                onclick="openTab(event, 'examples')">
-          Examples
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="demonstration-panel" 
-                id="demonstration-tab"
-                onclick="openTab(event, 'demonstration')">
-          Student Demonstration
-        </button>
-        <button class="tab-button" 
-                role="tab" 
-                aria-selected="false" 
-                aria-controls="teaching-panel" 
-                id="teaching-tab"
-                onclick="openTab(event, 'teaching')">
-          Teaching Tips
-        </button>
-      </nav>
       
-      <!-- Overview Tab -->
-      <div id="overview" class="tab-content active" role="tabpanel" aria-labelledby="overview-tab">
+      <div class="content-section">
         <h3>What is Factual Knowledge?</h3>
         <p>
           Factual knowledge represents the most concrete form of knowledge in the Knowledge Dimension. It consists of the basic elements that students must know to be acquainted with a discipline or to solve problems within it. This type of knowledge includes discrete, isolated pieces of information—the building blocks upon which more complex understanding is constructed.
         </p>
         <p>
-          Factual knowledge is characterized by its specificity and verifiability. These are the "facts" that can be looked up, memorized, and recalled. While sometimes dismissed as mere rote learning, factual knowledge serves as the essential foundation for higher-order thinking. Without a solid base of factual knowledge, students cannot effectively engage in analysis, evaluation, or creation within a discipline.
+          Factual knowledge is characterized by its specificity and verifiability. These are the "facts" that can be reviewed, memorized, and recalled. While sometimes dismissed as mere rote learning, factual knowledge serves as the essential foundation for higher-order thinking and immediate recall in many contexts. 
         </p>
         <p>
-          In the revised Bloom's Taxonomy, factual knowledge sits at the concrete end of the knowledge spectrum. It is the most straightforward type of knowledge to assess and the most universally agreed upon within disciplines. However, educators should recognize that factual knowledge alone is insufficient for deep learning—it must be integrated with conceptual, procedural, and metacognitive knowledge.
+          Factual knowledge sits at the concrete end of the knowledge spectrum. It is the most straightforward type of knowledge to assess. However factual knowledge alone is insufficient for deep learning, and should be integrated with conceptual, procedural, and metacognitive knowledge.
         </p>
         
-        <div class="tip-box">
-          <h5>Common Misconception</h5>
-          <p>
-            <strong>Myth:</strong> Factual knowledge is "low-level" and less important than other types of knowledge.
-          </p>
-          <p>
-            <strong>Reality:</strong> Factual knowledge is foundational and essential. Experts in any field possess extensive factual knowledge that allows them to think efficiently and recognize patterns. The key is not to stop at factual knowledge, but to build upon it with conceptual understanding and procedural skills.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Subtypes Tab -->
-      <div id="subtypes" class="tab-content" role="tabpanel" aria-labelledby="subtypes-tab">
-        <h3>Types of Factual Knowledge</h3>
-        
-        <h4>1. Knowledge of Terminology</h4>
+        <h3>AI Literacy Connection</h3>
         <p>
-          This includes the specific vocabulary, symbols, and labels used within a discipline. Students must know the names and meanings of terms to communicate effectively about the subject matter. Terminology provides the language through which ideas are expressed and understood.
+          AI systems, particularly large language models, have access to vast amounts of factual information. This changes the educational landscape—students no longer need to memorize as many facts when they can quickly look them up.
         </p>
-        <ul>
-          <li>Technical vocabulary specific to a field</li>
-          <li>Symbols and abbreviations (e.g., chemical symbols, mathematical notation)</li>
-          <li>Proper names and labels</li>
-          <li>Discipline-specific jargon and conventions</li>
-        </ul>
-        
-        <h4>2. Knowledge of Specific Details and Elements</h4>
         <p>
-          This encompasses the concrete facts, dates, events, people, places, and sources of information within a discipline. These are the discrete pieces of information that students are expected to know and recall. While individual facts may seem isolated, they form the raw material for understanding larger concepts and relationships.
+          Teaching AI literacy through factual knowledge might look like, focusing on teaching students which facts are most important to know through independent recall (foundational facts needed for reasoning); emphasizing critical evaluation of AI-provided facts (AI can be confidently wrong); teaching  students to verify factual information from AI using reliable sources; helping students understand that while AI can provide facts, human expertise involves knowing which facts matter in which contexts; and using AI as a study tool for factual knowledge (flashcards, quizzes, fact-checking).
         </p>
-        <ul>
-          <li>Historical dates and events</li>
-          <li>Names of people and places</li>
-          <li>Specific data points and statistics</li>
-          <li>Sources of information and where to find them</li>
-          <li>Basic facts about phenomena or objects</li>
-        </ul>
-        
-        <div class="example-box">
-          <h5>Distinguishing the Subtypes</h5>
-          <p><strong>Terminology:</strong> Knowing that "photosynthesis" is the term for how plants convert light to energy.</p>
-          <p><strong>Specific Details:</strong> Knowing that photosynthesis occurs in chloroplasts and requires sunlight, water, and carbon dioxide.</p>
-        </div>
-      </div>
-      
-      <!-- Examples Tab -->
-      <div id="examples" class="tab-content" role="tabpanel" aria-labelledby="examples-tab">
-        <h3>Factual Knowledge Across Disciplines</h3>
-        
-        <div class="example-box">
-          <h5>Science</h5>
-          <p><strong>Terminology:</strong> Mitosis, photosynthesis, atomic number, ecosystem, velocity</p>
-          <p><strong>Specific Details:</strong> Water boils at 100°C at sea level; the human body has 206 bones; Earth is approximately 4.5 billion years old; DNA has four nucleotide bases (A, T, G, C)</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Mathematics</h5>
-          <p><strong>Terminology:</strong> Hypotenuse, coefficient, prime number, denominator, variable</p>
-          <p><strong>Specific Details:</strong> π ≈ 3.14159; the Pythagorean theorem is a² + b² = c²; there are 360 degrees in a circle; the first five prime numbers are 2, 3, 5, 7, 11</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>History</h5>
-          <p><strong>Terminology:</strong> Democracy, industrialization, imperialism, suffrage, constitution</p>
-          <p><strong>Specific Details:</strong> World War II ended in 1945; the Declaration of Independence was signed in 1776; the Great Wall of China was built over several dynasties; Abraham Lincoln was the 16th U.S. President</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Literature & Language Arts</h5>
-          <p><strong>Terminology:</strong> Metaphor, protagonist, alliteration, thesis statement, sonnet</p>
-          <p><strong>Specific Details:</strong> Shakespeare wrote Romeo and Juliet; a haiku has 17 syllables; "To be or not to be" is from Hamlet; The Great Gatsby was published in 1925</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Arts</h5>
-          <p><strong>Terminology:</strong> Perspective, harmony, primary colors, tempo, composition</p>
-          <p><strong>Specific Details:</strong> The primary colors are red, blue, and yellow; Beethoven composed nine symphonies; the Mona Lisa is in the Louvre; a musical staff has five lines</p>
-        </div>
-        
-        <div class="example-box">
-          <h5>Computer Science</h5>
-          <p><strong>Terminology:</strong> Algorithm, variable, loop, function, debugging</p>
-          <p><strong>Specific Details:</strong> HTML stands for HyperText Markup Language; binary uses only 0s and 1s; Python is a programming language; RAM stands for Random Access Memory</p>
-        </div>
-      </div>
-      
-      <!-- Demonstration Tab -->
-      <div id="demonstration" class="tab-content" role="tabpanel" aria-labelledby="demonstration-tab">
-        <h3>How Students Demonstrate Factual Knowledge</h3>
-        
-        <p>
-          Students demonstrate factual knowledge through recognition and recall. These are the most straightforward forms of demonstrating learning, as they involve retrieving specific information from memory or identifying correct information when presented with options.
-        </p>
-        
-        <h4>Recognition</h4>
-        <p>
-          Students identify or select correct information from a set of options. This is demonstrated when students:
-        </p>
-        <ul>
-          <li>Choose the correct answer on multiple-choice questions</li>
-          <li>Match terms with their definitions</li>
-          <li>Identify correct symbols, labels, or terminology</li>
-          <li>Select accurate facts from a list of statements</li>
-          <li>Point to or name specific elements in diagrams or images</li>
-        </ul>
-        
-        <h4>Recall</h4>
-        <p>
-          Students retrieve and produce specific information from memory without prompts or options. This is demonstrated when students:
-        </p>
-        <ul>
-          <li>Answer fill-in-the-blank questions</li>
-          <li>List specific facts, dates, or names</li>
-          <li>Define terms in their own words</li>
-          <li>State formulas, equations, or rules</li>
-          <li>Recite specific information during discussions</li>
-        </ul>
-        
-        <h4>Observable Behaviors</h4>
-        <p>Students with strong factual knowledge can:</p>
-        <ul>
-          <li>Quickly and accurately answer factual questions</li>
-          <li>Use correct terminology when speaking or writing about a topic</li>
-          <li>Identify errors in factual statements</li>
-          <li>Provide specific examples or details to support their points</li>
-          <li>Reference appropriate sources of information</li>
-          <li>Build upon facts to make connections (when combined with other knowledge types)</li>
-        </ul>
-        
-        <div class="tip-box">
-          <h5>Assessment Tip</h5>
-          <p>
-            While factual knowledge is often assessed through traditional tests and quizzes, consider varied assessment methods such as flashcards, quick verbal checks, digital quizzes with immediate feedback, or having students create their own glossaries or fact sheets. The goal is to ensure students have the foundational facts they need without making assessment feel punitive or anxiety-inducing.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Teaching Tips Tab -->
-      <div id="teaching" class="tab-content" role="tabpanel" aria-labelledby="teaching-tab">
-        <h3>Tips for Educators</h3>
-        
-        <h4>Building Strong Factual Knowledge Foundations</h4>
-        <ul>
-          <li><strong>Make it meaningful:</strong> Connect facts to students' lives and interests. Facts learned in context are more memorable and useful than isolated information.</li>
-          <li><strong>Use spaced repetition:</strong> Review factual knowledge multiple times over increasing intervals to move information into long-term memory.</li>
-          <li><strong>Employ multiple modalities:</strong> Present facts through visual, auditory, and kinesthetic means to reach different learners.</li>
-          <li><strong>Create memory aids:</strong> Teach mnemonic devices, acronyms, and other memory strategies to help students retain important facts.</li>
-          <li><strong>Don't stop at facts:</strong> Always connect factual knowledge to conceptual understanding and practical application.</li>
-        </ul>
-        
-        <h4>Common Pitfalls to Avoid</h4>
-        <ul>
-          <li><strong>Over-emphasizing memorization:</strong> While factual knowledge is important, spending too much time on rote memorization can bore students and prevent deeper learning.</li>
-          <li><strong>Teaching facts in isolation:</strong> Facts without context are harder to remember and less useful. Always situate facts within larger concepts and real-world applications.</li>
-          <li><strong>Assuming students have prerequisite facts:</strong> Check for foundational factual knowledge before moving to more complex topics.</li>
-          <li><strong>Neglecting retrieval practice:</strong> Students need opportunities to actively recall facts, not just review them passively.</li>
-        </ul>
-        
-        <div class="ai-box">
-          <h5>AI Literacy Connection</h5>
-          <p>
-            <strong>How AI Relates to Factual Knowledge:</strong> AI systems, particularly large language models, have access to vast amounts of factual information. This changes the educational landscape—students no longer need to memorize as many facts when they can quickly look them up.
-          </p>
-          <p>
-            <strong>Teaching Implications:</strong>
-          </p>
-          <ul>
-            <li>Focus on teaching students <em>which</em> facts are most important to know by heart (foundational facts needed for reasoning)</li>
-            <li>Emphasize critical evaluation of AI-provided facts (AI can be confidently wrong)</li>
-            <li>Teach students to verify factual information from AI using reliable sources</li>
-            <li>Help students understand that while AI can provide facts, human expertise involves knowing which facts matter in which contexts</li>
-            <li>Use AI as a study tool for factual knowledge (flashcards, quizzes, fact-checking)</li>
-          </ul>
-          <p>
-            <strong>Key Message:</strong> In the age of AI, factual knowledge remains important, but the emphasis shifts from memorizing all facts to knowing core facts, knowing where to find facts, and knowing how to verify and apply factual information.
-          </p>
-        </div>
-        
-        <div class="tip-box">
-          <h5>Practical Strategy</h5>
-          <p>
-            <strong>The "Core Facts" Approach:</strong> Work with students to identify the "core facts" in your discipline—the essential factual knowledge that experts know automatically and that enables efficient thinking. These are facts worth memorizing. For other facts, teach students reliable strategies for finding and verifying information when needed.
-          </p>
-        </div>
       </div>
     </div>
     
     <div class="bottom-navigation">
       <a href="../index.html" class="nav-button">← Back to Main Page</a>
-      <a href="../dimensions/knowledge.html" class="nav-button secondary">View Knowledge Dimension Table</a>
+      <a href="knowledge.html" class="nav-button secondary">View Knowledge Dimension</a>
     </div>
   </main>
   
-  <footer>
+  <footer role="contentinfo">
     <p>
-      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank">Brigette Meskell, MLIS</a> |
-      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank">Nicole Baker, MSED, MSLIS</a>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
     </p>
     <p>
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons License">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
       </a>
     </p>
   </footer>
-  
-  <script>
-    function openTab(evt, tabName) {
-      // Hide all tab contents
-      var tabContents = document.getElementsByClassName("tab-content");
-      for (var i = 0; i < tabContents.length; i++) {
-        tabContents[i].classList.remove("active");
-      }
-      
-      // Remove active class from all buttons
-      var tabButtons = document.getElementsByClassName("tab-button");
-      for (var i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
-        tabButtons[i].setAttribute("aria-selected", "false");
-      }
-      
-      // Show current tab and mark button as active
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
-      evt.currentTarget.setAttribute("aria-selected", "true");
-      
-      // Set focus to the tab panel for screen readers
-      document.getElementById(tabName).focus();
-    }
-    
-    // Make tab panels focusable for accessibility
-    document.addEventListener('DOMContentLoaded', function() {
-      var tabPanels = document.querySelectorAll('.tab-content');
-      tabPanels.forEach(function(panel) {
-        panel.setAttribute('tabindex', '0');
-      });
-    });
-  </script>
 </body>
 </html>
