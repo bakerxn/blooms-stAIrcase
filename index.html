@@ -1,6 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style>
+  /* Welcome overlay — first-visit modal */
+  .welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 31, 63, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .welcome-overlay[hidden] {
+    display: none;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .welcome-modal {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 40px 35px 30px 35px;
+    max-width: 540px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    border-top: 6px solid #AC3931;
+    position: relative;
+    animation: slideUp 0.4s ease;
+  }
+  
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .welcome-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  
+  .welcome-close:hover,
+  .welcome-close:focus {
+    background: #f0f0f0;
+    color: #003366;
+    outline: 2px solid #AC3931;
+    outline-offset: 2px;
+  }
+  
+  .welcome-title {
+    color: #003366;
+    font-size: 1.8em;
+    margin: 0 0 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .welcome-body {
+    color: #333;
+    line-height: 1.65;
+    font-size: 1.05em;
+    margin-bottom: 25px;
+  }
+  
+  .welcome-body p {
+    margin: 0 0 15px 0;
+  }
+  
+  .welcome-body p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .welcome-tip {
+    background: #fff9e6;
+    border-left: 4px solid #ffd700;
+    padding: 12px 18px;
+    border-radius: 0 5px 5px 0;
+    font-size: 0.98em;
+  }
+  
+  .welcome-tip strong {
+    color: #003366;
+  }
+  
+  .welcome-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .welcome-btn {
+    flex: 1;
+    min-width: 140px;
+    padding: 14px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    font-family: Arial, sans-serif;
+    display: inline-block;
+  }
+  
+  .welcome-btn-primary {
+    background: #AC3931;
+    color: #ffffff;
+  }
+  
+  .welcome-btn-primary:hover,
+  .welcome-btn-primary:focus {
+    background: #8d2e27;
+    color: #ffffff;
+    outline: 3px solid #003366;
+    outline-offset: 2px;
+  }
+  
+  .welcome-btn-secondary {
+    background: #ffffff;
+    color: #003366;
+    border-color: #003366;
+  }
+  
+  .welcome-btn-secondary:hover,
+  .welcome-btn-secondary:focus {
+    background: #003366;
+    color: #ffffff;
+    outline: 3px solid #AC3931;
+    outline-offset: 2px;
+  }
+  
+  /* Lock body scroll while overlay is open */
+  body.welcome-active {
+    overflow: hidden;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .welcome-modal {
+      padding: 35px 25px 25px 25px;
+    }
+    .welcome-title {
+      font-size: 1.5em;
+    }
+    .welcome-actions {
+      flex-direction: column;
+    }
+    .welcome-btn {
+      width: 100%;
+    }
+  }
+</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bloom's stAIrcase: An interactive visualization of Bloom's Taxonomy integrated with AI literacy. Explore cognitive processes, knowledge dimensions, and AI-enhanced learning activities across disciplines.">
@@ -97,6 +274,32 @@
 
 </head>
 <body>
+<!-- Welcome overlay for first-time visitors -->
+<div id="welcomeOverlay" class="welcome-overlay" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-describedby="welcomeBody" hidden>
+  <div class="welcome-modal">
+    <button type="button" class="welcome-close" aria-label="Close welcome message" onclick="dismissWelcome()">×</button>
+    
+    <h2 id="welcomeTitle" class="welcome-title">Welcome to Bloom's stAIrcase</h2>
+    
+    <div id="welcomeBody" class="welcome-body">
+      <p>
+        We built this site for all instructors as a place to explore how generative AI can be brought into the classroom, whether or not you plan to use it yourself.
+      </p>
+      <p class="welcome-tip">
+        New here? Click <strong>Take the Tour</strong> below to start with our About &amp; Guide page.
+      </p>
+    </div>
+    
+    <div class="welcome-actions">
+      <a href="about-and-guide.html" class="welcome-btn welcome-btn-primary" onclick="markWelcomeDismissed()">
+        Take the Tour →
+      </a>
+      <button type="button" class="welcome-btn welcome-btn-secondary" onclick="dismissWelcome()">
+        Skip for Now
+      </button>
+    </div>
+  </div>
+</div>
   <!-- Skip to content link for keyboard users -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
   
@@ -110,9 +313,9 @@
   </div>
   
   <!-- Guide Tab -->
-  <aside class="guide-tab" aria-label="Quick access">
-    <a href="about-and-guide.html" aria-label="Open About and Guide page">About &amp; Guide</a>
-  </aside>
+<aside class="guide-tab" aria-label="Quick access">
+  <a href="about-and-guide.html" aria-label="Open About and Guide page">About &amp; Guide</a>
+</aside>
   
   <header role="banner">
     <h1>Bloom's stAIrcase</h1>
@@ -210,5 +413,75 @@
       console.log('Accessibility features loaded: keyboard navigation, screen reader support, focus management');
     })();
   </script>
+  <script>
+  // Welcome overlay logic — show on first visit only
+  (function() {
+    const STORAGE_KEY = 'blooms_welcome_dismissed';
+    const overlay = document.getElementById('welcomeOverlay');
+    
+    if (!overlay) return;
+    
+    // Check if user has dismissed welcome before
+    let alreadyDismissed = false;
+    try {
+      alreadyDismissed = localStorage.getItem(STORAGE_KEY) === 'true';
+    } catch (e) {
+      // localStorage may be blocked (private browsing, etc.) — treat as first visit but don't error
+      alreadyDismissed = false;
+    }
+    
+    if (!alreadyDismissed) {
+      // Show the overlay
+      overlay.hidden = false;
+      document.body.classList.add('welcome-active');
+      
+      // Move focus into the modal for screen readers + keyboard users
+      const closeBtn = overlay.querySelector('.welcome-close');
+      if (closeBtn) closeBtn.focus();
+      
+      // Trap focus inside the modal while it's open
+      overlay.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          dismissWelcome();
+          return;
+        }
+        if (e.key !== 'Tab') return;
+        
+        const focusable = overlay.querySelectorAll('button, [href]');
+        if (focusable.length === 0) return;
+        
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      });
+    }
+  })();
+  
+  // Mark welcome as dismissed (used by primary action — Take the Tour)
+  function markWelcomeDismissed() {
+    try {
+      localStorage.setItem('blooms_welcome_dismissed', 'true');
+    } catch (e) {
+      // localStorage blocked — fail silently, user just sees overlay again next visit
+    }
+  }
+  
+  // Dismiss welcome overlay (used by close button and Skip for Now)
+  function dismissWelcome() {
+    markWelcomeDismissed();
+    const overlay = document.getElementById('welcomeOverlay');
+    if (overlay) {
+      overlay.hidden = true;
+      document.body.classList.remove('welcome-active');
+    }
+  }
+</script>
 </body>
 </html>

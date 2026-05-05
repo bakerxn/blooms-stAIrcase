@@ -16,7 +16,16 @@
 //   }
 // ─────────────────────────────────────────────────────────────
 
-const ACTIVITIES_JSON_PATH = new URL('../data/activities.json', document.baseURI).href;
+const ACTIVITIES_JSON_PATH = (function() {
+  // Find this script's own location, then look for activities.json in the data folder
+  // alongside the js folder where this file lives.
+  const scriptSrc = document.currentScript ? document.currentScript.src : '';
+  if (scriptSrc) {
+    return new URL('../data/activities.json', scriptSrc).href;
+  }
+  // Fallback if document.currentScript isn't available
+  return new URL('data/activities.json', document.baseURI).href;
+})();
 
 /**
  * Builds one <tr> element from an activity object.
