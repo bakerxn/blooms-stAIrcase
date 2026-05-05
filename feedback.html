@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Feedback - Bloom's stAIrcase</title>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f8fa;
+      color: #333;
+    }
+    
+    .content-wrapper {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    
+    .page-intro {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-left: 5px solid #4a90e2;
+      margin-bottom: 30px;
+    }
+    
+    .page-intro h2 {
+      color: #003366;
+      margin: 0 0 15px 0;
+      font-size: 2.2em;
+    }
+    
+    .page-intro p {
+      color: #333;
+      line-height: 1.6;
+      font-size: 1.05em;
+      margin: 0 0 15px 0;
+    }
+    
+    .page-intro p:last-child {
+      margin-bottom: 0;
+    }
+    
+    .section {
+      background: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+      line-height: 1.7;
+    }
+    
+    .section h3 {
+      color: #003366;
+      font-size: 1.3em;
+      margin: 0 0 15px 0;
+    }
+    
+    .section p {
+      margin: 0 0 12px 0;
+    }
+    
+    .feedback-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    
+    .feedback-card {
+      background: #f0f6fb;
+      padding: 18px 20px;
+      border-radius: 6px;
+      border-left: 4px solid #4a90e2;
+    }
+    
+    .feedback-card strong {
+      display: block;
+      color: #003366;
+      margin-bottom: 6px;
+    }
+    
+    .feedback-card span {
+      color: #555;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+    
+    .form-cta {
+      background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+      color: #ffffff;
+      padding: 35px 40px;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+      margin-bottom: 30px;
+    }
+    
+    .form-cta h3 {
+      color: #ffffff;
+      margin: 0 0 15px 0;
+      font-size: 1.5em;
+    }
+    
+    .form-cta p {
+      color: #ffffff;
+      font-size: 1.05em;
+      margin: 0 0 25px 0;
+      line-height: 1.6;
+    }
+    
+    .form-button {
+      display: inline-block;
+      background: #ffffff;
+      color: #003366;
+      padding: 16px 36px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1em;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .form-button:hover,
+    .form-button:focus {
+      background: #003366;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      outline: 3px solid #ffffff;
+      outline-offset: 2px;
+    }
+    
+    .privacy-note {
+      background: #f0f6fb;
+      border-left: 4px solid #4a90e2;
+      padding: 18px 22px;
+      border-radius: 0 5px 5px 0;
+      margin: 25px 0;
+      line-height: 1.6;
+      font-size: 0.98em;
+    }
+    
+    .privacy-note strong {
+      color: #003366;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #003366;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 100;
+      border-radius: 0 0 5px 0;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid #AC3931;
+      outline-offset: 2px;
+    }
+    
+    @media screen and (max-width: 768px) {
+      .section,
+      .page-intro,
+      .form-cta {
+        padding: 25px 20px;
+      }
+      .page-intro h2 {
+        font-size: 1.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  
+  <header role="banner">
+    <h1>Bloom's stAIrcase</h1>
+  </header>
+  
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="all-activities.html" aria-label="View all activities">
+      <span aria-hidden="true">📋</span>All Activities
+    </a>
+    <a href="ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
+  
+  <main id="main-content" class="content-wrapper">
+    
+    <div class="page-intro">
+      <h2>Send Us Feedback</h2>
+      <p>
+        We'd love to hear from you. Tell us what's working, what's not, or share how one of our published activities went in your classroom. Every response helps us improve the site and gives other educators useful real-classroom insight.
+      </p>
+    </div>
+    
+    <div class="section">
+      <h3>What Kind of Feedback Are We Looking For?</h3>
+      <div class="feedback-types">
+        <div class="feedback-card">
+          <strong>Activity Feedback</strong>
+          <span>You tried one of our published activities — tell us how it went, what worked, what you'd change</span>
+        </div>
+        <div class="feedback-card">
+          <strong>General Feedback</strong>
+          <span>Anything about the site itself: what's helpful, what's confusing, what's missing</span>
+        </div>
+        <div class="feedback-card">
+          <strong>Suggestions &amp; Ideas</strong>
+          <span>Resources we should add, frameworks to consider, features that would help you</span>
+        </div>
+        <div class="feedback-card">
+          <strong>Bugs or Problems</strong>
+          <span>Something broken, confusing navigation, or a link that doesn't work</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <h3>How We Use Feedback</h3>
+      <p>
+        Substantive feedback about specific activities — especially from people who've taught them — may be added to the activity's published page (with your permission and credit) so other educators can benefit from real classroom experience. General feedback shapes how we develop the site over time.
+      </p>
+      <p>
+        We read every response. We may not be able to reply to every one, but we genuinely consider all feedback. If you'd like a personal response, leave your email and let us know.
+      </p>
+    </div>
+    
+    <div class="form-cta">
+      <h3>Share Your Feedback</h3>
+      <p>The form takes about 5 minutes. Most fields are optional — share as much or as little as you'd like.</p>
+      <a href="https://forms.gle/d8eddSNjxNGiut3d7" class="form-button" target="_blank" rel="noopener noreferrer">
+        Open the Feedback Form →
+      </a>
+    </div>
+    
+    <div class="privacy-note">
+      <strong>About your data:</strong> Email addresses on the feedback form are optional and used only if you've asked for a response. We don't share, sell, or use any contact information for any other purpose.
+    </div>
+    
+  </main>
+  
+  <footer role="contentinfo">
+    <p>
+      <strong>Created by:</strong>
+      <a href="https://www.linkedin.com/in/brigette-meskell-b572882b6/" target="_blank" rel="noopener noreferrer">Brigette Meskell, MLIS</a> |
+      <a href="https://www.linkedin.com/in/nicole-baker/" target="_blank" rel="noopener noreferrer">Nicole Baker, MSED, MSLIS</a>
+    </p>
+    <p style="margin-top: 10px;">
+      <a href="submit-activity.html">Submit an activity</a> &nbsp;|&nbsp;
+      <a href="about-and-guide.html">About &amp; Guide</a>
+    </p>
+    <p>
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" alt="Creative Commons Attribution-ShareAlike 4.0 International License badge">
+      </a>
+    </p>
+  </footer>
+</body>
+</html>
