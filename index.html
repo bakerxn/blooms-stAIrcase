@@ -157,7 +157,7 @@
     outline: 3px solid #AC3931;
     outline-offset: 2px;
   }
-  
+
   /* Lock body scroll while overlay is open */
   body.welcome-active {
     overflow: hidden;
@@ -177,6 +177,104 @@
       width: 100%;
     }
   }
+  /* How to read this diagram - collapsible disclosure */
+.how-to-read {
+  max-width: 800px;
+  margin: 25px auto 30px auto;
+  background: #ffffff;
+  border-radius: 8px;
+  border-left: 4px solid #003366;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.how-to-read summary {
+  cursor: pointer;
+  padding: 16px 22px;
+  font-weight: bold;
+  color: #003366;
+  font-size: 1.05em;
+  list-style: none; /* Hide default browser triangle */
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.2s ease;
+  position: relative;
+}
+
+.how-to-read summary:hover {
+  background: #f0f6fb;
+}
+
+.how-to-read summary:focus {
+  outline: 3px solid #AC3931;
+  outline-offset: -3px;
+}
+
+/* Hide the default arrow on Webkit browsers (Safari/Chrome) */
+.how-to-read summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom arrow on the right side */
+.how-to-read summary::after {
+  content: "▾";
+  margin-left: auto;
+  color: #AC3931;
+  font-size: 1.2em;
+  transition: transform 0.2s ease;
+}
+
+.how-to-read[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.how-to-read[open] summary {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.how-to-icon {
+  font-size: 1.2em;
+  flex-shrink: 0;
+}
+
+.how-to-content {
+  padding: 18px 22px 20px 22px;
+  line-height: 1.65;
+  color: #333;
+}
+
+.how-to-content p {
+  margin: 0 0 12px 0;
+}
+
+.how-to-content p:last-child {
+  margin-bottom: 0;
+}
+
+.how-to-content strong {
+  color: #003366;
+}
+
+.how-to-content a {
+  color: #AC3931;
+  font-weight: bold;
+}
+
+.how-to-content a:hover {
+  color: #8d2e27;
+}
+
+@media screen and (max-width: 600px) {
+  .how-to-read summary {
+    padding: 14px 18px;
+    font-size: 1em;
+  }
+  .how-to-content {
+    padding: 16px 18px 18px 18px;
+  }
+}
 </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -335,7 +433,23 @@
   
   <main id="main-content" class="main-content" role="main">
     <h2 class="sr-only">Interactive Bloom's Taxonomy Diagram</h2>
-    <p class="diagram-instructions">Each square represents a learning objective verb at the intersection of a knowledge dimension and a cognitive process dimension. Click a square to see an example AI literacy student learning outcome (SLO) and explore related activities aligned with different disciplines and AI literacy competencies.</p>
+<details class="how-to-read">
+  <summary>
+    <span class="how-to-icon" aria-hidden="true">📖</span>
+    How to read this diagram
+  </summary>
+  <div class="how-to-content">
+    <p>
+      <strong>Each square is a learning objective verb</strong> at the intersection of a knowledge dimension (rows) and a cognitive process (columns).
+    </p>
+    <p>
+      <strong>Click any square</strong> to see an example AI literacy student learning outcome (SLO) for that intersection, plus activities aligned with different disciplines and AI literacy competencies.
+    </p>
+    <p style="margin-bottom: 0;">
+      Want a deeper orientation? Visit <a href="about-and-guide.html">About &amp; Guide</a>.
+    </p>
+  </div>
+</details>
     <object 
       type="image/svg+xml" 
       data="staircase.svg" 
