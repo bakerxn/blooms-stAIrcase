@@ -30,15 +30,92 @@
       overflow-y: auto;
     }
 
-    .sidebar h2 {
-      font-size: 1em;
-      color: #003366;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 0 0 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid #CCE5FF;
-    }
+
+    .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #CCE5FF;
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 1em;
+  color: #003366;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-collapse-btn {
+  background: transparent;
+  border: 1px solid #CCE5FF;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.78em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  color: #003366;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.sidebar-collapse-btn:hover {
+  background: #CCE5FF;
+}
+
+.sidebar-collapse-btn:focus {
+  outline: 2px solid #AC3931;
+  outline-offset: 2px;
+}
+
+.sidebar-collapse-icon {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 0.9em;
+}
+
+.sidebar-collapse-btn[aria-expanded="false"] .sidebar-collapse-icon {
+  transform: rotate(180deg);
+}
+
+.sidebar-content[hidden] {
+  display: none;
+}
+
+/* Collapsed state — narrow sidebar */
+.sidebar.collapsed {
+  width: 80px;
+  min-width: 80px;
+  padding: 16px 8px;
+}
+
+.sidebar.collapsed .sidebar-header {
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sidebar.collapsed .sidebar-header h2 {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar-collapse-text {
+  display: none;
+}
+
+.sidebar.collapsed .sidebar-collapse-btn {
+  padding: 8px 10px;
+}
 
     .filter-group {
       margin-bottom: 24px;
@@ -279,28 +356,6 @@
       display: block;
     }
 
-    /* ── Breadcrumb / back link ──────────────────────────── */
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #003366;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 0.9em;
-      margin-bottom: 16px;
-      transition: color 0.2s;
-    }
-
-    .back-link:hover {
-      color: #AC3931;
-    }
-
-    .back-link:focus {
-      outline: 2px solid #AC3931;
-      outline-offset: 2px;
-      border-radius: 2px;
-    }
 
     /* ── Responsive: mobile collapses sidebar ────────────── */
     .sidebar-toggle {
@@ -362,10 +417,23 @@
     <a href="guide.html" aria-label="Open user guide for Bloom's stAIrcase">Guide</a>
   </aside>
 
-  <!-- Header -->
+<!-- Header -->
   <header role="banner">
     <h1>Bloom's stAIrcase</h1>
   </header>
+
+  <!-- Main navigation -->
+  <nav class="nav-buttons" aria-label="Main navigation" role="navigation">
+    <a href="index.html" aria-label="Return to home page">
+      <span aria-hidden="true">🏠</span>Home
+    </a>
+    <a href="ai-literacy-framework.html" aria-label="Explore AI literacy framework">
+      <span aria-hidden="true">🧠</span>AI Literacy Framework
+    </a>
+    <a href="activity-designer.html" aria-label="Design your own activity">
+      <span aria-hidden="true">🛠️</span>Activity Designer
+    </a>
+  </nav>
 
   <!-- Mobile sidebar toggle -->
   <button class="sidebar-toggle" aria-expanded="false" aria-controls="filter-sidebar" id="sidebar-toggle-btn">
@@ -376,7 +444,18 @@
 
     <!-- Sidebar filters -->
     <aside id="filter-sidebar" class="sidebar" aria-label="Filter activities">
-  <h2>Filter Activities</h2>
+      <div class="sidebar-header">
+        <h2 id="sidebar-heading">Filter Activities</h2>
+        <button type="button"
+                class="sidebar-collapse-btn"
+                aria-expanded="true"
+                aria-controls="filter-content"
+                id="sidebar-collapse-btn">
+          <span class="sidebar-collapse-text">Hide</span>
+          <span class="sidebar-collapse-icon" aria-hidden="true">◀</span>
+        </button>
+      </div>
+      <div id="filter-content" class="sidebar-content">
 
   <!-- Discipline filter -->
   <div class="filter-group">
@@ -440,12 +519,12 @@
   </div>
 
   <button class="clear-btn" id="clear-filters-btn" aria-label="Clear all filters">Clear All Filters</button>
+    </div>
 </aside>
 
     <!-- Main content -->
-    <main id="main-content" class="content-area" role="main">
-      <a href="index.html" class="back-link" aria-label="Back to Bloom's stAIrcase home">← Back to Home</a>
-      <h1>All Activities</h1>
+        <main id="main-content" class="content-area" role="main">
+          <h1>All Activities</h1>
       <p class="results-count" id="results-count" aria-live="polite" aria-atomic="true">Showing all 75 activities</p>
 
       <div class="table-wrap">
@@ -511,6 +590,29 @@
     });
   });
 </script>
-
+<script>
+  // Sidebar collapse toggle
+  (function() {
+    const collapseBtn = document.getElementById('sidebar-collapse-btn');
+    const sidebar = document.getElementById('filter-sidebar');
+    const filterContent = document.getElementById('filter-content');
+    const collapseText = collapseBtn ? collapseBtn.querySelector('.sidebar-collapse-text') : null;
+    
+    if (!collapseBtn || !sidebar || !filterContent) return;
+    
+    collapseBtn.addEventListener('click', function() {
+      const isExpanded = collapseBtn.getAttribute('aria-expanded') === 'true';
+      const newState = !isExpanded;
+      
+      collapseBtn.setAttribute('aria-expanded', String(newState));
+      filterContent.hidden = !newState;
+      sidebar.classList.toggle('collapsed', !newState);
+      
+      if (collapseText) {
+        collapseText.textContent = newState ? 'Hide' : 'Show';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
