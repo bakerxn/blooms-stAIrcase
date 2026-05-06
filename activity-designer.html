@@ -42,29 +42,69 @@
       color: #333;
       line-height: 1.6;
       font-size: 1.05em;
-    }.info-note {
-      background: #fff9e6;
-      border: 2px solid #ffd700;
-      border-radius: 8px;
-      padding: 15px;
-      margin: 20px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
     }
-      .info-note-heads-up {
-    background: #e8f4f8;
-    border-color: #4a90e2;
-  }
+    .before-you-start {
+  background: #ffffff;
+  border-left: 5px solid #4a90e2;
+  border-radius: 8px;
+  padding: 22px 28px 22px 24px;
+  margin: 20px 0 30px 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
 
-  .info-note-heads-up::before {
-    content: "💾";
-  }
-    .info-note::before {
-      content: "💡";
-      font-size: 1.5em;
-      flex-shrink: 0;
-    }.form-container {
+.before-you-start-header {
+  color: #003366;
+  font-size: 1.1em;
+  margin: 0 0 14px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: bold;
+}
+
+.before-you-start-list {
+  margin: 0;
+  padding-left: 22px;
+  counter-reset: tip-counter;
+  list-style: none;
+}
+
+.before-you-start-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 14px;
+  line-height: 1.55;
+  counter-increment: tip-counter;
+  color: #333;
+  font-size: 0.98em;
+}
+
+.before-you-start-list li:last-child {
+  margin-bottom: 0;
+}
+
+.before-you-start-list li::before {
+  content: counter(tip-counter);
+  position: absolute;
+  left: -8px;
+  top: -2px;
+  width: 26px;
+  height: 26px;
+  background: #4a90e2;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.before-you-start-list li strong {
+  color: #003366;
+  display: block;
+  margin-bottom: 4px;
+}
+    .form-container {
       background: #ffffff;
       padding: 40px;
       border-radius: 8px;
@@ -414,16 +454,23 @@
       <p>
         Use this tool to create a customized prompt for designing AI-integrated activities aligned with Bloom's Taxonomy and AI literacy competencies. Fill out the form below, and we'll generate a comprehensive prompt you can use with any generative AI tool to create pedagogically sound activities for your specific teaching context.
       </p>
-      <div class="info-note">
-        <div>
-          <strong>Note:</strong> The more information you provide, the more effective and tailored your generated prompt will be. While only fields marked with an asterisk (*) are required, completing optional fields will help create activities that better fit your specific needs.
-        </div>
+<div class="before-you-start">
+        <h3 class="before-you-start-header">Before You Start</h3>
+        <ol class="before-you-start-list">
+          <li>
+            <strong>The more you share, the better the result.</strong>
+            Only fields marked with <span class="required">*</span> are required, but completing optional fields produces a sharper, more tailored prompt. Plan for 5–10 minutes in one sitting.
+          </li>
+          <li>
+            <strong>Don't include identifiable information about students.</strong>
+            The prompt you generate will be pasted into an external AI tool of your choice. Avoid student names, ID numbers, specific grades, or any other identifiable details. Describe your students in general terms ("a class of 25 first-year students with mixed prior research experience") rather than specifics.
+          </li>
+          <li>
+            <strong>Your responses don't save automatically.</strong>
+            If you close this tab or hit "back" before generating, you'll need to start over. After you generate, you can copy, download, or email the prompt to yourself.
+          </li>
+        </ol>
       </div>
-      <div class="info-note info-note-heads-up">
-      <div>
-        <strong>Heads up:</strong> Your responses aren't saved automatically — if you close this tab or hit "back" before generating, you'll need to start over. Once you generate your prompt, you'll have options to copy it, download it, or email it to yourself. We recommend setting aside 5–10 minutes to fill this out in one sitting.
-      </div>
-    </div>
     </div>
     
     <form id="activityForm" class="form-container">
@@ -439,6 +486,21 @@
     This section establishes the teaching context — your discipline, your students, and how your course works — so AI can calibrate its suggestions to your actual classroom. Formal course numbers mean wildly different things at different institutions, so we lean on <em>your</em> qualitative description of what students can handle. The more specifically you describe who you're teaching, the better the generated activity will fit.
   </p>
   
+  <div class="form-group">
+    <label for="instructionalContext" class="form-label">Instructional Context<span class="required">*</span></label>
+    <select id="instructionalContext" name="instructionalContext" class="form-select" required>
+      <option value="">Select a context...</option>
+      <option value="Credit-bearing course (multi-session)">Credit-bearing course (multi-session)</option>
+      <option value="One-shot library instruction session">One-shot library instruction session</option>
+      <option value="Multi-session embedded library instruction">Multi-session embedded library instruction</option>
+      <option value="Workshop or training session (standalone)">Workshop or training session (standalone)</option>
+      <option value="Asynchronous learning module">Asynchronous learning module</option>
+      <option value="Faculty development session">Faculty development session</option>
+      <option value="Other">Other (describe in Student Readiness &amp; Context)</option>
+    </select>
+    <span class="help-text">What kind of teaching is this activity for? This helps shape what counts as realistic for time, assessment, and student preparation.</span>
+  </div>
+
   <div class="form-group">
     <label for="discipline" class="form-label">Discipline / Field<span class="required">*</span></label>
     <input type="text" id="discipline" name="discipline" class="form-input" required placeholder="e.g., Biology, History, Computer Science, Business, Nursing">
@@ -932,6 +994,7 @@ const secondaryCompetencies = Array.from(
       
       // Collect form data
 formData = {
+  instructionalContext: document.getElementById('instructionalContext').value,
   discipline: document.getElementById('discipline').value,
   department: document.getElementById('department').value,
   subject: document.getElementById('subject').value,
@@ -1084,6 +1147,7 @@ CORE PRINCIPLES TO HOLD THROUGHOUT THIS CONVERSATION:
 - Keep the human at the center. Make sure that the parts of the activity students must do without AI ("Protected Student Work") remain genuinely protected as the design develops.
 
 CONTEXT:
+Instructional Context: ${data.instructionalContext}
 Discipline/Field: ${data.discipline}`;
 
   if (data.department) {
@@ -1234,6 +1298,7 @@ For the Submission Recommendation, write: "This activity is classified as [Knowl
       
       let body = `Thank you for using the Activity Designer on Bloom's stAIrcase!\n\nBelow is the prompt you generated:\n\n`;
       body += `=== YOUR INPUT ===\n\n`;
+body += `Instructional Context: ${formData.instructionalContext}\n`;
 body += `Discipline/Field: ${formData.discipline}\n`;
 if (formData.department) body += `Department/Program: ${formData.department}\n`;
 body += `Course Name: ${formData.subject}\n`;
