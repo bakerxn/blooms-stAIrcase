@@ -8,6 +8,10 @@
       {
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
@@ -25,6 +29,16 @@
         "tag": "Safety & Ethics",
         "url": "frameworks/safety.html"
       }
+    ]
+  },
+  {
+    "Activity": "Create a research poster on a current scientific topic, using AI to draft the literature review section. Include a transparent acknowledgment of which sentences AI drafted, which you verified against the original sources, and which you rewrote entirely.",
+    "Square": "Create",
+    "SquareURL": "squares/create.html",
+    "Discipline": "STEM",
+    "AI Literacy Framework Tags": [
+      {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+      {"tag": "Communication & Collaboration", "url": "frameworks/communication_&_collaboration.html"}
     ]
   },
   {
@@ -57,6 +71,16 @@
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
       }
+    ]
+  },
+  {
+    "Activity": "Design a public-facing essay or op-ed on a contested topic in your field, using AI to help draft and revise. Track every place where AI's suggested phrasing differs from your own voice and document why you accepted or rejected each suggestion.",
+    "Square": "Design",
+    "SquareURL": "squares/design.html",
+    "Discipline": "Humanities",
+    "AI Literacy Framework Tags": [
+      {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+      {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
     ]
   },
   {
@@ -156,6 +180,26 @@
     ]
   },
   {
+  "Activity": "Generate a short documentary-style explainer (text + AI-generated images or video) on a topic in your field for a general audience. Include a transparency note describing how AI was used at each stage and how you decided when AI output was good enough vs. when you replaced it.",
+  "Square": "Generate",
+  "SquareURL": "squares/generate.html",
+  "Discipline": "Humanities",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Communication & Collaboration", "url": "frameworks/communication_&_collaboration.html"}
+  ]
+},
+  {
+    "Activity": "Use a generative AI tool to create plain-language explainers of a complex scientific concept (e.g., CRISPR, dark matter, neural networks) targeted at three different audiences: a child, a peer, and a journalist. Compare the AI-generated versions to your own draft and revise to make each version genuinely accurate AND audience-appropriate.",
+    "Square": "Generate",
+    "SquareURL": "squares/generate.html",
+    "Discipline": "STEM",
+    "AI Literacy Framework Tags": [
+      {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+      {"tag": "Communication & Collaboration", "url": "frameworks/communication_&_collaboration.html"}
+    ]
+  },
+  {
     "Activity": "Curate a mini-gallery of AI-generated artworks, with accurate fact-based labels explaining medium, process, and input used.",
     "Square": "Generate",
     "SquareURL": "squares/generate.html",
@@ -180,6 +224,14 @@
       {
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
+      },
+      {
+        "tag": "Content Creation",
+        "url": "frameworks/content_creation.html"
+      },
+      {
+        "tag": "Safety & Ethics",
+        "url":  "frameworks/safety.html"
       }
     ]
   },
@@ -192,9 +244,23 @@
       {
         "tag": "Critical Thinking & Agency",
         "url": "frameworks/critical_thinking_&_agency.html"
+      },
+      {
+        "tag": "Communication & Collaboration",
+        "url": "frameworks/communication_&_collaboration.html"
       }
     ]
   },
+  {
+  "Activity": "Keep a two-week journal documenting every time you used or chose not to use AI for course-related work. For each entry, note what the choice cost you (time, depth, learning) or gave you. End with a written stance on what role AI should play in your scholarly work going forward.",
+  "Square": "Reflect",
+  "SquareURL": "squares/reflect.html",
+  "Discipline": "Humanities",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
   {
     "Activity": "Hold peer-review sessions where students give feedback on each other\u2019s creative AI process logs and personal toolkits.",
     "Square": "Reflect",
@@ -204,6 +270,10 @@
       {
         "tag": "Communication & Collaboration",
         "url": "frameworks/communication_&_collaboration.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
@@ -239,6 +309,16 @@
       }
     ]
   },
+  {
+  "Activity": "Judge an AI-generated translation of a literary text against a published human translation and the original source. Identify three places where the AI's choices reveal a bias, oversimplification, or cultural assumption baked into its training.",
+  "Square": "Judge",
+  "SquareURL": "squares/judge.html",
+  "Discipline": "Humanities",
+  "AI Literacy Framework Tags": [
+    {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+    {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
+  ]
+},
   {
     "Activity": "Evaluate how well a text-to-image AI tool followed a detailed script or storyboard, and suggest workflow improvements.",
     "Square": "Judge",
@@ -283,6 +363,16 @@
       }
     ]
   },
+  {
+  "Activity": "Evaluate an AI tool used in healthcare, education, or criminal justice (e.g., diagnostic AI, predictive policing). Identify three specific harms documented in published critiques, and assess how the tool's design contributes to each.",
+  "Square": "Determine",
+  "SquareURL": "squares/determine.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
   {
     "Activity": "Students critique AI-generated works based on aesthetic theory (e.g., formalism vs. expressionism) in a group critique format.",
     "Square": "Determine",
@@ -329,6 +419,16 @@
         "tag": "Information & Data Literacy",
         "url": "frameworks/information_&_data_literacy.html"
       }
+    ]
+  },
+  {
+    "Activity": "Use an AI tool to verify whether an artwork's metadata, provenance description, or attribution is accurate. Cross-reference at least two authoritative sources (museum databases, scholarly catalogs) and document where the AI's claim was correct, fabricated, or oversimplified.",
+    "Square": "Check",
+    "SquareURL": "squares/check.html",
+    "Discipline": "Arts",
+    "AI Literacy Framework Tags": [
+      {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+      {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
     ]
   },
   {
@@ -380,6 +480,16 @@
     ]
   },
   {
+    "Activity": "Investigate a publicly known case where AI-generated art was contested for using copyrighted training data without artist consent. Map the labor and ownership questions involved, and write a short reflection on your own ethical position about using AI tools with similar training practices.",
+    "Square": "Deconstruct",
+    "SquareURL": "squares/deconstruct.html",
+    "Discipline": "Arts",
+    "AI Literacy Framework Tags": [
+      {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+      {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+    ]
+  },
+  {
     "Activity": "Analyze own AI usage patterns across tools (text, image, audio) and explain when and why they shift strategy.",
     "Square": "Deconstruct",
     "SquareURL": "squares/deconstruct.html",
@@ -428,6 +538,16 @@
     ]
   },
   {
+  "Activity": "Integrate AI-assisted code review into a small programming project. Document each suggestion the AI made: which you accepted, which you rejected, and why. End with a short reflection on what kinds of code-quality issues AI catches well vs. poorly.",
+  "Square": "Integrate",
+  "SquareURL": "squares/integrate.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
+  {
     "Activity": "Modify input parameters for a text-to-image generator and analyze how the visual output changes.",
     "Square": "Integrate",
     "SquareURL": "squares/integrate.html",
@@ -473,6 +593,16 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
+    ]
+  },
+  {
+    "Activity": "Use AI to generate translations of a short historical or literary text into a language you're studying, then evaluate where the AI's choice of word, idiom, or register helps or distorts the meaning. Document at least three specific moments where you'd choose differently than the AI did.",
+    "Square": "Differentiate",
+    "SquareURL": "squares/differentiate.html",
+    "Discipline": "Humanities",
+    "AI Literacy Framework Tags": [
+      {"tag": "Hardware & Software", "url": "frameworks/hardware_&_software.html"},
+      {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
     ]
   },
   {
@@ -524,6 +654,16 @@
     ]
   },
   {
+  "Activity": "Select an AI tool used in your STEM field and investigate its training data sources. Write a short report identifying any documented bias issues, who is most likely to be affected by them, and what users of the tool can do to mitigate harm.",
+  "Square": "Select",
+  "SquareURL": "squares/select.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+    {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
+  ]
+},
+  {
     "Activity": "Analyze metadata from an AI-generated image and annotate potential ethical red flags (e.g., training data issues).",
     "Square": "Select",
     "SquareURL": "squares/select.html",
@@ -568,9 +708,23 @@
       {
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
+{
+  "Activity": "Use your knowledge of your own learning style and current STEM skills to design a personalized AI-supported study strategy for a difficult course concept. Identify which steps in your learning process AI is most likely to help you with given how you learn, which steps you should protect from AI to ensure deep understanding, and how you'll know if your strategy is working. Implement the strategy for one week, then assess what worked and what you'd adjust about your self-knowledge.",
+  "Square": "Use",
+  "SquareURL": "squares/use.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"},
+    {"tag": "Career Competencies", "url": "frameworks/career_competencies.html"}
+  ]
+},
   {
     "Activity": "Use two different AI tools with the same prompt for a creative output in your chosen modality and document your experience, thought processes, and preferences during each stage of AI output.",
     "Square": "Use",
@@ -617,6 +771,16 @@
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
       }
+    ]
+  },
+  {
+    "Activity": "Run the same dataset through an AI tool that estimates its own carbon footprint (e.g., CodeCarbon, ML CO2 Impact). Document the energy cost of three different model sizes solving the same task, and write a short recommendation memo to a hypothetical research lab on which model to use given accuracy-vs-impact tradeoffs.",
+    "Square": "Carry Out",
+    "SquareURL": "squares/carry_out.html",
+    "Discipline": "STEM",
+    "AI Literacy Framework Tags": [
+      {"tag": "Safety & Ethics", "url": "frameworks/safety.html"},
+      {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
     ]
   },
   {
@@ -667,6 +831,16 @@
       }
     ]
   },
+{
+  "Activity": "Provide an explanation that helps a peer apply a scientific concept (e.g., Bayesian reasoning, statistical significance, hypothesis testing) to a new context outside the textbook. Use AI to brainstorm three possible real-world applications, then select the one that best illustrates the concept and write your own explanation of why it works. The AI's role is to help you generate possibilities; the conceptual reasoning about why your chosen application fits must be yours.",
+  "Square": "Provide",
+  "SquareURL": "squares/provide.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
   {
     "Activity": "Students create a collage using AI tools, basing it on a conceptual theme (e.g., \u201cdecay\u201d or \u201cnostalgia\u201d).",
     "Square": "Provide",
@@ -708,6 +882,10 @@
       {
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
@@ -759,6 +937,16 @@
       }
     ]
   },
+{
+  "Activity": "Before learning a new AI tool relevant to your creative discipline, predict in writing: how confident do you expect to feel using it after one hour, what specific aspects do you think will be hardest for you given your current skills, and what role do you imagine it taking in your future practice? After spending an hour with the tool, return to your predictions and assess what you got right, what surprised you, and what your inaccurate predictions reveal about how you think about new technologies.",
+  "Square": "Predict",
+  "SquareURL": "squares/predict.html",
+  "Discipline": "Arts",
+  "AI Literacy Framework Tags": [
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"},
+    {"tag": "Career Competencies", "url": "frameworks/career_competencies.html"}
+  ]
+},
   {
     "Activity": "Students track the types of prompts they tend to use across tools and reflect on how that shapes their outcomes.",
     "Square": "Predict",
@@ -904,6 +1092,16 @@
     ]
   },
   {
+  "Activity": "Summarize how a contemporary artist or musician has integrated AI into their practice. Use AI to help compile sources, then verify against direct artist statements or interviews. Note which AI-generated claims you couldn't verify and what that means for the trustworthiness of AI summaries on emerging topics.",
+  "Square": "Summarize",
+  "SquareURL": "squares/summarize.html",
+  "Discipline": "Arts",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"}
+  ]
+},
+  {
     "Activity": "Watch a video created by an AI video generator, then write a short explanation of how the AI created visual transitions or effects.",
     "Square": "Summarize",
     "SquareURL": "squares/summarize.html",
@@ -951,8 +1149,18 @@
       }
     ]
   },
+{
+  "Activity": "Identify your own current habits and assumptions around using generative AI in your creative practice. Without using AI for this step, write a personal inventory: what kinds of work do you reach for AI to help with, what do you protect from AI, and what assumptions are you making about why? Then, after completing one AI-assisted creative task, return to your inventory and identify whether your assumptions held up.",
+  "Square": "Identify",
+  "SquareURL": "squares/identify.html",
+  "Discipline": "Arts",
+  "AI Literacy Framework Tags": [
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"},
+    {"tag": "Safety & Ethics", "url": "frameworks/safety.html"}
+  ]
+},
   {
-    "Activity": "Students fill in a digital journal after exploring 3 AI tools for creativity (e.g., Midjourney, ChatGPT, Lumen5), noting personal ease/difficulty.",
+    "Activity": "Students fill in a digital journal after exploring 3 AI tools for creativity (e.g., Midjourney, ChatGPT, Lumen5), noting personal ease/difficulty and what each tool's training data implies about its strengths",
     "Square": "Identify",
     "SquareURL": "squares/identify.html",
     "Discipline": "Arts",
@@ -964,6 +1172,10 @@
       {
         "tag": "Hardware & Software",
         "url": "frameworks/hardware_&_software.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
@@ -999,22 +1211,27 @@
       }
     ]
   },
-  {
-    "Activity": "Students complete a step-by-step walkthrough of uploading audio into an AI music tool (like Amper Music), then explain each step to a partner.",
-    "Square": "Recall",
-    "SquareURL": "squares/recall.html",
-    "Discipline": "Arts",
-    "AI Literacy Framework Tags": [
-      {
-        "tag": "Hardware & Software",
-        "url": "frameworks/hardware_&_software.html"
-      },
-      {
-        "tag": "Communication & Collaboration",
-        "url": "frameworks/communication_&_collaboration.html"
-      }
-    ]
-  },
+{
+  "Activity": "Recall the step-by-step procedure for producing a piece of work in your discipline using a traditional tool or technique (printmaking, music notation, screenwriting structure, etc.). Then, with AI assistance, document the analogous step-by-step procedure for producing similar work with an AI tool. Compare the two procedures side by side and identify which steps are present in both, which are unique to each, and which steps reveal the most about what each method actually rewards.",
+  "Square": "Recall",
+  "SquareURL": "squares/recall.html",
+  "Discipline": "Arts",
+  "AI Literacy Framework Tags": [
+    {"tag": "Content Creation", "url": "frameworks/content_creation.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
+{
+  "Activity": "Working in pairs, students complete a step-by-step walkthrough of uploading audio into an AI music tool. As they work, each partner annotates the steps with two notes: (1) what the tool seems to be doing 'under the hood' at this step, and (2) what creative choice the tool is making for them at this step. Pairs then teach the workflow to another pair, comparing their annotations and identifying where the tool's automated choices most affected the final output.",
+  "Square": "Recall",
+  "SquareURL": "squares/recall.html",
+  "Discipline": "Arts",
+  "AI Literacy Framework Tags": [
+    {"tag": "Hardware & Software", "url": "frameworks/hardware_&_software.html"},
+    {"tag": "Communication & Collaboration", "url": "frameworks/communication_&_collaboration.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"}
+  ]
+},
   {
     "Activity": "In a scavenger hunt, students identify procedures for detecting AI-generated content in academic writing using tools like Turnitin or ZeroGPT.",
     "Square": "Recall",
@@ -1031,22 +1248,17 @@
       }
     ]
   },
-  {
-    "Activity": "In small groups, students use ChatGPT to look up and compile definitions for types of machine learning (supervised, unsupervised, reinforcement) and create a mini-poster.",
-    "Square": "Recognize",
-    "SquareURL": "squares/recognize.html",
-    "Discipline": "STEM",
-    "AI Literacy Framework Tags": [
-      {
-        "tag": "Career Competencies",
-        "url": "frameworks/career_competencies.html"
-      },
-      {
-        "tag": "Communication & Collaboration",
-        "url": "frameworks/communication_&_collaboration.html"
-      }
-    ]
-  },
+{
+  "Activity": "In small groups, students use ChatGPT to draft initial definitions for types of machine learning (supervised, unsupervised, reinforcement). They then verify each AI-generated definition against at least two authoritative sources (a textbook chapter, peer-reviewed paper, or established educational resource) and document any inaccuracies, oversimplifications, or missing nuance they find. Each group creates a mini-poster showing both the AI's draft definition AND the verified version, with a brief note on what changed and why.",
+  "Square": "Recognize",
+  "SquareURL": "squares/recognize.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Information & Data Literacy", "url": "frameworks/information_&_data_literacy.html"},
+    {"tag": "Critical Thinking & Agency", "url": "frameworks/critical_thinking_&_agency.html"},
+    {"tag": "Communication & Collaboration", "url": "frameworks/communication_&_collaboration.html"}
+  ]
+},
   {
     "Activity": "Students create a mind map in Canva with AI tool integrations, classifying AI tools into categories like generative, assistive, or curatorial.",
     "Square": "Recognize",
@@ -1060,6 +1272,10 @@
       {
         "tag": "Career Competencies",
         "url": "frameworks/career_competencies.html"
+      },
+      {
+        "tag": "Critical Thinking & Agency",
+        "url": "frameworks/critical_thinking_&_agency.html"
       }
     ]
   },
@@ -1093,6 +1309,26 @@
         "tag": "Content Creation",
         "url": "frameworks/content_creation.html"
       }
+    ]
+  },
+  {
+  "Activity": "List the top five AI tools currently used in your intended STEM field. For each, document: the type of underlying model, what it's trained on, and one publicly documented limitation or failure mode.",
+  "Square": "List",
+  "SquareURL": "squares/list.html",
+  "Discipline": "STEM",
+  "AI Literacy Framework Tags": [
+    {"tag": "Hardware & Software", "url": "frameworks/hardware_&_software.html"},
+    {"tag": "Career Competencies", "url": "frameworks/career_competencies.html"}
+  ]
+},
+  {
+    "Activity": "Compare two AI-powered scientific writing or coding assistants. List each tool's features (autocomplete, citation lookup, code explanation, etc.), the type of underlying model it uses, and the kinds of STEM tasks it's best suited for. Compile findings in a shared spreadsheet for the class.",
+    "Square": "List",
+    "SquareURL": "squares/list.html",
+    "Discipline": "STEM",
+    "AI Literacy Framework Tags": [
+      {"tag": "Hardware & Software", "url": "frameworks/hardware_&_software.html"},
+      {"tag": "Career Competencies", "url": "frameworks/career_competencies.html"}
     ]
   },
   {
