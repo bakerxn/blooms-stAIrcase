@@ -27,6 +27,22 @@ const ACTIVITIES_JSON_PATH = (function() {
   return new URL('data/activities.json', document.baseURI).href;
 })();
 
+// Capture the script's own URL so we can resolve other site-relative paths later.
+const SCRIPT_SRC = (function() {
+  return document.currentScript ? document.currentScript.src : '';
+})();
+
+function resolveSiteUrl(relativePath) {
+  if (!relativePath) return '#';
+  if (/^https?:\/\//i.test(relativePath) || relativePath.startsWith('/')) {
+    return relativePath;
+  }
+  if (SCRIPT_SRC) {
+    return new URL('../' + relativePath, SCRIPT_SRC).href;
+  }
+  return relativePath;
+}
+
 /**
  * Builds one <tr> element from an activity object.
  * pageType 'square'    → columns: Activity | Discipline | AI Literacy Framework Tags
@@ -48,7 +64,7 @@ function buildRow(activity, pageType = 'square') {
     // Column 2: Square link
     const tdSquare = document.createElement('td');
     const squareLink = document.createElement('a');
-    squareLink.href        = activity.SquareURL || '#';
+    squareLink.href = resolveSiteUrl(activity.SquareURL);
     squareLink.textContent = activity.Square;
     tdSquare.appendChild(squareLink);
     tr.appendChild(tdSquare);
@@ -76,7 +92,7 @@ function buildRow(activity, pageType = 'square') {
     // Column 2: Square link
     const tdSquare = document.createElement('td');
     const squareLink = document.createElement('a');
-    squareLink.href        = activity.SquareURL || '#';
+    squareLink.href = resolveSiteUrl(activity.SquareURL);
     squareLink.textContent = activity.Square;
     tdSquare.appendChild(squareLink);
     tr.appendChild(tdSquare);
@@ -146,6 +162,23 @@ async function renderActivitiesTable(options) {
     console.error('Failed to load activities.json:', err);
     return;
   }
+
+// Resolve relative URLs (like "squares/create.html") against the site root,
+// not against whatever folder the calling page lives in.
+function resolveSiteUrl(relativePath) {
+  if (!relativePath) return '#';
+  // If it's already absolute, leave it alone
+  if (/^https?:\/\//i.test(relativePath) || relativePath.startsWith('/')) {
+    return relativePath;
+  }
+  // Anchor against the script's location (js/), then go up one level
+  const scriptSrc = document.currentScript ? document.currentScript.src : '';
+  if (scriptSrc) {
+    return new URL('../' + relativePath, scriptSrc).href;
+  }
+  // Fallback
+  return relativePath;
+}
 
   // Apply any hard-coded page-level filters (e.g., square page only shows one Square)
   let filtered = allActivities.filter(activity => {
