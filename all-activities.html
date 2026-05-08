@@ -614,5 +614,19 @@
     });
   })();
 </script>
+<script>
+(function () {
+  var toggleBtn = document.getElementById('sidebar-toggle-btn');
+  var sidebar   = document.getElementById('filter-sidebar');
+  if (!toggleBtn || !sidebar) return;
+
+  toggleBtn.addEventListener('click', function () {
+    var isOpen = sidebar.classList.contains('open');
+    sidebar.classList.toggle('open', !isOpen);
+    toggleBtn.setAttribute('aria-expanded', String(!isOpen));
+    toggleBtn.textContent = isOpen ? '☰ Filter Activities' : '✕ Close Filters';
+  });
+})();
+</script>
 </body>
 </html>
